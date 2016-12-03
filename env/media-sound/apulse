@@ -1,0 +1,25 @@
+. /etc/portage/env/scripts/mv_patch -
+
+post_src_install () {
+	local libdirs
+	libdirs='/usr/lib/apulse'
+	if use amd64
+	then	libdirs='/usr/local/lib32/qt4 /usr/lib32/apulse'
+	else	libdirs='/usr/local/lib/qt4 /usr/lib/apulse'
+	fi
+	printf '%s' \
+'#!/bin/sh
+for apulsedir in '"$libdirs"'
+do	test -d "$apulsedir" && {
+		LD_LIBRARY_PATH=$apulsedir${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+	}
+done
+if [ -n "$LD_LIBRARY_PATH" ]
+then	printf '\''%s\n'\'' "export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH\""
+	export LD_LIBRARY_PATH
+fi
+printf '\''%s\n'\'' "/opt/bin/skype $*"
+exec /opt/bin/skype "$@"
+' >"$T/skype"
+	dobin "$T/skype"
+}

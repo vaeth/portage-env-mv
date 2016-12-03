@@ -1,0 +1,29 @@
+#!/bin/bash
+# ^^^^^^^^^^
+# This is only to make correct editor highlighting.
+#
+# This file should be sourced from /etc/portage/env/$CATEGORY/$PACKAGE*
+#
+# It replaces /etc/init.d/$PN by a version where obsolete "opts" is not used.
+# If you pass a parameter, that parameter is used instead of $PN.
+
+[ -n "${1:++}" ] && mv_noopts_arg=$1
+mv_noopts() {
+	local f initfile
+	f=${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*
+	: ${ED:=$D}
+	initfile=${ED%/}/etc/init.d/${mv_noopts_arg:-$PN}
+	test -e "$initfile" || die "mv's hack $f failed"
+	if grep -q -- 'opts=' "$initfile"
+	then	einfo "mv's hack: mv_noopts from $f"
+		einfo "Replacing opts by extra_started_commands"
+		sed -i -e '/opts=/{s/opts/extra_started_commands/g}' \
+			-- "$initfile" || die "mv's hack $f failed"
+		elog "mv's hack mv_noopts from $f applied"
+	else	die "mv's hack $f is redundant"
+	fi
+}
+
+post_src_install() {
+	mv_noopts
+}

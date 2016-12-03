@@ -1,0 +1,19 @@
+#!/bin/bash
+# ^^^^^^^^^^
+# This is only to make correct editor highlighting.
+#
+# This file should be sourced from /etc/portage/env/$CATEGORY/$PACKAGE*
+#
+# Its purpose is to warn that the package might require a "paxopen open"
+
+mv_paxopen() {
+	ewarn "mv's experience for this package:"
+	ewarn "If compilation/running fails, try again after"
+	ewarn "	paxopen open"
+	ewarn "Reset the original safer state afterwards with"
+	ewarn "	paxopen close"
+}
+
+pre_src_prepare() {
+	mv_paxopen
+}

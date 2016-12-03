@@ -1,0 +1,27 @@
+#!/bin/bash
+# ^^^^^^^^^^
+# This is only to make correct editor highlighting.
+#
+# This file should be sourced from /etc/portage/env/$CATEGORY/$PACKAGE*
+#
+# It removes all installed *.la files (i.e. all information which is only
+# needed to link static archives).
+# To remove also the *.a files (i.e. the static archives),
+# use mv_rmstaticla, instead.
+
+mv_rmla() {
+	local f
+	f=${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*
+	: ${ED:=$D}
+	if [ -n "`find "$ED" -name '*.la' -print -quit`" ]
+	then	einfo "mv's hack mv_rmla from $f"
+		find "$ED" -name '*.la' -exec rm -v -- '{}' '+' || \
+			die "mv's hack mv_rmla from $f failed"
+		elog "mv's hack mv_rmla from $f applied"
+	else	die "mv's hack mv_rmla is redundant in $f"
+	fi
+}
+
+post_src_install() {
+	mv_rmla
+}

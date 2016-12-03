@@ -1,0 +1,27 @@
+Patch by Martin Vaeth <martin at mvath.de> from Apr 5, 2013
+--- 1/Portage.pm
++++ 1/Portage.pm
+@@ -951,17 +951,17 @@
+ 
+ 	for my $key (map {my $x=lc($_)."_"; $x } keys %$expands) {
+ 		for my $flag (keys %$_use_temp) {
+-			if ($flag =~ /^$key/ ) {
+-				delete($_use_temp->{$flag});
+-			} 
++#			if ($flag =~ /^$key/ ) {
++#				delete($_use_temp->{$flag});
++#			} 
+ 		}
+ 	} ## Done looping USE_EXPAND
+ 
+ 	for my $key (map {my $x=lc($_)."_"; $x } keys %$hidden) {
+ 		for my $flag (keys %$_use_temp) {
+-			if ($flag =~ /^$key/ ) {
+-				delete($_use_temp->{$flag});
+-			} 
++#			if ($flag =~ /^$key/ ) {
++#				delete($_use_temp->{$flag});
++#			} 
+ 		}
+ 	} ## Done looping USE_EXPAND_HIDDEN
+ 

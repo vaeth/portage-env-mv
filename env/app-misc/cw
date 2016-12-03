@@ -1,0 +1,32 @@
+
+. /etc/portage/env/scripts/mv_patch -
+
+post_src_prepare () {
+	mv_start && cd def >/dev/null 2>&1 && \
+	sed -i -e '/path/d' -e '3iother cal' cal && \
+	sed -i -e 's!syslog!all!' syslog && \
+	mv -i -- cal cal-color && \
+	mv -i -- messages@ all@ && \
+	mv -i -- xferlog@ Xorg.0.log@ && \
+	rm -v -- \
+		auth.log@ \
+		clock \
+		cw-test.cgi \
+		dig \
+		figlet \
+		finger \
+		gcc \
+		mpg123 \
+		nfsstat \
+		nmap \
+		nslookup \
+		pmap_dump \
+		praliases \
+		quota \
+		quotastats \
+		showmount \
+		smbstatus \
+		tcpdump \
+		traceroute
+	mv_end
+}

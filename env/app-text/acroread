@@ -1,0 +1,23 @@
+
+. /etc/portage/env/scripts/mv_patch -
+
+post_src_unpack() {
+	mv_start
+	local i e=true p1 p2
+	p1="\$HOME/.adobe/Acrobat/${PV%.*}/JavaScripts"
+	p2="\$HOME/.adobe/Acrobat/${PV%%.*}.0/JavaScripts"
+	for i in $LAUNCHERS
+	do	einfo "Patching $i"
+		sed -i -e '2i# Patch to prevent acroread from phoning home:' \
+			-e "2itest -d \"$p1\" || mkdir -p -- \"$p1\"" \
+			-e "2itest -d \"$p2\" || mkdir -p -- \"$p2\"" \
+			-e "2iln -sf -- /dev/null \"$p1/glob.settings.js\"" \
+			-e "2iln -sf -- /dev/null \"$p2/glob.settings.js\"" \
+			-- "$i" || {
+				e=false
+				eerror "$i not found in $PWD"
+			}
+	done
+	$e
+	mv_end
+}

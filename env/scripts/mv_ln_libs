@@ -1,0 +1,56 @@
+#!/bin/bash
+# ^^^^^^^^^^
+# This is only to make correct editor highlighting.
+#
+# This file should be sourced from /etc/portage/env/$CATEGORY/$PACKAGE*
+#
+# Its purpose is to replace libraries shipped with binary packages
+# by symbolic libs to system libraries
+#
+# You should give this a quoted list of libraries which should be replaced by
+# symbolic links (if possible). A typical for the arguments is
+# '"$ED"/opt/googleearth/lib*.so.* "$ED"/opt/googleearth/plugins/*/lib*.so'
+# (note the additional quote of the whole list which is need for the argument.
+# If you call the auxiliary function mv_ln_libs manually this is not necessary).
+
+mv_ln_libs() {
+	case ${MV_NO_LN_LIBS:-no} in
+	[0fFnN]*)
+		:;;
+	*)
+		return 0;;
+	esac
+	local pathlist="/lib /usr/lib"
+	use amd64 && {
+		test -d /lib32 || test -d /usr/lib32
+	} && pathlist="/lib32 /usr/lib32"
+	local i j k l
+	l=
+	for i
+	do	test -f "$i" || continue
+		j=${i##*/}
+		for k in $pathlist
+		do	[ -n "`find "$k" -name openoffice -prune -o \
+				-name "$j"`" ] || continue
+			l="$l $j"
+			find "$k" -name openoffice -prune -o \
+				-name "$j" -exec \
+				/bin/ln -vsfn -- '{}' "$i" ';' -quit
+			break
+		done
+	done
+	[ -z "${l:++}" ] && return
+	elog
+	elog "mv's hack: ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*"
+	elog "The following libs have been linked symbolically:"
+	elog $l
+	elog "The package might not depend on these libs, so this may break."
+	elog "If the libs change, a reemerge of the package might be needed."
+	elog "Set MV_NO_LN_LIBS=true during emerge to skip this hack."
+	elog
+}
+
+[ -n "${1:++}" ] && eval 'post_pkg_preinst() {
+	mv_ln_libs "$*"
+}'
+

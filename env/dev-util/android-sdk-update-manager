@@ -1,0 +1,15 @@
+. /etc/portage/env/scripts/mv_patch -
+
+post_src_prepare() {
+	mv_start && sed -i \
+		-e "s/-Xmx256M *//" \
+		-- tools/android
+	mv_end
+}
+
+post_src_install() {
+	mv_start && sed -i \
+		-e 's|PATH="|PATH="/opt/eclipse:|' \
+		-- "$ED/etc/env.d/80android-sdk-update-manager"
+	mv_end
+}

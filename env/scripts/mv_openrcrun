@@ -1,0 +1,48 @@
+#!/bin/bash
+# ^^^^^^^^^^
+# This is only to make correct editor highlighting.
+#
+# This file should be sourced from /etc/portage/env/$CATEGORY/$PACKAGE*
+#
+# It replaces in /etc/init.d/* the obsolete "initscript" by "openrc-run".
+
+mv_openrcrun() {
+	local f found file temp status
+	f=${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*
+	: ${ED:=$D}
+	found=false
+	for file in "${ED%/}/etc/init.d/"*
+	do	temp=$T/${file##*/}.initd
+		! test -e "$temp" || {
+			eerror "file $temp already exists"
+			die "mv's hack $f: mv_openrcrun failed"
+		}
+		cp -- "$file" "$temp" || {
+			eerror "cp $file $temp failed"
+			die "mv's hack $f: mv_openrcrun failed"
+		}
+		sed -e '1{s^\(#!.*/\)runscript^\1openrc-run^}' \
+			"$temp" >"$file" || {
+			eerror "sed failed"
+			die "mv's hack $f: mv_openrcrun failed"
+		}
+		diff -q -- "$temp" "$file" >/dev/null 2>&1
+		status=$?
+		rm -f -- "$temp" || {
+			eerror "cannot remove $temp"
+			die "mv's hack $f: mv_openrcrun failed"
+		}
+		[ $status -eq 0 ] && continue
+		$found || einfo "mv's hack mv_openrcrun from $f:"
+		found=:
+		einfo "Applied mv_openrcrun patch to $file"
+	done
+	if $found
+	then	elog "mv's hack mv_openrcrun from $f applied"
+	else	die "mv's hack mv_openrcrun from $f is redundant"
+	fi
+}
+
+post_src_install() {
+	mv_openrcrun
+}

@@ -1,0 +1,28 @@
+Patch by Martin Vaeth <martin at mvath.de> from Sep 11, 2013
+--- 1/ufed.pl.in
++++ 1/ufed.pl.in
+@@ -171,15 +171,15 @@
+ 	my $contents;
+ 
+ 	my $makeconf_name = $Portage::used_make_conf;
+-	{
+-		open my $makeconf, '<', $makeconf_name or die "Couldn't open $makeconf_name\n";
+-		open my $makeconfold, '>', $makeconf_name . '~' or die "Couldn't open ${makeconf_name}~\n";
+-		local $/;
+-		$_ = <$makeconf>;
+-		print $makeconfold $_;
+-		close $makeconfold;
+-		close $makeconf;
+-	}
++	#{
++		#open my $makeconf, '<', $makeconf_name or die "Couldn't open $makeconf_name\n";
++		#open my $makeconfold, '>', $makeconf_name . '~' or die "Couldn't open ${makeconf_name}~\n";
++		#local $/;
++		#$_ = <$makeconf>;
++		#print $makeconfold $_;
++		#close $makeconfold;
++		#close $makeconf;
++	#}
+ 
+ 	my $sourcing = 0;
+ 	eval {

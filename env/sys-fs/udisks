@@ -1,0 +1,11 @@
+
+post_src_install () {
+	local i
+	: ${ED:=$D}
+	for i in "$ED"/media/.keep*
+	do	test -e "$i" || continue
+		ewarn "mv's hack: Removing /media/${i##*/}"
+		rm -- "$i"
+	done
+	:
+}

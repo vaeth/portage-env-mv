@@ -1,0 +1,158 @@
+#!/bin/sh (this line is only for editors)
+
+# Fix various bugs in the fvwm-crystal scripts:
+# 1. They are full of bashisms, so use #!/bin/bash
+# 2. Avoid some bashisms in fvwm code ([[ ]] == source)
+# 3. Remove wrong "break" lines in fvwm-crystal
+# 4. Fix some forgotten quoting
+
+my_bugfixes_3_2_3() {
+	find "$S" -type d -name Applications -prune \
+		-o -type f -exec /bin/sh -c 'Echo() {
+	printf '\''%s\n'\'' "$*"
+}
+for i
+do if test -x "$i"
+then ! head -n1 -- "$i" | grep '\''^#!/bin/sh'\'' >/dev/null || {
+	if [ "${i##*/}" = fvwm-crystal ]
+	then	Echo "Fixes various in $i"
+		a='\''-e /break;/d'\''
+	else	Echo "Fixing #!/bin/sh in $i"
+		a=
+	fi
+	cp -p -- "$i" "$i.patched" && \
+	sed -e '\''1s|^#!/bin/sh|#!/bin/bash|'\'' $a -- "$i" >|"$i.patched" && \
+	mv -- "$i.patched" "$i"
+}
+else
+if grep -q '\''PipeRead.*\(\[\[\|source\)'\'' -- "$i" >/dev/null
+then	Echo "Fixing bashisms in $i"
+	sed -i \
+		-e '\''s/\[\[/\[/g'\'' \
+		-e '\''s/\]\]/\]/g'\'' \
+		-e '\''s/==/=/g'\'' \
+		-e '\''s/source /. /g'\'' \
+		-- "$i"
+fi && if grep -q '\''echo \*'\'' -- "$i" >/dev/null
+then	Echo "Fixing echo in $i"
+	sed -i -e '\''s/echo \*/echo \\*/g'\'' -- "$i"
+fi
+fi && continue
+Echo "Failed to patch $i" >&2
+exit 1
+done' sh '{}' '+'
+}
+
+my_bugfixes_3_2_7() {
+	find "$S" -type d -name Applications -prune \
+		-o -type f -exec /bin/sh -c 'Echo() {
+	printf '\''%s\n'\'' "$*"
+}
+Sed() {
+	text=${1:-bashisms}
+	shift
+	cp -p -- "$i" "$i.patched" && \
+	sed "$@" \
+		-e '\''s/echo -e/echo/'\'' \
+		-e '\''s/\[\[ /\[ /g'\'' \
+		-e '\''s/ \]\]/ \]/g'\'' \
+		-e '\''/\[ | \]/{s/==/=/g}'\'' \
+		-e '\''s/source \([^a-z]\)/. \1/g'\'' \
+		-- "$i" >|"$i.patched" && \
+	if diff -q -- "$i.patched" "$i" >/dev/null 2>&1
+	then	rm -f -- "$i.patched"
+	else	Echo "Fixing $text in $i"
+		mv -- "$i.patched" "$i"
+	fi && return
+	Echo "Failed to patch $i" >&2
+	exit 1
+}
+for i
+do	case $i in
+	*.html|*.py|*.png|*.gif|*.jpg|*/ChangeLog)
+		continue;;
+	*/fvwm-crystal)
+		Sed break -e '\''/break;/d'\''
+		continue;;
+	*/DesktopActions)
+		Sed arrays \
+			-e '\''/Execs=/{s/[()]/'\''"'\''/g}" \
+			-e '\''s/Execs\[\*\]/Execs/'\''
+		continue;;
+	*/fvwm-crystal.videomodeswitch*)
+		Sed shebang -e '\''s:^#!/bin/sh:#!/bin/bash:'\''
+		continue;;
+	esac
+	head -n1 -- "$i" | grep bash >/dev/null && continue
+	if grep -q '\''echo \*'\'' -- "$i" >/dev/null
+	then	Sed quoting -e '\''s/echo \*/echo \\*/g'\''
+	else	Sed ""
+	fi
+done' sh '{}' '+'
+}
+
+my_bugfixes() {
+	case $PV in
+	3.2.3)
+		my_bugfixes_3_2_3;;
+	3.2.7)
+		my_bugfixes_3_2_7;;
+	esac
+}
+
+# We add/modify some menu entries...
+
+cp_menu() {
+	einfo "generating $3"
+	cp -p -- "$2" "$3" && sed -e "$1" -- "$2" >|"$3"
+}
+
+cp_mwww() {
+	local i c
+	c=continue
+	case $1 in
+	-*)
+		c=:
+		shift;;
+	esac
+	for i
+	do	cp_menu 's/exec/cd ~mwww; exec sudox -T -- mwww exec/' "$i" "$i.mwww" \
+			|| return
+		$c
+		rm -v -- "$i" || return
+	done
+}
+
+my_menu() {
+	local fvwm apps i
+	einfo "Modifying menu entries"
+	fvwm=${S}/fvwm/
+	apps=${fvwm}Applications/
+	rm -fv -- "${apps}Network/"*Web_Browsers/*flock* || return
+	cp_mwww -r "${apps}Network/"*Telephony/* || return
+	cp_mwww "${apps}System/"*File_Managers/* \
+		"${apps}System/"*Terminals/* \
+		"${apps}Network/"*Web_Browsers/* || return
+	i=$apps'Network/Dial-up/'
+	cp_menu 's/exec [^ ]*/exec adsl-gui/' \
+		"$i~kppp~kPPP" "$i~adsl-gui" || return
+	(
+		cd "${apps}Network/"*Web_Browsers || exit 1
+		cp_menu 's/exec [^ ]*/exec sudox -T -- mwww exec googleearth/' \
+			'~seamonkey~Seamonkey' '~googleearth.mwww' || exit 1
+		cp_menu 's/seamonkey/palemoon/' \
+			'~seamonkey~Seamonkey' '~palemoon' || exit 1
+		cp_mwww '~palemoon' || exit 1
+	) || return
+	rm -rfv -- "$fvwm/wallpapers" || return
+}
+
+post_src_prepare() {
+	local f
+	f=${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN
+	einfo "mv's hack: $f"
+	if my_bugfixes && my_menu
+	then	einfo "mv's hack $f applied"
+	else	die "mv's hack $f failed"
+	fi
+}

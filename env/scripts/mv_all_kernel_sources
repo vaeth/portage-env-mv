@@ -1,0 +1,83 @@
+#!/bin/bash
+# ^^^^^^^^^^
+# This is only to make correct editor highlighting.
+#
+# This file is meant to be sourced from
+# /etc/portage/env/$CATEGORY/$PACKAGE*
+#
+# It is similar to /etc/portage/env/scripts/mv_noinst
+# but also defines additional hooks needed for kernels.
+
+. /etc/portage/env/scripts/mv_noinst "$@"
+
+post_src_prepare() {
+	mv_kernel_patch
+}
+
+mv_kernel_patch() {
+	local f g i j k p s
+	f=${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*
+	g=:
+	cd -- "$S" >/dev/null 2>&1
+
+	# Make sure that -f is not set
+
+	case $- in
+	*f*)
+		set +f
+		s='set -f';;
+	*)
+		s=:;;
+	esac
+
+	# Apply patches from $MV_PATCHES and /etc/portage/env/patches{,/local}
+
+	for i in "$PN" kernel
+	do	for j in "-$PV-$PR" "-$PV" ''
+		do	for k in patch diff
+			do	for p in \
+				${MV_PATCHES:+"$MV_PATCHES"/$i$j-[a-z][a-z]*.$k} \
+				${PORTAGE_CONFIGROOT%/}/etc/portage/env/patches/local/$i$j-[a-z][a-z]*.$k \
+				${PORTAGE_CONFIGROOT%/}/etc/portage/env/patches/$i$j-[a-z][a-z]*.$k
+				do	if test -r "$p" && \
+						patch -p1 --no-backup-if-mismatch \
+							--dry-run <"$p" >/dev/null
+					then	if $g
+						then	einfo "mv's hack $f"
+							g=false
+						fi
+						einfo "Applying patch $p"
+						patch -p1 --no-backup-if-mismatch <"$p" || \
+							die "Patching failed"
+					fi
+				done
+			done
+		done
+	done
+
+	# For manual grpatches we have localversion-grsec with content "-grsec"
+	# This causes -grsec to be appended to the modules directory,
+	# so we remove it
+
+	for i in "$S/localversion"*
+	do	test -f "$i" || continue
+		if $g
+		then	einfo "mv's hack $f"
+			g=false
+		fi
+		einfo "removing ${i##*/}"
+		rm -- "$i"
+	done
+
+	# Possibly set -f again
+	$s
+	$g || elog "mv's hack mv_kernel_patch from $f applied"
+}
+
+post_pkg_postinst() {
+	elog
+	elog "mv's way of kernel compilation: Use the command"
+	elog "	kernel"
+	elog
+}
+

@@ -1,0 +1,8 @@
+
+post_src_install () {
+	einfo "mv's hack: ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*"
+	if test -d "$D/var/cache/man"
+	then	rm -rfv -- "$D/var/cache/man"
+	fi
+	einfo "mv's hack ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN* applied"
+}

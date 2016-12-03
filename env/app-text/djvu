@@ -1,0 +1,12 @@
+
+. /etc/portage/env/scripts/mv_patch -
+
+post_src_unpack() {
+	mv_start
+	sed -i \
+		-e 's/^PNGICONS.*/PNGICONS = hi22-djvu.png hi32-djvu.png hi48-djvu.png hi64-djvu.png/' \
+		-e '/hi72-djvu.png/d' \
+		-e '/hi256-djvu.png/d' \
+		-- "$S/desktopfiles/Makefile.in"
+	mv_end
+}

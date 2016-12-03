@@ -1,0 +1,3 @@
+pre_pkg_setup() {
+	CONFIG_CHECK="~!R8169"
+}

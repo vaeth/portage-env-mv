@@ -1,0 +1,23 @@
+#!/bin/bash
+# ^^^^^^^^^^
+# This is only to make correct editor highlighting.
+#
+# This file should be sourced from /etc/portage/env/$CATEGORY/$PACKAGE*
+#
+# It removes all SUID permissions
+
+mv_nosuid() {
+	local f
+	f=${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*
+	if [ -n "`find "$ED" -perm /4000`" ]
+	then	einfo "mv's hack: $f"
+		find "$ED" -perm /4000 -exec chmod -v -- -s '{}' '+' || \
+			die "mv's hack mv_rmla from $f failed"
+		elog "mv's hack mv_nosuid from $f applied"
+	else	die "mv's hack mv_nosuid from $f is redundant"
+	fi
+}
+
+post_src_install() {
+	mv_nosuid
+}

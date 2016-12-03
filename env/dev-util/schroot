@@ -1,0 +1,6 @@
+
+post_src_install() {
+	einfo "mv's hack: ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*"
+	use pam || rm -rfv -- "$ED/etc/pam.d"
+	einfo "mv's hack ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN* applied"
+}

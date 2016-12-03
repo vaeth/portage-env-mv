@@ -1,0 +1,15 @@
+
+post_src_prepare() {
+	mkdir "${S}"/xine
+	: >"${S}"/xine/tvxine
+}
+
+post_src_install() {
+	local f
+	f=${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*
+	einfo "mv's hack in $f"
+	if rm -rv -- "$ED/etc/systemd"
+	then	einfo "mv's hack in $f applied"
+	else	die "mv's hack in $f is redundant"
+	fi
+}

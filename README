@@ -1,0 +1,33 @@
+portage-env-mv:
+
+This is Martin Väth's local /etc/portage/env for gentoo,
+full of local fixes and hacks
+
+It is mainly meant for personal use, but it is under the GPL v2 license.
+You can include local files into */local; these are not under git control.
+
+The login picture for slim should be provided this way in
+	/etc/portage/env/local/pic/login.jpg
+(either the */pic or the */login.jpg can be a symlink which is resolved).
+
+Moreover, some patches should be provided this way either in
+	/etc/portage/env/local/patches
+	/etc/portage/env/patches/local
+	$MV_PATCHES
+
+Here are the addresses of the missing patches for downloading:
+
+qtgui-gcc-6.patch
+	https://bugs.gentoo.org/show_bug.cgi?id=583662
+
+qtscript-gcc-6.patch
+	https://bugs.gentoo.org/show_bug.cgi?id=582522
+
+qtwebkit-gcc-6.patch
+	https://bugs.gentoo.org/show_bug.cgi?id=583744
+
+qtxmlpatterns-gcc-6.patch
+	https://bugs.gentoo.org/show_bug.cgi?id=582618
+
+ragel-gcc-6.patch
+	https://bugs.gentoo.org/show_bug.cgi?id=582606

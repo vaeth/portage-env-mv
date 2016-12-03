@@ -1,0 +1,24 @@
+#!/bin/bash
+# ^^^^^^^^^^
+# This is only to make correct editor highlighting.
+#
+# This file should be sourced from /etc/portage/env/$CATEGORY/$PACKAGE*
+#
+# It removes all installed .keep* files
+
+mv_rmkeep() {
+	local f
+	f=${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*
+	: ${ED:=$D}
+	if [ -n "`find "$ED" -name '.keep*' -print -quit`" ]
+	then	einfo "mv's hack: $f"
+		find "$ED" -name '.keep*' -exec rm -v -- '{}' '+' || \
+			die "mv's hack mv_rmkeep from $f failed"
+		elog "mv's hack $f applied"
+	else	die "mv's hack $f is redundant"
+	fi
+}
+
+post_src_install() {
+	mv_rmkeep
+}

@@ -1,0 +1,6 @@
+
+
+. /etc/portage/env/scripts/mv_patch \
+	-e "'s/Liberation.*true/Liberation Mono:pixelsize=15:antialias=true:autohint=true/'" \
+	config.def.h
+

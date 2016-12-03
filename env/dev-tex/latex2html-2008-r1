@@ -1,0 +1,4 @@
+
+. /etc/portage/env/scripts/mv_patch \
+	-e "'s/defined \\%/\\%/'" \
+	latex2html.pin

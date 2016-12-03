@@ -1,0 +1,2 @@
+. /home/gentoo/various/etc/portage/env/scripts/mv_patch \
+	-e /MOZ_ASSERT/d mfbt/Util.h

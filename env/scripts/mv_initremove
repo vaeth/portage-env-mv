@@ -1,0 +1,33 @@
+#!/bin/bash
+# ^^^^^^^^^^
+# This is only to make correct editor highlighting.
+#
+# This file should be sourced from /etc/portage/env/$CATEGORY/$PACKAGE*
+#
+# It "removes" all /etc/init.d/* scripts of the package by making them
+# non-executable.
+
+mv_initremove() {
+	local f file found
+	f=${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*
+	: ${ED:=$D}
+	found=false
+	for file in "${ED%/}/etc/init.d/"*
+	do	test -x "$file" || continue
+		$found || einfo "mv's hack mv_initremove applies"
+		found=:
+		einfo "Making /etc/init.d/${file##*/} non-exectuable"
+		chmod -- a-x "$file" || {
+			eerror "chmod a-x $file failed"
+			die "mv's hack mv_initremove from $f failed"
+		}
+	done
+	if $found
+	then	elog "mv's hack mv_initremove applied"
+	else	die "mv's hack mv_initremove from $f is redundant"
+	fi
+}
+
+post_src_install() {
+	mv_initremove
+}

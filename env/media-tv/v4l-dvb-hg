@@ -1,0 +1,7 @@
+
+. /etc/portage/env/scripts/mv_patch my
+
+pkg_setup () {
+	chmod a+r /proc/modules
+	chmod -R go+rX /sys
+}

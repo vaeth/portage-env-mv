@@ -1,0 +1,28 @@
+
+. /etc/portage/env/scripts/mv_rmkeep
+
+mv_rmremotefs() {
+	local i r
+	rm -v -- \
+		"$ED/etc/systemd/system/multi-user.target.wants/remote-fs.target" \
+		|| return
+	r=1
+	for i in "$ED/etc/systemd/system/"*.target
+	do	test -h "$i" || return
+		r=0
+		ln -sfn /usr/lib/systemd/system/"${i##*/}" \
+			"$ED/etc/systemd/system/" || return
+	done
+	return $r
+}
+
+post_src_install() {
+	local f
+	f=${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*
+	mv_rmkeep
+	einfo "mv's second hack in $1"
+	if mv_rmremotefs "$f"
+	then	einfo "mv's second hack in $1 applied"
+	else	die "mv's second hack in $1 is redundant or does not apply"
+	fi
+}

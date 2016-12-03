@@ -1,0 +1,80 @@
+#!/bin/bash
+# ^^^^^^^^^^
+# This is only to make correct editor highlighting.
+#
+# This file should be sourced from /etc/portage/env/$CATEGORY/$PACKAGE*
+#
+# It is passed one parameter: The name of a variable,
+# optionally preceeded by + or -
+# If this variable is set/unset, then only a "dummy" version of the package
+# is emerged (and a corresponding message is displayed).
+# Optionally, you can pass strings as further parameters which are used
+# as an alternative message.
+
+mv_define_noinst() {
+	eval "pre_pkg_preinst() {
+		pkg_preinst() { local i k
+			k='$*'
+			[ -n \"\${k:++}\" ] && while IFS=\"
+\" read i
+			do	elog \"\$i\"
+			done <<AAENDSTRING
+
+mv's hack \${PORTAGE_CONFIGROOT%/}/etc/portage/env/\$CATEGORY/\$PN*
+\$k
+
+AAENDSTRING
+:; }
+		post_pkg_preinst() { :; }
+	}"
+	pre_src_unpack() {
+		src_unpack() { mkdir -- "$S"; }
+		post_src_unpack() { :; }
+	}
+	pre_src_prepare() {
+		src_prepare() { :; }
+		post_src_prepare() { :; }
+	}
+	pre_src_configure() {
+		src_configure() { :; }
+		post_src_configure() { :; }
+	}
+	pre_src_compile() {
+		src_compile() { :; }
+		post_src_compile() { :; }
+	}
+	pre_src_install() {
+		src_install() { :; }
+		post_src_install() { :; }
+	}
+	pre_pkg_postinst() {
+		pkg_postinst() { :; }
+		post_pkg_postinst() { :; }
+	}
+}
+
+case $1 in
+'')	:;;
+-*)	eval "case \${${1#-}:-0} in
+	[0fFnN]*)
+		shift
+		if [ -z \"\${*:++}\" ]
+		then	mv_define_noinst \"This hack detected: ${1#-} was not set. Hence:
+\$P will not actually be emerged, only a dummy package
+will get installed instead to pretend that all was installed regularly.\"
+		else	mv_define_noinst \"\$@\"
+		fi;;
+	esac";;
+*)	eval "case \${${1#+}:-0} in
+	[0fFnN]*)
+		:;;
+	*)
+		shift
+		if [ -z \"\${*:++}\" ]
+		then	mv_define_noinst \"This hack detected: ${1#+} is set. Hence:
+\$P will not actually be emerged, only a dummy package
+will get installed instead to pretend that all was installed regularly.\"
+		else	mv_define_noinst \"\$@\"
+		fi;;
+	esac";;
+esac

@@ -1,0 +1,4 @@
+post_src_prepare() {
+	mkdir "${S}"/xine
+	: >"${S}"/xine/tvxine
+}

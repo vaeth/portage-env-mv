@@ -1,0 +1,17 @@
+
+EXTRA_ECONF="--with-vardir=/var/run/sudo_time $EXTRA_ECONF"
+
+post_src_install () {
+	einfo "mv's hack: ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*"
+	if test -d "$ED/var/db/sudo"
+	then	if test -d "$ED/var/run"
+		then	if test -d "$ED/var/run/sudo_time"
+			then	rm -rf -- "$ED/var/run/sudo_time"
+			fi
+		else	mkdir -- "$ED/var/run"
+		fi
+		mv -v -- "$ED/var/db/sudo" "$ED/var/run/sudo_time"
+	fi
+	rm -v -- "$ED/usr/bin/sudoedit"
+	einfo "mv's hack ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN* applied"
+}

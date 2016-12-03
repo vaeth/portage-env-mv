@@ -1,0 +1,20 @@
+Support EMACS_SERVER_SOCKET_DIR in emacsclient.
+Patch by Martin Vaeth <martin at mvath.de> from Sep 7, 2014
+--- 1/lib-src/emacsclient.c
++++ 1/lib-src/emacsclient.c
+@@ -491,6 +491,15 @@
+ {
+   alternate_editor = egetenv ("ALTERNATE_EDITOR");
+ 
++  const char *sockdir = egetenv("EMACS_SERVER_SOCKET_DIR");
++  if(sockdir)
++    {
++	char *buf = (char *) xmalloc (strlen (sockdir) + 7 + 1);
++	strcpy (buf, sockdir);
++	strcat (buf, "/server");
++	socket_name = buf;
++    }
++
+   while (1)
+     {
+       int opt = getopt_long_only (argc, argv,

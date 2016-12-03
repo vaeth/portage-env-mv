@@ -1,0 +1,203 @@
+#!/bin/bash
+# ^^^^^^^^^^
+# This is only to make correct editor highlighting.
+#
+# This file should be sourced from /etc/portage/env/$CATEGORY/$PACKAGE*
+#
+# It provides several functions which are useful to patch packages during
+# emerging.
+#
+# Since the most frequent use is to redefine the post_src_unpack function
+# (which is usually not defined by ebuilds and executed after the unpack phase)
+# you can pass some arguments when sourcing this script:
+#
+# In this case, the post_src_unpack function is defined to call
+# "mv_patch" (see below) with your arguments and be somewhat verbose about it.
+# Note that this feature will uses eval to define post_src_unpack,
+# so you should use this only if your arguments are safe (no variables).
+# Moreover, you might have to quote your quotes.
+#
+# By default, "eutils.eclass" is sourced during sourcing to define epatch.
+# Since this can cause problems in some cases, you can suppress this
+# by passing "-" as the first argument to the source command.
+# (this argument is ignored otherwise).
+
+
+# Usage: mv_patch PATCH1 PATCH2 ...
+#
+# Applies all PATCHes, being verbose and failing if at least one PATCH fails.
+#
+# Each PATCH is either a filename (or a part thereof, see below)
+# or of the form -e expression FILENAME.
+#
+# If PATCH is filename, but not an absolute filename, it is searched
+# in the directories /etc/portage/env/patches/, $MV_PATCHES, and $FILESDIR.
+# You may omit a leading $PF-/$P-/$PN- or a trailing .patch/.diff
+# Only the first matching filename is used for each PATCH.
+#
+# If Patch is of the form -e expression FILENAME, then expression is used
+# as an sed expression to apply to FILENAME. (Note that by the above mentioned
+# eval you might have to quote expression twice)
+# If FILE is not an absolute pathname it is assumed to be relative to $S.
+#
+
+mv_epatch() {
+	command -v epatch >/dev/null 2>&1 || eval "$(sed -n \
+		-e '/^EPATCH/p' \
+		-e '/\${EPATCH[^=}]*=.*}/p' \
+		-e '/^epatch *()/,/^}/p' -- "$PORTDIR/eclass/eutils.eclass")"
+}
+
+if [ "${1-}" = '-' ]
+then	shift
+else	mv_epatch
+fi
+
+mv_patch() {
+	while [ $# -gt 0 ]
+	do	case $1 in
+		-e)	shift
+			mv_sed "$1" "$2" || return 1
+			shift 2;;
+		shell)	shift
+			"$@"
+			return;;
+		*)	mv_patchfile "$1" || return 1
+			shift;;
+		esac
+	done
+	return 0
+}
+
+mv_patchfile() {
+	local mv_n mv_pt mv_pt1 mv_pt2 mv_tl mv_px mv_sx
+	mv_epatch
+	case $1 in
+	/*)
+		unset MV_PATCHES
+		mv_pt1=
+		mv_pt2=
+		mv_pt=${1%/*}
+		mv_tl=${1##*/};;
+	*)
+		mv_pt=${PORTAGE_CONFIGROOT%/}/etc/portage/env
+		mv_pt1=${mv_pt%/}/local/patches
+		mv_pt=${mv_pt%/}/patches
+		mv_pt2=${mv_pt%/}/local
+		mv_tl=$1;;
+	esac
+	for mv_pt in \
+		${MV_PATCHES:+"${MV_PATCHES%/}/"} \
+		${mv_pt1:+"${mv_pt1%/}/"} \
+		${mv_pt2:+"${mv_pt2%/}/"} \
+		"${mv_pt%/}/" \
+		${FILESDIR:+"${FILESDIR%/}/"}
+	do	for mv_px in "$PN-$PR-" "$P-" "$PN-" ''
+		do	for mv_sx in '' '.patch' '.diff'
+			do	mv_n=$mv_pt$mv_px$mv_tl$mv_sx
+				test -e "$mv_n" || continue
+				epatch "$mv_n" && return 0
+				eerror "Patch $mv_n failed"
+				return 1
+			done
+		done
+	done
+	eerror "Patch $1 not found"
+	return 1
+}
+
+declare -a MV_SED
+
+mv_sed() {
+	local mv_n mv_r mv_t
+	eval mv_n=\${$#}
+	einfo "Patching $mv_n"
+	case $mv_n in
+	/*)
+		mv_r=$mv_n;;
+	*)
+		mv_r=$S/$mv_n;;
+	esac
+	if ! test -e "$mv_r"
+	then	eerror "file $mv_r not found"
+		return 1
+	fi
+	MV_SED=("$@")
+	MV_SED[$(( $# - 1 ))]='--'
+	mv_t=$T/mv_sed
+	sed -e "${MV_SED[@]}" "$mv_r" >"$mv_t" \
+	&& chmod --reference="$mv_r" "$mv_t" || {
+		eerror "patching $mv_r failed"
+		return 1
+	}
+	chown --reference="$mv_r" "$mv_t" >/dev/null 2>&1
+	cmp -s -- "$mv_r" "$mv_t" && {
+		eerror "patching $mv_r had no effect"
+		return 1
+	}
+	mv -- "$mv_t" "$mv_r" || {
+		error "cannot move $mv_t -> $mv_r"
+		return 1
+	}
+}
+
+# Usage: mv_start [-]
+#
+# This gives a descriptive message about the file and that a hack is
+# going to be applied.
+#
+# Moreover, unless you pass the argument "-", the directory is changed to
+# $S (if it exists) or $WORKDIR (otherwise).
+mv_start() {
+	local cdto f
+	f=${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*
+	einfo "mv's hack: $f"
+	[ $# -gt 0 ] && [ "$1" = '-' ] && return 0
+	test -d "$S" && cdto=$S || cdto=$WORKDIR
+	cd -- "$cdto" >/dev/null && return 0
+	eerror "could not cd to $cdto"
+	return 1
+}
+
+# Usage: mv_end
+#
+# Depending on the error state, this gives either the message that the
+# hack was successfully applied or that it had failed.
+# In the latter case it dies.
+#
+mv_end() {
+	if [ ${1:-$?} -eq 0 ]
+	then	mv_end_ok
+	else	mv_end_die
+	fi
+}
+
+mv_end_ok() {
+	local f
+	f=${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*
+	elog "mv's hack from $f applied"
+}
+
+mv_end_die() {
+	local f
+	f=${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*
+	die "mv's hack from $f failed"
+}
+
+if [ $# -ne 0 ] && case $1 in
+*profile.bashrc)
+	false;;
+*)
+	:;;
+esac
+then	[ -z "${MV_OVERRIDE:++}" ] && case ${EAPI:-0} in
+	[01])
+		MV_OVERRIDE='post_src_unpack';;
+	*)
+		MV_OVERRIDE='post_src_prepare';;
+	esac
+	eval "$MV_OVERRIDE() {
+	mv_start && mv_patch $*
+	mv_end
+}"
+fi

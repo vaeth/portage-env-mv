@@ -1,0 +1,32 @@
+Make shell work with set -u
+Patch by Martin Vaeth <martin at mvath.de> from Jul 24, 2015
+--- 1/src/java-config-2.sh.in
++++ 1/src/java-config-2.sh.in
+@@ -9,13 +9,14 @@
+ # See https://bugs.gentoo.org/show_bug.cgi?id=169925
+ # for more details"
+ 
+-if [ -z "${UID}" ] ; then
++if [ -z "${UID-}" ] ; then
+ 	# id lives in /usr/bin which might not be mounted
+ 	if type id >/dev/null 2>/dev/null ; then
+ 		user_id=$(id -u)
+ 	else
+-		[ "${USER}" = "root" ] && user_id=0
++		[ "${USER-}" = "root" ] && user_id=0
+ 	fi
++else	user_id=${UID}
+ fi
+ 
+ # The root user uses the system vm
+@@ -27,7 +28,7 @@
+ fi
+ 
+ # prepending to come before generation 1
+-export MANPATH="${JAVA_HOME}/man:${MANPATH}"
+-export JDK_HOME=${JAVA_HOME}
+-export JAVAC=${JDK_HOME}/bin/javac
++export MANPATH="${JAVA_HOME}/man${MANPATH:+:}${MANPATH-}"
++export JDK_HOME="${JAVA_HOME}"
++export JAVAC="${JDK_HOME}/bin/javac"
+ unset gentoo_user_vm gentoo_system_vm user_id

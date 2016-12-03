@@ -1,0 +1,2 @@
+
+. /etc/portage/env/scripts/mv_all_kernel_sources -INST_KERNEL

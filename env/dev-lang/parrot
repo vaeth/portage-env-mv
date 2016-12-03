@@ -1,0 +1,14 @@
+#!/bin/bash
+# ^^^^^^^^^^
+# This is only to make correct editor highlighting.
+
+post_src_install() {
+	einfo "mv's hack: ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*"
+	test -d "$ED/usr/src/parrot" || die "mv's hack ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN* should no longer move /usr/src/parrot to /usr/share/parrot"
+	! test -r "$ED/usr/share/parrot" || die "mv's hack ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN* cannot move /usr/src/parrot to /usr/share/parrot"
+	dodir /usr/share
+	mv -v -- "$ED/usr/src/parrot" "$ED/usr/share"
+	[ -n "`find "$D" -name '*.a' -print -quit`" ] || die "mv's hack ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN* should no longer remove .a"
+	find "$D" -name '*.a' -exec rm -v -- '{}' '+'
+	einfo "mv's hack ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN* applied"
+}

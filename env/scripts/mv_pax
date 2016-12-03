@@ -1,0 +1,36 @@
+#!/bin/bash
+# ^^^^^^^^^^
+# This is only to make correct editor highlighting.
+#
+# This file should be sourced from /etc/portage/env/$CATEGORY/$PACKAGE*
+#
+# It provides support for pax marking.
+# You must write a function mv_pax() which calls pax-mark and returns
+# the correct error status.
+#
+# If you do not want that post_src_install() is redefined,
+# pass the argument "-" and call mv_pax_mark() (which in turn calls mv_pax())
+
+command -v mv_start >/dev/null 2>&1 || \
+	die 'mv_pax must be sourced after mv_patch'
+
+mv_pax_die() {
+	eerror "$*"
+	mv_end_die
+}
+
+mv_pax_init() {
+	command -v pax-mark || . "$PORTDIR/eclass/pax-utils.eclass"
+	command -v pax-mark || mv_pax_die 'cannot source pax-utils.eclass'
+}
+
+mv_pax_mark() {
+	mv_start && mv_pax_init && mv_pax
+	mv_end
+}
+
+if [ "$1" != '-' ]
+then	post_src_install() {
+	mv_pax_mark
+}
+fi

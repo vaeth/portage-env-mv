@@ -1,0 +1,3 @@
+. /etc/portage/env/scripts/mv_patch \
+	-e '"/atk-bridge.h/d"' config/system-headers \
+	-e '"s/ atk-bridge[^ ]*//"' configure.in

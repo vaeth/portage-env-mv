@@ -1,0 +1,26 @@
+#!/bin/bash
+# ^^^^^^^^^^
+# This is only to make correct editor highlighting.
+#
+# This file should be sourced from /etc/portage/env/$CATEGORY/$PACKAGE*
+#
+# It removes all installed *.a and *.la files (i.e. all static library data
+# and all information to link them statically).
+# To remove only one of them use mv_rmstatic or mv_rmla instead.
+
+mv_rmstaticla() {
+	local f
+	f=${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*
+	: ${ED:=$D}
+	if [ -n "`find "$ED"  '(' -name '*.a' -o -name '*.la' ')' -print -quit`" ]
+	then	einfo "mv's hack mv_rmstaticla from $f"
+		find "$ED" '(' -name '*.a' -o -name '*.la' ')' -exec rm -v -- '{}' '+' || \
+			die "mv's hack mv_rmstaticla from $f failed"
+		elog "mv's hack mv_rmstaticla from $f applied"
+	else	die "mv's hack mv_rmstaticla is redundant in $f"
+	fi
+}
+
+post_src_install() {
+	mv_rmstaticla
+}

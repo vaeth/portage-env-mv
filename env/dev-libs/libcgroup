@@ -1,0 +1,5 @@
+
+post_src_install() {
+	rm -- "$ED"/etc/conf.d/*
+	rm -- "$ED"/etc/init.d/*
+}
