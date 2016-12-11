@@ -123,28 +123,52 @@ cp_mwww() {
 	done
 }
 
+link_items() {
+	local name i
+	name=$1
+	shift
+	for i
+	do	ln -snv -- "${i##*/}" "${i%/*}/$name" || return
+	done
+}
+
 my_menu() {
-	local fvwm apps i
-	einfo "Modifying menu entries"
+	local fvwm apps i icons
+	einfo 'Modifying menu entries'
 	fvwm=${S}/fvwm/
 	apps=${fvwm}Applications/
-	rm -fv -- "${apps}Network/"*Web_Browsers/*flock* || return
+	rm -fv -- "${apps}Network/"*Web_Browsers/*flock* \
+		"$apps"*Games/*Shooters/*chromium* || return
 	cp_mwww -r "${apps}Network/"*Telephony/* || return
 	cp_mwww "${apps}System/"*File_Managers/* \
 		"${apps}System/"*Terminals/* \
 		"${apps}Network/"*Web_Browsers/* || return
 	i=$apps'Network/Dial-up/'
 	cp_menu 's/exec [^ ]*/exec adsl-gui/' \
-		"$i~kppp~kPPP" "$i~adsl-gui" || return
+		"$i~kppp~kPPP" "$i~adsl-gui~adsl-gui" || return
 	(
 		cd "${apps}Network/"*Web_Browsers || exit 1
 		cp_menu 's/exec [^ ]*/exec sudox -T -- mwww exec googleearth/' \
-			'~seamonkey~Seamonkey' '~googleearth.mwww' || exit 1
+			'~seamonkey~Seamonkey' '~googleearth~Googleearth.mwww' || exit 1
 		cp_menu 's/seamonkey/palemoon/' \
-			'~seamonkey~Seamonkey' '~palemoon' || exit 1
-		cp_mwww '~palemoon' || exit 1
+			'~seamonkey~Seamonkey' '20~palemoon~Palemoon' || exit 1
+		cp_menu 's/seamonkey/chromium/' \
+			'~seamonkey~Seamonkey' '15~chromium~Chromium' || exit 1
+		cp_menu 's/seamonkey/chrome/' \
+			'~seamonkey~Seamonkey' '15~chrome~google-chrome' || exit 1
+		cp_mwww '20~palemoon~Palemoon' \
+			'15~chromium~Chromium' \
+			'15~chrome~google-chrome' || exit 1
 	) || return
-	rm -rfv -- "$fvwm/wallpapers" || return
+	einfo 'Modifying icons'
+	icons=${fvwm}icons/Default/
+	rm -rfv -- "$icons"*/apps/chromium.png || return
+	link_items chromium.png "$icons"*/apps/google-chrome.png || return
+	link_items palemoon.png "$icons"*/apps/iceweasel.png || return
+	link_items adsl-gui.png "$icons"*/apps/kppp.png || return
+	link_items googleearth.png "$icons"*/apps/civserver.png || return
+	einfo 'Removing wallpapers'
+	rm -rfv -- "$fvwm/wallpapers"
 }
 
 post_src_prepare() {
