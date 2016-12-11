@@ -6,16 +6,16 @@ post_src_install () {
 	mv_start
 	dest=$ED/usr/share/slim/themes/default/background.jpg
 	pic=/etc/portage/env/local/pic
-	if test -h "$pic" && i=`readlink -- "$pic"` && [ -n "$i" ]
+	if test -h "$pic" && i=`readlink -f -- "$pic"` && [ -n "$i" ]
 	then	pic=$i/login.jpg
 	else	pic=$pic/login.jpg
-		if test -h "$pic" && i=`readlink -- "$pic"` && [ -n "$i" ]
+		if test -h "$pic" && i=`readlink -f -- "$pic"` && [ -n "$i" ]
 		then	pic=$i
 		fi
 	fi
 	stat=0
 	if test -s "$pic"
-	then	test -s "$dest" && ln -sfn "$pic" "$dest" || stat=$?
+	then	test -s "$dest" && ln -sfn -- "$pic" "$dest" || stat=$?
 	else	eerror "cannot find $pic"
 		stat=1
 	fi
