@@ -103,8 +103,34 @@ my_bugfixes() {
 # We add/modify some menu entries...
 
 cp_menu() {
-	einfo "generating $3"
-	cp -p -- "$2" "$3" && sed -e "$1" -- "$2" >|"$3"
+	local d
+	[ $# -eq 3 ] || {
+		eerror "arguments to cp_menu not unique: $*"
+		return 1
+	}
+	einfo "generating menu ${3##*/}"
+	case $3 in
+	/*)
+		d=$3;;
+	*)
+		d=${2%/*}/$3;;
+	esac
+	cp -p -- "$2" "$d" && sed -e "$1" -- "$2" >|"$d" || {
+		eerror "failed: cp_menu $2 $3"
+		return 1
+	}
+}
+
+cp_menu2() {
+	local source dest
+	source=$1
+	dest=$2
+	shift 2
+	einfo "generating menu ${dest##*/}"
+	cp -p -- "$source" "$dest" && sed "$@" -- "$source" >|"$dest" || {
+		eerror "failed: cp_menu2 $source $dest"
+		return 1
+	}
 }
 
 cp_mwww() {
@@ -116,8 +142,10 @@ cp_mwww() {
 		shift;;
 	esac
 	for i
-	do	cp_menu 's/exec/cd ~mwww; exec sudox -T -- mwww exec/' "$i" "$i.mwww" \
-			|| return
+	do	cp_menu2 "$i" "$i.mwww" \
+			-e 's/\(exec FvwmCommand .A \)/ \1sudox -x -- mwww exec /' \
+			-e 's/^exec/cd ~mwww; exec sudox -T -- mwww exec/' \
+			-e 's/ exec/exec/' || return
 		$c
 		rm -v -- "$i" || return
 	done
@@ -128,44 +156,81 @@ link_items() {
 	name=$1
 	shift
 	for i
-	do	ln -snv -- "${i##*/}" "${i%/*}/$name" || return
+	do	ln -snv -- "${i##*/}" "${i%/*}/$name" || {
+			eerror "failed: link_items $1"
+			return 1
+		}
 	done
 }
 
+var_assign() {
+	eval $1=\$2
+	[ $# -eq 2 ] || {
+		eerror "assignment to $1 is not unique: ${2-}"
+		return 1
+	}
+}
+
+rename_file() {
+	local r f s e
+	r=:
+	case $1 in
+	-*)
+		r='return 0'
+		shift;;
+	esac
+	test -r "$1" || {
+		$r
+		eerror "rename_file: cannot find $1"
+		return 1
+	}
+	[ $# -eq 3 ] || {
+		eerror "arguments for rename_file not unique: $*"
+		return 1
+	}
+	f=${1##*/}
+	s=${f%%"$2"*}
+	e=${f#*"$2"}
+	[ x"$s" != x"$f" ] && mv -vi -- "$1" "${1%/*}$s$3$e" || {
+		eerror "failed: rename_file $*"
+		return 1
+	}
+}
+
 my_menu() {
-	local fvwm apps i icons
+	local fvwm apps network browsers games icons seamonkey
 	einfo 'Modifying menu entries'
 	fvwm=${S}/fvwm/
 	apps=${fvwm}Applications/
-	rm -fv -- "${apps}Network/"*Web_Browsers/*flock* \
-		"$apps"*Games/*Shooters/*chromium* || return
+	var_assign network "$apps"*Network/ || return
+	var_assign games "$apps"*Games/ || return
+	var_assign browsers "$network"*Web_Browsers/ || return
+	rename_file -i "$browsers"*flock* flock flock-browser || return
+	rename_file "$games"*Shooters/*chromium* chromium chromium-game || return
+	cp_menu 's/exec [^ ]*/exec adsl-gui/' \
+		"$network"*Dial-up/~kppp~kPPP '~adsl-gui~adsl-gui' || return
+	cp_menu 's/elinks/links/' \
+		"$browsers"*elinks* '~links~links' || return
+	var_assign seamonkey "$browsers"*seamonkey* || return
+	cp_menu 's/seamonkey/palemoon/' \
+		"$seamonkey" '20~palemoon~Palemoon' || return
+	cp_menu 's/seamonkey/chromium/' \
+		"$seamonkey" '15~chromium~Chromium' || return
+	cp_menu 's/seamonkey/chrome/' \
+		"$seamonkey" '15~chrome~google-chrome' || return
 	cp_mwww -r "${apps}Network/"*Telephony/* || return
 	cp_mwww "${apps}System/"*File_Managers/* \
 		"${apps}System/"*Terminals/* \
 		"${apps}Network/"*Web_Browsers/* || return
-	i=$apps'Network/Dial-up/'
-	cp_menu 's/exec [^ ]*/exec adsl-gui/' \
-		"$i~kppp~kPPP" "$i~adsl-gui~adsl-gui" || return
-	(
-		cd "${apps}Network/"*Web_Browsers || exit 1
-		cp_menu 's/exec [^ ]*/exec sudox -T -- mwww exec googleearth/' \
-			'~seamonkey~Seamonkey' '~googleearth~Googleearth.mwww' || exit 1
-		cp_menu 's/seamonkey/palemoon/' \
-			'~seamonkey~Seamonkey' '20~palemoon~Palemoon' || exit 1
-		cp_menu 's/seamonkey/chromium/' \
-			'~seamonkey~Seamonkey' '15~chromium~Chromium' || exit 1
-		cp_menu 's/seamonkey/chrome/' \
-			'~seamonkey~Seamonkey' '15~chrome~google-chrome' || exit 1
-		cp_mwww '20~palemoon~Palemoon' \
-			'15~chromium~Chromium' \
-			'15~chrome~google-chrome' || exit 1
-	) || return
+	cp_menu 's/seamonkey/googleearth/' \
+		"$seamonkey".mwww '~googleearth~Googleearth.mwww' || return
 	einfo 'Modifying icons'
 	icons=${fvwm}icons/Default/
 	rm -rfv -- "$icons"*/apps/chromium.png || return
 	link_items chromium.png "$icons"*/apps/google-chrome.png || return
 	link_items palemoon.png "$icons"*/apps/iceweasel.png || return
 	link_items adsl-gui.png "$icons"*/apps/kppp.png || return
+	link_items links.png "$icons"*/apps/elinks.png || return
 	link_items googleearth.png "$icons"*/apps/civserver.png || return
 	einfo 'Removing wallpapers'
 	rm -rfv -- "$fvwm/wallpapers"
