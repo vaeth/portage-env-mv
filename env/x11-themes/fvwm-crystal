@@ -208,9 +208,9 @@ my_menu() {
 	rename_file -i "$browsers"*flock* flock flock-browser || return
 	rename_file "$games"*Shooters/*chromium* chromium chromium-game || return
 	cp_menu 's/exec [^ ]*/exec adsl-gui/' \
-		"$network"*Dial-up/~kppp~kPPP '~adsl-gui~adsl-gui' || return
+		"$network"*Dial-up/~kppp~kPPP '~adsl-gui~ADSL' || return
 	cp_menu 's/elinks/links/' \
-		"$browsers"*elinks* '~links~links' || return
+		"$browsers"*elinks* '~links~Links' || return
 	var_assign seamonkey "$browsers"*seamonkey* || return
 	cp_menu 's/seamonkey/palemoon/' \
 		"$seamonkey" '20~palemoon~Palemoon' || return
