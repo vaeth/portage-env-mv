@@ -1,3 +1,12 @@
+case $PV in
+26*)
+. /etc/portage/env/scripts/mv_patch \
+	-e /MOZ_ASSERT/d mfbt/Util.h
+;;
+*)
 . /etc/portage/env/scripts/mv_patch \
 	-e '"/atk-bridge.h/d"' config/system-headers \
 	-e '"s/ atk-bridge[^ ]*//"' configure.in
+;;
+esac
+
