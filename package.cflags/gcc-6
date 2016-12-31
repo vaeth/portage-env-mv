@@ -1,0 +1,15 @@
+# Special configurations/patches for gcc-6
+# Probably, this will be fixed in upstream after a while and can be removed
+
+# app-text/openjade w/lifetime-dse breaks emerging of app-text/docbook-sgml-utils, see https://bugs.gentoo.org/show_bug.cgi?id=592590
+<=app-text/openjade-1.3.2-r6 -flifetime-dse=1
+#<=dev-java/icedtea-3.1.0 -flifetime-dse=1 -fno-delete-null-pointer-checks
+#<=dev-qt/qtcore-5.6.1:5 -std=gnu++98
+<=games-puzzle/brainparty-0.61 -std=gnu++98
+<=media-libs/avidemux-core-2.6.12::gentoo -std=gnu++98
+<=media-libs/avidemux-plugins-2.6.12::gentoo -std=gnu++98
+# media-libs/smpeg: https://bugs.gentoo.org/show_bug.cgi?id=592450
+<=media-libs/smpeg-0.4.4-r10 -std=gnu++98
+<=media-video/avidemux-2.6.12::gentoo -std=gnu++98
+#<=www-client/firefox-49.0 -flifetime-dse=1
+#<=www-client/palemoon-26.4.0.1 -flifetime-dse=1

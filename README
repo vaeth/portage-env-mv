@@ -1,10 +1,14 @@
 portage-env-mv:
 
-This is Martin Väth's local /etc/portage/env for gentoo,
-full of local fixes and hacks
+This is Martin Väth's local /etc/portage/env and /etc/portage/package.cflags
+for gentoo, full of local fixes and hacks
 
 It is mainly meant for personal use, but it is under the GPL v2 license.
 You can include local files into */local; these are not under git control.
+
+The package.cflags subdirectory is meant to be used through portage-bashrc-mv
+	https://github.com/vaeth/portage-bashrc-mv/
+An ebuild for the latter is in the mv overlay (available over layman).
 
 The login picture for slim should be provided this way in
 	/etc/portage/env/local/pic/login.jpg

@@ -1,0 +1,147 @@
+
+# The files in this directory are intrepreted by portage-bashrc-mv, see
+# https://github.com/vaeth/portage-bashrc-mv/
+# An ebuild for the latter is in the mv overlay (available over layman).
+#
+# The syntax of the files in this directory is described in
+# /etc/portage/bashrc.d/README*
+# when you installed the above by the ebuild. Otherwise you might try
+# https://github.com/vaeth/portage-bashrc-mv/raw/master/bashrc.d/README
+#
+# Although in principle anything could go in any file of this directory,
+# the files are somewhat ordered:
+#
+# all-systems
+#     This is the main file for resetting C*FLAGS which might be set in
+#     /etc/portage/make.conf/* and which are too aggressive for some packages
+# flto
+#     The same for LTO related flags like e.g.
+#     -flto -fwhole-program -fuse-linker-plugin -emit-llvm -flto-partition=none
+#     -flto-odr-type-merging"
+# gcc-6
+#     Some patches which allow compilation with >=gcc-6
+# gold
+#     Some patches which allow compilation with the gold linker
+# graphite
+#     graphite related flags; this file is currently unmaintained
+# lowmem
+#     This file should be only used when you run a system with <200 MB;
+#     otherwise remove it...
+# no-ninja
+#     Packages breaking with CMAKE_MAKEFILE_GENERATOR="ninja"
+# patches
+#     Instead of using patches to fix bugs, sometimes it suffices to set
+#     environment variables or compiler options. If possible this happens in
+#     this file.
+# pie
+#     For packages which break with -fPIE -pie
+# temporary
+#     As the name says: entries which are expected to be removed soon but
+#     which might be currently necessary for some reason or another...
+
+# In case of compilation/build errors, some of the following usually help
+# (The sorting is in decreasing order of probability of causing trouble;
+# for "undefined reference" errors, +Wl,--as-needed is the top candidate,
+# followed NOLDADD=1.
+# To make sure, the problem actually stems from flags, you can try first SAFE
+# [hack on the command line: FLAG_ADD=SAFE emerge ...] to eliminate everything).
+#
+# "unset CMAKE_MAKEFILE_GENERATOR"
+#  e.g. for endless compilation: these are collected in an extra file:
+#   /etc/portage/package.cflags/no-ninja
+#
+# +flto* (or the subset +fuse-linker-plugin +fwhole-program -ffat-lto-objects)
+#  these are collected in an extra file: flto
+#   Typical error: syntax error near unexpected token `|'
+#   Typical error: ... .flto. ....
+#   Typical error: undefined symbol
+#   Typical error on 32 bit only: internal compiler error: Segmentation fault
+# +fPIE +pie
+#  these are collected in an extra file: pie
+#   Typical error: on 32bit: hang with "corrupted double-linked list"
+#   Typical error: undefined reference to `main'
+#   Typical error: undefined symbol
+#   Typical error: recompile with -fPIC
+# +fgraphite* +floop-*
+#  these are collected in an extra file: /etc/portage/package.cflags/graphite
+#   Typical error: segfaults
+#   Typical error: internal compiler error
+# +fno-common
+#   Typical error: multiple definition
+# +ftree-loop-distribute-patterns
+#   Typical error: undefined reference to `memset'
+# NOLDADD=1 (or even NOLDOPT=1; however, NOLDOPT=1 might be a security risk)
+# +fdiagnostics-color=always
+# MAKEOPTS-='--no-print-directory'
+# +D*FILE*
+# +D*DEBUG +D*ASSERT
+# +D*FORTIFY* -U_FORTIFY_SOURCE (the latter is sometimes also in the ebuild)
+# +Wl,--as-needed LD_AS_NEEDED=
+# +frename-registers
+# +fvisibility-inlines-hidden
+#  Typical error: "recompile with -fPIC" on amd64
+# +fdirectives-only
+#  Typical error: __COUNTER__ expanded
+# +freorder-functions
+# +fdevirtualize-speculatively
+# +ftree-partial-pre
+# +g0
+# +Wl,--relax
+# +Wl,--hash-style=gnu -Wl,--hash-style=both
+# +Wl,-z,relro # is a security risk
+# +finline-functions
+# +s +Wl,-S
+# +Wl,--enable-new-dtags
+# +Wl,--combreloc
+#
+# Patches like the following go into a separate file "patches":
+# EXTRA_EMAKE+='SHELL=/bin/bash'
+#
+# The following may be related if you specify a restrictive CONFIG_SITE=;
+# see also the comments in config.site
+# (Patches like the following go into a separate file "patches")
+# EXTRA_ECONF-='*disable-static' 'export enable_static=yes'
+# EXTRA_ECONF-='*silent-rules' 'export enable_silent_rules=no'
+# EXTRA_ECONF-='*dependency-tracking' 'export disable_dependency_tracking=1'
+# 'export enable_fast_install=no'
+#
+# For non-reproducible errors, the usual solution is to disable parallel make:
+# MAKEOPTS-='-j*'
+#
+# In case of runtime errors (e.g. segfaults), try first recompiling with
+# SAFE -flifetime-dse=1 -fdelete-no-null-pointer-checks
+#
+# which eliminates everything. (Note however that especially large file support
+# should better be *added* if libraries use it, and that not using -Wl,-z,now
+# might be insecure, at least for SUID programs.)
+#
+# If SAFE helps, you can try binary search to find the actual cause
+# (by the remarks above you should really do this).
+# Here are the candidates in decreasing order of probability by experience:
+#
+# +ftree-vectorize* +fvect* [or add -mstackrealign]
+# +flto* (see above; there is an extra file)
+# NOLDADD=1 (or even NOLDOPT=1) [however, NOLDOPT=1 might be a security risk]
+# CONFIG_SITE=
+# +D*FILE*
+# +D*DEBUG +D*ASSERT
+# +*math*
+# +fvisibility-inlines-hidden
+# +fno-enforce-eh-specs
+# +fnothrow-opt
+# +Wl,--as-needed LD_AS_NEEDED=
+# +D*FORTIFY* -U_FORTIFY_SOURCE (the latter is not always necessary)
+# +fstack-protector*
+# +fmerge-all-constants
+# +fno-semantic-interposition
+# +Wl,-z,relro # is a security risk
+# +fweb
+# +fpredictive-commoning
+# +ftree-switch-conversion
+# +finline-functions
+# +fno-common
+# +fgcse-after-reload
+# +freorder-functions
+# +fdevirtualize-speculatively
+# +fgcse-sm
+# +fgcse-las

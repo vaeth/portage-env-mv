@@ -1,0 +1,30 @@
+# +fgraphite* +floop-*
+#
+# This file is outdated and currently not maintained:
+# mv experienced too many runtime issues with graphite that he decided
+# that for running a stable system this is not worth al the trouble
+
+app-editors/vim +fgraphite* +floop-*
+app-emulation/vice +fgraphite* +floop-*
+app-office/libreoffice +fgraphite* +floop-*
+app-shells/bash +fgraphite* +floop*
+app-text/texlive-core +fgraphite* +floop*
+dev-java/icedtea* +fgraphite* +floop-*
+dev-lang/python +fgraphite* +floop-*
+dev-lang/tcl +fgraphite* +floop-*
+dev-libs/icu +fgraphite* +floop*
+dev-python/PyQt4 +fgraphite* +floop-*
+dev-qt/qtcore +fgraphite* +floop-*
+dev-qt/qtscript +fgraphite* +floop-*
+games-emulation/dosbox +fgraphite* +floop-*
+games-rpg/freedroidrpg +fgraphite* +floop-*
+media-gfx/gimp +fgraphite* +floop-*
+media-libs/libcaca +fgraphite* +floop-*
+media-sound/amarok +fgraphite* +floop-*
+media-sound/audacity +fgraphite* +floop-*
+media-sound/timidity++ +fgraphite* +floop-*
+sci-mathematics/octave +fgraphite* +floop-*
+sys-devel/llvm +fgraphite* +floop-*
+sys-fs/encfs +fgraphite* +floop-*
+www-client/firefox +fgraphite* +floop-*
+www-client/palemoon +fgraphite* +floop-*

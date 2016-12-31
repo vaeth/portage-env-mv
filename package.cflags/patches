@@ -1,0 +1,34 @@
+# Special configurations/patches
+# Martin sets  here variables which are useful or need to be set
+# for our configuration (e.g. special printers/arches, EXTRA_* variables,
+# also bugfixes which can be made e.g. by adding a library to LDFLAGS).
+#
+# This file does not include modifications of CFLAGS/variables which
+# override our general global settings; those go into all-systems.
+
+#app-misc/lirc "LIRC_OPTS='--with-driver=pctv'"
+#app-office/libreoffice "export ac_objext='o'"
+app-text/u2ps "EXTRA_EMAKE+='SHELL=/bin/bash'"
+#dev-games/flatzebra -lSDL_image -lSDL_mixer # Might be needed for burgerspace linking
+dev-java/icedtea* "EXTRA_ECONF+='--with-pax=paxctl-ng'"
+dev-libs/libsodium !"export enable_pie=no"
+dev-perl/Clone "export mymake='DEFINE=-D_LARGEFILE64_SOURCE'" # -D_LARGEFILE64_SOURCE is filtered by the ebuild but *MUST* be used.
+=dev-tex/catdvi-0.14-r1 -I/usr/lib
+#dev-qt/qtwebkit "export CXX=clang++" "export CC=clang" # needed with gcc-5.1 for skype to work
+media-gfx/gimp "EXTRA_EMAKE+='SHELL=/bin/bash'"
+#media-libs/freetype -DFT_CONFIG_OPTION_OLD_INTERNALS # needed for nxclient unless ebuild is patched
+media-libs/jpeg "EXTRA_ECONF+='--disable-static'"
+media-libs/libquicktime "EXTRA_ECONF+='--disable-static'"
+media-libs/libmikmod "EXTRA_EMAKE+='SHELL=/bin/bash'"
+#media-video/avinfo "EXTRA_EMAKE='BISON=NONE'"
+#media-video/ffmpeg "EXTRA_ECONF-='*silent-rules *dependency-tracking'"
+=media-video/nvidia-settings-173.14.37 -ldl
+net-libs/c-client -lcrypt
+net-misc/nxserver-freenx "EXTRA_EMAKE+='SHELL=/bin/bash'"
+#sci-mathematics/scilab "export PVM_ARCH='LINUX'"
+sys-devel/gcc "export GCC_MAKE_TARGET='profiledbootstrap'" # "MAKEOPTS-='-j*'"
+sys-fs/udev "EXTRA_ECONF+='--disable-static'"
+www-client/firefox "export SHELL=/bin/sh"
+www-client/palemoon "export SHELL=/bin/sh"
+x11-libs/gtk+ "EXTRA_EMAKE+='SHELL=/bin/bash'"
+#x11-terms/xterm "EXTRA_ECONF+='--disable-fifo-lines'"

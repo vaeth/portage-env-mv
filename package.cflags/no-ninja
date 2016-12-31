@@ -1,0 +1,13 @@
+# packages not compiling with CMAKE_MAKEFILE_GENERATOR=ninja
+# https://bugs.gentoo.org/show_bug.cgi?id=557992
+
+dev-util/cmake "unset CMAKE_MAKEFILE_GENERATOR"
+kde-apps/kate "unset CMAKE_MAKEFILE_GENERATOR"
+kde-apps/gwenview "unset CMAKE_MAKEFILE_GENERATOR"
+media-libs/avidemux-core "unset CMAKE_MAKEFILE_GENERATOR"
+media-libs/avidemux-plugins "unset CMAKE_MAKEFILE_GENERATOR"
+media-video/avidemux "unset CMAKE_MAKEFILE_GENERATOR"
+media-video/kaffeine "unset CMAKE_MAKEFILE_GENERATOR"
+media-video/kmplayer "unset CMAKE_MAKEFILE_GENERATOR"
+net-misc/kvpnc "unset CMAKE_MAKEFILE_GENERATOR"
+sci-mathematics/reduce "unset CMAKE_MAKEFILE_GENERATOR"
