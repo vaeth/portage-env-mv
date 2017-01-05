@@ -3,527 +3,496 @@
 # +fwhole-program -ffat-lto-objects
 #  or even only
 # +fwhole-program
+#  For programs for which -flto-partition=none causes enormous memory usage:
+# +flto-partition*
+# +flto-odr-type-merging
 
-# In some categories, we need this practically always:
+# To use -flto you need a symlink
+#
+# /usr/$CTARGET/binutils-bin/lib/bfd-plugins/liblto_plugin.so.*.*
+#   -> /usr/libexec/gcc/$CTARGET/$GCC_VERSION/liblto_plugin.so.*.*
+#
+# For instance on amd64 (64 bit):
+#
+# /usr/x86_64-pc-linux-gnu/binutils-bin/lib/bfd-plugins/liblto_plugin.so.0.0.0
+#  -> /usr/libexec/gcc/x86_64-pc-linux-gnu/6.3.0/liblto_plugin.so.0.0.0
+#
+# or on x86 (32 bit):
+#
+# /usr/i686-pc-linux-gnu/binutils-bin/lib/bfd-plugins/liblto_plugin.so.0.0.0
+#  -> /usr/libexec/gcc/i686-pc-linux-gnu/6.3.0/liblto_plugin.so.0.0.0
+
+# For libraries and binary plugins, we always need +fwhole-program:
 
 *-libs/* +fwhole-program
+*/lib* +fwhole-program # false postive libreoffice* does not hurt
+*/glib* +fwhole-program
 dev-perl/* +fwhole-program
 dev-python/* +fwhole-program
-dev-qt/* +flto*
+dev-qt/* +fwhole-program
 kde-frameworks/* +fwhole-program
 media-plugins/* +fwhole-program
 perl-core/* +fwhole-program
 
-# Perhaps no longer needed:
+# Now the list of individual packages.
+# +fwhole-program is usually added even if it is redundant (because it is
+# already contained in the above wildcard matches or covered by +flto*)
 
-#app-arch/p7zip +flto*
-#app-arch/par2cmdline +flto*
-#app-arch/unrar +flto*
-#app-arch/unzip +fwhole-program -ffat-lto-objects
-#app-editors/vim +flto*
-#app-emulation/dosemu +flto*
-#app-text/psutils +flto*
-#app-text/recode +fwhole-program -ffat-lto-objects
-#app-text/unpaper +flto*
-#app-misc/tmux +fwhole-program -ffat-lto-objects
-#dev-libs/icu +flto* # needed for libreoffice on x86 to compile
-#dev-libs/libcdio +flto*
-#dev-libs/libixion +flto*
-#dev-libs/libsigc++ +flto*
-#dev-libs/libusb +flto*
-#dev-libs/nspr +flto*
-#dev-libs/openssl +flto*
-#dev-libs/rlog +flto*
-#dev-libs/xerces-c +flto*
-#dev-libs/zziplib +flto*
-#media-libs/freetype +flto*
-#media-libs/gd +flto*
-#media-libs/jbigkit +flto*
-#media-libs/jpeg +flto*
-#media-libs/libcaca +flto*
-#media-libs/libmp4v2 +flto*
-#media-libs/libpng +flto*
-#media-libs/libsidplay +flto*
-#media-libs/libsndfile +flto*
-#media-libs/libv4l +flto*
-#media-libs/libvpx +flto*
-#media-libs/opencore-amr +flto*
-#media-libs/openjpeg +flto*
-#media-libs/raptor +flto*
-media-libs/speex +fwhole-program !+flto*
-#media-libs/smpeg +flto*
-#media-libs/t1lib +flto*
-#media-libs/tiff +flto*
-#media-libs/zvbi +flto*
-#media-plugins/live +flto*
-#net-libs/libetpan +flto*
-#net-libs/libpcap +flto*
-#net-libs/wvstreams +flto*
-#sci-libs/cln +flto*
-#sci-libs/libgeotiff +flto*
-#sys-libs/e2fsprogs-libs +flto*
-#x11-libs/libX11 +flto*
-#x11-libs/libXaw3d +flto*
-#x11-libs/libvdpau +flto*
-
-# Now the main list.
-# Shortcuts:
+# Shortcuts in the comments:
 #
-# SL means: Package installs static libs. To avoid problems, mv uses at least
+# SL means: Package installs static libs (*.a). To avoid problems, we use here
 #           +fwhole-program -ffat-lto-objects
 #
-# ICE means: Causes internal compiler error. Usually only on x86 (32 bit):
+# ICE means: Causes the frequent error (usually only on x86, 32 bit):
+# /usr/include/bits/stdio2.h:97:10: internal compiler error: Segmentation fault
 #            It is necessary to add !+flto*
 #
-# PIC means: Causes reallocation error. Usually only on amd64 (64 bit):
-#            It is necessary to add ~+flto*
+# | means: Causes the frequent error
+# libtool: eval: line ...: syntax error near unexpected token `|'
+#            With linker plugin, it is necessary to add +flto*; without linke
+#            Without linker plugin, it is sometimes sufficient to add
+#            +fwhole-program -ffat-lto-objects
+#
+# PIC means: Causes reallocation error (usually only on amd64, 64 bit).
+#            It is necessary to add \~+flto*
+#
+# PO means: Possibly obsolete line: Package was not emerged since quite a while
 
-app-accessibility/espeak !+fwhole-program !-ffat-lto-objects ~+flto* # PIC
-app-admin/keepassx +flto*
-app-admin/metalog +fwhole-program -ffat-lto-objects
+app-accessibility/espeak !+fwhole-program !-ffat-lto-objects \~+flto* # PIC
+app-admin/keepassx +fwhole-program +flto* # PO
+app-admin/metalog +fwhole-program
 app-admin/paxtest +fwhole-program
-app-admin/sudo +fwhole-program -ffat-lto-objects
-app-admin/tmpwatch +fwhole-program -ffat-lto-objects
-app-arch/bzip2 +flto*
-app-arch/cabextract +fwhole-program -ffat-lto-objects
-app-arch/cpio +fwhole-program -ffat-lto-objects
-app-arch/gzip +fwhole-program -ffat-lto-objects
+app-admin/sudo +fwhole-program
+app-admin/tmpwatch +fwhole-program
+app-arch/bzip2 +flto* # runtime segfault (PIC reallocation) on amd64 and x86
+app-arch/cabextract +fwhole-program
+app-arch/cpio +fwhole-program
+app-arch/gzip +fwhole-program
 app-arch/lha !+flto* # ICE
-app-arch/libarchive +fwhole-program -ffat-lto-objects
-app-arch/lrzip +fwhole-program -ffat-lto-objects
-app-arch/lz4 +fwhole-program -ffat-lto-objects
-app-arch/sharutils +fwhole-program ~-ffat-lto-objects !+flto* # ICE
-app-arch/star +fwhole-program -ffat-lto-objects
-app-arch/tar +fwhole-program -ffat-lto-objects
+app-arch/lrzip +fwhole-program
+app-arch/lz4 +fwhole-program
+app-arch/p7zip +fwhole-program
+app-arch/par2cmdline +fwhole-program
+app-arch/sharutils !+flto* # ICE
+app-arch/star +fwhole-program
+app-arch/tar +fwhole-program
+app-arch/unrar +fwhole-program
+app-arch/unzip +fwhole-program
 app-arch/zpaq +fwhole-program
-app-backup/dar +flto*
-app-cdr/cdrtools +fwhole-program -ffat-lto-objects
-app-cdr/cdw +fwhole-program -ffat-lto-objects
-app-cdr/k3b +flto*
-app-crypt/gnupg +fwhole-program -ffat-lto-objects
-app-crypt/gpgme +fwhole-program !+flto* # ICE
-app-crypt/pinentry +fwhole-program -ffat-lto-objects
-app-crypt/qca +flto*
-app-doc/doxygen +flto*
-app-editors/jed +flto*
-app-editors/kile +flto*
-app-emulation/bochs +flto*
-app-emulation/qemu +flto*
-app-emulation/vice +fwhole-program ~-ffat-lto-objects !+flto* # ICE
-app-emulation/wine +flto*
-app-misc/lirc +fwhole-program -ffat-lto-objects
-app-misc/mc +fwhole-program -ffat-lto-objects
-app-office/calligra +flto*
-app-office/libreoffice +flto*
+app-backup/dar +fwhole-program +flto* # PO
+app-cdr/cdrtools +fwhole-program
+app-cdr/cdw +fwhole-program
+app-cdr/k3b +fwhole-program +flto* # PO
+app-crypt/gnupg +fwhole-program
+app-crypt/gpgme !+flto* # ICE
+app-crypt/pinentry +fwhole-program
+app-crypt/qca +fwhole-program +flto* # PO
+app-doc/doxygen +fwhole-program +flto* # PO
+app-editors/jed +fwhole-program +flto* # PO
+app-editors/kile +fwhole-program +flto* # PO
+app-editors/vim +fwhole-program
+app-emulation/bochs +fwhole-program +flto* # PO
+app-emulation/dosemu +fwhole-program
+app-emulation/qemu +fwhole-program
+app-emulation/vice +fwhole-program !+flto* # ICE
+app-emulation/wine +fwhole-program +flto*
+app-misc/lirc +fwhole-program -ffat-lto-objects # PO
+app-misc/mc +fwhole-program
+app-misc/tmux +fwhole-program
+app-office/calligra +fwhole-program +flto* # PO
+app-office/libreoffice +fwhole-program +flto-partition* +flto*
 app-office/texstudio +flto*
 app-portage/portage-utils !+flto* # ICE
-app-shells/bash +flto*
-app-shells/ksh +flto*
-app-shells/schily-tools +flto*
-app-shells/zsh +flto*
-app-text/a2ps +flto*
-app-text/ansifilter +flto*
-app-text/apvlv +flto*
-app-text/aspell +flto*
-app-text/convertlit +fwhole-program -ffat-lto-objects
-app-text/djvu +flto*
-app-text/dvipsk +flto*
-app-text/dvisvgm +flto*
-app-text/ebook-tools +flto*
-app-text/fbreader +flto*
-app-text/ghostscript-gpl +flto*
-app-text/gocr +fwhole-program -ffat-lto-objects
-app-text/hunspell +flto*
-app-text/lcdf-typetools +flto*
-app-text/libetonyek +flto*
-app-text/libmwaw +flto*
-app-text/libwps +flto*
-app-text/mupdf +flto*
-app-text/podofo +flto*
-app-text/poppler +flto*
-app-text/ps2pkm +flto*
-app-text/qpdfview +fwhole-program -ffat-lto-objects # Compiles but fails to work (loading plugins) without this
-app-text/rarian +flto*
-app-text/sablotron +flto*
-app-text/stardict +flto*
-app-text/teckit +flto*
-app-text/texlive-core +flto*
-app-text/ttf2pk2 +flto*
-app-text/uudeview +flto*
-app-text/wdiff +fwhole-program -ffat-lto-objects
-app-text/yodl +flto*
-app-text/xdvik +flto*
-app-text/zathura* +fwhole-program -ffat-lto-objects
-dev-cpp/atkmm +flto*
-dev-cpp/cairomm +flto*
-dev-cpp/clucene +flto*
-dev-cpp/glibmm +flto*
-dev-cpp/gtkmm +flto*
-dev-cpp/libxmlpp +flto*
-dev-cpp/pangomm +flto*
-dev-db/sqlcipher +flto*
-dev-db/sqlite +flto*
-dev-db/unixODBC +flto*
-dev-games/flatzebra +flto*
-dev-games/physfs +flto*
-dev-java/icedtea* +flto*
-dev-lang/execline +flto*
-dev-lang/lua +flto*
+app-shells/bash +fwhole-program
+app-shells/ksh +fwhole-program +flto* # PO
+app-shells/schily-tools +fwhole-program
+app-shells/zsh +fwhole-program +flto* # PIC on amd64 and x86; runtime errors
+app-text/a2ps +fwhole-program +flto*
+app-text/ansifilter +fwhole-program
+app-text/apvlv +fwhole-program +flto* # PO
+app-text/aspell +fwhole-program
+app-text/convertlit +fwhole-program
+app-text/djvu +fwhole-program
+app-text/dvipsk !+flto* # ICE
+app-text/dvisvgm +fwhole-program
+app-text/ebook-tools +fwhole-program \+flto* # PIC
+app-text/fbreader +fwhole-program
+app-text/ghostscript-gpl +fwhole-program
+app-text/gocr +fwhole-program
+app-text/hunspell +fwhole-program
+app-text/lcdf-typetools +fwhole-program
+app-text/mupdf +fwhole-program \+flto* # PIC variant
+app-text/podofo +fwhole-program \+flto* # PIC
+app-text/poppler +fwhole-program
+app-text/ps2pkm +fwhole-program
+app-text/psutils +fwhole-program
+app-text/qpdfview +fwhole-program
+app-text/rarian +fwhole-program +flto* # PO
+app-text/recode +fwhole-program
+app-text/sablotron +fwhole-program +flto* # PO
+app-text/stardict +fwhole-program
+app-text/teckit +fwhole-program
+app-text/texlive-core +fwhole-program +flto*
+app-text/ttf2pk2 !+flto* # ICE
+app-text/unpaper +fwhole-program
+app-text/uudeview +fwhole-program
+app-text/wdiff +fwhole-program
+app-text/xdvik +fwhole-program
+app-text/yodl +fwhole-program +flto* # PO
+app-text/zathura* +fwhole-program -ffat-lto-objects # PO
+dev-cpp/atkmm +fwhole-program +flto* # PO
+dev-cpp/cairomm +fwhole-program +flto* # PO
+dev-cpp/clucene +fwhole-program
+dev-cpp/gtkmm +fwhole-program +flto* # PO
+dev-cpp/libxmlpp +fwhole-program +flto* # PO
+dev-cpp/pangomm +fwhole-program +flto* # PO
+dev-db/sqlcipher !+flto* # ICE
+dev-db/sqlite !+flto* # ICE
+dev-db/unixODBC !+flto* # ICE
+dev-games/flatzebra +fwhole-program
+dev-games/physfs +fwhole-program \+flto* # PIC
+dev-java/icedtea +fwhole-program +flto*
+dev-java/icedtea-web +fwhole-program \~+flto* # PIC
+dev-lang/execline +fwhole-program +flto* # PO
+dev-lang/lua +fwhole-program
 dev-lang/mujs +fwhole-program -ffat-lto-objects # SL
-dev-lang/orc +flto*
-dev-lang/perl +flto*
-dev-lang/python +flto* # +fwhole-program would be enough, but e.g. media-sound/lilypond adds all python flags
-dev-lang/ruby +flto*
-dev-lang/spidermonkey +flto*
+dev-lang/orc +fwhole-program +flto* # PO
+dev-lang/perl +fwhole-program +flto*
+dev-lang/python +fwhole-program +flto* # +fwhole-program would be enough, but e.g. media-sound/lilypond adds all python flags and then has ICE
+dev-lang/ruby +fwhole-program +flto* # PO
+dev-lang/spidermonkey +fwhole-program +flto*
 dev-lang/tcl +fwhole-program -ffat-lto-objects # SL
 dev-lang/tk +fwhole-program -ffat-lto-objects # SL
-dev-lang/yasm +flto*
+dev-lang/yasm !+flto* # ICE
 dev-libs/boost +fwhole-program -ffat-lto-objects # SL
-dev-libs/botan +flto* # needed for monotone to compile
-dev-libs/dbus-glib +fwhole-program -ffat-lto-objects
+dev-libs/botan +fwhole-program +flto* # PO Needed for monotone to compile
+dev-libs/dbus-glib +fwhole-program +flto* # |
 dev-libs/elfutils +fwhole-program +flto*
 dev-libs/ffcall +fwhole-program +flto*
-dev-libs/fribidi +fwhole-program -ffat-lto-objects
-dev-libs/glib +fwhole-program !+flto* # ICE
-dev-libs/gmp +fwhole-program -ffat-lto-objects
-dev-libs/gobject-introspection +fwhole-program -ffat-lto-objects
-dev-libs/jansson +fwhole-program -ffat-lto-objects
-dev-libs/libaio +flto*
+dev-libs/fribidi +fwhole-program +flto* # |
+dev-libs/glib !+flto* # ICE
+dev-libs/gobject-introspection +fwhole-program +flto* # |
+dev-libs/jansson +fwhole-program +flto* # |
+dev-libs/libaio +fwhole-program +flto* # PO
 dev-libs/libatomic_ops +fwhole-program -ffat-lto-objects # SL
-dev-libs/libgcrypt ~+flto* # PIC
+dev-libs/libgcrypt +fwhole-program +flto* # PIC
 dev-libs/libisoburn !+flto* # ICE
 dev-libs/libksba !+flto* # ICE
-dev-libs/libltdl +fwhole-program -ffat-lto-objects # Needed for net-libs/gnutls
+dev-libs/libltdl +fwhole-program +flto* # Needed for e.g. media-sound/lilypond, net-libs/gnutls
 dev-libs/libpcre !+flto* # ICE
-dev-libs/libsigsegv ~+flto* # PIC
-dev-libs/libtasn1 +fwhole-program -ffat-lto-objects
+dev-libs/libsigsegv \~+flto* # PIC
 dev-libs/libxml2 !+flto* # ICE
-dev-libs/ppl +flto*
-dev-libs/skalibs +flto*
 dev-libs/lzo +fwhole-program -ffat-lto-objects # SL
 dev-libs/nss +fwhole-program -ffat-lto-objects # SL
-dev-libs/rasqal +fwhole-program -ffat-lto-objects
-dev-libs/redland +fwhole-program -ffat-lto-objects
+dev-libs/ppl +fwhole-program +flto* # PO
+dev-libs/redland +fwhole-program +flto*
+dev-libs/skalibs +fwhole-program +flto* # PO
 dev-lisp/clisp +flto*
-dev-python/dbus-python +fwhole-program -ffat-lto-objects
-dev-python/pygobject +fwhole-program -ffat-lto-objects
-dev-python/pygtk +fwhole-program -ffat-lto-objects
-dev-python/numpy +fwhole-program -ffat-lto-objects
-dev-scheme/guile +flto*
-dev-tcltk/expect +flto*
-dev-tex/bibtexu +flto*
-dev-tex/luatex +flto*
-dev-tex/metapost +flto*
-dev-texlive/texlive-metapost +flto*
-dev-util/android-tools +flto*
-dev-util/bdelta +flto*
-dev-util/cmake +flto*
+dev-python/dbus-python +fwhole-program +flto* # |
+dev-python/pygobject +fwhole-program +flto* # |
+dev-python/pygtk +fwhole-program +flto* # |
+dev-qt/designer:5 +fwhole-program +flto* # PIC even of x86
+dev-qt/qtscript:4 +fwhole-program +flto*
+dev-qt/qtscript:5 +fwhole-program +flto*
+dev-qt/qtwebkit:4 +fwhole-program +flto-partition* +flto*
+dev-qt/qtwebkit:5 +fwhole-program +flto-partition* # this line was never tested
+dev-scheme/guile +fwhole-program
+dev-tcltk/expect +fwhole-program +flto* # PO
+dev-tex/bibtexu !+flto* # ICE
+dev-tex/luatex +fwhole-program +flto* # PO
+dev-tex/metapost +fwhole-program +flto* # PO
+dev-texlive/texlive-metapost +fwhole-program
+dev-util/android-tools !+flto* # ICE
+dev-util/bdelta +fwhole-program
+dev-util/cmake +fwhole-program
 dev-util/dialog +fwhole-program -ffat-lto-objects # SL
-dev-util/gperf +flto*
-dev-util/icmake +flto*
-dev-util/ltrace +flto*
-dev-util/ninja +flto*
-dev-util/schroot +flto*
-dev-util/strace +flto*
-dev-util/valgrind +fwhole-program -ffat-lto-objects
-dev-vcs/cvs +fwhole-program -ffat-lto-objects
-dev-vcs/git +flto*
-dev-vcs/mercurial +flto*
-dev-vcs/monotone +flto*
-dev-vcs/rcs +flto*
-dev-vcs/subversion +flto*
-games-action/gltron +flto*
-games-arcade/briquolo +flto*
-games-arcade/burgerspace +flto*
-games-arcade/emilia-pinball +flto*
-games-arcade/holotz-castle +flto*
-games-arcade/kobodeluxe +fwhole-program -ffat-lto-objects
-games-arcade/lbreakout +flto*
-games-arcade/lbreakout2 +flto*
-games-arcade/rocksndiamonds +fwhole-program -ffat-lto-objects
-games-arcade/supertux +fwhole-program -ffat-lto-objects
-games-arcade/xboing +flto*
-games-arcade/xgalaga +fwhole-program -ffat-lto-objects
-games-arcade/xtux +flto*
-games-board/xboard +flto*
-games-emulation/advancemame +flto*
-games-emulation/dosbox +flto*
-games-emulation/sdlmame +flto*
-games-emulation/xmame +flto*
-games-emulation/xmess +flto*
-games-engines/freesci +flto*
-games-engines/frotz +flto*
+dev-util/gperf +fwhole-program
+dev-util/icmake +fwhole-program +flto* # PO
+dev-util/ltrace +fwhole-program
+dev-util/ninja +fwhole-program
+dev-util/schroot +fwhole-program +flto* # PO
+dev-util/strace +fwhole-program
+dev-util/valgrind +fwhole-program -ffat-lto-objects # PO
+dev-vcs/cvs +fwhole-program -ffat-lto-objects # PO
+dev-vcs/git !+flto* # ICE
+dev-vcs/mercurial +fwhole-program
+dev-vcs/monotone +fwhole-program +flto* # PO
+dev-vcs/rcs +fwhole-program
+dev-vcs/subversion +fwhole-program +flto* # PO
+games-action/gltron +fwhole-program
+games-arcade/briquolo +fwhole-program
+games-arcade/burgerspace +fwhole-program
+games-arcade/emilia-pinball +fwhole-program
+games-arcade/holotz-castle +fwhole-program
+games-arcade/kobodeluxe +fwhole-program
+games-arcade/lbreakout !+flto* # ICE
+games-arcade/lbreakout2 +fwhole-program
+games-arcade/rocksndiamonds +fwhole-program
+games-arcade/supertux +fwhole-program
+games-arcade/xboing !+flto* # ICE
+games-arcade/xgalaga +fwhole-program
+games-arcade/xtux +fwhole-program
+games-board/xboard +fwhole-program +flto* # PO
+games-emulation/advancemame +fwhole-program +flto-partition* !+flto* # ICE
+games-emulation/dosbox +fwhole-program
+games-emulation/sdlmame +fwhole-program +flto-partition*
+games-emulation/xmame +fwhole-program +flto-partition* !+flto* # ICE
+games-emulation/xmess +fwhole-program !+flto* # ICE
+games-engines/freesci !+flto* # ICE
+games-engines/frotz +fwhole-program
 games-engines/scummvm +flto*
-games-engines/scummvm-tools +flto*
-games-fps/doomsday +flto*
-games-fps/prboom +flto*
-games-puzzle/enigma +flto*
-games-puzzle/fish-fillets +flto*
-games-puzzle/lmarbles +flto*
-games-rpg/freedroid +flto*
-games-rpg/freedroidrpg +flto*
-gnome-base/libglade +fwhole-program -ffat-lto-objects
-gnome-base/librsvg +fwhole-program -ffat-lto-objects
-mail-client/alpine +flto*
-mail-client/claws-mail +flto*
-mail-filter/maildrop +fwhole-program -ffat-lto-objects
-media-gfx/exiv2 +flto*
-media-gfx/fontforge +flto*
-media-gfx/gimp +flto*
-media-gfx/graphicsmagick +flto*
-media-gfx/graphite2 +flto*
-media-gfx/graphviz +flto*
-media-gfx/imagemagick +flto*
-media-gfx/pstoedit +flto*
-media-gfx/sam2p +flto*
-media-gfx/sane-backends +flto*
-media-gfx/sane-frontends +flto*
-media-gfx/transfig +flto*
-media-gfx/xfig +flto*
-media-gfx/xsane +flto*
-media-gfx/xv +flto*
-media-libs/a52dec +fwhole-program -ffat-lto-objects
-media-libs/aften +flto* # ICE and other strange errors on amd64
-media-libs/alsa-lib +flto*
-media-libs/avidemux-core +flto*
-media-libs/avidemux-plugins +flto*
-media-libs/flac +flto*
-media-libs/giflib +fwhole-program -ffat-lto-objects
-media-libs/glu +fwhole-program -ffat-lto-objects
-media-libs/gstreamer +flto*
-media-libs/libdca +fwhole-program -ffat-lto-objects
-media-libs/libdvbpsi +flto*
-media-libs/libdvdnav +fwhole-program -ffat-lto-objects
-media-libs/libdvdread +fwhole-program -ffat-lto-objects
-media-libs/liblastfm +flto*
-media-libs/libmodplug +flto*
-media-libs/libmpeg2 +fwhole-program -ffat-lto-objects
-media-libs/libpostproc +flto*
+games-engines/scummvm-tools +fwhole-program +flto* # PO
+games-fps/doomsday +fwhole-program +flto* # PO
+games-fps/prboom +fwhole-program
+games-puzzle/enigma +fwhole-program +flto* # PO
+games-puzzle/fish-fillets +fwhole-program
+games-puzzle/lmarbles !+flto* # ICE
+games-rpg/freedroid +fwhole-program
+games-rpg/freedroidrpg +fwhole-program
+gnome-base/libglade +fwhole-program +flto* # |
+gnome-base/librsvg +fwhole-program +flto* # |
+mail-client/alpine +fwhole-program
+mail-client/claws-mail !+flto* # ICE
+mail-filter/maildrop +fwhole-program
+media-gfx/exiv2 +fwhole-program
+media-gfx/fontforge !+flto* # ICE
+media-gfx/gimp +fwhole-program
+media-gfx/graphicsmagick +fwhole-program +flto* # |
+media-gfx/graphite2 +fwhole-program
+media-gfx/graphviz !+flto* # ICE-type of a different kind
+media-gfx/imagemagick +fwhole-program +flto* # |
+media-gfx/pstoedit +fwhole-program
+media-gfx/sam2p +fwhole-program
+media-gfx/sane-backends +fwhole-program
+media-gfx/sane-frontends +fwhole-program
+media-gfx/transfig !+flto* # ICE
+media-gfx/xfig !+flto* # ICE
+media-gfx/xsane +fwhole-program
+media-gfx/xv +fwhole-program
+media-libs/aften +flto* # ICE and strange errors on amd64
+media-libs/alsa-lib +fwhole-program +flto*
+media-libs/avidemux-core +fwhole-program +flto* # Needed for media-video/avidemux
+media-libs/avidemux-plugins +fwhole-program +flto*
+media-libs/flac +fwhole-program +flto*
+media-libs/glu +fwhole-program +flto* # |
+media-libs/gstreamer +fwhole-program +flto* # PO
+media-libs/libdvbpsi +fwhole-program +flto* # PO
+media-libs/libdvdnav +fwhole-program +flto* # |
+media-libs/libdvdread +fwhole-program +flto* # |
+media-libs/liblastfm +fwhole-program +flto* # PO
+media-libs/libmodplug +fwhole-program +flto* # PO
+media-libs/libpostproc +fwhole-program +flto* # PO
 media-libs/libsdl2 +fwhole-program -ffat-lto-objects # SL
-media-libs/libwebp +flto*
-media-libs/mediastreamer +flto*
+media-libs/libwebp !+flto* # ICE
+media-libs/mediastreamer +fwhole-program +flto* # PO
 media-libs/mesa +flto* # ICE for x86, runtime errors (e.g. palemoon crashes on postbank banking) for amd64
-media-libs/musicbrainz +flto*
+media-libs/musicbrainz +fwhole-program +flto* # PO
 media-libs/netpbm +fwhole-program !+flto* # ICE
-media-libs/phonon +flto*
-media-libs/plotutils +fwhole-program ~-ffat-lto-objects !+flto* # ICE
-media-libs/portaudio +fwhole-program -ffat-lto-objects
-media-libs/schroedinger +flto*
-media-libs/silgraphite +flto*
+media-libs/phonon +flto* # PO
+media-libs/plotutils !+flto* # ICE
+media-libs/portaudio +fwhole-program +flto* # |
+media-libs/schroedinger +fwhole-program +flto* # PO
+media-libs/silgraphite +fwhole-program +flto* # PO
+media-libs/speex +fwhole-program !+flto* # ICE
 media-libs/x264 +fwhole-program -ffat-lto-objects
-media-sound/apulse +fwhole-program ~+flto* # PIC
-media-sound/audacity +flto*
-media-sound/audex +flto*
-media-sound/cdparanoia +flto*
-media-sound/gsm +flto*
-media-sound/kradio +flto*
-media-sound/kstreamripper +flto*
-media-sound/lilypond +flto*
-media-sound/mpg123 +flto*
-media-sound/musepack-tools +flto*
-media-sound/normalize +flto*
-media-sound/pulseaudio +flto*
-media-sound/qmmp +flto*
-media-sound/sidplay +flto*
-media-sound/sox +flto*
-media-sound/timidity++ +flto*
-media-sound/vorbis-tools +flto*
-media-sound/wavpack +flto*
-media-sound/xmms2 +flto*
-media-tv/kdetv +flto*
-media-tv/linuxtv-dvb-apps +flto*
-media-tv/v4l-utils +flto*
+media-sound/apulse +fwhole-program \~+flto* # PIC
+media-sound/audacity +fwhole-program +flto* # PO
+media-sound/audex +fwhole-program +flto* # PO
+media-sound/cdparanoia +fwhole-program +flto* # PO
+media-sound/gsm +fwhole-program \~+flto* # PIC
+media-sound/kradio +fwhole-program +flto* # PO
+media-sound/kstreamripper +fwhole-program +flto* # PO
+media-sound/lilypond !+flto* # ICE
+media-sound/mpg123 +fwhole-program +flto* # |
+media-sound/musepack-tools +fwhole-program \~+flto* # PIC
+media-sound/normalize +fwhole-program
+media-sound/pulseaudio +fwhole-program +flto* # PO
+media-sound/qmmp +fwhole-program +flto* # PO
+media-sound/sidplay +fwhole-program
+media-sound/sox +fwhole-program +flto* # |
+media-sound/timidity++ !+flto* # ICE
+media-sound/vorbis-tools +fwhole-program
+media-sound/wavpack +fwhole-program +flto* # |
+media-sound/xmms2 +fwhole-program +flto* # PO
+media-tv/kdetv +fwhole-program +flto* # PO
+media-tv/linuxtv-dvb-apps +fwhole-program \~+flto* # PIC
+media-tv/v4l-utils +fwhole-program
 media-video/avidemux +flto*
-media-video/cclive +flto*
-media-video/dirac +flto*
-media-video/ffmpeg +flto*
-media-video/ffmpegthumbnailer +flto*
-media-video/gnome-mplayer +fwhole-program -ffat-lto-objects
-media-video/handbrake +flto*
-media-video/kaffeine +flto*
-media-video/libav +flto*
-media-video/mjpegtools +flto*
-media-video/mplayer* +flto*
-media-video/mpv +flto*
-media-video/nvidia-settings +flto*
-media-video/rtmpdump +fwhole-program -ffat-lto-objects
-media-video/transcode +flto*
-media-video/vcdimager +fwhole-program -ffat-lto-objects
-media-video/vdr +flto*
-media-video/vlc +flto*
-media-video/xine-ui +flto*
-net-analyzer/wireshark +flto*
-net-dialup/lrzsz +flto*
-net-dialup/ppp +flto*
-net-dialup/wvdial +fwhole-program -ffat-lto-objects
-net-dns/libidn +fwhole-program -ffat-lto-objects
-net-dns/pdnsd +flto*
+media-video/cclive +fwhole-program
+media-video/dirac +fwhole-program +flto* # PO
+media-video/ffmpeg +fwhole-program
+media-video/ffmpegthumbnailer +fwhole-program +flto* # PO
+media-video/gnome-mplayer +fwhole-program -ffat-lto-objects # PO
+media-video/handbrake +fwhole-program
+media-video/kaffeine +fwhole-program +flto* # PO
+media-video/libav +fwhole-program +flto* # PO
+media-video/mjpegtools +fwhole-program
+media-video/mplayer !+flto* # ICE
+media-video/mpv +fwhole-program
+media-video/nvidia-settings +fwhole-program +flto* # PO
+media-video/rtmpdump +fwhole-program
+media-video/transcode +fwhole-program
+media-video/vcdimager +fwhole-program
+media-video/vdr +fwhole-program +flto* # PO
+media-video/vlc +fwhole-program +flto* # PO
+media-video/xine-ui !+flto* # ICE
+net-analyzer/wireshark +fwhole-program +flto* # PO
+net-dialup/lrzsz +fwhole-program
+net-dialup/ppp +fwhole-program
+net-dialup/wvdial +fwhole-program
+net-dns/pdnsd +fwhole-program
 net-firewall/ipsec-tools +fwhole-program -ffat-lto-objects # SL
-net-firewall/iptables +flto*
-net-firewall/nftables +flto*
-net-fs/autofs +flto*
-net-ftp/lftp +flto*
-net-ftp/ncftp +flto*
-net-im/jabberd2 +flto*
-net-im/psi +flto*
-net-im/psimedia +flto*
-net-libs/gnutls ~-ffat-lto-objects !+flto* # ICE
-net-libs/libsrtp +flto*
-net-libs/opal +flto*
-net-libs/ptlib +flto*
-net-mail/uw-mailutils +fwhole-program -ffat-lto-objects
-net-misc/connman +flto*
-net-misc/curl +flto*
-net-misc/iputils +flto*
-net-misc/mosh +flto*
-net-misc/netkit-telnetd +flto*
-net-misc/nx +flto*
-net-misc/nxcl +flto*
-net-misc/nxserver-freenx +flto*
-net-misc/openrdate +flto*
-net-misc/openssh +flto*
-net-misc/streamtuner +flto*
-net-misc/tor +flto*
-net-misc/tlsdate +flto*
-net-misc/wget +flto*
-net-nds/openldap +flto*
-net-p2p/ktorrent +flto*
-net-print/cups +flto*
-net-print/cups-filters +flto*
-net-print/foo2zjs +flto*
-net-proxy/privoxy +flto*
-net-voip/ekiga +flto*
-net-voip/yate +flto*
-net-wireless/crda +flto*
-net-wireless/wireless-tools +flto*
+net-firewall/iptables +fwhole-program
+net-firewall/nftables +fwhole-program
+net-fs/autofs +fwhole-program
+net-ftp/lftp +fwhole-program +flto* # PO
+net-ftp/ncftp +fwhole-program
+net-im/jabberd2 +fwhole-program +flto* # PO
+net-im/psi +fwhole-program +flto* # PO
+net-im/psimedia +fwhole-program +flto* # PO
+net-libs/libsrtp +fwhole-program +flto* # PO
+net-libs/opal +fwhole-program +flto* # PO
+net-libs/ptlib +fwhole-program +flto* # PO
+net-mail/uw-mailutils +fwhole-program -ffat-lto-objects # PO
+net-misc/connman +fwhole-program
+net-misc/curl +fwhole-program
+net-misc/iputils +fwhole-program
+net-misc/mosh +fwhole-program
+net-misc/netkit-telnetd !+flto* # ICE
+net-misc/nx +fwhole-program +flto* # PO
+net-misc/nxcl +fwhole-program +flto* # PO
+net-misc/nxserver-freenx +fwhole-program +flto* # PO
+net-misc/openrdate +fwhole-program
+net-misc/openssh +fwhole-program
+net-misc/streamtuner +fwhole-program
+net-misc/tlsdate +fwhole-program
+net-misc/tor +fwhole-program
+net-misc/wget +fwhole-program
+net-nds/openldap !+flto* # ICE
+net-p2p/ktorrent +fwhole-program +flto* # PO
+net-print/cups +fwhole-program
+net-print/cups-filters !+flto* # ICE
+net-print/foo2zjs +fwhole-program
+net-proxy/privoxy +fwhole-program
+net-voip/ekiga +fwhole-program +flto* # PO
+net-voip/yate +fwhole-program +flto* # PO
+net-wireless/crda +fwhole-program
+net-wireless/wireless-tools +fwhole-program \~+flto* # PIC
 sci-libs/gdal !+flto* # ICE
-sci-libs/gsl +fwhole-program -ffat-lto-objects
-sci-libs/hdf5 +fwhole-program -ffat-lto-objects
-sci-libs/qrupdate +flto*
-sci-mathematics/axiom +flto*
-sci-mathematics/calc +flto*
-sci-mathematics/genius +flto*
-sci-mathematics/ginac +flto*
-sci-mathematics/glpk +flto*
-sci-mathematics/octave +flto*
-sci-mathematics/pari +flto*
-sci-mathematics/reduce +flto*
-sci-mathematics/scilab +flto*
-sci-mathematics/yacas +flto*
-sci-visualization/gnuplot +flto*
-sys-apps/attr +flto*
-sys-apps/busybox +flto*
-sys-apps/coreutils +flto*
-sys-apps/dbus +flto*
-sys-apps/diffutils +flto*
-sys-apps/dtc +flto*
-sys-apps/fakeroot +flto*
-sys-apps/fakeroot-ng +flto*
-sys-apps/findutils +flto*
-sys-apps/gawk +flto*
-sys-apps/grep +fwhole-program -ffat-lto-objects
-sys-apps/groff +fwhole-program -ffat-lto-objects
-sys-apps/hdparm +flto*
+sci-libs/qrupdate +fwhole-program +flto* # PO
+sci-mathematics/axiom +fwhole-program +flto* # PO
+sci-mathematics/calc +fwhole-program +flto*
+sci-mathematics/genius +fwhole-program +flto* # PO
+sci-mathematics/ginac +fwhole-program
+sci-mathematics/glpk +fwhole-program +flto* # PO
+sci-mathematics/octave +fwhole-program
+sci-mathematics/pari +fwhole-program
+sci-mathematics/reduce +fwhole-program
+sci-mathematics/scilab !+flto* # ICE
+sci-mathematics/yacas !+flto* # ICE
+sci-visualization/gnuplot +fwhole-program
+sys-apps/attr +fwhole-program
+sys-apps/busybox !+flto* # ICE
+sys-apps/coreutils +fwhole-program
+sys-apps/dbus +fwhole-program
+sys-apps/diffutils +fwhole-program
+sys-apps/dtc +fwhole-program +flto* # PO
+sys-apps/fakeroot +fwhole-program
+sys-apps/fakeroot-ng +fwhole-program
+sys-apps/findutils +fwhole-program
+sys-apps/gawk !+flto* # ICE
+sys-apps/grep +fwhole-program
+sys-apps/groff +fwhole-program
+sys-apps/hdparm +fwhole-program
 sys-apps/iproute2 +fwhole-program -ffat-lto-objects # SL
-sys-apps/kbd +flto*
-sys-apps/kmod +flto*
-sys-apps/less* +flto*
-sys-apps/mlocate +fwhole-program -ffat-lto-objects
-sys-apps/net-tools +fwhole-program -ffat-lto-objects
-sys-apps/openrc +flto*
-sys-apps/pciutils +flto*
-sys-apps/pv +flto*
-sys-apps/s6 +flto*
-sys-apps/sandbox +flto*
-sys-apps/sed +flto*
-sys-apps/shadow +flto*
-sys-apps/systemd +fwhole-program -ffat-lto-objects
-sys-apps/sysvinit +flto*
-sys-apps/tcp-wrappers +fwhole-program -ffat-lto-objects
-sys-apps/texinfo +flto*
-sys-apps/usbutils +flto*
-sys-apps/util-linux +flto*
-sys-apps/which +flto*
-sys-auth/polkit +flto*
-sys-auth/polkit-qt +flto*
-sys-block/parted +flto*
-sys-devel/bc +fwhole-program -ffat-lto-objects
-sys-devel/bison +flto*
-sys-devel/clang +flto* # -flto needs >3GB here
+sys-apps/kbd +fwhole-program
+sys-apps/kmod +fwhole-program
+sys-apps/less +fwhole-program
+sys-apps/mlocate +fwhole-program
+sys-apps/net-tools +fwhole-program
+sys-apps/openrc +fwhole-program
+sys-apps/pciutils +fwhole-program
+sys-apps/pv +fwhole-program
+sys-apps/s6 +fwhole-program +flto* # PO
+sys-apps/sandbox +fwhole-program
+sys-apps/sed +fwhole-program
+sys-apps/shadow +fwhole-program
+sys-apps/systemd +fwhole-program
+sys-apps/sysvinit +fwhole-program
+sys-apps/tcp-wrappers +fwhole-program -ffat-lto-objects # PO
+sys-apps/texinfo +fwhole-program
+sys-apps/usbutils +fwhole-program
+sys-apps/util-linux !+flto* # ICE
+sys-apps/which +fwhole-program
+sys-auth/polkit +fwhole-program +flto* # PO
+sys-auth/polkit-qt +fwhole-program +flto* # PO
+sys-block/parted +fwhole-program
+sys-devel/bc +fwhole-program
+sys-devel/bison +fwhole-program
+sys-devel/clang +fwhole-program +flto-partition* # -flto needs >3GB here
 sys-devel/flex +fwhole-program -ffat-lto-objects # SL
 sys-devel/gcc +fwhole-program -ffat-lto-objects # SL
-sys-devel/gdb +flto*
-sys-devel/gettext +fwhole-program -ffat-lto-objects
-sys-devel/llvm +flto*
-sys-devel/m4 +flto*
-sys-devel/patch +flto*
-sys-fs/avfs +flto*
-sys-fs/ddrescue +flto*
-sys-fs/dosfstools +flto*
-sys-fs/e2fsprogs +flto*
-sys-fs/encfs +flto*
-sys-fs/eudev +flto*
-sys-fs/ext4magic +flto*
-sys-fs/lvm2 +flto*
-sys-fs/mtools +flto*
-sys-fs/simple-mtpfs +flto*
-sys-fs/squashfs-tools +flto*
-sys-fs/squashfuse +flto*
-sys-fs/udev +flto*
-sys-fs/udftools +flto*
-sys-fs/udisks +flto*
-sys-fs/unionfs-fuse +flto*
-sys-kernel/kccmp +flto*
+sys-devel/gdb +fwhole-program
+sys-devel/gettext +fwhole-program
+sys-devel/llvm +fwhole-program
+sys-devel/m4 +fwhole-program
+sys-devel/patch +fwhole-program
+sys-fs/avfs +fwhole-program
+sys-fs/ddrescue +fwhole-program
+sys-fs/dosfstools +fwhole-program
+sys-fs/e2fsprogs +fwhole-program
+sys-fs/encfs +fwhole-program
+sys-fs/eudev +fwhole-program +flto* # PO
+sys-fs/ext4magic +fwhole-program
+sys-fs/lvm2 +fwhole-program
+sys-fs/mtools !+flto* # ICE
+sys-fs/simple-mtpfs +fwhole-program
+sys-fs/squashfs-tools +fwhole-program
+sys-fs/squashfuse +fwhole-program
+sys-fs/udev +fwhole-program +flto* # PO
+sys-fs/udftools +fwhole-program
+sys-fs/udisks +fwhole-program +flto* # PO
+sys-fs/unionfs-fuse +fwhole-program
+sys-kernel/kccmp +fwhole-program
 sys-libs/binutils-libs +fwhole-program -ffat-lto-objects # SL
-sys-libs/efivar +flto*
+sys-libs/efivar +fwhole-program +flto*
 sys-libs/glibc +fwhole-program -ffat-lto-objects # SL
-sys-libs/gpm +flto*
-sys-libs/libcap +flto*
-sys-libs/libseccomp +fwhole-program -ffat-lto-objects
-sys-libs/lrmi +fwhole-program -ffat-lto-objects
-sys-libs/ncurses +flto*
-sys-libs/slang +flto*
-sys-libs/zlib +fwhole-program -ffat-lto-objects
-sys-power/iasl +flto*
-sys-power/hibernate-script +fwhole-program -ffat-lto-objects
-sys-power/nut +flto*
-sys-power/suspend +flto*
-sys-power/upower +flto*
-sys-process/lsof +fwhole-program -ffat-lto-objects
-sys-process/numactl +flto*
-sys-process/procps +flto*
-www-client/chromium +flto*
-www-client/dillo +flto*
-www-client/firefox +flto*
-www-client/lynx +flto*
-www-client/palemoon +flto*
-www-plugins/gnash +flto*
-www-plugins/mozplugger +flto*
-x11-apps/xrandr +flto*
+sys-libs/ncurses +fwhole-program +flto*
+sys-power/hibernate-script +fwhole-program
+sys-power/iasl +fwhole-program +flto* # PO
+sys-power/nut +fwhole-program
+sys-power/suspend +fwhole-program
+sys-power/upower +fwhole-program +flto* # PO
+sys-process/lsof +fwhole-program
+sys-process/numactl +fwhole-program +flto* # PO
+sys-process/procps +fwhole-program
+www-client/chromium +fwhole-program +flto-partition* +flto*
+www-client/dillo +fwhole-program +flto* # PO
+www-client/firefox +fwhole-program +flto-partition* +flto*
+www-client/lynx !+flto* # ICE
+www-client/palemoon +fwhole-program +flto-partition* +flto* # PIC on amd64 and x86
+www-plugins/gnash +fwhole-program +flto* # PO
+www-plugins/mozplugger +fwhole-program +flto* # PO
+x11-apps/xrandr +fwhole-program
 x11-base/xorg-server +flto*
-x11-drivers/xf86-video-intel +flto*
-x11-libs/cairo +fwhole-program -ffat-lto-objects
-x11-libs/fltk +flto*
-x11-libs/gdk-pixbuf +fwhole-program -ffat-lto-objects
-x11-libs/gtkglext +flto*
-x11-libs/libdrm -ffat-lto-objects
-x11-libs/libnotify +fwhole-program -ffat-lto-objects
-x11-libs/libva +fwhole-program -ffat-lto-objects
-x11-libs/libwnck +flto*
-x11-libs/motif +fwhole-program -ffat-lto-objects
-x11-libs/pango +fwhole-program -ffat-lto-objects
-x11-libs/pixman +fwhole-program -ffat-lto-objects
-x11-libs/wxGTK +flto*
-x11-libs/xcb-util-cursor +fwhole-program -ffat-lto-objects
-x11-misc/slim +flto*
-x11-misc/xaos +flto*
-x11-misc/xfractint +flto*
-x11-misc/xscreensaver +flto*
-x11-wm/fvwm +flto*
-xfce-base/exo +fwhole-program -ffat-lto-objects
-xfce-base/garcon +fwhole-program -ffat-lto-objects
-xfce-base/libxfce4ui +fwhole-program -ffat-lto-objects
-xfce-base/libxfce4util +fwhole-program -ffat-lto-objects
-xfce-base/libxfcegui4 +fwhole-program -ffat-lto-objects
-xfce-base/thunar +fwhole-program -ffat-lto-objects
-xfce-base/xfconf +fwhole-program -ffat-lto-objects
+x11-drivers/xf86-video-intel +fwhole-program +flto*
+x11-libs/fltk +fwhole-program +flto* # PO
+x11-libs/gdk-pixbuf +fwhole-program +flto* # |
+x11-libs/gtkglext +fwhole-program +flto* # PO
+x11-libs/libnotify +fwhole-program +flto* # |
+x11-libs/libwnck +fwhole-program +flto* # PO
+x11-libs/pango +fwhole-program +flto* # |
+x11-libs/wxGTK +fwhole-program +flto* # PO
+x11-libs/xcb-util-cursor +fwhole-program +flto* # |
+x11-misc/slim +fwhole-program \+flto* # PIC
+x11-misc/xaos +fwhole-program
+x11-misc/xfractint +fwhole-program
+x11-misc/xscreensaver +fwhole-program
+x11-wm/fvwm !+flto* # ICE
+xfce-base/exo +fwhole-program +flto* # |
+xfce-base/garcon +fwhole-program +flto* # PO
+xfce-base/libxfce4ui +fwhole-program +flto* # |
+xfce-base/libxfce4util +fwhole-program +flto* # |
+xfce-base/libxfcegui4 +fwhole-program +flto* # PO
+xfce-base/thunar +fwhole-program +flto* # |
+xfce-base/xfconf +fwhole-program +flto* # |

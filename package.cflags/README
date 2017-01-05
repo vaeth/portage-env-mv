@@ -52,13 +52,14 @@
 #
 # +flto* (or the subset +fuse-linker-plugin +fwhole-program -ffat-lto-objects)
 #  these are collected in an extra file: flto
+#   Typical error on 32bit: /usr/include/bits/stdio2.h: internal compiler error
 #   Typical error: syntax error near unexpected token `|'
 #   Typical error: ... .flto. ....
 #   Typical error: undefined symbol
-#   Typical error on 32 bit only: internal compiler error: Segmentation fault
+#   Typical error: reallocation
 # +fPIE +pie
 #  these are collected in an extra file: pie
-#   Typical error: on 32bit: hang with "corrupted double-linked list"
+#   Typical error on 32bit: hang with "corrupted double-linked list"
 #   Typical error: undefined reference to `main'
 #   Typical error: undefined symbol
 #   Typical error: recompile with -fPIC

@@ -7,6 +7,7 @@
 # override our general global settings; those go into all-systems.
 
 #app-misc/lirc "LIRC_OPTS='--with-driver=pctv'"
+#app-portage/eix "~EXTRA_ECONF=--enable-nopie-security"
 #app-office/libreoffice "export ac_objext='o'"
 app-text/u2ps "EXTRA_EMAKE+='SHELL=/bin/bash'"
 #dev-games/flatzebra -lSDL_image -lSDL_mixer # Might be needed for burgerspace linking

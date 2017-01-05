@@ -25,7 +25,7 @@ app-forensics/chkrootkit +fPIE +pie
 app-misc/mc !+fPIE !+pie
 app-office/libreoffice +fPIE +pie
 app-portage/deltup +fPIE +pie
-app-portage/eix ~+fPIE ~+pie
+app-portage/eix \~+fPIE \~+pie
 app-shells/bash +fPIE +pie
 app-shells/ksh +fPIE +pie
 app-shells/schily-tools +fPIE +pie
