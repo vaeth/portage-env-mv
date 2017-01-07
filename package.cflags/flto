@@ -276,6 +276,7 @@ media-libs/avidemux-plugins +fwhole-program +flto*
 media-libs/flac +fwhole-program +flto*
 media-libs/glu +fwhole-program +flto* # |
 media-libs/gstreamer +fwhole-program +flto* # PO
+media-libs/libbluray +fwhole-program +flto* # |
 media-libs/libdvbpsi +fwhole-program +flto* # PO
 media-libs/libdvdnav +fwhole-program +flto* # |
 media-libs/libdvdread +fwhole-program +flto* # |
@@ -344,7 +345,7 @@ net-dns/pdnsd +fwhole-program
 net-firewall/ipsec-tools +fwhole-program -ffat-lto-objects # SL
 net-firewall/iptables +fwhole-program
 net-firewall/nftables +fwhole-program
-net-fs/autofs +fwhole-program
+net-fs/autofs +flto* # runtime error (PIC type)
 net-ftp/lftp +fwhole-program +flto* # PO
 net-ftp/ncftp +fwhole-program
 net-im/jabberd2 +fwhole-program +flto* # PO
