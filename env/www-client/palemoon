@@ -5,8 +5,40 @@ case $PV in
 ;;
 *)
 . /etc/portage/env/scripts/mv_patch \
-	-e '"/atk-bridge.h/d"' config/system-headers \
+	-e "/atk-bridge.h/d" config/system-headers \
 	-e '"s/ atk-bridge[^ ]*//"' configure.in
+
+# override check of palemoon-27.0.3-r1:
+pre_pkg_pretend() {
+pkg_pretend() {
+	# Ensure we have enough disk space to compile:
+	CHECKREQS_DISK_BUILD=${REQUIRED_BUILDSPACE}
+	check-reqs_pkg_setup
+}
+}
+
+if false; then # Attempt to patch for gcc-6 - not working yet
+. /etc/portage/env/scripts/mv_patch -
+post_src_prepare() {
+	mv_start || mv_die
+	local i found
+	found=false
+	for i in $(grep -Rl -- '^#include .math\.h.' "$S")
+	do	case $i in
+		*.c)
+			continue;;
+		esac
+		sed -i -e 's/^#include .math\.h./#include <cmath>/' \
+			-- "$i" || mv_die
+		found=:
+	done
+	$found || mv_die 'no buggy math.h includes found!'
+	mv_patch \
+		-e "/atk-bridge.h/d" config/system-headers \
+		-e "s/ atk-bridge[^ ]*//" configure.in
+	mv_end
+}
+fi
 ;;
 esac
 

@@ -154,9 +154,7 @@ mv_start() {
 	einfo "mv's hack: $f"
 	[ $# -gt 0 ] && [ "$1" = '-' ] && return 0
 	test -d "$S" && cdto=$S || cdto=$WORKDIR
-	cd -- "$cdto" >/dev/null && return 0
-	eerror "could not cd to $cdto"
-	return 1
+	cd -- "$cdto" >/dev/null || mv_die "could not cd to $cdto"
 }
 
 # Usage: mv_end
@@ -182,6 +180,11 @@ mv_end_die() {
 	local f
 	f=${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*
 	die "mv's hack from $f failed"
+}
+
+mv_die() {
+	[ $# -eq 0 ] || eerror "$*"
+	mv_end_die
 }
 
 if [ $# -ne 0 ] && case $1 in
