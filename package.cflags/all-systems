@@ -51,6 +51,7 @@ dev-libs/gmp +*math* +fgraphite* +floop-* +D*FILE* +D*DEBUG +D*ASSERT +frename-r
 dev-libs/klibc SAFE
 dev-libs/kpathsea +D*DEBUG +D*ASSERT
 dev-libs/libevent +D*DEBUG +D*ASSERT
+dev-libs/libunistring +fdirectives-only
 dev-libs/lzo CONFIG_SITE= # sys-power/suspend needs static libs
 dev-libs/mpc +*math*
 dev-libs/mpfr +*math*

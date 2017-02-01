@@ -249,6 +249,7 @@ games-puzzle/fish-fillets +fwhole-program
 games-puzzle/lmarbles !+flto* # ICE
 games-rpg/freedroid +fwhole-program
 games-rpg/freedroidrpg +fwhole-program
+gnome-base/gconf +fwhole-program +flto* # |
 gnome-base/libglade +fwhole-program +flto* # |
 gnome-base/librsvg +fwhole-program +flto* # |
 mail-client/alpine +fwhole-program
