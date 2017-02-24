@@ -44,6 +44,7 @@ dev-db/sqlcipher +*math*
 dev-java/icedtea* +D*FORTIFY* -U_FORTIFY_SOURCE +fno-common
 dev-lang/lua CONFIG_SITE=
 dev-lang/ruby +ftree-vectorize*
+dev-lang/python +ffast-math # Byte compilation of some .pyc files needs forever with -ffast-math
 dev-libs/boost MAKEOPTS-='-j*'
 dev-libs/check +fno-common
 dev-libs/elfutils +D*FILE*
