@@ -73,6 +73,7 @@ dev-lang/spidermonkey +fPIE +pie
 dev-lang/tcl +fPIE +pie
 dev-lang/tk +fPIE +pie
 dev-libs/gmp +fPIE +pie
+dev-libs/libtasn1 +fPIE +pie
 dev-lisp/clisp +fPIE +pie
 dev-perl/* +fPIE +pie
 dev-python/* +fPIE +pie

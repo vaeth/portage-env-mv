@@ -5,13 +5,13 @@ mv_rmremotefs() {
 	local i r
 	rm -v -- \
 		"$ED/etc/systemd/system/multi-user.target.wants/remote-fs.target" \
+		"$ED/etc/systemd/system/dbus-org.freedesktop.resolve1.service" \
 		|| return
 	r=1
-	for i in "$ED/etc/systemd/system/"*.target
-	do	test -h "$i" || return
+	for i in "$ED/etc/systemd/system/"*.target "$ED/etc/systemd/system/"*/*.target
+	do	test -h "$i" || continue
 		r=0
-		ln -sfn /usr/lib/systemd/system/"${i##*/}" \
-			"$ED/etc/systemd/system/" || return
+		ln -sfn /usr/lib/systemd/system/"${i##*/}" "$i" || return
 	done
 	return $r
 }

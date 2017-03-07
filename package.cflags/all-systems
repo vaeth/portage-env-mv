@@ -61,6 +61,7 @@ dev-libs/nss -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid som
 dev-libs/nspr -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid some firefox/openoffice crashes
 dev-libs/openssl +combine +ftree-vectorize*
 dev-libs/protobuf +*math*
+dev-libs/libtasn1 +fdirectives-only
 dev-lisp/clisp CONFIG_SITE= NOLDADD=1 +D*DEBUG +D*ASSERT +frename-registers +*math* +fdirectives-only
 dev-python/numpy +*math*
 dev-python/python-poppler +fno-common
