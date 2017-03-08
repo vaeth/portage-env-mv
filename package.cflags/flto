@@ -387,7 +387,7 @@ sci-mathematics/calc +fwhole-program +flto*
 sci-mathematics/genius +fwhole-program +flto* # PO
 sci-mathematics/ginac +fwhole-program
 sci-mathematics/glpk +fwhole-program +flto* # PO
-sci-mathematics/octave +fwhole-program
+sci-mathematics/octave +fwhole-program +flto* # __base_dtor not found
 sci-mathematics/pari +fwhole-program
 sci-mathematics/reduce +fwhole-program
 sci-mathematics/scilab !+flto* # ICE

@@ -12,7 +12,7 @@ app-arch/star +fPIE +pie
 app-arch/xz-utils !+fPIE !+pie
 app-arch/unrar +fPIE +pie
 app-arch/zpaq +fPIE +pie
-app-crypt/gpgme !+fPIE !+pie
+app-crypt/gpgme +fPIE +pie
 app-crypt/pinentry +fPIE +pie
 app-cdr/cdrtools +fPIE +pie
 app-cdr/xcdroast +fPIE +pie

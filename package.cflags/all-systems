@@ -9,7 +9,8 @@ app-arch/sharutils +fdirectives-only +fno-common
 app-arch/tar +fdirectives-only
 app-cdr/cdw +Wl,--as-needed LD_AS_NEEDED=
 app-cdr/dvdisaster +fno-common +fdirectives-only # +fdirectives-only fixes broken ./configure
-app-crypt/gnupg +fno-common
+app-crypt/gpgme +D*DEBUG +D*ASSERT
+app-crypt/gnupg +fno-common +D*DEBUG +D*ASSERT
 app-doc/doxygen NOC*OPT=1 +O* -O2 -fomit-frame-pointer -s # see http://forums.gentoo.org/viewtopic-t-495600.html
 app-emulation/dosemu +finline-functions
 app-emulation/wine +fstack-protector* +fno-common -fno-omit-frame-pointer +ftree-loop-distribute-patterns +fweb +finline-functions
