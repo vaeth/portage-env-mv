@@ -82,7 +82,6 @@ app-arch/zpaq +fwhole-program
 app-backup/dar +fwhole-program +flto* # PO
 app-cdr/cdrtools +fwhole-program
 app-cdr/cdw +fwhole-program
-app-cdr/k3b +fwhole-program +flto* # PO
 app-crypt/gnupg +fwhole-program
 app-crypt/gpgme !+flto* # ICE
 app-crypt/pinentry +fwhole-program
@@ -252,6 +251,7 @@ games-rpg/freedroidrpg +fwhole-program
 gnome-base/gconf +fwhole-program +flto* # |
 gnome-base/libglade +fwhole-program +flto* # |
 gnome-base/librsvg +fwhole-program +flto* # |
+kde-apps/k3b +fwhole-program +flto* # PO
 mail-client/alpine +fwhole-program
 mail-client/claws-mail !+flto* # ICE
 mail-filter/maildrop +fwhole-program
