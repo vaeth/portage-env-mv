@@ -158,6 +158,7 @@ sys-apps/systemd +fPIE +pie
 sys-apps/usbutils !+fPIE !+pie
 sys-apps/util-linux !+fPIE !+pie
 sys-devel/autogen !+fPIE !+pie
+sys-devel/clang +fPIE +pie
 sys-devel/flex !+fPIE !+pie
 sys-devel/gdb +fPIE +pie
 sys-devel/gettext !+fPIE !+pie
