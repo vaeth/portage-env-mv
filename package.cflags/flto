@@ -343,7 +343,6 @@ net-dialup/lrzsz +fwhole-program
 net-dialup/ppp +fwhole-program
 net-dialup/wvdial +fwhole-program
 net-dns/pdnsd +fwhole-program
-net-firewall/ipsec-tools +fwhole-program -ffat-lto-objects # SL
 net-firewall/iptables +fwhole-program
 net-firewall/nftables +fwhole-program
 net-fs/autofs +flto* # runtime error (PIC type)
@@ -368,7 +367,6 @@ net-misc/openrdate +fwhole-program
 net-misc/openssh +fwhole-program
 net-misc/streamtuner +fwhole-program
 net-misc/tlsdate +fwhole-program
-net-misc/tor +fwhole-program
 net-misc/wget +fwhole-program
 net-nds/openldap !+flto* # ICE
 net-p2p/ktorrent +fwhole-program +flto* # PO
@@ -378,6 +376,8 @@ net-print/foo2zjs +fwhole-program
 net-proxy/privoxy +fwhole-program
 net-voip/ekiga +fwhole-program +flto* # PO
 net-voip/yate +fwhole-program +flto* # PO
+net-vpn/ipsec-tools +fwhole-program -ffat-lto-objects # SL
+net-vpn/tor +fwhole-program
 net-wireless/crda +fwhole-program
 net-wireless/wireless-tools +fwhole-program \~+flto* # PIC
 sci-libs/gdal !+flto* # ICE

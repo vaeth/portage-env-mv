@@ -174,11 +174,11 @@ net-libs/wvstreams +D*DEBUG +D*ASSERT NOLDADD=1
 net-misc/nx +fno-common
 net-misc/openssh +fno-common
 net-misc/streamtuner CONFIG_SITE=
-net-misc/tor +D*DEBUG +D*ASSERT +fno-common
 net-misc/tlsdate +fno-common
 net-misc/wget +fdirectives-only
 net-print/foo2zjs +combine
 net-print/cups-filters +fno-common
+net-vpn/tor +D*DEBUG +D*ASSERT +fno-common
 sci-libs/* +*math*
 sci-libs/cln +ftracer +fdirectives-only
 sci-mathematics/* +*math*
