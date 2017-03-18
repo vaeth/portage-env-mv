@@ -16,6 +16,7 @@ dev-libs/libsodium !"export enable_pie=no"
 dev-perl/Clone "export mymake='DEFINE=-D_LARGEFILE64_SOURCE'" # -D_LARGEFILE64_SOURCE is filtered by the ebuild but *MUST* be used.
 =dev-tex/catdvi-0.14-r1 -I/usr/lib
 #dev-qt/qtwebkit "export CXX=clang++" "export CC=clang" # needed with gcc-5.1 for skype to work
+net-misc/wget "EXTRA_ECONF+='--disable-xattr'" # disable storing of useless information in xattr
 media-gfx/gimp "EXTRA_EMAKE+='SHELL=/bin/bash'"
 #media-libs/freetype -DFT_CONFIG_OPTION_OLD_INTERNALS # needed for nxclient unless ebuild is patched
 media-libs/jpeg "EXTRA_ECONF+='--disable-static'"
