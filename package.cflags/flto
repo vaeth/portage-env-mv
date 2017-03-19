@@ -459,6 +459,7 @@ sys-kernel/kccmp +fwhole-program
 sys-libs/binutils-libs +fwhole-program -ffat-lto-objects # SL
 sys-libs/efivar +fwhole-program +flto*
 sys-libs/glibc +fwhole-program -ffat-lto-objects # SL
+sys-libs/libcxxabi +fwhole-program +flto*
 sys-libs/ncurses +fwhole-program +flto*
 sys-power/hibernate-script +fwhole-program
 sys-power/iasl +fwhole-program +flto* # PO

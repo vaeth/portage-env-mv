@@ -228,6 +228,7 @@ sys-fs/sysfsutils NOLDADD=1
 sys-fs/udftools +fno-common
 sys-fs/unionfs-fuse +fno-common
 sys-libs/e2fsprogs-libs +D*FILE*
+sys-libs/compiler-rt USE_NONGNU=1
 sys-libs/glibc +Wl,--relax +D*FILE* +fstack-protector
 sys-libs/gpm +fno-common
 sys-libs/gwenhywfar +D*FORTIFY* -U_FORTIFY_SOURCE
