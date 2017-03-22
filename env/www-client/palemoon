@@ -14,7 +14,28 @@ pkg_pretend() {
 	# Ensure we have enough disk space to compile:
 	CHECKREQS_DISK_BUILD=${REQUIRED_BUILDSPACE}
 	check-reqs_pkg_setup
+
+	# Ensure we are not on a gcc 5.* profile:
+	einfo "Checking gcc version..."
+	if [[ "5" == "$(gcc -dumpversion | cut -d. -f1)" ]]; then
+		gcc-5_error
+	fi
 }
+}
+
+# disable system-cairo since it causes random segfaults
+mozconfig_enable() {
+	local e option
+	for option in "$@"; do
+		e=enable-${option}
+		case $option in
+		system-cairo)
+			ewarn "mv's local patch:"
+			ewarn "disabling system-cairo as it causes segfaults"
+			e=disable-${option};;
+		esac
+		echo "ac_add_options --${e}" >> "${S}/.mozconfig"
+	done
 }
 ;;
 esac
