@@ -20,6 +20,7 @@ net-misc/wget "EXTRA_ECONF+='--disable-xattr'" # disable storing of useless info
 media-gfx/gimp "EXTRA_EMAKE+='SHELL=/bin/bash'"
 #media-libs/freetype -DFT_CONFIG_OPTION_OLD_INTERNALS # needed for nxclient unless ebuild is patched
 media-libs/jpeg "EXTRA_ECONF+='--disable-static'"
+=media-libs/kvazaar-1.1.0* CFLAGS+=-Wno-error
 media-libs/libquicktime "EXTRA_ECONF+='--disable-static'"
 media-libs/libmikmod "EXTRA_EMAKE+='SHELL=/bin/bash'"
 #media-video/avinfo "EXTRA_EMAKE='BISON=NONE'"

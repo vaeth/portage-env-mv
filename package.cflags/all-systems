@@ -143,6 +143,7 @@ media-sound/pnmixer +fno-common
 media-sound/timidity++ +fno-common
 media-sound/toolame +fno-common
 media-tv/nvtv +fno-common
+media-tv/tvheadend +fno-common
 media-tv/v4l-utils +fno-common +D*FILE*
 media-tv/w_scan +fno-common
 media-video/avidemux +ftracer # MAKEOPTS-='-j*'

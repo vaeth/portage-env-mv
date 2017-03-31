@@ -322,7 +322,7 @@ media-tv/v4l-utils +fwhole-program
 media-video/avidemux +flto*
 media-video/cclive +fwhole-program
 media-video/dirac +fwhole-program +flto* # PO
-media-video/ffmpeg +fwhole-program
+media-video/ffmpeg +fwhole-program +flto*
 media-video/ffmpegthumbnailer +fwhole-program +flto* # PO
 media-video/gnome-mplayer +fwhole-program -ffat-lto-objects # PO
 media-video/handbrake +fwhole-program
