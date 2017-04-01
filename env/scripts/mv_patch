@@ -1,57 +1,92 @@
-#!/bin/bash
-# ^^^^^^^^^^
-# This is only to make correct editor highlighting.
+#!/bin/bash (only for editors)
 #
 # This file should be sourced from /etc/portage/env/$CATEGORY/$PACKAGE*
 #
 # It provides several functions which are useful to patch packages during
-# emerging.
+# emerging, in particular mv_patch, see below.
 #
-# Since the most frequent use is to redefine the post_src_unpack function
-# (which is usually not defined by ebuilds and executed after the unpack phase)
+# Since the most frequent use is to redefine the post_src_prepare
+# (or post_src_unpack in case of EAPI=0 or 1)
 # you can pass some arguments when sourcing this script:
 #
-# In this case, the post_src_unpack function is defined to call
+# In this case, the above mentioned function (or the function $MV_OVERRIDE
+# if the latter variable has been set) is defined to call
 # "mv_patch" (see below) with your arguments and be somewhat verbose about it.
-# Note that this feature will uses eval to define post_src_unpack,
+# Note that this feature uses eval to define the corresponding functoin,
 # so you should use this only if your arguments are safe (no variables).
 # Moreover, you might have to quote your quotes.
-#
-# By default, "eutils.eclass" is sourced during sourcing to define epatch.
-# Since this can cause problems in some cases, you can suppress this
-# by passing "-" as the first argument to the source command.
-# (this argument is ignored otherwise).
 
-
-# Usage: mv_patch PATCH1 PATCH2 ...
+# Usage: mv_patch PATCH1 PATCH2 ... [shell [some shell code]]
 #
 # Applies all PATCHes, being verbose and failing if at least one PATCH fails.
 #
 # Each PATCH is either a filename (or a part thereof, see below)
 # or of the form -e expression FILENAME.
 #
-# If PATCH is filename, but not an absolute filename, it is searched
+# If PATCH is a filename, but not an absolute filename, it is searched
 # in the directories /etc/portage/env/patches/, $MV_PATCHES, and $FILESDIR.
 # You may omit a leading $PF-/$P-/$PN- or a trailing .patch/.diff
 # Only the first matching filename is used for each PATCH.
 #
-# If Patch is of the form -e expression FILENAME, then expression is used
+# If PATCH is of the form -e expression FILENAME, then expression is used
 # as an sed expression to apply to FILENAME. (Note that by the above mentioned
 # eval you might have to quote expression twice)
 # If FILE is not an absolute pathname it is assumed to be relative to $S.
 #
 
 mv_epatch() {
-	command -v epatch >/dev/null 2>&1 || eval "$(sed -n \
-		-e '/^EPATCH/p' \
-		-e '/\${EPATCH[^=}]*=.*}/p' \
-		-e '/^epatch *()/,/^}/p' -- "$PORTDIR/eclass/eutils.eclass")"
+	local mv_epatch_cmd mv_epatch_file my_epatch_count mv_epatch_error \
+		patch P4CONFIG P4PORT P4USER
+	# Handle aliased patch command #404447 #461568
+	patch=patch
+	eval $(alias patch 2>/dev/null | sed 's:^alias ::')
+	unset P4CONFIG P4PORT P4USER # keep perforce at bay #56402
+	test -r "$1" || mv_die "cannot find mv's patch $1"
+	einfo "mv patch application: $1"
+	mv_epatch_file=$1
+	mv_epatch_cmd=
+	case ${1##*.} in
+	xz)
+		mv_epatch_cmd='xz -dc';;
+	lzma)
+		mv_epatch_cmd='lzma -dc';;
+	bz2)
+		mv_epatch_cmd='bzip2 -dc';;
+	gz|Z|z)
+		mv_epatch_cmd='gzip -dc';;
+	ZIP|zip)
+		mv_epatch_cmd='unzip -p';;
+	esac
+	if [ -n "$mv_epatch_cmd" ]
+	then	mv_epatch_file=$T/mv_epatch.current
+		$mv_epatch_cmd <"$1" >"$mv_epatch_file" \
+			|| mv_die "failed to uncompress patch $1"
+	fi
+	mv_epatch_count=0
+	# Skip -p0 if absolute paths are used
+	[ -z "$(sed -n -e '/^[-+][-+][-+] \//{s!^[-+][-+][-+] /dev/null!!;p}' \
+		-- "$mv_epatch_file")" ] || mv_epatch_count=1
+	# Reject patches with relative paths
+	egrep -q '^[-+]{3} [^	]*[.][.]/' -- "$mv_epatch_file" >/dev/null 2>&1 \
+		&& mv_die 'patch uses relative paths ../'
+	mv_epatch_error=
+	while [ $mv_epatch_count -lt 5 ]
+	do	mv_epatch_cmd="$patch -p$mv_epatch_count -g0 -E --no-backup-if-mismatch"
+		mv_epatch_error=$mv_epatch_error"
+$mv_epatch_cmd
+$($mv_epatch_cmd --dry-run -f <"$mv_epatch_file" 2>&1)" && {
+			mv_epatch_count=
+			break
+		}
+		mv_epatch_count=$(( $mv_epatch_count + 1 ))
+	done
+	[ -z "$mv_epatch_count" ] || mv_die "patch $1 cannot be applied:$mv_epatch_error"
+	mv_epatch_error="
+$mv_epatch_cmd
+$($mv_epatch_cmd <"$mv_epatch_file" 2>&1)" \
+		|| mv_die "application of patch $1 failed:$mv_epatch_error"
+	eend 0
 }
-
-if [ "${1-}" = '-' ]
-then	shift
-else	mv_epatch
-fi
 
 mv_patch() {
 	while [ $# -gt 0 ]
@@ -71,7 +106,6 @@ mv_patch() {
 
 mv_patchfile() {
 	local mv_n mv_pt mv_pt1 mv_pt2 mv_tl mv_px mv_sx
-	mv_epatch
 	case $1 in
 	/*)
 		unset MV_PATCHES
@@ -96,14 +130,11 @@ mv_patchfile() {
 		do	for mv_sx in '' '.patch' '.diff'
 			do	mv_n=$mv_pt$mv_px$mv_tl$mv_sx
 				test -e "$mv_n" || continue
-				epatch "$mv_n" && return 0
-				eerror "Patch $mv_n failed"
-				return 1
+				mv_epatch "$mv_n"
 			done
 		done
 	done
-	eerror "Patch $1 not found"
-	return 1
+	mv_die "Patch $1 not found"
 }
 
 declare -a MV_SED
@@ -118,27 +149,15 @@ mv_sed() {
 	*)
 		mv_r=$S/$mv_n;;
 	esac
-	if ! test -e "$mv_r"
-	then	eerror "file $mv_r not found"
-		return 1
-	fi
+	test -e "$mv_r" || mv_die "file $mv_r not found"
 	MV_SED=("$@")
 	MV_SED[$(( $# - 1 ))]='--'
 	mv_t=$T/mv_sed
 	sed -e "${MV_SED[@]}" "$mv_r" >"$mv_t" \
-	&& chmod --reference="$mv_r" "$mv_t" || {
-		eerror "patching $mv_r failed"
-		return 1
-	}
+	&& chmod --reference="$mv_r" "$mv_t" || mv_die "patching $mv_r failed"
 	chown --reference="$mv_r" "$mv_t" >/dev/null 2>&1
-	cmp -s -- "$mv_r" "$mv_t" && {
-		eerror "patching $mv_r had no effect"
-		return 1
-	}
-	mv -- "$mv_t" "$mv_r" || {
-		error "cannot move $mv_t -> $mv_r"
-		return 1
-	}
+	cmp -s -- "$mv_r" "$mv_t" && mv_die "patching $mv_r had no effect"
+	mv -- "$mv_t" "$mv_r" || mv_die "cannot move $mv_t -> $mv_r"
 }
 
 # Usage: mv_start [-]
@@ -190,8 +209,6 @@ mv_die() {
 if [ $# -ne 0 ] && case $1 in
 *profile.bashrc)
 	false;;
-*)
-	:;;
 esac
 then	[ -z "${MV_OVERRIDE:++}" ] && case ${EAPI:-0} in
 	[01])

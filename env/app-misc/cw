@@ -1,5 +1,4 @@
-
-. /etc/portage/env/scripts/mv_patch -
+. /etc/portage/env/scripts/mv_patch
 
 post_src_prepare () {
 	mv_start && cd def >/dev/null 2>&1 && \

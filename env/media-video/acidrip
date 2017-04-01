@@ -1,5 +1,5 @@
 
-. /etc/portage/env/scripts/mv_patch -
+. /etc/portage/env/scripts/mv_patch
 
 post_src_prepare() {
 	mencoder -ovc help 2>/dev/null | grep MEncoder || {

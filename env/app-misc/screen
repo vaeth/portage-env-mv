@@ -1,4 +1,4 @@
-. /etc/portage/env/scripts/mv_patch -
+. /etc/portage/env/scripts/mv_patch
 
 SCREEN_SOCKET=${EPREFIX%/}/run/screen
 
