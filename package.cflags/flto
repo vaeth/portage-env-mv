@@ -263,6 +263,7 @@ media-gfx/graphite2 +fwhole-program
 media-gfx/graphviz !+flto* # ICE-type of a different kind
 media-gfx/imagemagick +fwhole-program +flto* # |
 media-gfx/pstoedit +fwhole-program
+media-gfx/pqiv +fwhole-program
 media-gfx/sam2p +fwhole-program
 media-gfx/sane-backends +fwhole-program
 media-gfx/sane-frontends +fwhole-program

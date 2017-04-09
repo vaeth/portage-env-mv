@@ -98,6 +98,7 @@ media-gfx/graphicsmagick +fPIE +pie
 media-gfx/imagemagick +fPIE +pie
 media-gfx/mirage +fPIE +pie
 media-gfx/pstoedit !+fPIE !+pie
+media-gfx/pqiv +fPIE +pie
 media-gfx/sane-backends !+fPIE !+pie
 media-sound/lame !+fPIE !+pie
 media-sound/lilypond +fPIE +pie
