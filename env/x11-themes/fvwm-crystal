@@ -209,6 +209,8 @@ my_menu() {
 	rename_file "$games"*Shooters/*chromium* chromium chromium-game || return
 	cp_menu 's/exec [^ ]*/exec adsl-gui/' \
 		"$network"*Dial-up/~kppp~kPPP '~adsl-gui~ADSL' || return
+	cp_menu 's/exec [^ ]*/cd ~mwww; exec sudox -T -- mwww exec download-gui/' \
+		"$network"*File_Transfer/~gwget2~Download_Manager '~download-gui~Download.mwww' || return
 	cp_menu 's/elinks/links/' \
 		"$browsers"*elinks* '~links~Links' || return
 	var_assign seamonkey "$browsers"*seamonkey* || return
