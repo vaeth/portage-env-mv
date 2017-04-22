@@ -130,7 +130,7 @@ mv_patchfile() {
 		do	for mv_sx in '' '.patch' '.diff'
 			do	mv_n=$mv_pt$mv_px$mv_tl$mv_sx
 				test -e "$mv_n" || continue
-				mv_epatch "$mv_n"
+				mv_epatch "$mv_n" && return
 			done
 		done
 	done
