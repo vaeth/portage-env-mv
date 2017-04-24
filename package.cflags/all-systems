@@ -171,6 +171,7 @@ net-im/qtox +fdirectives-only
 net-libs/gnutls +fdirectives-only
 net-libs/libgsasl +fdirectives-only
 net-libs/libtirpc +fno-common
+net-libs/nodejs +*math* # with math optimization casting function miscompiles and www-client/chromium fails to build
 net-libs/wvstreams +D*DEBUG +D*ASSERT NOLDADD=1
 net-misc/nx +fno-common
 net-misc/openssh +fno-common

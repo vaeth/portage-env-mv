@@ -8,6 +8,8 @@ case $PV in
 	-e "/atk-bridge.h/d" config/system-headers \
 	-e '"s/ atk-bridge[^ ]*//"' configure.in
 
+if [ "$PORTAGE_REPO_NAME" = palemoon ]
+then
 # avoid gcc check of palemoon-27.* ebuilds, because for me it works
 pre_pkg_pretend() {
 pkg_pretend() {
@@ -37,6 +39,7 @@ mozconfig_enable() {
 		echo "ac_add_options --${e}" >> "${S}/.mozconfig"
 	done
 }
+fi
 ;;
 esac
 
