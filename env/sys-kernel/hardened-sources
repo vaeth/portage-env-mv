@@ -1,2 +1,2 @@
 
-. /etc/portage/env/scripts/mv_all_kernel_sources NOINST_KERNEL
+. /etc/portage/env/scripts/mv_all_kernel_sources -NOINST_KERNEL

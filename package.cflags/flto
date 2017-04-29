@@ -442,6 +442,7 @@ sys-devel/m4 +fwhole-program
 sys-devel/patch +fwhole-program
 sys-fs/avfs +fwhole-program
 sys-fs/ddrescue +fwhole-program
+sys-fs/dd-rescue +fwhole-program +flto*
 sys-fs/dosfstools +fwhole-program
 sys-fs/e2fsprogs +fwhole-program
 sys-fs/encfs +fwhole-program
