@@ -207,7 +207,7 @@ mv_die() {
 }
 
 if [ $# -ne 0 ] && case $1 in
-*profile.bashrc)
+"${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN"*|*profile.bashrc)
 	false;;
 esac
 then	[ -z "${MV_OVERRIDE:++}" ] && case ${EAPI:-0} in
