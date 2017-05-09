@@ -1,0 +1,11 @@
+--- node-v7.9.0/deps/v8/src/objects-body-descriptors.h
++++ node-v7.9.0/deps/v8/src/objects-body-descriptors.h
+@@ -99,7 +99,7 @@
+ 
+   template <typename StaticVisitor>
+   static inline void IterateBody(HeapObject* obj, int object_size) {
+-    IterateBody(obj);
++    IterateBody<StaticVisitor>(obj);
+   }
+ };
+ 

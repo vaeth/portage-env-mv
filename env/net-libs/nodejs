@@ -1,0 +1,1 @@
+. /etc/portage/env/scripts/mv_patch gcc7 # https://github.com/nodejs/node/issues/10388

@@ -237,7 +237,7 @@ games-emulation/dosbox +fwhole-program
 games-emulation/sdlmame +fwhole-program +flto-partition*
 games-emulation/xmame +fwhole-program +flto-partition* !+flto* # ICE
 games-emulation/xmess +fwhole-program !+flto* # ICE
-games-engines/freesci !+flto* # ICE
+games-engines/freesci +flto* # ICE on x86; undefined reference with gcc-7
 games-engines/frotz +fwhole-program
 games-engines/scummvm +flto*
 games-engines/scummvm-tools +fwhole-program +flto* # PO
