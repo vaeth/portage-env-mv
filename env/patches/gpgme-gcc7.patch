@@ -1,0 +1,20 @@
+--- gpgme-1.8.0/lang/qt/src/threadedjobmixin.h
++++ gpgme-1.8.0/lang/qt/src/threadedjobmixin.h
+@@ -51,6 +51,7 @@
+ #include "job.h"
+ 
+ #include <cassert>
++#include <functional>
+ 
+ namespace QGpgME
+ {
+--- gpgme-1.8.0/lang/qt/src/qgpgmenewcryptoconfig.cpp
++++ gpgme-1.8.0/lang/qt/src/qgpgmenewcryptoconfig.cpp
+@@ -48,6 +48,7 @@
+ 
+ #include <sstream>
+ #include <string>
++#include <functional>
+ #include <cassert>
+ 
+ using namespace QGpgME;

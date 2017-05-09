@@ -75,7 +75,7 @@ app-arch/p7zip +fwhole-program
 app-arch/par2cmdline +fwhole-program
 app-arch/sharutils !+flto* # ICE
 app-arch/star +fwhole-program
-app-arch/tar +fwhole-program
+app-arch/tar +fwhole-program +flto* # ICE with gcc-7
 app-arch/unrar +fwhole-program
 app-arch/unzip +fwhole-program
 app-arch/zpaq +fwhole-program
@@ -216,7 +216,7 @@ dev-vcs/cvs +fwhole-program -ffat-lto-objects # PO
 dev-vcs/git !+flto* # ICE
 dev-vcs/mercurial +fwhole-program
 dev-vcs/monotone +fwhole-program +flto* # PO
-dev-vcs/rcs +fwhole-program
+dev-vcs/rcs +fwhole-program +flto* # ICE with gcc-7
 dev-vcs/subversion +fwhole-program +flto* # PO
 games-action/gltron +fwhole-program
 games-arcade/briquolo +fwhole-program
@@ -279,6 +279,7 @@ media-libs/flac +fwhole-program +flto*
 media-libs/glu +fwhole-program +flto* # |
 media-libs/gstreamer +fwhole-program +flto* # PO
 media-libs/libbluray +fwhole-program +flto* # |
+media-libs/libdv !flto* # PIC with gcc-7
 media-libs/libdvbpsi +fwhole-program +flto* # PO
 media-libs/libdvdnav +fwhole-program +flto* # |
 media-libs/libdvdread +fwhole-program +flto* # |
@@ -380,7 +381,7 @@ net-voip/yate +fwhole-program +flto* # PO
 net-vpn/ipsec-tools +fwhole-program -ffat-lto-objects # SL
 net-vpn/tor +fwhole-program
 net-wireless/crda +fwhole-program
-net-wireless/wireless-tools +fwhole-program \~+flto* # PIC
+net-wireless/wireless-tools +fwhole-program +flto* # PIC (with gcc-7 also on x86)
 sci-libs/gdal !+flto* # ICE
 sci-libs/qrupdate +fwhole-program +flto* # PO
 sci-mathematics/axiom +fwhole-program +flto* # PO
@@ -396,7 +397,7 @@ sci-mathematics/yacas !+flto* # ICE
 sci-visualization/gnuplot +fwhole-program
 sys-apps/attr +fwhole-program
 sys-apps/busybox !+flto* # ICE
-sys-apps/coreutils +fwhole-program
+sys-apps/coreutils +fwhole-program +flto* # ICE with gcc-7
 sys-apps/dbus +fwhole-program
 sys-apps/diffutils +fwhole-program
 sys-apps/dtc +fwhole-program +flto* # PO
@@ -404,7 +405,7 @@ sys-apps/fakeroot +fwhole-program
 sys-apps/fakeroot-ng +fwhole-program
 sys-apps/findutils +fwhole-program
 sys-apps/gawk !+flto* # ICE
-sys-apps/grep +fwhole-program
+sys-apps/grep +fwhole-program +flto* # ICE with gcc-7
 sys-apps/groff +fwhole-program
 sys-apps/hdparm +fwhole-program
 sys-apps/iproute2 +fwhole-program -ffat-lto-objects # SL
@@ -431,11 +432,11 @@ sys-auth/polkit +fwhole-program +flto* # PO
 sys-auth/polkit-qt +fwhole-program +flto* # PO
 sys-block/parted +fwhole-program
 sys-devel/bc +fwhole-program
-sys-devel/bison +fwhole-program
+sys-devel/bison +fwhole-program +flto* # ICE with gcc-7
 sys-devel/clang +fwhole-program +flto-partition* # -flto needs >3GB here
 sys-devel/flex +fwhole-program -ffat-lto-objects # SL
 sys-devel/gcc +fwhole-program -ffat-lto-objects # SL
-sys-devel/gdb +fwhole-program
+sys-devel/gdb +fwhole-program +flto* # duplicate symbol with gcc-7
 sys-devel/gettext +fwhole-program
 sys-devel/llvm +fwhole-program
 sys-devel/m4 +fwhole-program
