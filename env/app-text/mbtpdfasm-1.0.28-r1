@@ -1,6 +1,4 @@
-
 # _Type is reserved in >=gcc-6; the macro has to be renamed:
-
 . /etc/portage/env/scripts/mv_patch \
 	-e s/_Type/_m_Type/ diversPdf.hpp \
 	-e s/_Type/_m_Type/ diversPdf.cpp \

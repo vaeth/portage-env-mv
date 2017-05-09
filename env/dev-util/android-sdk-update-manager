@@ -1,11 +1,5 @@
-. /etc/portage/env/scripts/mv_patch
-
-post_src_prepare() {
-	mv_start && sed -i \
-		-e "s/-Xmx256M *//" \
-		-- tools/android
-	mv_end
-}
+. /etc/portage/env/scripts/mv_patch \
+	-e 's/-Xmx256M *//' tools/android
 
 post_src_install() {
 	mv_start && sed -i \

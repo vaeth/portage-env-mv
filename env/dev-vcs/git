@@ -1,6 +1,5 @@
-
 . /etc/portage/env/scripts/mv_patch \
-	-e \''s/\(ln [^-]\)/false \1/
-	s/cp \(["]\?\)[^ ]*bindir[^ \/]*/ln -s \1\/usr\/bin/
-	s/cp /ln -s /'\' \
-	Makefile
+	-e 's/\(ln [^-]\)/false \1/
+s/cp \(["]\?\)[^ ]*bindir[^ \/]*/ln -s \1\/usr\/bin/
+s/cp /ln -s /' \
+		Makefile

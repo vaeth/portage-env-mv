@@ -12,9 +12,6 @@
 # In this case, the above mentioned function (or the function $MV_OVERRIDE
 # if the latter variable has been set) is defined to call
 # "mv_patch" (see below) with your arguments and be somewhat verbose about it.
-# Note that this feature uses eval to define the corresponding functoin,
-# so you should use this only if your arguments are safe (no variables).
-# Moreover, you might have to quote your quotes.
 
 # Usage: mv_patch PATCH1 PATCH2 ... [shell [some shell code]]
 #
@@ -206,18 +203,20 @@ mv_die() {
 	mv_end_die
 }
 
-if [ $# -ne 0 ] && case $1 in
+if [ $# -eq 1 ] && case $1 in
 "${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN"*|*profile.bashrc)
 	false;;
-esac
+esac || [ $# -gt 1 ]
 then	[ -z "${MV_OVERRIDE:++}" ] && case ${EAPI:-0} in
 	[01])
 		MV_OVERRIDE='post_src_unpack';;
 	*)
 		MV_OVERRIDE='post_src_prepare';;
 	esac
+	quoteargs=`printf ' %q' "$@"`
 	eval "$MV_OVERRIDE() {
-	mv_start && mv_patch $*
+	mv_start && mv_patch$quoteargs
 	mv_end
 }"
+	unset quoteargs
 fi

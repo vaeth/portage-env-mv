@@ -1,6 +1,2 @@
-. /etc/portage/env/scripts/mv_patch
-
-post_src_prepare () {
-	mv_start && mv_patch -e '/\.a$/d' "$T"/eselect.cblas.reference
-	mv_end
-}
+. /etc/portage/env/scripts/mv_patch \
+	-e '/\.a$/d' "$T"/eselect.cblas.reference
