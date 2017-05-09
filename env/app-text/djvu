@@ -1,5 +1,0 @@
-. /etc/portage/env/scripts/mv_patch \
-	-e 's/^PNGICONS.*/PNGICONS = hi22-djvu.png hi32-djvu.png hi48-djvu.png hi64-djvu.png/
-/hi72-djvu.png/d
-/hi256-djvu.png/d' \
-		desktopfiles/Makefile.in
