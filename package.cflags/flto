@@ -308,7 +308,7 @@ media-sound/kradio +fwhole-program +flto* # PO
 media-sound/kstreamripper +fwhole-program +flto* # PO
 media-sound/lilypond !+flto* # ICE
 media-sound/mpg123 +fwhole-program +flto* # |
-media-sound/musepack-tools +fwhole-program \~+flto* # PIC
+media-sound/musepack-tools +fwhole-program +flto* # PIC; on x86 failure if default pie is enabled
 media-sound/normalize +fwhole-program
 media-sound/pulseaudio +fwhole-program +flto* # PO
 media-sound/qmmp +fwhole-program +flto* # PO
