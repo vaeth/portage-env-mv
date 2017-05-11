@@ -34,7 +34,7 @@
 #     environment variables or compiler options. If possible this happens in
 #     this file.
 # pie
-#     For packages which break with -fPIE -pie
+#     For packages which break with -fPIE -pie or without -fno-PIE -no-pie
 # temporary
 #     As the name says: entries which are expected to be removed soon but
 #     which might be currently necessary for some reason or another...
@@ -110,7 +110,7 @@
 # MAKEOPTS-='-j*'
 #
 # In case of runtime errors (e.g. segfaults), try first recompiling with
-# SAFE -flifetime-dse=1 -fno-delete-null-pointer-checks
+# SAFE -flifetime-dse=1 -fno-delete-null-pointer-checks -fno-PIE -no-pie
 #
 # which eliminates everything. (Note however that especially large file support
 # should better be *added* if libraries use it, and that not using -Wl,-z,now
