@@ -6,6 +6,7 @@
 # This file does not include modifications of CFLAGS/variables which
 # override our general global settings; those go into all-systems.
 
+<=app-cdr/xcdroast-0.98_alpha16-r3 \~"EXTRA_EMAKE=XCDRLIB_PREFIX=\"\$EPREFIX/usr/lib64/xcdroast-0.98\""
 #app-misc/lirc "LIRC_OPTS='--with-driver=pctv'"
 #app-portage/eix "~EXTRA_ECONF=--enable-nopie-security"
 #app-office/libreoffice "export ac_objext='o'"

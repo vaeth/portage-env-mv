@@ -1,6 +1,9 @@
 # Fix issues with the gold linker
 
+<=app-emulation/dosemu-1.4.1_pre20130107-r3 -fuse-ld=bfd
 <=dev-util/strace-4.15 -fuse-ld=bfd # https://bugs.gentoo.org/show_bug.cgi?id=602908
 <=net-fs/sshfs-2.8 -fuse-ld=bfd # https://bugs.gentoo.org/show_bug.cgi?id=585150
-<=sys-fs/fuse-2.9.7 -fuse-ld=bfd # https://bugs.gentoo.org/show_bug.cgi?id=595262
+=sci-mathematics/scilab-5.5.2-r1 -fuse-ld=bfd
 <=sys-apps/memtest86+-5.01-r2 -fuse-ld=bfd # https://bugs.gentoo.org/show_bug.cgi?id=580212
+<=sys-devel/gettext-0.19.8.1 -fuse-ld=bfd
+<=sys-fs/fuse-2.9.7 -fuse-ld=bfd # https://bugs.gentoo.org/show_bug.cgi?id=595262
