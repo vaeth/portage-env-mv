@@ -24,7 +24,7 @@ app-office/libreoffice +finline-functions +frename-registers +*math* +fdirective
 app-portage/deltup +Wl,--as-needed LD_AS_NEEDED=
 app-shells/dash +fdirectives-only
 app-shells/schily-tools +fno-common
-app-text/a2ps NOLDADD=1
+app-text/a2ps NOLDADD=1 +Wl,--as-needed # (gcc-7[pie] + gold)
 app-text/aspell +D*DEBUG +D*ASSERT
 app-text/dvipng +D*DEBUG +D*ASSERT
 app-text/fbreader +Wl,--as-needed LD_AS_NEEDED=
@@ -255,7 +255,7 @@ x11-libs/pango -mstackrealign +ftracer +fmerge-all-constants # +O* -O2 +ftree-ve
 x11-libs/pixman -mstackrealign +ftracer +fmerge-all-constants # +O* -O2 +ftree-vectorize* avoids some firefox crashes
 x11-libs/wxGTK NOLDADD=1 +fvisibility-inlines-hidden
 x11-misc/gtkdialog +fno-common
-x11-misc/redshift +ffast-math # otherwise fails to recognize options correctly with gcc-7
+x11-misc/redshift +ffast-math # with -ffast-math fails to recognize options correctly with gcc-7
 x11-misc/xaos +fno-common
 x11-misc/xfractint +fno-common
 x11-misc/xscreensaver +D*DEBUG +D*ASSERT
