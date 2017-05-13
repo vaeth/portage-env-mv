@@ -437,7 +437,7 @@ sys-devel/clang +fwhole-program +flto-partition* # -flto needs >3GB here
 sys-devel/flex +fwhole-program -ffat-lto-objects # SL
 sys-devel/gcc +fwhole-program -ffat-lto-objects # SL
 sys-devel/gdb +fwhole-program +flto* # duplicate symbol with gcc-7
-sys-devel/gettext +fwhole-program
+sys-devel/gettext +fwhole-program +flto* # with gcc-7 + gold: undefined reference
 sys-devel/llvm +fwhole-program
 sys-devel/m4 +fwhole-program
 sys-devel/patch +fwhole-program
