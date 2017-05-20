@@ -1,0 +1,7 @@
+# mv prefers green cursor over of blinking chinese water torture:
+# This patch is required for linux terminals and tmux/emacs/vi
+# You still have to printf '\033[?17;0;168c' in shell startup and /etc/issue
+# Without this patch, see https://www.emacswiki.org/emacs/CursorOnLinuxConsole
+# (use locally infocmp linux >1, edit end of cnorm and cvvis and "tic 1")
+. /etc/portage/env/scripts/mv_patch \
+	-e 's/\(\\E[[]\)[?][80]c,/\1\?17;0;168c,/g' misc/terminfo.src
