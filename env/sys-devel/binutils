@@ -1,7 +1,0 @@
-
-post_pkg_postinst() {
-	elog "mv's hack: ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*"
-	elog "binutils-config --linker ld.gold"
-	binutils-config --linker ld.gold || die "mv's hack failed"
-	elog "mv's hack finished"
-}
