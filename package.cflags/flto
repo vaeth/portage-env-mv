@@ -159,6 +159,7 @@ dev-lang/orc +fwhole-program +flto* # PO
 dev-lang/perl +fwhole-program +flto*
 dev-lang/python +fwhole-program +flto* # +fwhole-program would be enough, but e.g. media-sound/lilypond adds all python flags and then has ICE
 dev-lang/ruby +fwhole-program +flto* # PO
+dev-lang/rust +fwhole-program +flto*
 dev-lang/spidermonkey +fwhole-program +flto*
 dev-lang/tcl +fwhole-program -ffat-lto-objects # SL
 dev-lang/tk +fwhole-program -ffat-lto-objects # SL
@@ -203,6 +204,7 @@ dev-tex/metapost +fwhole-program +flto* # PO
 dev-texlive/texlive-metapost +fwhole-program
 dev-util/android-tools !+flto* # ICE
 dev-util/bdelta +fwhole-program
+dev-util/cargo +fwhole-program +flto*
 dev-util/cmake +fwhole-program
 dev-util/dialog +fwhole-program -ffat-lto-objects # SL
 dev-util/gperf +fwhole-program
@@ -354,6 +356,7 @@ net-im/jabberd2 +fwhole-program +flto* # PO
 net-im/psi +fwhole-program +flto* # PO
 net-im/psimedia +fwhole-program +flto* # PO
 net-libs/libsrtp +fwhole-program +flto* # PO
+net-libs/libssh2 +flto* # |
 net-libs/opal +fwhole-program +flto* # PO
 net-libs/ptlib +fwhole-program +flto* # PO
 net-mail/uw-mailutils +fwhole-program -ffat-lto-objects # PO

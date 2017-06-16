@@ -13,6 +13,7 @@
 app-text/u2ps "EXTRA_EMAKE+='SHELL=/bin/bash'"
 #dev-games/flatzebra -lSDL_image -lSDL_mixer # Might be needed for burgerspace linking
 dev-java/icedtea* "EXTRA_ECONF+='--with-pax=paxctl-ng'"
+dev-lang/rust "export SHELL=/bin/sh"
 dev-libs/libsodium !"export enable_pie=no"
 dev-perl/Clone "export mymake='DEFINE=-D_LARGEFILE64_SOURCE'" # -D_LARGEFILE64_SOURCE is filtered by the ebuild but *MUST* be used.
 =dev-tex/catdvi-0.14-r1 -I/usr/lib

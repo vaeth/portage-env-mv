@@ -69,6 +69,7 @@ dev-lang/lua +fPIE +pie
 dev-lang/orc !+fPIE !+pie
 dev-lang/python +fPIE +pie
 dev-lang/perl +fPIE +pie
+dev-lang/rust +fPIE +pie
 dev-lang/spidermonkey +fPIE +pie
 dev-lang/tcl +fPIE +pie
 dev-lang/tk +fPIE +pie
