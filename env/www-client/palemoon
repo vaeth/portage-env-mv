@@ -39,6 +39,10 @@ mozconfig_enable() {
 		echo "ac_add_options --${e}" >> "${S}/.mozconfig"
 	done
 }
+else
+pre_src_configure() {
+	append-ldflags -Wl,-rpath="$EPREFIX/usr/$(get_libdir)/palemoon"
+}
 fi
 ;;
 esac
