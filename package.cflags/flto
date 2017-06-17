@@ -70,7 +70,7 @@ app-arch/cpio +fwhole-program
 app-arch/gzip +fwhole-program
 app-arch/lha !+flto* # ICE
 app-arch/lrzip +fwhole-program
-app-arch/lz4 +fwhole-program
+app-arch/lz4 +flto* # PIC on amd64 and x86
 app-arch/p7zip +fwhole-program
 app-arch/par2cmdline +fwhole-program
 app-arch/sharutils !+flto* # ICE
