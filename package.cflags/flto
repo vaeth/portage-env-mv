@@ -281,7 +281,7 @@ media-libs/flac +fwhole-program +flto*
 media-libs/glu +fwhole-program +flto* # |
 media-libs/gstreamer +fwhole-program +flto* # PO
 media-libs/libbluray +fwhole-program +flto* # |
-media-libs/libdv !flto* # PIC with gcc-7
+media-libs/libdv !+flto* # PIC with gcc-7
 media-libs/libdvbpsi +fwhole-program +flto* # PO
 media-libs/libdvdnav +fwhole-program +flto* # |
 media-libs/libdvdread +fwhole-program +flto* # |

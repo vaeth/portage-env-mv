@@ -133,6 +133,7 @@
 # +Wl,--as-needed LD_AS_NEEDED=
 # +D*FORTIFY* -U_FORTIFY_SOURCE (the latter is not always necessary)
 # +fstack-protector*
+# +fstack-check*
 # +fmerge-all-constants
 # +fno-semantic-interposition
 # +Wl,-z,relro # is a security risk
