@@ -33,6 +33,7 @@ app-text/aspell +fPIE +pie
 app-text/djview !+fPIE !+pie
 app-text/djvu +fPIE +pie
 app-text/dvipsk !+fPIE !+pie
+app-text/enchant !+fPIE !+pie
 app-text/fbreader +fPIE +pie
 app-text/ghostscript-gpl +fPIE +pie
 app-text/hunspell +fPIE +pie

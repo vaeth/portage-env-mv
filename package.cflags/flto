@@ -115,6 +115,7 @@ app-text/djvu +fwhole-program
 app-text/dvipsk !+flto* # ICE
 app-text/dvisvgm +fwhole-program
 app-text/ebook-tools +fwhole-program \+flto* # PIC
+app-text/enchant +flto* # |
 app-text/fbreader +fwhole-program
 app-text/ghostscript-gpl +fwhole-program
 app-text/gocr +fwhole-program
