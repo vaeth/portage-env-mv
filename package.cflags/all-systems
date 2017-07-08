@@ -133,7 +133,7 @@ media-libs/opus +*math*
 media-libs/plotutils +*math*
 media-libs/raptor +*math*
 media-libs/sg +fno-common
-media-libs/xine-lib NOLDADD=1
+media-libs/xine-lib NOLDADD=1 +fno-common
 media-plugins/live +Wl,--relax
 media-sound/amarok NOLDADD=1 +fvisibility-inlines-hidden
 media-sound/audacity CONFIG_SITE= +fno-common

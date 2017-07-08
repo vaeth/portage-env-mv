@@ -75,6 +75,7 @@ app-arch/p7zip +fwhole-program
 app-arch/par2cmdline +fwhole-program
 app-arch/sharutils !+flto* # ICE
 app-arch/star +fwhole-program
+app-arch/snappy +fwhole-program +flto*
 app-arch/tar +fwhole-program +flto* # ICE with gcc-7
 app-arch/unrar +fwhole-program
 app-arch/unzip +fwhole-program
