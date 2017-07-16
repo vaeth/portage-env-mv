@@ -5,6 +5,7 @@ mv_rmremotefs() {
 	local i r
 	rm -v -- \
 		"$ED/etc/systemd/system/multi-user.target.wants/remote-fs.target" \
+		"$ED/etc/systemd/system/dbus-org.freedesktop.network1.service" \
 		"$ED/etc/systemd/system/dbus-org.freedesktop.resolve1.service" \
 		|| return
 	r=1
