@@ -12,7 +12,7 @@ mv_nosuid() {
 	if [ -n "`find "$ED" -perm /4000`" ]
 	then	einfo "mv's hack: $f"
 		find "$ED" -perm /4000 -exec chmod -v -- -s '{}' '+' || \
-			die "mv's hack mv_rmla from $f failed"
+			die "mv's hack mv_nosuid from $f failed"
 		elog "mv's hack mv_nosuid from $f applied"
 	else	die "mv's hack mv_nosuid from $f is redundant"
 	fi
