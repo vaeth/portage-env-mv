@@ -64,6 +64,7 @@ app-admin/metalog +fwhole-program
 app-admin/paxtest +fwhole-program
 app-admin/sudo +fwhole-program
 app-admin/tmpwatch +fwhole-program
+app-arch/brotli +fwhole-program
 app-arch/bzip2 +flto* # runtime segfault (PIC reallocation) on amd64 and x86
 app-arch/cabextract +fwhole-program
 app-arch/cpio +fwhole-program
