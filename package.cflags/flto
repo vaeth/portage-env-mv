@@ -357,7 +357,6 @@ net-ftp/lftp +fwhole-program +flto* # PO
 net-ftp/ncftp +fwhole-program
 net-im/jabberd2 +fwhole-program +flto* # PO
 net-im/psi +fwhole-program +flto* # PO
-net-im/psimedia +fwhole-program +flto* # PO
 net-libs/libsrtp +fwhole-program +flto* # PO
 net-libs/libssh2 +flto* # |
 net-libs/opal +fwhole-program +flto* # PO
