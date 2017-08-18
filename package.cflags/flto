@@ -80,6 +80,7 @@ app-arch/snappy +fwhole-program +flto*
 app-arch/tar +fwhole-program +flto* # ICE with gcc-7
 app-arch/unrar +fwhole-program
 app-arch/unzip +fwhole-program
+app-arch/zopfli +fwhole-program +flto*
 app-arch/zpaq +fwhole-program
 app-backup/dar +fwhole-program +flto* # PO
 app-cdr/cdrtools +fwhole-program
