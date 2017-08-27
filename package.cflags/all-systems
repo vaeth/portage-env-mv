@@ -114,6 +114,7 @@ media-libs/alsa-lib NOC*OPT=1 +O* -O1 # avoid: Inappropriate ioctl for device
 media-libs/alsa-oss NOC*OPT=1 +O* -O1 +D*FILE* # avoid: Inappropriate ioctl for device
 media-libs/freeglut +fno-common
 media-libs/freetype -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid some firefox/openoffice crashes
+media-libs/gegl +fno-common
 media-libs/gst-plugins-base NOLAFILEREMOVE=1
 media-libs/id3lib NOLDADD=1
 media-libs/jbigkit +finline-functions

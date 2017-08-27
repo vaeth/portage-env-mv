@@ -168,6 +168,7 @@ dev-lang/spidermonkey +fwhole-program +flto*
 dev-lang/tcl +fwhole-program -ffat-lto-objects # SL
 dev-lang/tk +fwhole-program -ffat-lto-objects # SL
 dev-lang/yasm !+flto* # ICE
+dev-libs/appstream-glib +fwhole-program +flto* # |
 dev-libs/boost +fwhole-program -ffat-lto-objects # SL
 dev-libs/botan +fwhole-program +flto* # PO Needed for monotone to compile
 dev-libs/dbus-glib +fwhole-program +flto* # |
@@ -358,6 +359,7 @@ net-ftp/lftp +fwhole-program +flto* # PO
 net-ftp/ncftp +fwhole-program
 net-im/jabberd2 +fwhole-program +flto* # PO
 net-im/psi +fwhole-program +flto* # PO
+net-libs/glib-networking +fwhole-program +flto* # |
 net-libs/libsrtp +fwhole-program +flto* # PO
 net-libs/libssh2 +flto* # |
 net-libs/opal +fwhole-program +flto* # PO
