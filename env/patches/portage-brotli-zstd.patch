@@ -1,0 +1,11 @@
+--- 1/bin/ebuild-helpers/ecompressdir
++++ 1/bin/ebuild-helpers/ecompressdir
+@@ -164,6 +164,8 @@
+ 	".gz"   "gunzip -f"
+ 	".bz2"  "bunzip2 -f"
+ 	".xz"   "unxz -f"
++	".br"   "bro -d"
++	".zst"  "unzstd -f"
+ 	".lzma" "unxz -f"
+ )
+ 

@@ -1,0 +1,83 @@
+--- 1/info/filesys.c
++++ 1/info/filesys.c
+@@ -66,6 +66,8 @@
+ #endif
+   { ".xz", "unxz" },
+   { ".bz2", "bunzip2" },
++  { ".br", "bro -d" },
++  { ".zst", "unzstd" },
+   { ".z", "gunzip" },
+   { ".lzma", "unlzma" },
+   { ".Z", "uncompress" },
+--- 1/install-info/install-info.c
++++ 1/install-info/install-info.c
+@@ -428,6 +428,16 @@
+       len -= 3;
+       ret[len] = 0;
+     }
++  else if (len > 3 && FILENAME_CMP (ret + len - 3, ".br") == 0)
++    {
++      len -= 3;
++      ret[len] = 0;
++    }
++  else if (len > 4 && FILENAME_CMP (ret + len - 4, ".zst") == 0)
++    {
++      len -= 4;
++      ret[len] = 0;
++    }
+   else if (len > 4 && FILENAME_CMP (ret + len - 4, ".bz2") == 0)
+     {
+       len -= 4;
+@@ -715,6 +725,18 @@
+   if (!f)
+     {
+       free (*opened_filename);
++      *opened_filename = concat (filename, ".br", "");
++      f = fopen (*opened_filename, FOPEN_RBIN);
++    }
++  if (!f)
++    {
++      free (*opened_filename);
++      *opened_filename = concat (filename, ".zst", "");
++      f = fopen (*opened_filename, FOPEN_RBIN);
++    }
++  if (!f)
++    {
++      free (*opened_filename);
+       *opened_filename = concat (filename, ".bz2", "");
+       f = fopen (*opened_filename, FOPEN_RBIN);
+     }
+@@ -823,6 +845,14 @@
+     *compression_program = "bzip2";
+ #endif
+ 
++  else if (data[0] >= '\x22' && data[0] <= '\x28' &&
++    data[1] == '\xB5' && data[2] == '\x2F' && data[3] == '\xFD')
++#ifndef STRIP_DOT_EXE
++    *compression_program = "zstd.exe";
++#else
++    *compression_program = "zstd";
++#endif
++
+   else if (data[0] == 'B' && data[1] == 'Z' && data[2] == '0')
+ #ifndef STRIP_DOT_EXE
+     *compression_program = "bzip.exe";
+@@ -854,7 +884,17 @@
+ #endif
+ 
+   else
+-    *compression_program = NULL;
++    {
++      unsigned len = strlen (*opened_filename);
++      if (len > 3 && FILENAME_CMP (*opened_filename + len - 3, ".br") == 0)
++#ifndef STRIP_DOT_EXE
++        *compression_program = "bro.exe";
++#else
++        *compression_program = "bro";
++#endif
++      else
++        *compression_program = NULL;
++    }
+ 
+   /* Seek back over the magic bytes.  */
+   if (fseek (f, 0, 0) < 0)
