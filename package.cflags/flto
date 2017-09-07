@@ -490,6 +490,7 @@ www-plugins/mozplugger +fwhole-program +flto* # PO
 x11-apps/xrandr +fwhole-program
 x11-base/xorg-server +flto*
 x11-drivers/xf86-video-intel +fwhole-program +flto*
+x11-drivers/nvidia-drivers +fwhole-program +flto*
 x11-libs/fltk +fwhole-program +flto* # PO
 x11-libs/gdk-pixbuf +fwhole-program +flto* # |
 x11-libs/gtkglext +fwhole-program +flto* # PO

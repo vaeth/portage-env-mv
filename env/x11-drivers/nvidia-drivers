@@ -1,4 +1,6 @@
 #!/bin/bash
 if masked-packages -q -m '>*/*-300' "$CATEGORY/$PF"
-then	: . /etc/portage/env/scripts/mv_patch kernel-4.6
+then
+	# https://github.com/voidlinux/void-packages/tree/master/srcpkgs/nvidia340/files
+	. /etc/portage/env/scripts/mv_patch linux-4.9 linux-4.10 linux-4.11 linux-4.12
 fi

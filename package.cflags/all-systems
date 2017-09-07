@@ -249,6 +249,7 @@ www-client/palemoon +D*FILE* +*math* +fno-common +fmerge-all-constants +finline-
 www-plugins/nspluginwrapper NOLDADD=1
 x11-base/xorg-server +fno-common +Wl,-z,now +fdirectives-only
 x11-drivers/xf86-* +fno-common +Wl,-z,now +fdirectives-only
+x11-drivers/nvidia-drivers +fno-common
 x11-libs/libXxf86vm CONFIG_SITE= # nvidia-settings needs the static version
 x11-libs/libdrm +fno-common
 x11-libs/pango -mstackrealign +ftracer +fmerge-all-constants # +O* -O2 +ftree-vectorize* avoids some firefox crashes
