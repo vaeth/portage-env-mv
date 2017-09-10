@@ -49,3 +49,53 @@
         (".xz"        . "unxz")
         (""           . nil)))
    "List of file name suffixes and associated decoding commands.
+--- 1/lisp/jka-cmpr-hook.el
++++ 1/lisp/jka-cmpr-hook.el
+@@ -238,6 +238,34 @@
+      "XZ compressing"     "xz"           ("-c" "-q")
+      "XZ uncompressing"   "xz"           ("-c" "-q" "-d")
+      t nil "\3757zXZ\0"]
++    ["\\.bro?\\'"
++     "brotli compressing" "bro" ("--quality" "99" "--window" "24")
++     "brotli uncompressing" "bro" ("-d")
++     nil t ""]
++    ["\\.tbro?\\'"
++     "brotli compressing" "bro" ("--quality" "99" "--window" "24")
++     "brotli uncompressing" "bro" ("-d")
++     nil t ""]
++    ["\\.lz4\\'"
++     "zstd compressing" "lz4" ("-c" "-q" "-9")
++     "zstd uncompressing" "lz4" ("-c" "-q" "-d")
++     t t "\4\42\115\30"]
++    ["\\.tl4\\'"
++     "zstd compressing" "lz4" ("-c" "-q" "-9")
++     "zstd uncompressing" "lz4" ("-c" "-q" "-d")
++     t t "\004\042\115\030"]
++    ["\\.tl?z4\\'"
++     "zstd compressing" "lz4" ("-c" "-q" "-9")
++     "zstd uncompressing" "lz4" ("-c" "-q" "-d")
++     t t "\004\042\115\030"]
++    ["\\.zst\\'"
++     "zstd compressing" "zstd" ("-c" "-q" "-f" "-T0" "--ultra" "-22")
++     "zstd uncompressing" "zstd" ("-c" "-q" "-f" "-d")
++     t t "\050\265\057\375"]
++    ["\\.tzst?\\'"
++     "zstd compressing" "zstd" ("-c" "-q" "-f" "-T0" "--ultra" "-22")
++     "zstd uncompressing" "zstd" ("-c" "-q" "-f" "-d")
++     t t "\050\265\057\375"]
+     ;; dzip is gzip with random access.  Its compression program can't
+     ;; read/write stdin/out, so .dz files can only be viewed without
+     ;; saving, having their contents decompressed with gzip.
+@@ -308,7 +336,11 @@
+ (defcustom jka-compr-mode-alist-additions
+   (purecopy '(("\\.tgz\\'" . tar-mode)
+               ("\\.tbz2?\\'" . tar-mode)
+-              ("\\.txz\\'" . tar-mode)))
++              ("\\.txz\\'" . tar-mode)
++              ("\\.tbro?\\'" . tar-mode)
++              ("\\.tl4\\'" . tar-mode)
++              ("\\.tl?z4\\'" . tar-mode)
++              ("\\.tzst?\\'" . tar-mode)))
+   "List of pairs added to `auto-mode-alist' when installing jka-compr.
+ Uninstalling jka-compr removes all pairs from `auto-mode-alist' that
+ installing added.
