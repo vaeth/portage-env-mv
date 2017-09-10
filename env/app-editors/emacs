@@ -1,2 +1,2 @@
 
-. /etc/portage/env/scripts/mv_patch emacs-server-socket-dir brotli-zstd
+. /etc/portage/env/scripts/mv_patch emacs-server-socket-dir brotli-lz4-zstd

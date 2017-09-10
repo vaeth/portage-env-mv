@@ -1,19 +1,22 @@
 --- 1/lisp/info.el
 +++ 1/lisp/info.el
-@@ -497,6 +497,7 @@
+@@ -497,6 +497,9 @@
        '( (".gz"       . "gunzip")
  	 (".z"        . "gunzip")
  	 (".bz2"      . ("bzip2" "-dc"))
 +	 (".br"       . ("bro" "-d"))
++	 (".lz4"      . ("lz4" "-d" "-q"))
++	 (".zst"      . ("zst" "-d" "-f" "-q"))
  	 (".inz"      . "gunzip")
  	 (".igz"      . "gunzip")
  	 (".info.Z"   . "gunzip")
-@@ -515,12 +516,16 @@
+@@ -515,12 +516,18 @@
         (".info.gz"   . "gunzip")
         (".info.z"    . "gunzip")
         (".info.bz2"  . ("bzip2" "-dc"))
 +       (".info.br"   . ("bro" "-d"))
-+       (".info.zst"  . "unzstd")
++	(".info.lz4"  . ("lz4" "-d" "-q"))
++	(".info.zst"  . ("zst" "-d" "-f" "-q"))
         (".info.xz"   . "unxz")
         (".info"      . nil)
         ("-info.Z"    . "uncompress")
@@ -21,25 +24,28 @@
         ("-info.gz"   . "gunzip")
         ("-info.bz2"  . ("bzip2" "-dc"))
 +       ("-info.br"   . ("bro" "-d"))
-+       ("-info.zst"  . "unzstd")
++	("-info.lz4"  . ("lz4" "-d" "-q"))
++	("-info.zst"  . ("zst" "-d" "-f" "-q"))
         ("-info.z"    . "gunzip")
         ("-info.xz"   . "unxz")
         ("-info"      . nil)
-@@ -529,6 +534,8 @@
+@@ -529,6 +534,9 @@
         ("/index.gz"  . "gunzip")
         ("/index.z"   . "gunzip")
         ("/index.bz2" . ("bzip2" "-dc"))
 +       ("/index.br"  . ("bro" "-d"))
-+       ("/index.zst" . "unzstd")
++	("/index.lz4" . ("lz4" "-d" "-q"))
++	("/index.zst" . ("zst" "-d" "-f" "-q"))
         ("/index.xz"  . "unxz")
         ("/index"     . nil)
         (".Z"         . "uncompress")
-@@ -536,6 +543,8 @@
+@@ -536,6 +543,9 @@
         (".gz"        . "gunzip")
         (".z"         . "gunzip")
         (".bz2"       . ("bzip2" "-dc"))
 +       (".br"        . ("bro" "-d"))
-+       (".zst"       . "unzstd")
++	(".lz4"       . ("lz4" "-d" "-q"))
++	(".zst"       . ("zst" "-d" "-f" "-q"))
         (".xz"        . "unxz")
         (""           . nil)))
    "List of file name suffixes and associated decoding commands.
