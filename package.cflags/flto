@@ -216,6 +216,7 @@ dev-util/gperf +fwhole-program
 dev-util/icmake +fwhole-program +flto* # PO
 dev-util/ltrace +fwhole-program
 dev-util/ninja +fwhole-program
+dev-util/pkgconf +flto* # |
 dev-util/schroot +fwhole-program +flto* # PO
 dev-util/strace +fwhole-program
 dev-util/valgrind +fwhole-program -ffat-lto-objects # PO
@@ -303,7 +304,6 @@ media-libs/phonon +flto* # PO
 media-libs/plotutils !+flto* # ICE
 media-libs/portaudio +fwhole-program +flto* # |
 media-libs/schroedinger +fwhole-program +flto* # PO
-media-libs/silgraphite +fwhole-program +flto* # PO
 media-libs/speex +fwhole-program !+flto* # ICE
 media-libs/x264 +fwhole-program -ffat-lto-objects
 media-sound/apulse +fwhole-program \~+flto* # PIC
