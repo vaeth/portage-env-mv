@@ -4,7 +4,7 @@
  	".gz"   "gunzip -f"
  	".bz2"  "bunzip2 -f"
  	".xz"   "unxz -f"
-+	".br"   "bro -d"
++	".br"   "brotli -cdf"
 +	".lz4"  "lz4 -d -q"
 +	".zst"  "zstd -d -f -q"
  	".lzma" "unxz -f"

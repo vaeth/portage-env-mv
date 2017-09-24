@@ -4,7 +4,7 @@
        '( (".gz"       . "gunzip")
  	 (".z"        . "gunzip")
  	 (".bz2"      . ("bzip2" "-dc"))
-+	 (".br"       . ("bro" "-d"))
++	 (".br"       . ("brotli" "-dcf"))
 +	 (".lz4"      . ("lz4" "-d" "-q"))
 +	 (".zst"      . ("zst" "-d" "-f" "-q"))
  	 (".inz"      . "gunzip")
@@ -14,7 +14,7 @@
         (".info.gz"   . "gunzip")
         (".info.z"    . "gunzip")
         (".info.bz2"  . ("bzip2" "-dc"))
-+       (".info.br"   . ("bro" "-d"))
++       (".info.br"   . ("brotli" "-dcf"))
 +	(".info.lz4"  . ("lz4" "-d" "-q"))
 +	(".info.zst"  . ("zst" "-d" "-f" "-q"))
         (".info.xz"   . "unxz")
@@ -23,7 +23,7 @@
         ("-info.Y"    . "unyabba")
         ("-info.gz"   . "gunzip")
         ("-info.bz2"  . ("bzip2" "-dc"))
-+       ("-info.br"   . ("bro" "-d"))
++       ("-info.br"   . ("brotli" "-dcf"))
 +	("-info.lz4"  . ("lz4" "-d" "-q"))
 +	("-info.zst"  . ("zst" "-d" "-f" "-q"))
         ("-info.z"    . "gunzip")
@@ -33,7 +33,7 @@
         ("/index.gz"  . "gunzip")
         ("/index.z"   . "gunzip")
         ("/index.bz2" . ("bzip2" "-dc"))
-+       ("/index.br"  . ("bro" "-d"))
++       ("/index.br"  . ("brotli" "-dcf"))
 +	("/index.lz4" . ("lz4" "-d" "-q"))
 +	("/index.zst" . ("zst" "-d" "-f" "-q"))
         ("/index.xz"  . "unxz")
@@ -43,7 +43,7 @@
         (".gz"        . "gunzip")
         (".z"         . "gunzip")
         (".bz2"       . ("bzip2" "-dc"))
-+       (".br"        . ("bro" "-d"))
++       (".br"        . ("bro" "-dcf"))
 +	(".lz4"       . ("lz4" "-d" "-q"))
 +	(".zst"       . ("zst" "-d" "-f" "-q"))
         (".xz"        . "unxz")
@@ -56,12 +56,12 @@
       "XZ uncompressing"   "xz"           ("-c" "-q" "-d")
       t nil "\3757zXZ\0"]
 +    ["\\.bro?\\'"
-+     "brotli compressing" "bro" ("--quality" "99" "--window" "24")
-+     "brotli uncompressing" "bro" ("-d")
++     "brotli compressing" "brotli" ("-c" "-w" "24" "--best")
++     "brotli uncompressing" "brotli" ("-c" "-d")
 +     nil t ""]
 +    ["\\.tbro?\\'"
-+     "brotli compressing" "bro" ("--quality" "99" "--window" "24")
-+     "brotli uncompressing" "bro" ("-d")
++     "brotli compressing" "brotli" ("-c" "-w" "24" "--best")
++     "brotli uncompressing" "brotli" ("-c" "-d")
 +     nil t ""]
 +    ["\\.lz4\\'"
 +     "zstd compressing" "lz4" ("-c" "-q" "-9")
