@@ -1,0 +1,7 @@
+# Special configurations/patches for current gcc versions
+# Typical examples for gcc-6 or newer:
+#   -flifetime-dse=1
+#   -fno-delete-null-pointer-checks
+#   -std=gnu++98
+# Or switch to clang_
+#   'export CXX=clang++ CC=clang'

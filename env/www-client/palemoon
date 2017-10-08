@@ -10,7 +10,7 @@ case $PV in
 
 if [ "$PORTAGE_REPO_NAME" = palemoon ]
 then
-# avoid gcc check of palemoon-27.* ebuilds, because for me it works
+# avoid gcc check of palemoon-27.* ebuilds
 pre_pkg_pretend() {
 pkg_pretend() {
 	# Ensure we have enough disk space to compile:
@@ -40,6 +40,26 @@ mozconfig_enable() {
 	done
 }
 else
+# avoid gcc check of palemoon-27.* ebuilds
+pre_pkg_pretend() {
+pkg_pretend() {
+	# Ensure we have enough disk space to compile:
+	CHECKREQS_DISK_BUILD=${REQUIRED_BUILDSPACE}
+	check-reqs_pkg_setup
+
+	# Ensure we are not on a gcc 5.* profile:
+	if [ "$(cc --version | head -c 3)" == "gcc" ]; then
+		einfo "Checking gcc version..."
+		if [ "$(gcc -dumpversion | head -c 1)" -ge 5 ]; then
+			if [ "$(gcc -dumpversion | head -c 1)" -eq 7 ]; then
+				gcc-7_error
+			else
+				gcc-5_warning
+			fi
+		fi
+	fi
+}
+}
 pre_src_configure() {
 	append-ldflags -Wl,-rpath="$EPREFIX/usr/$(get_libdir)/palemoon"
 }
