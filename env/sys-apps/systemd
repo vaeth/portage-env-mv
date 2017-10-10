@@ -5,8 +5,6 @@ mv_rmremotefs() {
 	local i r
 	rm -v -- \
 		"$ED/etc/systemd/system/multi-user.target.wants/remote-fs.target" \
-		"$ED/etc/systemd/system/dbus-org.freedesktop.network1.service" \
-		"$ED/etc/systemd/system/dbus-org.freedesktop.resolve1.service" \
 		|| return
 	r=1
 	for i in "$ED/etc/systemd/system/"*.target "$ED/etc/systemd/system/"*/*.target
@@ -21,9 +19,9 @@ post_src_install() {
 	local f
 	f=${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*
 	mv_rmkeep
-	einfo "mv's second hack in $1"
+	einfo "mv's second hack in $f"
 	if mv_rmremotefs "$f"
-	then	einfo "mv's second hack in $1 applied"
-	else	die "mv's second hack in $1 is redundant or does not apply"
+	then	einfo "mv's second hack in $f applied"
+	else	die "mv's second hack in $f is redundant or does not apply"
 	fi
 }
