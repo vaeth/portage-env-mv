@@ -246,6 +246,7 @@ net-misc/nx +flto* # PO
 net-misc/nxcl +flto* # PO
 net-misc/nxserver-freenx +flto* # PO
 net-nds/openldap !+flto* # ICE
+net-p2p/qbittorrent +flto*
 net-p2p/ktorrent +flto* # PO
 net-print/cups-filters !+flto* # ICE
 net-voip/ekiga +flto* # PO
