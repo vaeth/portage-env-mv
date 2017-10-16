@@ -14,6 +14,7 @@ app-arch/unrar +fPIE +pie
 app-arch/zpaq +fPIE +pie
 app-crypt/gpgme +fPIE +pie
 app-crypt/pinentry +fPIE +pie
+app-crypt/rhash +fPIE +pie
 app-cdr/cdrtools +fPIE +pie
 app-cdr/xcdroast +fPIE +pie
 app-cdr/xfburn !+fPIE !+pie
