@@ -212,6 +212,7 @@ sys-apps/systemd +D*DEBUG +D*ASSERT
 sys-apps/texinfo +fstack-protector +fdirectives-only
 sys-block/parted NOLDADD=1 +D*FILE* +fdirectives-only
 sys-boot/grub SAFE # No experiments here! Breakage is likely, because grub needs special code, and you must reinstall grub from a rescue CD in case of failures. Moreover, grub provides no suid-binary and no library, so no security issues arise.
+sys-boot/syslinux +fno-common
 sys-devel/bison +fdirectives-only
 sys-devel/gcc CONFIG_SITE= NOLDADD=1 +combine +D*DEBUG +D*ASSERT +D*FILE* +D*FORTIFY* # +fstack-protector* only needed for nspluginwrapper (on 64bit)
 =sys-devel/gcc-3* \~SAFE \~/-march*/-march=k8

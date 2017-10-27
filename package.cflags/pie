@@ -77,7 +77,7 @@ dev-lang/tcl +fPIE +pie
 dev-lang/tk +fPIE +pie
 dev-libs/gmp +fPIE +pie
 dev-libs/libtasn1 +fPIE +pie
-dev-lisp/clisp +fPIE +pie -no-pie # https://bugs.gentoo.org/show_bug.cgi?id=618170
+dev-lisp/clisp +fPIE +pie # https://bugs.gentoo.org/show_bug.cgi?id=618170
 dev-perl/* +fPIE +pie
 dev-python/* +fPIE +pie
 dev-qt/qt* +fPIE +pie
@@ -163,6 +163,7 @@ sys-apps/portage +fPIE +pie
 sys-apps/systemd +fPIE +pie
 sys-apps/usbutils !+fPIE !+pie
 sys-apps/util-linux !+fPIE !+pie
+sys-boot/syslinux +fPIE +pie
 sys-devel/autogen !+fPIE !+pie
 sys-devel/clang +fPIE +pie
 sys-devel/flex !+fPIE !+pie

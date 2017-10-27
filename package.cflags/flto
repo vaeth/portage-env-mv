@@ -273,6 +273,7 @@ sys-apps/tcp-wrappers -ffat-lto-objects # PO
 sys-apps/util-linux !+flto* # ICE
 sys-auth/polkit +flto* # PO
 sys-auth/polkit-qt +flto* # PO
+sys-boot/syslinux +flto*
 sys-devel/bison +flto* # ICE with gcc-7
 sys-devel/clang +flto-partition* # -flto needs >3GB here
 sys-devel/flex -ffat-lto-objects # SL
