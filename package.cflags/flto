@@ -205,7 +205,6 @@ media-sound/audacity +flto* # PO
 media-sound/audex +flto* # PO
 media-sound/cdparanoia +flto* # PO
 media-sound/gsm \~+flto* # PIC
-media-sound/kradio +flto* # PO
 media-sound/kstreamripper +flto* # PO
 media-sound/lilypond !+flto* # ICE
 media-sound/mpg123 +flto* # |
