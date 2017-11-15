@@ -44,6 +44,7 @@ app-text/libetonyek +fPIE +pie
 app-text/libmspub +fPIE +pie
 app-text/libmwaw +fPIE +pie
 app-text/libodfgen +fPIE +pie
+app-text/libstaroffice +fPIE +pie
 app-text/libwpd +fPIE +pie
 app-text/libwpg +fPIE +pie
 app-text/libwps +fPIE +pie
