@@ -150,6 +150,7 @@ dev-vcs/monotone +flto* # PO
 dev-vcs/rcs +flto* # ICE with gcc-7
 dev-vcs/subversion +flto* # PO
 games-arcade/lbreakout !+flto* # ICE
+games-arcade/supertux +flto*
 games-arcade/xboing !+flto* # ICE
 games-board/xboard +flto* # PO
 games-emulation/advancemame +flto-partition* !+flto* # ICE
