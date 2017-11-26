@@ -1,6 +1,5 @@
 # Fix issues with the gold linker
 
-<=dev-util/strace-4.15 -fuse-ld=bfd # https://bugs.gentoo.org/show_bug.cgi?id=602908
 =media-gfx/gimp-2.9.6* \~-fuse-ld=bfd # or \~-lm: Fix underlinking with gold
 =media-sound/lame-3.99.5-r1 !CFLAGS+=-fuse-ld=bfd # https://bugs.gentoo.org/show_bug.cgi?id=622664
 <=net-fs/sshfs-2.8 -fuse-ld=bfd # https://bugs.gentoo.org/show_bug.cgi?id=585150

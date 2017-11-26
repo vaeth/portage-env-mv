@@ -206,7 +206,6 @@ media-sound/audacity +flto* # PO
 media-sound/audex +flto* # PO
 media-sound/cdparanoia +flto* # PO
 media-sound/gsm \~+flto* # PIC
-media-sound/kstreamripper +flto* # PO
 media-sound/lilypond !+flto* # ICE
 media-sound/mpg123 +flto* # |
 media-sound/musepack-tools +flto* # PIC; on x86 failure if default pie is enabled
