@@ -13,7 +13,7 @@ app-crypt/gpgme +D*DEBUG +D*ASSERT
 app-crypt/gnupg +fno-common +D*DEBUG +D*ASSERT
 app-doc/doxygen NOC*OPT=1 +O* -O2 -fomit-frame-pointer -s # see http://forums.gentoo.org/viewtopic-t-495600.html
 app-emulation/dosemu +finline-functions
-app-emulation/wine +fstack-protector* +fno-common -fno-omit-frame-pointer +ftree-loop-distribute-patterns +fweb +finline-functions
+app-emulation/wine* +fstack-protector* +fno-common -fno-omit-frame-pointer +ftree-loop-distribute-patterns +fweb +finline-functions
 app-mobilephone/heimdall SAFE # No experiments here!
 app-misc/lirc +fno-common # NOLDADD=1
 app-misc/rlwrap +fno-common

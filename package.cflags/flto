@@ -57,7 +57,7 @@ app-editors/jed +flto* # PO
 app-editors/kile +flto* # PO
 app-emulation/bochs +flto* # PO
 app-emulation/vice !+flto* # ICE
-app-emulation/wine +flto*
+app-emulation/wine* +flto*
 app-misc/lirc -ffat-lto-objects # PO
 app-office/calligra +flto* # PO
 app-office/libreoffice +flto-partition* +flto*
