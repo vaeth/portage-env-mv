@@ -144,7 +144,7 @@ cp_mwww() {
 	for i
 	do	cp_menu2 "$i" "$i.mwww" \
 			-e 's/\(exec FvwmCommand .A \)/ \1sudox -x -- mwww exec /' \
-			-e 's/^exec/cd ~mwww; exec sudox -T -- mwww exec/' \
+			-e 's/^exec/cd ~mwww; ! test -r .deutsch || ! test -r deutsch || export LANG=de_DE.UTF8; exec sudox -T -- mwww exec/' \
 			-e 's/ exec/exec/' || return
 		$c
 		rm -v -- "$i" || return
