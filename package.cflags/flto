@@ -127,11 +127,7 @@ dev-lisp/clisp +flto*
 dev-python/dbus-python +flto* # |
 dev-python/pygobject +flto* # |
 dev-python/pygtk +flto* # |
-dev-qt/designer:5 +flto* # PIC even of x86
-dev-qt/qtscript:4 +flto*
-dev-qt/qtscript:5 +flto*
-dev-qt/qtwebkit:4 +flto-partition* +flto*
-dev-qt/qtwebkit:5 +flto-partition* # this line was never tested
+dev-qt/* +flto* # Various runtime and link issues without these
 dev-tcltk/expect +flto* # PO
 dev-tex/bibtexu !+flto* # ICE
 dev-tex/luatex +flto* # PO
