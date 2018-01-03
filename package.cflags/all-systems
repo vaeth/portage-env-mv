@@ -171,6 +171,7 @@ net-im/qtox +fdirectives-only
 #net-im/toxic +fno-common
 #net-im/utox +fno-common
 net-libs/gnutls +fdirectives-only
+net-misc/iputils +fno-common
 net-libs/libgsasl +fdirectives-only
 net-libs/libtirpc +fno-common
 net-libs/nodejs +*math* # with math optimization casting function miscompiles and www-client/chromium fails to build
