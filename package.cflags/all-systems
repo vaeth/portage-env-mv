@@ -102,6 +102,7 @@ gnome-base/librsvg +ftree-vectorize* # reported in http://gentoo-wiki.com/CFLAGS
 kde-frameworks/* +*math*
 mail-client/alpine +fno-common
 mail-client/mailx +fno-common
+mail-client/thunderbird +D*FILE* +*math* +fno-common +fmerge-all-constants +finline-functions +fdirectives-only
 media-gfx/fontforge +fdirectives-only
 media-gfx/geeqie +fno-common
 media-gfx/gimp NOLDADD=1 +D*DEBUG +D*ASSERT
@@ -137,7 +138,6 @@ media-libs/raptor +*math*
 media-libs/sg +fno-common
 media-libs/xine-lib NOLDADD=1 +fno-common
 media-plugins/live +Wl,--relax
-media-sound/amarok NOLDADD=1 +fvisibility-inlines-hidden
 media-sound/audacity CONFIG_SITE= +fno-common
 media-sound/mpg123 +D*FILE*
 media-sound/musepack-tools +fno-common

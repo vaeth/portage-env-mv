@@ -163,6 +163,7 @@ gnome-base/libglade +flto* # |
 gnome-base/librsvg +flto* # |
 kde-apps/k3b +flto* # PO
 mail-client/claws-mail !+flto* # ICE
+mail-client/thunderbird +flto-partition* +flto*
 media-gfx/fontforge !+flto* # ICE
 media-gfx/graphicsmagick +flto* # |
 media-gfx/graphviz !+flto* # ICE-type of a different kind

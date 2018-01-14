@@ -18,9 +18,9 @@ dev-qt/qtcore +fgraphite* +floop-*
 dev-qt/qtscript +fgraphite* +floop-*
 games-emulation/dosbox +fgraphite* +floop-*
 games-rpg/freedroidrpg +fgraphite* +floop-*
+mail-client/thunderbird +fgraphite* +floop-*
 media-gfx/gimp +fgraphite* +floop-*
 media-libs/libcaca +fgraphite* +floop-*
-media-sound/amarok +fgraphite* +floop-*
 media-sound/audacity +fgraphite* +floop-*
 media-sound/timidity++ +fgraphite* +floop-*
 sci-mathematics/octave +fgraphite* +floop-*
