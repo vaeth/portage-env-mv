@@ -101,6 +101,7 @@ mail-client/thunderbird +fPIE +pie
 media-gfx/exiv2 +fPIE +pie
 media-gfx/gimp !+fPIE !+pie
 media-gfx/graphicsmagick +fPIE +pie
+media-gfx/graphviz +fPIE +pie
 media-gfx/imagemagick +fPIE +pie
 media-gfx/mirage +fPIE +pie
 media-gfx/pstoedit !+fPIE !+pie
