@@ -11,6 +11,7 @@ app-shells/bash +fgraphite* +floop*
 app-text/texlive-core +fgraphite* +floop*
 dev-java/icedtea* +fgraphite* +floop-*
 dev-lang/python +fgraphite* +floop-*
+dev-lang/rust +fgraphite* +floop-*
 dev-lang/tcl +fgraphite* +floop-*
 dev-libs/icu +fgraphite* +floop*
 dev-python/PyQt4 +fgraphite* +floop-*
