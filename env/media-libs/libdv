@@ -1,0 +1,18 @@
+# Fix problems with pie + gold on x86, see https://bugs.gentoo.org/622662
+
+post_src_configure() {
+	local f
+	f=${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*
+	local dir
+	einfo "mv's hack: $f"
+	dir=${WORKDIR}/${P}-abi_x86_32.x86
+	if test -d "$dir"
+	then	cp -- "$dir/libtool" "$dir/libtool.ori"
+		sed -i -e 's/compiler_flags=$/compiler_flags=-fuse-ld=bfd/' \
+			-- "$dir"/libtool || die "mv's hack from $f failed"
+		diff -q -- "$dir/libtool" "$dir/libtool.ori" >/dev/null 2>&1 \
+			&& die "mv's hack from $f is redundant"
+		elog "mv's hack from $f applied"
+	else	elog "mv's hack from $f does not appear to be necessary"
+	fi
+}
