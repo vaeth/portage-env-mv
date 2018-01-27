@@ -234,8 +234,6 @@ net-im/psi +flto* # PO
 net-libs/glib-networking +flto* # |
 net-libs/libsrtp +flto* # PO
 net-libs/libssh2 +flto* # |
-net-libs/opal +flto* # PO
-net-libs/ptlib +flto* # PO
 net-mail/uw-mailutils -ffat-lto-objects # PO
 net-misc/netkit-telnetd !+flto* # ICE
 net-misc/nx +flto* # PO
@@ -245,7 +243,6 @@ net-nds/openldap !+flto* # ICE
 net-p2p/qbittorrent +flto*
 net-p2p/ktorrent +flto* # PO
 net-print/cups-filters !+flto* # ICE
-net-voip/ekiga +flto* # PO
 net-voip/yate +flto* # PO
 net-vpn/ipsec-tools -ffat-lto-objects # SL
 net-wireless/wireless-tools +flto* # PIC (with gcc-7 also on x86)
