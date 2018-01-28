@@ -141,7 +141,6 @@ dev-util/schroot +flto* # PO
 dev-util/valgrind -ffat-lto-objects # PO
 dev-vcs/cvs -ffat-lto-objects # PO
 dev-vcs/git !+flto* # ICE
-dev-vcs/monotone +flto* # PO
 dev-vcs/rcs +flto* # ICE with gcc-7
 dev-vcs/subversion +flto* # PO
 games-arcade/lbreakout !+flto* # ICE
