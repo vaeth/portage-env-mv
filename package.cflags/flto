@@ -304,6 +304,7 @@ x11-libs/libwnck +flto* # PO
 x11-libs/pango +flto* # |
 x11-libs/wxGTK +flto* # PO
 x11-libs/xcb-util-cursor +flto* # |
+x11-misc/sddm +flto* # does not switch to graphics mode in some settings
 x11-misc/slim \+flto* # PIC
 x11-wm/fvwm !+flto* # ICE
 xfce-base/exo +flto* # |

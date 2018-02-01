@@ -35,6 +35,10 @@
 #     this file.
 # pie
 #     For packages which break with -fPIE -pie or without -fno-PIE -no-pie
+# spectre
+#     For packages which break with spectre mitigation flags like
+#    -fno-plt -mindirect-branch=thunk -mindirect-branch-register
+#    -mfunction-return=thunk -Wl,-z,retpolineplt -mretpoline
 # temporary
 #     As the name says: entries which are expected to be removed soon but
 #     which might be currently necessary for some reason or another...
@@ -71,6 +75,11 @@
 #   Typical error: multiple definition
 # +ftree-loop-distribute-patterns
 #   Typical error: undefined reference to `memset'
+# +fno-plt
+# +mindirect-branch*
+# +mfunction-return*
+# +mretpoline # clang only
+# +Wl,-z,retpolineplt # currently clang only
 # NOLDADD=1 (or even NOLDOPT=1; however, NOLDOPT=1 might be a security risk)
 # +fdiagnostics-color=always
 # MAKEOPTS-='--no-print-directory'

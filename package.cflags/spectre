@@ -1,0 +1,10 @@
+# Packages for which spectre mitigation hurts:
+# +fno-plt
+# +mindirect-branch* # -mindirect-branch=thunk -mindirect-branch-register
+# +mfunction-return* # -mfunction-return=thunk
+# +Wl,-z,retpolineplt # currently clang only
+# +mretpoline # clang only
+
+<sys-devel/gcc-7.3 +fno-plt +mindirect-branch* +mfunction-return* # Older gcc's do not have spectre mitigation flags yet
+=sys-devel/gcc-7.3.0 !+fno-plt # compilation segfaults on x86
+www-client/firefox !+mindirect-branch* !+mfunction-return* # compilation segfaults on x86 with "# Will either crash or return exit code 1 if elfhack is broken"
