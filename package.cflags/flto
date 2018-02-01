@@ -35,7 +35,7 @@
 #            Without linker plugin, it is sometimes sufficient to add
 #            -ffat-lto-objects
 #
-# PIC means: Causes reallocation error (usually only on amd64, 64 bit).
+# PIC means: Causes relocation error (usually only on amd64, 64 bit).
 #            It is necessary to add \~+flto*
 #
 # PO means: Possibly obsolete line: Package was not emerged since quite a while
@@ -273,6 +273,7 @@ sys-devel/flex -ffat-lto-objects # SL
 sys-devel/gcc -ffat-lto-objects # SL
 sys-devel/gdb +flto* # duplicate symbol with gcc-7
 sys-devel/gettext +flto* # with gcc-7 + gold: undefined reference
+sys-devel/llvm +flto* # PIC
 sys-fs/dd-rescue +flto*
 sys-fs/eudev +flto* # PO
 sys-fs/mtools !+flto* # ICE

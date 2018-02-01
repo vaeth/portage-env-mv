@@ -221,7 +221,7 @@ sys-devel/gcc CONFIG_SITE= NOLDADD=1 +combine +D*DEBUG +D*ASSERT +D*FILE* +D*FOR
 sys-devel/gdb CONFIG_SITE= +*math* +fno-common +fdirectives-only
 sys-devel/gettext +fdirectives-only
 sys-devel/libtool CONFIG_SITE=
-sys-devel/llvm CONFIG_SITE= +*math* +fno-common +D*FILE* SAFE
+sys-devel/llvm CONFIG_SITE= +*math* +fno-common +D*FILE*
 sys-devel/m4 +*math* +fdirectives-only
 sys-devel/make +fno-common
 sys-devel/patch +fdirectives-only +D*DEBUG +D*ASSERT
