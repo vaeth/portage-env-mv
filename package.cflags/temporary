@@ -1,7 +1,0 @@
-# Temporary hacks needed for >=dev-lang/perl-5.26
-
-=dev-perl/Encode-HanExtra-0.230.0-r1 'export PERL_USE_UNSAFE_INC=1'
-=dev-perl/FileHandle-Unget-0.162.800 'export PERL_USE_UNSAFE_INC=1'
-=dev-perl/Mail-Mbox-MessageParser-1.510.500 'export PERL_USE_UNSAFE_INC=1'
-=media-tv/linuxtv-dvb-apps-1.1.1.20100223-r1 'export PERL_USE_UNSAFE_INC=1'
-=net-mail/grepmail-5.30.33-r2 'export PERL_USE_UNSAFE_INC=1'
