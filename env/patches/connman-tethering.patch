@@ -1,0 +1,16 @@
+# connman-1.35: Martin Väth <martin@mvath.de>
+# https://bugs.gentoo.org/show_bug.cgi?id=646464
+# Fix order of includes: otherwise some struct are redefined with
+# sys-libs/glibc-2.25-r9 and sys-kernel/linux-headers-4.15
+--- a/src/tethering.c
++++ a/src/tethering.c
+@@ -35,8 +35,8 @@
+ #include <string.h>
+ #include <fcntl.h>
+ #include <linux/if_tun.h>
+-#include <netinet/in.h>
+ #include <linux/if_bridge.h>
++#include <netinet/in.h>
+ 
+ #include "connman.h"
+ 

@@ -41,7 +41,7 @@
 # PO means: Possibly obsolete line: Package was not emerged since quite a while
 
 app-accessibility/espeak !-ffat-lto-objects \~+flto* # PIC
-app-arch/bzip2 +flto* # runtime segfault (PIC reallocation) on amd64 and x86
+app-arch/bzip2 +flto* # runtime segfault (PIC relocation) on amd64 and x86
 app-arch/lha !+flto* # ICE
 app-arch/lz4 +flto* # PIC on amd64 and x86
 app-arch/sharutils !+flto* # ICE
@@ -55,6 +55,7 @@ app-doc/doxygen +flto* # PO
 app-editors/jed +flto* # PO
 app-editors/kile +flto* # PO
 app-emulation/bochs +flto* # PO
+app-emulation/dosemu !+flto* # ICE
 app-emulation/vice !+flto* # ICE
 app-emulation/wine* +flto*
 app-misc/lirc -ffat-lto-objects # PO
@@ -135,6 +136,7 @@ dev-tex/metapost +flto* # PO
 dev-util/android-tools !+flto* # ICE
 dev-util/cargo +flto*
 dev-util/dialog -ffat-lto-objects # SL
+dev-util/dirdiff +flto* # PIC
 dev-util/icmake +flto* # PO
 dev-util/pkgconf +flto* # |
 dev-util/schroot +flto* # PO
@@ -175,7 +177,8 @@ media-libs/avidemux-core +flto* # Needed for media-video/avidemux
 media-libs/avidemux-plugins +flto*
 media-libs/flac +flto*
 media-libs/glu +flto* # |
-media-libs/gstreamer +flto* # PO
+media-libs/gstreamer +flto* # |
+media-libs/gst-plugins-base +flto* # |
 media-libs/libbluray +flto* # |
 media-libs/libdv !+flto* # PIC with gcc-7
 media-libs/libdvbpsi +flto* # PO
