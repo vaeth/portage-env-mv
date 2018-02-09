@@ -15,12 +15,28 @@ mv_rmremotefs() {
 	return $r
 }
 
+mv_rm_stupidenabling() {
+	rm -v -- \
+		"${EPREFIX}/etc/systemd/system/dbus-org.freedesktop.network1.service" \
+		|| return
+}
+
 post_src_install() {
 	local f
 	f=${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*
 	mv_rmkeep
 	einfo "mv's second hack in $f"
 	if mv_rmremotefs "$f"
+	then	einfo "mv's second hack in $f applied"
+	else	die "mv's second hack in $f is redundant or does not apply"
+	fi
+}
+
+post_pkg_postinst() {
+	local f
+	f=${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*
+	einfo "mv's third hack in $f"
+	if mv_rm_stupidenabling "$f"
 	then	einfo "mv's second hack in $f applied"
 	else	die "mv's second hack in $f is redundant or does not apply"
 	fi
