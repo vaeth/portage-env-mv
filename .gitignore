@@ -1,1 +1,6 @@
 local
+/*
+!/.gitignore
+!/README.md
+!/env
+!/package.cflags
