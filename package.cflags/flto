@@ -5,21 +5,6 @@
 # +flto-partition*
 # +flto-odr-type-merging
 
-# To use -flto you need a symlink
-#
-# /usr/$CTARGET/binutils-bin/lib/bfd-plugins/liblto_plugin.so.*.*
-#   -> /usr/libexec/gcc/$CTARGET/$GCC_VERSION/liblto_plugin.so.*.*
-#
-# For instance on amd64 (64 bit):
-#
-# /usr/x86_64-pc-linux-gnu/binutils-bin/lib/bfd-plugins/liblto_plugin.so.0.0.0
-#  -> /usr/libexec/gcc/x86_64-pc-linux-gnu/6.3.0/liblto_plugin.so.0.0.0
-#
-# or on x86 (32 bit):
-#
-# /usr/i686-pc-linux-gnu/binutils-bin/lib/bfd-plugins/liblto_plugin.so.0.0.0
-#  -> /usr/libexec/gcc/i686-pc-linux-gnu/6.3.0/liblto_plugin.so.0.0.0
-
 # Shortcuts in the comments:
 #
 # SL means: Package installs static libs (*.a). To avoid problems, we use here
@@ -29,11 +14,8 @@
 # /usr/include/bits/stdio2.h:97:10: internal compiler error: Segmentation fault
 #            It is necessary to add !+flto*
 #
-# | means: Causes the frequent error
+# | means: causes the frequent error
 # libtool: eval: line ...: syntax error near unexpected token `|'
-#            With linker plugin, it is necessary to add +flto*; without linke
-#            Without linker plugin, it is sometimes sufficient to add
-#            -ffat-lto-objects
 #
 # PIC means: Causes relocation error (usually only on amd64, 64 bit).
 #            It is necessary to add \~+flto*
