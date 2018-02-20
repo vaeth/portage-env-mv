@@ -69,7 +69,7 @@ dev-python/numpy +*math*
 dev-python/python-poppler +fno-common
 dev-qt/* +fdirectives-only
 dev-qt/qtwebkit +*math*
-dev-scheme/guile +fdirectives-only !+D*FILE_OFFSET* !+D_LARGEFILE*
+dev-scheme/guile +fdirectives-only +ffast-math !+D*FILE_OFFSET* !+D_LARGEFILE* # -ffast-math triggers floating exception https://bugs.gentoo.org/show_bug.cgi?id=598986
 dev-tcltk/tkimg +fno-common
 dev-tex/catdvi +D*DEBUG +D*ASSERT
 dev-tex/detex +D*DEBUG +D*ASSERT
