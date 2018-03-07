@@ -213,7 +213,6 @@ media-video/xine-ui !+flto* # ICE
 net-analyzer/wireshark +flto* # PO
 net-fs/autofs +flto* # runtime error (PIC type)
 net-ftp/lftp +flto* # PO
-net-im/jabberd2 +flto* # PO
 net-im/psi +flto* # PO
 net-libs/glib-networking +flto* # |
 net-libs/libsrtp +flto* # PO

@@ -133,7 +133,6 @@ net-dns/host +fPIE +pie
 net-dns/unbound !+fPIE !+pie
 net-firewall/iptables +fPIE +pie
 net-fs/autofs +fPIE +pie
-net-im/jabberd2 !+fPIE !+pie
 #net-im/utox +fPIE +pie
 net-misc/connman !+fPIE !+pie
 net-misc/curl !+fPIE !+pie
