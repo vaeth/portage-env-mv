@@ -9,6 +9,7 @@ dev-lang/rust !+fno-plt # compilation segfaults on x86
 #media-libs/mesa +fno-plt
 <sys-devel/gcc-7.3 +fno-plt +mindirect-branch* +mfunction-return* # Older gcc's do not have spectre mitigation flags yet
 =sys-devel/gcc-7.3.0 !+fno-plt # compilation segfaults on x86
+www-client/chromium +fno-plt # compilation segfaults
 www-client/firefox !+mindirect-branch* !+mfunction-return* # compilation segfaults on x86 with "# Will either crash or return exit code 1 if elfhack is broken"
 x11-base/xorg-server +fno-plt # symbols might not be found if compiled with -fno-plt
 x11-drivers/xf86-* +fno-plt # X might not start if drivers are compiled with -fno-plt

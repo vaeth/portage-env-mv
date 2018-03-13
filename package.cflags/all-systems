@@ -131,7 +131,7 @@ media-libs/libmpeg2 NOLDADD=1
 media-libs/libmtp +fno-common
 media-libs/libsidplay NOLAFILEREMOVE=1
 media-libs/libv4l +D*FILE* +fno-common
-media-libs/mesa +fno-common +Wl,-z,now +fdirectives-only +*math*
+media-libs/mesa +fno-common +Wl,-z,now +Wl,--build-id=none +fdirectives-only +*math*
 media-libs/mlt +combine
 media-libs/opus +*math*
 media-libs/plotutils +*math*
@@ -218,6 +218,7 @@ sys-boot/syslinux +fno-common
 sys-devel/bison +fdirectives-only
 sys-devel/gcc CONFIG_SITE= NOLDADD=1 +combine +D*DEBUG +D*ASSERT +D*FILE* +D*FORTIFY* # +fstack-protector* only needed for nspluginwrapper (on 64bit)
 =sys-devel/gcc-3* \~SAFE \~/-march*/-march=k8
+sys-devel/clang +fmerge-all-constants # -fmerge-all-constants makes chromium segfault
 sys-devel/gdb CONFIG_SITE= +*math* +fno-common +fdirectives-only
 sys-devel/gettext +fdirectives-only
 sys-devel/libtool CONFIG_SITE=
@@ -234,7 +235,8 @@ sys-fs/sysfsutils NOLDADD=1
 sys-fs/udftools +fno-common
 sys-fs/unionfs-fuse +fno-common
 sys-libs/e2fsprogs-libs +D*FILE*
-sys-libs/compiler-rt USE_NONGNU=1
+sys-libs/compiler-rt USE_NONGNU=1 +fmerge-all-constants
+sys-libs/compiler-rt-sanitizers USE_NONGNU=1 +fmerge-all-constants
 sys-libs/glibc +Wl,--relax +D*FILE* +fstack-protector
 sys-libs/gpm +fno-common
 sys-libs/gwenhywfar +D*FORTIFY* -U_FORTIFY_SOURCE
@@ -244,7 +246,7 @@ sys-power/iasl +fno-common
 sys-power/suspend +fno-common
 sys-process/criu +Wl,--relax
 sys-process/htop +fno-common
-www-client/chromium +D*FILE* +*math* +fno-common +fmerge-all-constants +finline-functions +fdirectives-only +fgcse-sm +fgcse-las +fgcse-after-reload
+www-client/chromium NOLDADD=1 USE_NONGNU=1 +D*FILE* +*math* +fno-common +fmerge-all-constants +finline-functions +fdirectives-only +fgcse-sm +fgcse-las +fgcse-after-reload
 www-client/dillo +fno-common
 www-client/firefox +D*FILE* +*math* +fno-common +fmerge-all-constants +finline-functions +fdirectives-only
 # The following requires less memory but breaks some configuration tests:
