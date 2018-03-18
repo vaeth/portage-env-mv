@@ -198,15 +198,22 @@ rename_file() {
 }
 
 my_menu() {
-	local fvwm apps network browsers games icons seamonkey
+	local fvwm apps network mixers browsers games icons seamonkey
 	einfo 'Modifying menu entries'
 	fvwm=${S}/fvwm/
 	apps=${fvwm}Applications/
+	var_assign mixers "$apps"*Multimedia/*Audio/*Mixers || return
 	var_assign network "$apps"*Network/ || return
 	var_assign games "$apps"*Games/ || return
 	var_assign browsers "$network"*Web_Browsers/ || return
 	rename_file -i "$browsers"*flock* flock flock-browser || return
 	rename_file "$games"*Shooters/*chromium* chromium chromium-game || return
+	cp_menu 's/exec [^ ]*/exec qasmixer/' \
+		"$mixers"/~alsamixer~ALSA_Mixer '~qasmixer~qasmixer' || return
+	cp_menu 's/exec [^ ]*/exec qashctl/' \
+		"$mixers"/~qasmixer~qasmixer '~qashctl~qashctl' || return
+	cp_menu 's/exec [^ ]*/exec qasconfig/' \
+		"$mixers"/~qasmixer~qasmixer '~qasconfig~qasconfig' || return
 	cp_menu 's/exec [^ ]*/exec adsl-gui/' \
 		"$network"*Dial-up/~kppp~kPPP '~adsl-gui~ADSL' || return
 	cp_menu 's/exec [^ ]*/cd ~mwww; exec sudox -T -- mwww exec download-gui/' \

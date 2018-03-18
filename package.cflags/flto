@@ -50,10 +50,10 @@ app-shells/zsh +flto* # PIC on amd64 and x86; runtime errors
 app-text/a2ps +flto*
 app-text/apvlv +flto* # PO
 app-text/dvipsk !+flto* # ICE
-app-text/ebook-tools \~+flto* # PIC
+app-text/ebook-tools +flto* # PIC on amd64 and x86
 app-text/enchant +flto* # |
 app-text/mupdf \~+flto* # PIC variant
-app-text/podofo \~+flto* # PIC
+app-text/podofo +flto* # PIC on amd64 and x86
 app-text/rarian +flto* # PO
 app-text/sablotron +flto* # PO
 app-text/texlive-core +flto*
