@@ -32,6 +32,7 @@ media-libs/libmikmod "EXTRA_EMAKE+='SHELL=/bin/bash'"
 net-libs/c-client -lcrypt
 net-misc/nxserver-freenx "EXTRA_EMAKE+='SHELL=/bin/bash'"
 net-misc/wget "EXTRA_ECONF+='--disable-xattr'" # disable storing of useless information in xattr
+sci-mathematics/fricas EXTRA_ECONF+='--with-gmp= --disable-gmp' # --without-gmp from the ebuild does not work https://bugs.gentoo.org/show_bug.cgi?id=650788
 #sci-mathematics/scilab "export PVM_ARCH='LINUX'"
 sys-devel/gcc "export GCC_MAKE_TARGET='profiledbootstrap'" # "MAKEOPTS-='-j*'"
 =sys-libs/libieee1284-0.2.11-r4 "CFLAGS+='`python2-config --includes`'" # https://bugs.gentoo.org/show_bug.cgi?id=619810
