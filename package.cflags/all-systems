@@ -218,7 +218,7 @@ sys-boot/syslinux +fno-common
 sys-devel/bison +fdirectives-only
 sys-devel/gcc CONFIG_SITE= NOLDADD=1 +combine +D*DEBUG +D*ASSERT +D*FILE* +D*FORTIFY* # +fstack-protector* only needed for nspluginwrapper (on 64bit)
 =sys-devel/gcc-3* \~SAFE \~/-march*/-march=k8
-sys-devel/clang +fmerge-all-constants # -fmerge-all-constants makes chromium segfault
+sys-devel/clang +fmerge-all-constants # -fmerge-all-constants has always problems with llvm
 sys-devel/gdb CONFIG_SITE= +*math* +fno-common +fdirectives-only
 sys-devel/gettext +fdirectives-only
 sys-devel/libtool CONFIG_SITE=
@@ -246,7 +246,7 @@ sys-power/iasl +fno-common
 sys-power/suspend +fno-common
 sys-process/criu +Wl,--relax
 sys-process/htop +fno-common
-www-client/chromium NOLDADD=1 USE_NONGNU=1 +D*FILE* +*math* +fno-common +fmerge-all-constants +finline-functions +fdirectives-only +fgcse-sm +fgcse-las +fgcse-after-reload
+www-client/chromium NOLDADD=1 USE_NONGNU=1 'export CXX=clang++ CC=clang' +D*FILE* +*math* +fno-common +fmerge-all-constants +finline-functions +fdirectives-only +fgcse-sm +fgcse-las +fgcse-after-reload +fdiagnostics-color* # Set CXX and CC since ${CHOST}-clang{,++} crash: https://bugs.gentoo.org/show_bug.cgi?id=650082#c22
 www-client/dillo +fno-common
 www-client/firefox +D*FILE* +*math* +fno-common +fmerge-all-constants +finline-functions +fdirectives-only
 # The following requires less memory but breaks some configuration tests:
