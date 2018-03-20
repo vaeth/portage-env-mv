@@ -176,7 +176,8 @@ sys-fs/cryptsetup !+fPIE !+pie
 sys-fs/e2fsprogs +fPIE +pie
 sys-fs/encfs +fPIE +pie
 sys-fs/ext4magic !+fPIE !+pie
-sys-fs/fuse !+fPIE !+pie
+sys-fs/fuse +fPIE +pie
+sys-fs/fuse-common +fPIE +pie
 sys-fs/lvm2 +fPIE +pie
 sys-fs/udftools !+fPIE !+pie
 sys-power/nut +fPIE +pie
