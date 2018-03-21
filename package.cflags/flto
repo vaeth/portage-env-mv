@@ -260,6 +260,8 @@ sys-devel/gettext +flto* # with gcc-7 + gold: undefined reference
 sys-devel/llvm +flto* # PIC
 sys-fs/dd-rescue +flto*
 sys-fs/eudev +flto* # PO
+sys-fs/fuse-common +flto* # https://bugs.gentoo.org/show_bug.cgi?id=650874
+sys-fs/fuse +flto* # https://bugs.gentoo.org/show_bug.cgi?id=650874
 sys-fs/mtools !+flto* # ICE
 sys-fs/udev +flto* # PO
 sys-fs/udisks +flto* # PO
