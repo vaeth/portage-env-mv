@@ -246,7 +246,7 @@ sys-power/iasl +fno-common
 sys-power/suspend +fno-common
 sys-process/criu +Wl,--relax
 sys-process/htop +fno-common
-www-client/chromium NOLDADD=1 USE_NONGNU=1 'export CXX=clang++ CC=clang' +D*FILE* +*math* +fno-common +fmerge-all-constants +finline-functions +fdirectives-only +fgcse-sm +fgcse-las +fgcse-after-reload +fdiagnostics-color* # Set CXX and CC since ${CHOST}-clang{,++} crash: https://bugs.gentoo.org/show_bug.cgi?id=650082#c22
+www-client/chromium NOLDADD=1 USE_NONGNU=1 +D*FILE* +*math* +fno-common +fmerge-all-constants +finline-functions +fdirectives-only +fgcse-sm +fgcse-las +fgcse-after-reload +fdiagnostics-color*
 www-client/dillo +fno-common
 www-client/firefox +D*FILE* +*math* +fno-common +fmerge-all-constants +finline-functions +fdirectives-only
 # The following requires less memory but breaks some configuration tests:
