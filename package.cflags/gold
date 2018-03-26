@@ -1,6 +1,5 @@
 # Fix issues with the gold linker
 
-=media-sound/lame-3.99.5-r1 !CFLAGS+=-fuse-ld=bfd # https://bugs.gentoo.org/show_bug.cgi?id=622664
 media-video/avidemux LDFLAGS+=-lXext
 <=net-fs/sshfs-2.8 -fuse-ld=bfd # https://bugs.gentoo.org/show_bug.cgi?id=585150
 =sci-mathematics/scilab-5.5.2-r1 -fuse-ld=bfd
