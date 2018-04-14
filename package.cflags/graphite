@@ -28,4 +28,3 @@ sci-mathematics/octave +fgraphite* +floop-*
 sys-devel/llvm +fgraphite* +floop-*
 sys-fs/encfs +fgraphite* +floop-*
 www-client/firefox +fgraphite* +floop-*
-www-client/palemoon +fgraphite* +floop-*

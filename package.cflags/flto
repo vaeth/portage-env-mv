@@ -173,7 +173,7 @@ media-libs/libsdl2 -ffat-lto-objects # SL
 media-libs/libsfml +flto* # runtime problems, e.g. etr: undefined symbol: __cpu_model
 media-libs/libwebp !+flto* # ICE
 media-libs/mediastreamer +flto* # PO
-media-libs/mesa +flto* # ICE for x86, runtime errors (e.g. palemoon crashes on postbank banking) for amd64
+media-libs/mesa +flto* # ICE for x86, runtime errors for amd64
 media-libs/musicbrainz +flto* # PO
 media-libs/netpbm !+flto* # ICE
 media-libs/phonon +flto* # PO
@@ -277,7 +277,6 @@ www-client/chromium +flto-partition* +flto*
 www-client/dillo +flto* # PO
 www-client/firefox +flto-partition* +flto*
 www-client/lynx !+flto* # ICE
-www-client/palemoon +flto-partition* +flto* # PIC on amd64 and x86
 www-plugins/gnash +flto* # PO
 www-plugins/mozplugger +flto* # PO
 x11-base/xorg-server +flto*

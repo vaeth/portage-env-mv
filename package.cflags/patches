@@ -38,6 +38,5 @@ sys-devel/gcc "export GCC_MAKE_TARGET='profiledbootstrap'" # "MAKEOPTS-='-j*'"
 =sys-libs/libieee1284-0.2.11-r4 "CFLAGS+='`python2-config --includes`'" # https://bugs.gentoo.org/show_bug.cgi?id=619810
 sys-fs/udev "EXTRA_ECONF+='--disable-static'"
 www-client/firefox "export SHELL=/bin/sh"
-www-client/palemoon "export SHELL=/bin/sh"
 x11-libs/gtk+ "EXTRA_EMAKE+='SHELL=/bin/bash'"
 #x11-terms/xterm "EXTRA_ECONF+='--disable-fifo-lines'"

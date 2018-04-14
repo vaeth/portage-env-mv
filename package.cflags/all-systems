@@ -252,7 +252,6 @@ www-client/dillo +fno-common
 www-client/firefox +D*FILE* +*math* +fno-common +fmerge-all-constants +finline-functions +fdirectives-only
 # The following requires less memory but breaks some configuration tests:
 #www-client/firefox !LDFLAGS+=-Wl,--reduce-memory-overheads
-www-client/palemoon +D*FILE* +*math* +fno-common +fmerge-all-constants +finline-functions +fdirectives-only
 www-plugins/nspluginwrapper NOLDADD=1
 x11-base/xorg-server +fno-common +Wl,-z,now +fdirectives-only
 x11-drivers/xf86-* +fno-common +Wl,-z,now +fdirectives-only
