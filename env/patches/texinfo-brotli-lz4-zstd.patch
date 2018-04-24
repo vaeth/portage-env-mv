@@ -6,7 +6,7 @@
    { ".bz2", "bunzip2" },
 +  { ".br", "brotli -df" },
 +  { ".lz4", "lz4 -d -q" },
-+  { ".zst", "zstd -d -f -q" },
++  { ".zst", "zstd -d -f -q -memory=4294967295" },
    { ".z", "gunzip" },
    { ".lzma", "unlzma" },
    { ".Z", "uncompress" },

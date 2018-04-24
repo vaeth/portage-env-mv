@@ -106,6 +106,8 @@ dev-libs/nss -ffat-lto-objects # SL
 dev-libs/ppl +flto* # PO
 dev-libs/redland +flto*
 dev-libs/skalibs +flto* # PO
+dev-libs/wayland +flto*
+dev-libs/weston +flto*
 dev-lisp/clisp +flto*
 dev-python/dbus-python +flto* # |
 dev-python/pygobject +flto* # |

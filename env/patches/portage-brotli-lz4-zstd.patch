@@ -6,7 +6,7 @@
  	".xz"   "unxz -f"
 +	".br"   "brotli -cdf"
 +	".lz4"  "lz4 -d -q"
-+	".zst"  "zstd -d -f -q"
++	".zst"  "zstd -d -f -q --memory=4294967295"
  	".lzma" "unxz -f"
  )
  
