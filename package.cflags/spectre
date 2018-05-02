@@ -9,7 +9,6 @@ dev-lang/rust !+fno-plt # compilation segfaults on x86
 #media-libs/mesa +fno-plt
 sys-devel/clang +fno-plt # causes presumably runtime segfaults
 <sys-devel/gcc-7.3 +fno-plt +mindirect-branch* +mfunction-return* # Older gcc's do not have spectre mitigation flags yet
-=sys-devel/gcc-7.3.0 !+fno-plt # compilation segfaults on x86
 sys-devel/llvm +fno-plt # causes presumably runtime segfaults
 sys-libs/compiler-rt +fno-plt # causes presumably runtime segfaults
 sys-libs/compiler-rt-sanitizers +fno-plt # causes presumably runtime segfaults

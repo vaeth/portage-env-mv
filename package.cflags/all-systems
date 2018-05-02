@@ -93,7 +93,7 @@ games-arcade/supertux +D*DEBUG +D*ASSERT
 games-arcade/xboing +fno-common
 games-arcade/xrick +fno-common
 games-board/xboard +fno-common
-games-emulation/advancemame +ftree-vectorize*
+games-emulation/advancemame +ftree-vectorize* +fno-common
 games-emulation/sdlmame +ftree-vectorize*
 games-emulation/xmame +ftree-vectorize*
 games-emulation/xmess +ftree-vectorize*
