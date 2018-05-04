@@ -215,6 +215,7 @@ sys-apps/sandbox +D*DEBUG +D*ASSERT
 sys-apps/sed +D*DEBUG +fdirectives-only
 sys-apps/systemd +D*DEBUG +D*ASSERT
 sys-apps/texinfo +fstack-protector +fdirectives-only
+sys-apps/the_silver_searcher +fno-common # gcc-8
 sys-block/parted NOLDADD=1 +D*FILE* +fdirectives-only
 sys-boot/grub SAFE # No experiments here! Breakage is likely, because grub needs special code, and you must reinstall grub from a rescue CD in case of failures. Moreover, grub provides no suid-binary and no library, so no security issues arise.
 sys-boot/syslinux +fno-common

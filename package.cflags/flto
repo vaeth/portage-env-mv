@@ -243,6 +243,7 @@ sci-mathematics/scilab !+flto* # ICE
 sci-mathematics/yacas !+flto* # ICE
 sys-apps/busybox !+flto* # ICE
 sys-apps/coreutils +flto* # ICE with gcc-7
+sys-apps/dchroot +flto* # gcc-8
 sys-apps/dtc +flto* # PO
 sys-apps/gawk !+flto* # ICE
 sys-apps/grep +flto* # ICE with gcc-7
