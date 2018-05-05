@@ -156,7 +156,7 @@ media-video/avidemux +ftracer # MAKEOPTS-='-j*'
 media-video/avinfo +fno-common
 media-video/cclive +D*DEBUG +D*ASSERT
 media-video/cinelerra NOLDADD=1 +D*DEBUG +D*ASSERT # MAKEOPTS-='-j*'
-media-video/ffmpeg +combine +ftracer
+media-video/ffmpeg +combine +ftracer +fno-common # -fno-common causes runtime segfaults w/ gcc-8
 media-video/gnome-mplayer +fno-common
 media-video/kaffeine !/-O?/-O2 !+finline-functions
 media-video/libav +combine +ftracer
@@ -261,6 +261,7 @@ x11-drivers/xf86-* +fno-common +Wl,-z,now +fdirectives-only
 x11-drivers/nvidia-drivers +fno-common
 x11-libs/libXxf86vm CONFIG_SITE= # nvidia-settings needs the static version
 x11-libs/libdrm +fno-common
+x11-libs/libva-intel-driver +fno-common # gcc-8
 x11-libs/pango -mstackrealign +ftracer +fmerge-all-constants # +O* -O2 +ftree-vectorize* avoids some firefox crashes
 x11-libs/pixman -mstackrealign +ftracer +fmerge-all-constants # +O* -O2 +ftree-vectorize* avoids some firefox crashes
 x11-libs/wxGTK NOLDADD=1 +fvisibility-inlines-hidden

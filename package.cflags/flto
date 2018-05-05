@@ -129,7 +129,7 @@ dev-vcs/cvs -ffat-lto-objects # PO
 dev-vcs/git !+flto* # ICE
 dev-vcs/rcs +flto* # ICE with gcc-7
 dev-vcs/subversion +flto* # PO
-games-arcade/lbreakout !+flto* # ICE
+games-arcade/lbreakout +flto* # gcc-8 (and ICE on x86)
 games-arcade/supertux +flto*
 games-arcade/xboing !+flto* # ICE
 games-board/xboard +flto* # PO

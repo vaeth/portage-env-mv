@@ -1,0 +1,32 @@
+# Martin V\"ath <martin at mvath.de>
+# Turn error diagnostics into warning for false positive
+--- a/webserver/mongoose.c
++++ b/webserver/mongoose.c
+@@ -8353,13 +8353,17 @@
+    */
+   if (sscanf(tag, " virtual=\"%[^\"]\"", file_name) == 1) {
+     /* File name is relative to the webserver root */
++#pragma GCC diagnostic warning "-Wformat-truncation"
+     snprintf(path, sizeof(path), "%s/%s", opts->document_root, file_name);
++#pragma GCC diagnostic error "-Wformat-truncation"
+   } else if (sscanf(tag, " abspath=\"%[^\"]\"", file_name) == 1) {
+     /*
+      * File name is relative to the webserver working directory
+      * or it is absolute system path
+      */
++#pragma GCC diagnostic warning "-Wformat-truncation"
+     snprintf(path, sizeof(path), "%s", file_name);
++#pragma GCC diagnostic error "-Wformat-truncation"
+   } else if (sscanf(tag, " file=\"%[^\"]\"", file_name) == 1 ||
+              sscanf(tag, " \"%[^\"]\"", file_name) == 1) {
+     /* File name is relative to the currect document */
+@@ -8367,7 +8371,9 @@
+     if ((p = strrchr(path, DIRSEP)) != NULL) {
+       p[1] = '\0';
+     }
++#pragma GCC diagnostic warning "-Wformat-truncation"
+     snprintf(path + strlen(path), sizeof(path) - strlen(path), "%s", file_name);
++#pragma GCC diagnostic error "-Wformat-truncation"
+   } else {
+     mg_printf(nc, "Bad SSI #include: [%s]", tag);
+     return;

@@ -1,0 +1,28 @@
+Martin V\"ath <martin at mvath.de>
+Specify attribute before declarator. Required for gcc-8
+--- a/media/webrtc/trunk/webrtc/common_audio/vad/vad_core.c
++++ b/media/webrtc/trunk/webrtc/common_audio/vad/vad_core.c
+@@ -115,8 +115,8 @@
+ // undefined behavior, so not a good idea; this just makes UBSan ignore the
+ // violation, so that our old code can continue to do what it's always been
+ // doing.)
+-static inline int32_t OverflowingMulS16ByS32ToS32(int16_t a, int32_t b)
+-    RTC_NO_SANITIZE("signed-integer-overflow") {
++RTC_NO_SANITIZE("signed-integer-overflow")
++static inline int32_t OverflowingMulS16ByS32ToS32(int16_t a, int32_t b) {
+   return a * b;
+ }
+ 
+--- a/media/webrtc/trunk/webrtc/modules/audio_coding/codecs/isac/fix/source/lattice.c
++++ b/media/webrtc/trunk/webrtc/modules/audio_coding/codecs/isac/fix/source/lattice.c
+@@ -209,8 +209,8 @@
+ // Left shift of an int32_t that's allowed to overflow. (It's still undefined
+ // behavior, so not a good idea; this just makes UBSan ignore the violation, so
+ // that our old code can continue to do what it's always been doing.)
+-static inline int32_t OverflowingLShiftS32(int32_t x, int shift)
+-    RTC_NO_SANITIZE("shift") {
++RTC_NO_SANITIZE("shift")
++static inline int32_t OverflowingLShiftS32(int32_t x, int shift) {
+   return x << shift;
+ }
+ 
