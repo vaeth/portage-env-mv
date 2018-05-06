@@ -9,7 +9,6 @@
 <=app-cdr/xcdroast-0.98_alpha16-r3 \~"EXTRA_EMAKE=XCDRLIB_PREFIX=\"\$EPREFIX/usr/lib64/xcdroast-0.98\""
 #app-misc/lirc "LIRC_OPTS='--with-driver=pctv'"
 #app-portage/eix "~EXTRA_ECONF=--enable-nopie-security"
-#app-office/libreoffice "export ac_objext='o'"
 app-text/u2ps "EXTRA_EMAKE+='SHELL=/bin/bash'"
 #dev-games/flatzebra -lSDL_image -lSDL_mixer # Might be needed for burgerspace linking
 dev-java/icedtea* "EXTRA_ECONF+='--with-pax=paxctl-ng'"
@@ -17,7 +16,6 @@ dev-lang/rust "export SHELL=/bin/sh"
 dev-libs/libsodium !"export enable_pie=no"
 dev-perl/Clone "export mymake='DEFINE=-D_LARGEFILE64_SOURCE'" # -D_LARGEFILE64_SOURCE is filtered by the ebuild but *MUST* be used.
 =dev-tex/catdvi-0.14-r1 -I/usr/lib
-#dev-qt/qtwebkit "export CXX=clang++" "export CC=clang" # needed with gcc-5.1 for skype to work
 mail-client/thunderbird "export SHELL=/bin/sh"
 media-gfx/gimp "EXTRA_EMAKE+='SHELL=/bin/bash'"
 media-gfx/potrace "export CC=gcc" # otherwise clang is used for compilation if available
@@ -26,14 +24,11 @@ media-libs/jpeg "EXTRA_ECONF+='--disable-static'"
 =media-libs/kvazaar-1.1.0* CFLAGS+=-Wno-error
 media-libs/libquicktime "EXTRA_ECONF+='--disable-static'"
 media-libs/libmikmod "EXTRA_EMAKE+='SHELL=/bin/bash'"
-#media-video/avinfo "EXTRA_EMAKE='BISON=NONE'"
-#media-video/ffmpeg "EXTRA_ECONF-='*silent-rules *dependency-tracking'"
 =media-video/nvidia-settings-173.14.37 -ldl
 net-libs/c-client -lcrypt
 net-misc/nxserver-freenx "EXTRA_EMAKE+='SHELL=/bin/bash'"
 net-misc/wget "EXTRA_ECONF+='--disable-xattr'" # disable storing of useless information in xattr
 sci-mathematics/fricas EXTRA_ECONF+='--with-gmp= --disable-gmp' # --without-gmp from the ebuild does not work https://bugs.gentoo.org/show_bug.cgi?id=650788
-#sci-mathematics/scilab "export PVM_ARCH='LINUX'"
 sys-devel/gcc "export GCC_MAKE_TARGET='profiledbootstrap'" # "MAKEOPTS-='-j*'"
 =sys-libs/libieee1284-0.2.11-r4 "CFLAGS+='`python2-config --includes`'" # https://bugs.gentoo.org/show_bug.cgi?id=619810
 sys-fs/udev "EXTRA_ECONF+='--disable-static'"

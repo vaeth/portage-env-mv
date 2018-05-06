@@ -198,7 +198,6 @@ media-sound/sox +flto* # |
 media-sound/timidity++ !+flto* # ICE
 media-sound/wavpack +flto* # |
 media-sound/xmms2 +flto* # PO
-media-tv/kdetv +flto* # PO
 media-tv/linuxtv-dvb-apps \~+flto* # PIC
 media-video/avidemux +flto*
 media-video/dirac +flto* # PO

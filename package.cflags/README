@@ -79,6 +79,7 @@
 # +mindirect-branch*
 # +mfunction-return*
 # +mretpoline # clang only
+# +fcf-protection* # gcc-8
 # +Wl,-z,retpolineplt # currently clang only
 # NOLDADD=1 (or even NOLDOPT=1; however, NOLDOPT=1 might be a security risk)
 # +fdiagnostics-color=always
@@ -142,7 +143,7 @@
 # +Wl,--as-needed LD_AS_NEEDED=
 # +D*FORTIFY* -U_FORTIFY_SOURCE (the latter is not always necessary)
 # +fstack-protector*
-# +fstack-check*
+# +fstack-clash-protection +fstack-check
 # +fmerge-all-constants
 # +fno-semantic-interposition
 # +Wl,-z,relro # is a security risk

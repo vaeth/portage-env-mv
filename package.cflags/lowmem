@@ -1,3 +1,0 @@
-
-games-rpg/magus* !+O? !-O0 # -O0 uses much less memory for compiling. Otherwise, compilation is unbearable.
-www-client/chromium !+flto* !+fwhole-program # Otherwise compilation time is unbearable
