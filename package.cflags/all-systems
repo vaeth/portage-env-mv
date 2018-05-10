@@ -110,6 +110,7 @@ mail-client/thunderbird +D*FILE* +*math* +fno-common +fmerge-all-constants +finl
 media-gfx/fontforge +fdirectives-only
 media-gfx/geeqie +fno-common
 media-gfx/gimp NOLDADD=1 +D*DEBUG +D*ASSERT
+media-gfx/ipe +D_GLIBCXX_ASSERTIONS
 media-gfx/pqiv +finline-functions +D*FORTIFY* -U_FORTIFY_SOURCE
 media-gfx/pstoedit NOLDADD=1 +Wl,--as-needed LD_AS_NEEDED=
 media-gfx/splashutils +fstack-protector* +combine

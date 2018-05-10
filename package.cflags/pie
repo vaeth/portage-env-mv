@@ -102,6 +102,7 @@ media-gfx/gimp !+fPIE !+pie
 media-gfx/graphicsmagick +fPIE +pie
 media-gfx/graphviz +fPIE +pie
 media-gfx/imagemagick +fPIE +pie
+media-gfx/ipe +fPIE +pie
 media-gfx/mirage +fPIE +pie
 media-gfx/pstoedit !+fPIE !+pie
 media-gfx/pqiv +fPIE +pie

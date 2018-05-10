@@ -153,6 +153,7 @@ media-gfx/fontforge !+flto* # ICE
 media-gfx/graphicsmagick +flto* # |
 media-gfx/graphviz !+flto* # ICE-type of a different kind
 media-gfx/imagemagick +flto* # |
+media-gfx/ipe +flto*
 media-gfx/transfig !+flto* # ICE
 media-gfx/xfig !+flto* # ICE
 media-libs/aften +flto* # ICE and strange errors on amd64
