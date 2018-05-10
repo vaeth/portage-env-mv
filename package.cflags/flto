@@ -222,7 +222,6 @@ net-mail/uw-mailutils -ffat-lto-objects # PO
 net-misc/curl +flto* # |
 net-misc/netkit-telnetd !+flto* # ICE
 net-misc/nx +flto* # PO
-net-misc/nxcl +flto* # PO
 net-misc/nxserver-freenx +flto* # PO
 net-nds/openldap !+flto* # ICE
 net-p2p/qbittorrent +flto*

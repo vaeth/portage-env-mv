@@ -136,7 +136,6 @@ net-fs/autofs +fPIE +pie
 #net-im/utox +fPIE +pie
 net-misc/connman !+fPIE !+pie
 net-misc/curl !+fPIE !+pie
-net-misc/nxcl +fPIE +pie
 net-misc/nx +fPIE +pie
 net-misc/tlsdate !+fPIE !+pie
 net-nds/openldap !+fPIE !+pie
