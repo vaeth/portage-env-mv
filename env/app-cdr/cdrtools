@@ -1,1 +1,1 @@
-../scripts/mv_nosuid
+[ "$PV" = '99999999' ] || . /etc/portage/env/scripts/mv_nosuid
