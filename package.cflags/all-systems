@@ -236,6 +236,7 @@ sys-fs/e2fsprogs +D*FILE* +fno-common
 sys-fs/f2fs-tools +fno-common
 sys-fs/mtools +D*FILE*
 sys-fs/squashfs-tools +fno-common
+sys-fs/squashfuse +Wl,--as-needed
 sys-fs/sysfsutils NOLDADD=1
 sys-fs/udftools +fno-common
 sys-fs/unionfs-fuse +fno-common
