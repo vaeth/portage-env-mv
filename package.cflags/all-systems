@@ -161,7 +161,7 @@ media-video/ffmpeg +combine +ftracer +fno-common # -fno-common causes runtime se
 media-video/gnome-mplayer +fno-common
 media-video/kaffeine !/-O?/-O2 !+finline-functions
 media-video/libav +combine +ftracer
-media-video/mplayer* NOLDADD=1
+media-video/mplayer +finline-functions NOLDADD=1 # -finline-functions causes encoding errors w/ gcc-8
 media-video/mpv +fmerge-all-constants +fno-common +D*DEBUG +D*ASSERT
 media-video/nvidia-settings +fno-common
 media-video/transcode +fno-common +Wl,--as-needed LD_AS_NEEDED=
