@@ -1,6 +1,6 @@
 --- 1/lisp/info.el
 +++ 1/lisp/info.el
-@@ -503,6 +503,9 @@
+@@ -497,6 +497,9 @@
        '( (".gz"       . "gunzip")
  	 (".z"        . "gunzip")
  	 (".bz2"      . ("bzip2" "-dc"))
@@ -10,7 +10,7 @@
  	 (".inz"      . "gunzip")
  	 (".igz"      . "gunzip")
  	 (".info.Z"   . "gunzip")
-@@ -521,12 +524,18 @@
+@@ -515,12 +516,18 @@
         (".info.gz"   . "gunzip")
         (".info.z"    . "gunzip")
         (".info.bz2"  . ("bzip2" "-dc"))
@@ -29,7 +29,7 @@
         ("-info.z"    . "gunzip")
         ("-info.xz"   . "unxz")
         ("-info"      . nil)
-@@ -535,6 +544,9 @@
+@@ -529,6 +534,9 @@
         ("/index.gz"  . "gunzip")
         ("/index.z"   . "gunzip")
         ("/index.bz2" . ("bzip2" "-dc"))
@@ -39,7 +39,7 @@
         ("/index.xz"  . "unxz")
         ("/index"     . nil)
         (".Z"         . "uncompress")
-@@ -542,6 +554,9 @@
+@@ -536,6 +543,9 @@
         (".gz"        . "gunzip")
         (".z"         . "gunzip")
         (".bz2"       . ("bzip2" "-dc"))
@@ -86,11 +86,12 @@
      ;; dzip is gzip with random access.  Its compression program can't
      ;; read/write stdin/out, so .dz files can only be viewed without
      ;; saving, having their contents decompressed with gzip.
-@@ -317,7 +345,10 @@
+@@ -308,7 +336,11 @@
+ (defcustom jka-compr-mode-alist-additions
    (purecopy '(("\\.tgz\\'" . tar-mode)
                ("\\.tbz2?\\'" . tar-mode)
-               ("\\.txz\\'" . tar-mode)
--              ("\\.tzst\\'" . tar-mode)))
+-              ("\\.txz\\'" . tar-mode)))
++              ("\\.txz\\'" . tar-mode)
 +              ("\\.tbro?\\'" . tar-mode)
 +              ("\\.tl4\\'" . tar-mode)
 +              ("\\.tl?z4\\'" . tar-mode)

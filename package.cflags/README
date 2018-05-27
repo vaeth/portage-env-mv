@@ -80,6 +80,7 @@
 # +mfunction-return*
 # +mretpoline # clang only
 # +fcf-protection* # gcc-8
+# +Wl,--no-undefined # Using this might hide starttime/runtime issues
 # +Wl,-z,retpolineplt # currently clang only
 # NOLDADD=1 (or even NOLDOPT=1; however, NOLDOPT=1 might be a security risk)
 # +fdiagnostics-color=always

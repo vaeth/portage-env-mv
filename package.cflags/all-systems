@@ -44,6 +44,7 @@ app-text/yodl +XXXX # Something is broken here - must check
 dev-db/sqlite +*math*
 dev-db/sqlcipher +*math*
 dev-java/icedtea* +D*FORTIFY* -U_FORTIFY_SOURCE +fno-common
+dev-java/icedtea-web +Wl,--no-undefined
 dev-lang/lua CONFIG_SITE=
 dev-lang/ruby +ftree-vectorize*
 dev-lang/rust +fmerge-all-constants # with -fmerge-all-constants rust does not return from compiling its stdlib

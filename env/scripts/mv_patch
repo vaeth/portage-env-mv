@@ -123,7 +123,7 @@ mv_patchfile() {
 		${mv_pt2:+"${mv_pt2%/}/"} \
 		"${mv_pt%/}/" \
 		${FILESDIR:+"${FILESDIR%/}/"}
-	do	for mv_px in "$PN-$PR-" "$P-" "$PN-" ''
+	do	for mv_px in "$PN-$PR-" "$P-" "$PN:$SLOT-" "$PN-" ''
 		do	for mv_sx in '' '.patch' '.diff'
 			do	mv_n=$mv_pt$mv_px$mv_tl$mv_sx
 				test -e "$mv_n" || continue
