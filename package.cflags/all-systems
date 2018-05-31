@@ -1,30 +1,26 @@
 # General elimination of critical *FLAGS
 
 app-admin/fam NOLDADD=1
-app-admin/logrotate +combine +fno-common
+app-admin/logrotate +combine
 app-admin/metalog +fdirectives-only
-app-arch/cpio +fno-common +fdirectives-only
+app-arch/cpio +fdirectives-only
 app-arch/gzip +fdirectives-only
-app-arch/sharutils +fdirectives-only +fno-common
+app-arch/sharutils +fdirectives-only
 app-arch/tar +fdirectives-only
 app-cdr/cdw +Wl,--as-needed LD_AS_NEEDED=
-app-cdr/dvdisaster +fno-common +fdirectives-only # +fdirectives-only fixes broken ./configure
+app-cdr/dvdisaster +fdirectives-only # +fdirectives-only fixes broken ./configure
 app-crypt/gpgme +D*DEBUG +D*ASSERT
-app-crypt/gnupg +fno-common +D*DEBUG +D*ASSERT
+app-crypt/gnupg +D*DEBUG +D*ASSERT
 app-doc/doxygen NOC*OPT=1 +O* -O2 -fomit-frame-pointer -s # see http://forums.gentoo.org/viewtopic-t-495600.html
 app-emulation/dosemu +finline-functions
-app-emulation/vice +fno-common
-app-emulation/wine* +fstack-protector* +fno-common -fno-omit-frame-pointer +ftree-loop-distribute-patterns +fweb +finline-functions +frename-registers
+app-emulation/wine* +fstack-protector* -fno-omit-frame-pointer +ftree-loop-distribute-patterns +fweb +finline-functions +frename-registers
 app-mobilephone/heimdall SAFE # No experiments here!
-app-misc/lirc +fno-common # NOLDADD=1
-app-misc/rlwrap +fno-common
+app-misc/lirc # NOLDADD=1
 app-misc/srm +D*FILE*
 app-misc/tmux CONFIG_SITE=
-app-misc/vcp +fno-common
 app-office/libreoffice +finline-functions +frename-registers +*math* +fdirectives-only # for crashes check also freetype, zlib
 app-portage/deltup +Wl,--as-needed LD_AS_NEEDED=
 app-shells/dash +fdirectives-only
-app-shells/schily-tools +fno-common
 app-text/a2ps NOLDADD=1 +Wl,--as-needed # (gcc-7[pie] + gold)
 app-text/aspell +D*DEBUG +D*ASSERT
 app-text/dvipng +D*DEBUG +D*ASSERT
@@ -33,24 +29,19 @@ app-text/ghostscript-gpl +D*FILE*
 app-text/gv +fdirectives-only
 app-text/lcdf-typetools +D*DEBUG +D*ASSERT
 app-text/pdftk +O* -O2 +finline-functions +D*DEBUG +D*ASSERT +D*FILE* +D*FORTIFY*
-app-text/pinfo +fno-common
 app-text/poppler +frepo +ftree-vectorize* # ftree-vectorize reported in http://gentoo-wiki.com/CFLAGS_matrix
-app-text/texlive* +D*DEBUG +D*ASSERT +fno-common
-app-text/ttf2pk2 +fno-common
-app-text/unrtf +fno-common
+app-text/texlive* +D*DEBUG +D*ASSERT
 app-text/wdiff +fdirectives-only
 app-text/xdvik +D*DEBUG +D*ASSERT
 app-text/yodl +XXXX # Something is broken here - must check
 dev-db/sqlite +*math*
 dev-db/sqlcipher +*math*
-dev-java/icedtea* +D*FORTIFY* -U_FORTIFY_SOURCE +fno-common
-dev-java/icedtea-web +Wl,--no-undefined
+dev-java/icedtea* +D*FORTIFY* -U_FORTIFY_SOURCE
 dev-lang/lua CONFIG_SITE=
 dev-lang/ruby +ftree-vectorize*
 dev-lang/rust +fmerge-all-constants # with -fmerge-all-constants rust does not return from compiling its stdlib
 dev-lang/python +ffast-math # Byte compilation of some .pyc files needs forever with -ffast-math
 dev-libs/boost MAKEOPTS-='-j*'
-dev-libs/check +fno-common
 dev-libs/elfutils +D*FILE*
 dev-libs/gmp +*math* +fgraphite* +floop-* +D*FILE* +D*DEBUG +D*ASSERT +frename-registers +freorder-functions +fdevirtualize-speculatively # Just to be on the safe side
 dev-libs/klibc SAFE
@@ -70,58 +61,39 @@ dev-libs/wayland +D*DEBUG +D*ASSERT
 dev-libs/weston +D*DEBUG +D*ASSERT
 dev-lisp/clisp CONFIG_SITE= NOLDADD=1 +D*DEBUG +D*ASSERT +frename-registers +*math* +fdirectives-only
 dev-python/numpy +*math*
-dev-python/python-poppler +fno-common
 dev-qt/* +fdirectives-only
 dev-qt/qtwebkit +*math*
 dev-scheme/guile +fdirectives-only +ffast-math !+D*FILE_OFFSET* !+D_LARGEFILE* # -ffast-math triggers floating exception https://bugs.gentoo.org/show_bug.cgi?id=598986
-dev-tcltk/tkimg +fno-common
 dev-tex/catdvi +D*DEBUG +D*ASSERT
 dev-tex/detex +D*DEBUG +D*ASSERT
-dev-tex/luatex +D*DEBUG +D*ASSERT +fno-common
+dev-tex/luatex +D*DEBUG +D*ASSERT
 dev-tex/metapost +D*DEBUG +D*ASSERT
 dev-texlive/texlive-metapost +D*DEBUG +D*ASSERT
-dev-util/android-tools +fno-common
 dev-util/boost-build +combine
 dev-util/ccache CONFIG_SITE=
 dev-util/diffball +D*FILE*
-dev-util/icmake +fno-common
 dev-util/strace +fdirectives-only
 dev-vcs/rcs +fdirectives-only
 dev-vcs/subversion NOLDADD=1
-games-arcade/primateplunge +fno-common
-games-arcade/rocksndiamonds +fno-common
 games-arcade/supertux +D*DEBUG +D*ASSERT
-games-arcade/xboing +fno-common
-games-arcade/xrick +fno-common
-games-board/xboard +fno-common
-games-emulation/advancemame +ftree-vectorize* +fno-common
+games-emulation/advancemame +ftree-vectorize*
 games-emulation/sdlmame +ftree-vectorize*
 games-emulation/xmame +ftree-vectorize*
 games-emulation/xmess +ftree-vectorize*
-games-engines/frotz +fno-common
-games-fps/doomsday +fno-common
-games-fps/prboom +fno-common
-games-rpg/freedroid +fno-common
-games-rpg/freedroidrpg CONFIG_SITE= +fno-common
+games-rpg/freedroidrpg CONFIG_SITE=
 gnome-base/librsvg +ftree-vectorize* # reported in http://gentoo-wiki.com/CFLAGS_matrix
 kde-frameworks/* +*math*
-mail-client/alpine +fno-common
-mail-client/mailx +fno-common
-mail-client/thunderbird +D*FILE* +*math* +fno-common +fmerge-all-constants +finline-functions +fdirectives-only
+mail-client/thunderbird +D*FILE* +*math* +fmerge-all-constants +finline-functions +fdirectives-only
 media-gfx/fontforge +fdirectives-only
-media-gfx/geeqie +fno-common
 media-gfx/gimp NOLDADD=1 +D*DEBUG +D*ASSERT
 media-gfx/ipe +D_GLIBCXX_ASSERTIONS
 media-gfx/pqiv +finline-functions +D*FORTIFY* -U_FORTIFY_SOURCE
 media-gfx/pstoedit NOLDADD=1 +Wl,--as-needed LD_AS_NEEDED=
 media-gfx/splashutils +fstack-protector* +combine
-media-gfx/transfig +fno-common
 media-libs/a52dec NOLDADD=1
 media-libs/alsa-lib NOC*OPT=1 +O* -O1 # avoid: Inappropriate ioctl for device
 media-libs/alsa-oss NOC*OPT=1 +O* -O1 +D*FILE* # avoid: Inappropriate ioctl for device
-media-libs/freeglut +fno-common
 media-libs/freetype -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid some firefox/openoffice crashes
-media-libs/gegl +fno-common
 media-libs/gst-plugins-base NOLAFILEREMOVE=1
 media-libs/id3lib NOLDADD=1
 media-libs/jbigkit +finline-functions
@@ -133,145 +105,100 @@ media-libs/lcms -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid 
 media-libs/libid3tag NOLDADD=1
 media-libs/libmad NOLDADD=1
 media-libs/libmpeg2 NOLDADD=1
-media-libs/libmtp +fno-common
 media-libs/libsidplay NOLAFILEREMOVE=1
-media-libs/libv4l +D*FILE* +fno-common
-media-libs/mesa +fno-common +Wl,-z,now +Wl,--build-id=none +fdirectives-only +*math*
+media-libs/libv4l +D*FILE*
+media-libs/mesa +Wl,-z,now +Wl,--build-id=none +fdirectives-only +*math*
 media-libs/mlt +combine
 media-libs/opus +*math*
 media-libs/plotutils +*math*
 media-libs/raptor +*math*
-media-libs/sg +fno-common
-media-libs/xine-lib NOLDADD=1 +fno-common
+media-libs/xine-lib NOLDADD=1
 media-plugins/live +Wl,--relax
-media-sound/audacity CONFIG_SITE= +fno-common
+media-sound/audacity CONFIG_SITE=
 media-sound/mpg123 +D*FILE*
-media-sound/musepack-tools +fno-common
-media-sound/pnmixer +fno-common
-media-sound/timidity++ +fno-common
-media-sound/toolame +fno-common
-media-tv/nvtv +fno-common
-media-tv/tvheadend +fno-common
-media-tv/v4l-utils +fno-common +D*FILE*
-media-tv/w_scan +fno-common
+media-tv/v4l-utils +D*FILE*
 media-video/avidemux +ftracer # MAKEOPTS-='-j*'
-media-video/avinfo +fno-common
 media-video/cclive +D*DEBUG +D*ASSERT
 media-video/cinelerra NOLDADD=1 +D*DEBUG +D*ASSERT # MAKEOPTS-='-j*'
-media-video/ffmpeg +combine +ftracer +fno-common # -fno-common causes runtime segfaults w/ gcc-8
-media-video/gnome-mplayer +fno-common
+media-video/ffmpeg +combine +ftracer # -fno-common causes runtime segfaults w/ gcc-8
 media-video/kaffeine !/-O?/-O2 !+finline-functions
 media-video/libav +combine +ftracer
 media-video/mplayer +finline-functions NOLDADD=1 # -finline-functions causes encoding errors w/ gcc-8
-media-video/mpv +fmerge-all-constants +fno-common +D*DEBUG +D*ASSERT
-media-video/nvidia-settings +fno-common
-media-video/transcode +fno-common +Wl,--as-needed LD_AS_NEEDED=
+media-video/mpv +fmerge-all-constants +D*DEBUG +D*ASSERT
+media-video/transcode +Wl,--as-needed LD_AS_NEEDED=
 media-video/transcode \~/-O?/-O2 \~+fweb # fixes segfault of: tcmodinfo -i tc_video
 media-video/xanim +O* -O2
-media-video/vlc +fno-common
 net-dns/libidn +fdirectives-only
-net-firewall/nftables +fno-common
 net-ftp/lftp +fdirectives-only
-net-ftp/ncftp NOLDADD=1 +fno-common
+net-ftp/ncftp NOLDADD=1
 net-im/qtox +fdirectives-only
-#net-im/toxic +fno-common
-#net-im/utox +fno-common
 net-libs/gnutls +fdirectives-only
-net-misc/iputils +fno-common
 net-libs/libgsasl +fdirectives-only
-net-libs/libtirpc +fno-common
 net-libs/nodejs +*math* # with math optimization casting function miscompiles and www-client/chromium fails to build
 net-libs/wvstreams +D*DEBUG +D*ASSERT NOLDADD=1
-net-misc/nx +fno-common
-net-misc/openssh +fno-common
 net-misc/streamtuner CONFIG_SITE=
-net-misc/tlsdate +fno-common
 net-misc/wget +fdirectives-only
 net-print/foo2zjs +combine
-net-print/cups-filters +fno-common
-net-vpn/tor +D*DEBUG +D*ASSERT +fno-common
+net-vpn/tor +D*DEBUG +D*ASSERT
 sci-libs/* +*math*
 sci-libs/cln +ftracer +fdirectives-only
 sci-mathematics/* +*math*
-sci-mathematics/axiom CONFIG_SITE= +D*FILE* +D*FORTIFY* +fno-common # MAKEOPTS-='-j*'
+sci-mathematics/axiom CONFIG_SITE= +D*FILE* +D*FORTIFY* # MAKEOPTS-='-j*'
 sci-mathematics/ginac +fvisibility-inlines-hidden
 sci-mathematics/octave +D*DEBUG +D*ASSERT +fdirectives-only +fvisibility-inlines-hidden
-sci-mathematics/scilab +fno-common
 sci-visualization/gnuplot +*math*
 sys-apps/busybox +Wl,--relax
 sys-apps/coreutils +fdirectives-only
 sys-apps/dbus +ftree-vectorize* # reported in http://gentoo-wiki.com/CFLAGS_matrix
 sys-apps/diffutils +fdirectives-only
-sys-apps/dtc +fno-common
 sys-apps/fakeroot +D*FILE*
 sys-apps/fakeroot-ng +D*FILE*
 sys-apps/fakechroot +D*FILE*
 sys-apps/findutils +fdirectives-only
 sys-apps/gawk +D*DEBUG
 sys-apps/grep +fdirectives-only
-sys-apps/iproute2 +fno-common
-sys-apps/kbd +fno-common
-sys-apps/openrc +combine +fno-common
+sys-apps/openrc +combine
 sys-apps/paludis +fno-enforce-eh-specs +*math* +fvisibility-inlines-hidden
 sys-apps/sandbox +D*DEBUG +D*ASSERT
 sys-apps/sed +D*DEBUG +fdirectives-only
 sys-apps/systemd +D*DEBUG +D*ASSERT
 sys-apps/texinfo +fstack-protector +fdirectives-only
-sys-apps/the_silver_searcher +fno-common # gcc-8
+sys-apps/the_silver_searcher # gcc-8
 sys-block/parted NOLDADD=1 +D*FILE* +fdirectives-only
 sys-boot/grub SAFE # No experiments here! Breakage is likely, because grub needs special code, and you must reinstall grub from a rescue CD in case of failures. Moreover, grub provides no suid-binary and no library, so no security issues arise.
-sys-boot/syslinux +fno-common
 sys-devel/bison +fdirectives-only
 sys-devel/gcc CONFIG_SITE= NOLDADD=1 +combine +D*DEBUG +D*ASSERT +D*FILE* +D*FORTIFY* # +fstack-protector* only needed for nspluginwrapper (on 64bit)
 =sys-devel/gcc-3* \~SAFE \~/-march*/-march=k8
 sys-devel/clang +fmerge-all-constants # -fmerge-all-constants has always problems with llvm
-sys-devel/gdb CONFIG_SITE= +*math* +fno-common +fdirectives-only
+sys-devel/gdb CONFIG_SITE= +*math* +fdirectives-only
 sys-devel/gettext +fdirectives-only
 sys-devel/libtool CONFIG_SITE=
-sys-devel/llvm CONFIG_SITE= +*math* +fno-common +D*FILE* +fmerge-all-constants # -fmerge-all-constants causes clang to segfault on trivial c programs
+sys-devel/llvm CONFIG_SITE= +*math* +D*FILE* +fmerge-all-constants # -fmerge-all-constants causes clang to segfault on trivial c programs
 sys-devel/m4 +*math* +fdirectives-only
-sys-devel/make +fno-common
 sys-devel/patch +fdirectives-only +D*DEBUG +D*ASSERT
 sys-fs/aufs*-util +D*FILE*
-sys-fs/e2fsprogs +D*FILE* +fno-common
-sys-fs/f2fs-tools +fno-common
+sys-fs/e2fsprogs +D*FILE*
 sys-fs/mtools +D*FILE*
-sys-fs/squashfs-tools +fno-common
 sys-fs/squashfuse +Wl,--as-needed
 sys-fs/sysfsutils NOLDADD=1
-sys-fs/udftools +fno-common
-sys-fs/unionfs-fuse +fno-common
 sys-libs/e2fsprogs-libs +D*FILE*
 sys-libs/compiler-rt USE_NONGNU=1 +fmerge-all-constants
 sys-libs/compiler-rt-sanitizers USE_NONGNU=1 +fmerge-all-constants
 sys-libs/glibc +Wl,--relax +D*FILE* +fstack-protector
-sys-libs/gpm +fno-common
 sys-libs/gwenhywfar +D*FORTIFY* -U_FORTIFY_SOURCE
 sys-libs/libstdc++-v3 +D*DEBUG +D*ASSERT
 sys-libs/zlib -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid some firefox/openoffice crashes
-sys-power/iasl +fno-common
-sys-power/suspend +fno-common
 sys-process/criu +Wl,--relax
-sys-process/htop +fno-common
-www-client/chromium NOLDADD=1 USE_NONGNU=1 +D*FILE* +*math* +fno-common +fmerge-all-constants +finline-functions +fdirectives-only +fgcse-sm +fgcse-las +fgcse-after-reload +fdiagnostics-color*
-www-client/dillo +fno-common
-www-client/firefox +D*FILE* +*math* +fno-common +fmerge-all-constants +finline-functions +fdirectives-only
-# The following requires less memory but breaks some configuration tests:
-#www-client/firefox !LDFLAGS+=-Wl,--reduce-memory-overheads
+www-client/chromium NOLDADD=1 USE_NONGNU=1 +D*FILE* +*math* +fmerge-all-constants +finline-functions +fdirectives-only +fgcse-sm +fgcse-las +fgcse-after-reload +fdiagnostics-color*
+www-client/firefox +D*FILE* +*math* +fmerge-all-constants +finline-functions +fdirectives-only
+#www-client/firefox !LDFLAGS+=-Wl,--reduce-memory-overheads # requires less memory but breaks some configuration tests:
 www-plugins/nspluginwrapper NOLDADD=1
-x11-base/xorg-server +fno-common +Wl,-z,now +fdirectives-only
-x11-drivers/xf86-* +fno-common +Wl,-z,now +fdirectives-only
-x11-drivers/nvidia-drivers +fno-common
+x11-base/xorg-server +Wl,-z,now +fdirectives-only
+x11-drivers/xf86-* +Wl,-z,now +fdirectives-only
 x11-libs/libXxf86vm CONFIG_SITE= # nvidia-settings needs the static version
-x11-libs/libdrm +fno-common
-x11-libs/libva-intel-driver +fno-common # gcc-8
+x11-libs/libva-intel-driver # gcc-8
 x11-libs/pango -mstackrealign +ftracer +fmerge-all-constants # +O* -O2 +ftree-vectorize* avoids some firefox crashes
 x11-libs/pixman -mstackrealign +ftracer +fmerge-all-constants # +O* -O2 +ftree-vectorize* avoids some firefox crashes
 x11-libs/wxGTK NOLDADD=1 +fvisibility-inlines-hidden
-x11-misc/gtkdialog +fno-common
 x11-misc/redshift +ffast-math # with -ffast-math fails to recognize options correctly with gcc-7
-x11-misc/xaos +fno-common
-x11-misc/xfractint +fno-common
 x11-misc/xscreensaver +D*DEBUG +D*ASSERT
-x11-terms/xterm +fno-common
-x11-wm/fvwm +fno-common

@@ -14,6 +14,9 @@
 # all-systems
 #     This is the main file for resetting C*FLAGS which might be set in
 #     /etc/portage/make.conf/* and which are too aggressive for some packages
+# checks
+#     Packages breaking with -fno-common or -Wl,--no-undefined
+#     This breakage might indicate a hidden bug
 # flto
 #     The same for LTO related flags like e.g.
 #     -flto -fwhole-program -fuse-linker-plugin -emit-llvm -flto-partition=none
@@ -67,12 +70,14 @@
 #   Typical error: undefined reference to `main'
 #   Typical error: undefined symbol
 #   Typical error: recompile with -fPIC
+# +fno-common
+#   Typical error: multiple definition
+# +Wl,--no-undefined # Using this might hide starttime/runtime issues
+#   Typical error: undefined reference to '...'
 # +fgraphite* +floop-*
 #  these are collected in an extra file: /etc/portage/package.cflags/graphite
 #   Typical error: segfaults
 #   Typical error: internal compiler error
-# +fno-common
-#   Typical error: multiple definition
 # +ftree-loop-distribute-patterns
 #   Typical error: undefined reference to `memset'
 # +fno-plt
@@ -80,7 +85,6 @@
 # +mfunction-return*
 # +mretpoline # clang only
 # +fcf-protection* # gcc-8
-# +Wl,--no-undefined # Using this might hide starttime/runtime issues
 # +Wl,-z,retpolineplt # currently clang only
 # NOLDADD=1 (or even NOLDOPT=1; however, NOLDOPT=1 might be a security risk)
 # +fdiagnostics-color=always

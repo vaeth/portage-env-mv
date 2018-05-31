@@ -1,0 +1,165 @@
+# +fno-common
+# +Wl,--no-undefined
+#
+# The options -fno-common -Wl,--no-undefined are essentially testing options:
+# If a package is breaking with them but not without them, this might actually
+# indicate a real bug.
+# For plugins it may be normal that -Wl,--no-undefined fails.
+# There are a few packages in which -fno-common causes runtime issues:
+# If somebody has an idea why, please write me...
+
+app-admin/logrotate +fno-common
+app-arch/cpio +fno-common
+app-arch/sharutils +fno-common
+app-cdr/dvdisaster +fno-common
+app-crypt/gnupg +fno-common
+app-emulation/dosemu +Wl,--no-undefined
+app-emulation/vice +fno-common
+app-emulation/wine* +fno-common
+app-misc/lirc +fno-common
+app-misc/rlwrap +fno-common
+app-misc/vcp +fno-common
+app-shells/schily-tools +fno-common
+app-shells/zsh +Wl,--no-undefined
+app-text/a2ps +Wl,--no-undefined
+app-text/fbreader +Wl,--no-undefined
+app-text/ghostscript-gpl +Wl,--no-undefined
+app-text/pinfo +fno-common
+app-text/stardict +Wl,--no-undefined
+app-text/texlive-core +fno-common
+app-text/ttf2pk2 +fno-common
+app-text/unrtf +fno-common
+dev-java/icedtea* +fno-common +Wl,--no-undefined
+dev-lang/perl +Wl,--no-undefined
+dev-lang/python:2.7 +Wl,--no-undefined
+dev-lang/rust +Wl,--no-undefined
+dev-libs/appstream-glib +Wl,--no-undefined
+dev-libs/check +fno-common
+dev-libs/gobject-introspection +Wl,--no-undefined
+dev-libs/libevent +Wl,--no-undefined
+dev-libs/weston +Wl,--no-undefined
+dev-perl/* +Wl,--no-undefined
+dev-python/cffi +Wl,--no-undefined
+dev-python/dbus-python +Wl,--no-undefined
+dev-python/numpy +Wl,--no-undefined
+dev-python/pygame +Wl,--no-undefined
+dev-python/pygobject +Wl,--no-undefined
+dev-python/pygtk +Wl,--no-undefined
+dev-python/python-poppler +fno-common
+dev-tcltk/tkimg +fno-common
+dev-tex/luatex +fno-common
+dev-util/android-tools +fno-common
+dev-util/icmake +fno-common
+games-arcade/emilia-pinball +Wl,--no-undefined
+games-arcade/primateplunge +fno-common
+games-arcade/rocksndiamonds +fno-common
+games-arcade/xboing +fno-common
+games-arcade/xrick +fno-common
+games-board/xboard +fno-common
+games-emulation/advancemame +fno-common
+games-engines/frotz +fno-common
+games-fps/doomsday +fno-common
+games-fps/prboom +fno-common
+games-rpg/freedroid +fno-common
+games-rpg/freedroidrpg +fno-common
+mail-client/alpine +fno-common
+mail-client/claws-mail +Wl,--no-undefined
+mail-client/mailx +fno-common
+mail-client/thunderbird +fno-common
+mail-filter/maildrop +Wl,--no-undefined
+media-gfx/fontforge +Wl,--no-undefined
+media-gfx/geeqie +fno-common
+media-gfx/pqiv +Wl,--no-undefined
+media-gfx/transfig +fno-common
+media-libs/avidemux-plugins +Wl,--no-undefined
+media-libs/freeglut +fno-common
+media-libs/gegl +fno-common
+media-libs/kvazaar +Wl,--no-undefined
+media-libs/libmtp +fno-common
+media-libs/libquicktime +Wl,--no-undefined
+media-libs/libreplaygain +Wl,--no-undefined
+media-libs/libv4l +fno-common +Wl,--no-undefined
+media-libs/mesa +fno-common
+media-libs/plotutils +Wl,--no-undefined
+media-libs/sg +fno-common
+media-libs/xine-lib +fno-common
+media-plugins/live +Wl,--no-undefined
+media-sound/audacity +fno-common
+media-sound/musepack-tools +fno-common
+media-sound/pnmixer +fno-common
+media-sound/timidity++ +fno-common
+media-sound/toolame +fno-common
+media-tv/linuxtv-dvb-apps +Wl,--no-undefined
+media-tv/nvtv +fno-common
+media-tv/tvheadend +fno-common
+media-tv/v4l-utils +fno-common +Wl,--no-undefined
+media-tv/w_scan +fno-common
+media-video/avidemux +Wl,--no-undefined
+media-video/avinfo +fno-common
+media-video/ffmpeg +fno-common
+media-video/gnome-mplayer +fno-common
+media-video/mpv +fno-common
+media-video/nvidia-settings +fno-common
+media-video/transcode +fno-common +Wl,--no-undefined
+media-video/vlc +fno-common
+net-dialup/ppp +Wl,--no-undefined
+net-firewall/nftables +fno-common
+net-fs/autofs +Wl,--no-undefined
+net-ftp/ncftp +fno-common
+net-libs/libetpan +Wl,--no-undefined # Flags are stored in libetpan-config; breaks compilation of mail-client/claws-mail
+net-libs/libtirpc +fno-common
+net-libs/nghttp2 +Wl,--no-undefined
+net-misc/iputils +fno-common
+net-misc/nx +fno-common
+net-misc/openssh +fno-common
+net-misc/streamtuner +Wl,--no-undefined
+net-misc/tlsdate +fno-common
+net-print/cups-filters +fno-common
+net-vpn/tor +fno-common
+perl-core/* +Wl,--no-undefined
+sci-libs/hdf5 +Wl,--no-undefined
+sci-mathematics/axiom +fno-common
+sci-mathematics/calc +Wl,--no-undefined
+sci-mathematics/reduce +Wl,--no-undefined
+sci-mathematics/scilab +fno-common +Wl,--no-undefined
+sys-apps/dtc +fno-common
+sys-apps/iproute2 +fno-common
+sys-apps/kbd +fno-common
+sys-apps/openrc +fno-common
+sys-apps/the_silver_searcher +fno-common
+sys-block/parted:0 +Wl,--no-undefined
+sys-boot/syslinux +fno-common
+sys-devel/gdb +fno-common
+sys-devel/gettext +Wl,--no-undefined
+sys-devel/llvm +fno-common +Wl,--no-undefined
+sys-devel/make +fno-common
+sys-fs/dd-rescue +Wl,--no-undefined
+sys-fs/e2fsprogs +fno-common
+sys-fs/f2fs-tools +fno-common
+sys-fs/squashfs-tools +fno-common
+sys-fs/squashfuse +Wl,--no-undefined
+sys-fs/udftools +fno-common
+sys-fs/unionfs-fuse +fno-common
+sys-libs/glibc +Wl,--no-undefined
+sys-libs/gpm +fno-common
+sys-libs/slang +Wl,--no-undefined
+sys-power/iasl +fno-common
+sys-power/nut +Wl,--no-undefined
+sys-power/suspend +fno-common
+sys-process/htop +fno-common
+www-client/chromium +fno-common
+www-client/dillo +fno-common
+www-client/firefox +fno-common
+x11-base/xorg-server +fno-common +Wl,--no-undefined
+x11-drivers/nvidia-drivers +fno-common +Wl,--no-undefined
+x11-drivers/xf86-* +fno-common +Wl,--no-undefined
+x11-libs/cairo +Wl,--no-undefined
+x11-libs/libdrm +fno-common
+x11-libs/libva-intel-driver +fno-common
+x11-libs/libvdpau +Wl,--no-undefined
+x11-misc/gtkdialog +fno-common
+x11-misc/slim +Wl,--no-undefined
+x11-misc/xaos +fno-common
+x11-misc/xfractint +fno-common
+x11-terms/xterm +fno-common
+x11-wm/fvwm +fno-common
