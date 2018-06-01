@@ -126,7 +126,7 @@ sys-apps/dtc +fno-common
 sys-apps/iproute2 +fno-common
 sys-apps/kbd +fno-common
 sys-apps/openrc +fno-common
-sys-apps/the_silver_searcher +fno-common
+sys-apps/the_silver_searcher +fno-common # gcc-8
 sys-block/parted:0 +Wl,--no-undefined
 sys-boot/syslinux +fno-common
 sys-devel/gdb +fno-common
@@ -155,7 +155,7 @@ x11-drivers/nvidia-drivers +fno-common +Wl,--no-undefined
 x11-drivers/xf86-* +fno-common +Wl,--no-undefined
 x11-libs/cairo +Wl,--no-undefined
 x11-libs/libdrm +fno-common
-x11-libs/libva-intel-driver +fno-common
+x11-libs/libva-intel-driver +fno-common # gcc-8
 x11-libs/libvdpau +Wl,--no-undefined
 x11-misc/gtkdialog +fno-common
 x11-misc/slim +Wl,--no-undefined

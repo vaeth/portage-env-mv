@@ -15,7 +15,6 @@ app-doc/doxygen NOC*OPT=1 +O* -O2 -fomit-frame-pointer -s # see http://forums.ge
 app-emulation/dosemu +finline-functions
 app-emulation/wine* +fstack-protector* -fno-omit-frame-pointer +ftree-loop-distribute-patterns +fweb +finline-functions +frename-registers
 app-mobilephone/heimdall SAFE # No experiments here!
-app-misc/lirc # NOLDADD=1
 app-misc/srm +D*FILE*
 app-misc/tmux CONFIG_SITE=
 app-office/libreoffice +finline-functions +frename-registers +*math* +fdirectives-only # for crashes check also freetype, zlib
@@ -163,7 +162,6 @@ sys-apps/sandbox +D*DEBUG +D*ASSERT
 sys-apps/sed +D*DEBUG +fdirectives-only
 sys-apps/systemd +D*DEBUG +D*ASSERT
 sys-apps/texinfo +fstack-protector +fdirectives-only
-sys-apps/the_silver_searcher # gcc-8
 sys-block/parted NOLDADD=1 +D*FILE* +fdirectives-only
 sys-boot/grub SAFE # No experiments here! Breakage is likely, because grub needs special code, and you must reinstall grub from a rescue CD in case of failures. Moreover, grub provides no suid-binary and no library, so no security issues arise.
 sys-devel/bison +fdirectives-only
@@ -196,7 +194,6 @@ www-plugins/nspluginwrapper NOLDADD=1
 x11-base/xorg-server +Wl,-z,now +fdirectives-only
 x11-drivers/xf86-* +Wl,-z,now +fdirectives-only
 x11-libs/libXxf86vm CONFIG_SITE= # nvidia-settings needs the static version
-x11-libs/libva-intel-driver # gcc-8
 x11-libs/pango -mstackrealign +ftracer +fmerge-all-constants # +O* -O2 +ftree-vectorize* avoids some firefox crashes
 x11-libs/pixman -mstackrealign +ftracer +fmerge-all-constants # +O* -O2 +ftree-vectorize* avoids some firefox crashes
 x11-libs/wxGTK NOLDADD=1 +fvisibility-inlines-hidden
