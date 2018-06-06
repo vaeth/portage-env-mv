@@ -147,7 +147,7 @@ sys-power/iasl +fno-common
 sys-power/nut +Wl,--no-undefined
 sys-power/suspend +fno-common
 sys-process/htop +fno-common
-www-client/chromium +fno-common
+www-client/chromium +fno-common +Wl,--no-undefined
 www-client/dillo +fno-common
 www-client/firefox +fno-common
 x11-base/xorg-server +fno-common +Wl,--no-undefined
