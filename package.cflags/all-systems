@@ -119,7 +119,7 @@ media-tv/v4l-utils +D*FILE*
 media-video/avidemux +ftracer # MAKEOPTS-='-j*'
 media-video/cclive +D*DEBUG +D*ASSERT
 media-video/cinelerra NOLDADD=1 +D*DEBUG +D*ASSERT # MAKEOPTS-='-j*'
-media-video/ffmpeg +combine +ftracer # -fno-common causes runtime segfaults w/ gcc-8
+media-video/ffmpeg +combine +ftracer
 media-video/kaffeine !/-O?/-O2 !+finline-functions
 media-video/libav +combine +ftracer
 media-video/mplayer +finline-functions NOLDADD=1 # -finline-functions causes encoding errors w/ gcc-8
