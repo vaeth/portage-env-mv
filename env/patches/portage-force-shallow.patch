@@ -1,0 +1,11 @@
+--- 1/pym/portage/sync/modules/git/git.py
++++ 1/pym/portage/sync/modules/git/git.py
+@@ -141,6 +141,8 @@
+ 		if shallow:
+ 			git_cmd_opts += " --depth %d" % self.repo.sync_depth
+ 
++		shallow = True
++		if shallow:
+ 			# For shallow fetch, unreachable objects may need to be pruned
+ 			# manually, in order to prevent automatic git gc calls from
+ 			# eventually failing (see bug 599008).

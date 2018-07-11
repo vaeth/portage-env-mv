@@ -290,6 +290,7 @@ x11-libs/gtkglext +flto* # PO
 x11-libs/libnotify +flto* # |
 x11-libs/libwnck +flto* # PO
 x11-libs/pango +flto* # |
+x11-libs/pangox-compat +flto* # |
 x11-libs/wxGTK +flto* # PO
 x11-libs/xcb-util-cursor +flto* # |
 x11-misc/sddm +flto* # does not switch to graphics mode in some settings
