@@ -1,18 +1,13 @@
 --- 2/pym/portage/sync/modules/git/git.py
 +++ 2/pym/portage/sync/modules/git/git.py
-@@ -121,6 +121,16 @@
+@@ -121,6 +121,11 @@
  			pull_env = dict((k, v) for k, _, v in (assignment.partition('=') for assignment in shlexed_env) if k)
  			self.spawn_kwargs['env'].update(pull_env)
  
-+		reindex_cmd = [self.bin_command,
++		update_index_cmd = [self.bin_command,
 +			'update-index', '--refresh', '-q', '--unmerged']
-+		exitcode = subprocess.call(reindex_cmd,
++		subprocess.call(update_index_cmd,
 +			cwd=portage._unicode_encode(self.repo.location))
-+		if exitcode != os.EX_OK:
-+			msg = "!!! git update-index error in %s" % self.repo.location
-+			self.logger(self.xterm_titles, msg)
-+			writemsg_level(msg + "\n", level=logging.ERROR, noiselevel=-1)
-+			return (exitcode, False)
 +
  		if self.settings.get("PORTAGE_QUIET") == "1":
  			git_cmd_opts += " --quiet"
