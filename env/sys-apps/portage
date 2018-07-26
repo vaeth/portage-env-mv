@@ -2,4 +2,4 @@
 	brotli-lz4-zstd \
 	force-shallow \
 	update-index \
-	rm-use_local_desc
+	reset-hard

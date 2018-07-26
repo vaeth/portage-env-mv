@@ -1,0 +1,11 @@
+--- a/pym/portage/sync/modules/git/git.py
++++ a/pym/portage/sync/modules/git/git.py
+@@ -188,7 +188,7 @@
+ 		if shallow:
+ 			# Since the default merge strategy typically fails when
+ 			# the depth is not unlimited, `git reset --merge`.
+-			merge_cmd = [self.bin_command, 'reset', '--merge']
++			merge_cmd = [self.bin_command, 'reset', '--hard']
+ 		else:
+ 			merge_cmd = [self.bin_command, 'merge']
+ 		merge_cmd.append('refs/remotes/%s' % remote_branch)
