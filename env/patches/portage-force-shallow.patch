@@ -1,5 +1,5 @@
---- 1/pym/portage/sync/modules/git/git.py
-+++ 1/pym/portage/sync/modules/git/git.py
+--- 1/lib/portage/sync/modules/git/git.py
++++ 1/lib/portage/sync/modules/git/git.py
 @@ -141,6 +141,8 @@
  		if shallow:
  			git_cmd_opts += " --depth %d" % self.repo.sync_depth
