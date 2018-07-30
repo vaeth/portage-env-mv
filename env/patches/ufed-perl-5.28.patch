@@ -1,0 +1,15 @@
+Patch by Martin Vaeth <martin at mvath.de> from Jul 30, 2028
+--- 1/Portage.pm
++++ 2/Portage.pm
+@@ -1055,9 +1055,9 @@
+ 						$addvalue =~ s[
+ 							\\\n       | # backslash-newline
+ 							\\(.)      | # other escaped characters
+-							\$({)?       # $
++							\$(\{)?      # $
+ 							$IDENT       # followed by an identifier
+-							(?(2)})      # optionally enclosed in braces
++							(?(2)\})     # optionally enclosed in braces
+ 						][
+ 							defined $3 ? $env{$3} || '' : # replace envvars
+ 							defined $1 ? $1             : # unescape escaped characters
