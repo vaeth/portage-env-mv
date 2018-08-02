@@ -1,0 +1,11 @@
+--- a/lib/portage/util/compression_probe.py
++++ a/lib/portage/util/compression_probe.py
+@@ -45,7 +45,7 @@
+ 	},
+ 	"zstd": {
+ 		"compress": "zstd ${BINPKG_COMPRESS_FLAGS}",
+-		"decompress": "zstd -d",
++		"decompress": "zstd -d --memory=4294967295",
+ 		"package": "app-arch/zstd",
+ 	},
+ }

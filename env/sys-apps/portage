@@ -1,5 +1,6 @@
 . /etc/portage/env/scripts/mv_patch \
 	brotli-lz4-zstd \
+	zstd-long \
 	force-shallow \
 	update-index \
 	reset-hard
