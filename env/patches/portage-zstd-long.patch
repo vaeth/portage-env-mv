@@ -5,7 +5,7 @@
  	"zstd": {
  		"compress": "zstd ${BINPKG_COMPRESS_FLAGS}",
 -		"decompress": "zstd -d",
-+		"decompress": "zstd -d --memory=4294967295",
++		"decompress": "zstd -d --long=31",
  		"package": "app-arch/zstd",
  	},
  }

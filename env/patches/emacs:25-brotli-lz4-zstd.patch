@@ -6,7 +6,7 @@
  	 (".bz2"      . ("bzip2" "-dc"))
 +	 (".br"       . ("brotli" "-dcf"))
 +	 (".lz4"      . ("lz4" "-d" "-q"))
-+	 (".zst"      . ("zst" "-d" "-f" "-q" "--memory=4294967295"))
++	 (".zst"      . ("zst" "-d" "-f" "-q" "--long=31"))
  	 (".inz"      . "gunzip")
  	 (".igz"      . "gunzip")
  	 (".info.Z"   . "gunzip")
@@ -16,7 +16,7 @@
         (".info.bz2"  . ("bzip2" "-dc"))
 +       (".info.br"   . ("brotli" "-dcf"))
 +	(".info.lz4"  . ("lz4" "-d" "-q"))
-+	(".info.zst"  . ("zst" "-d" "-f" "-q" "--memory=4294967295"))
++	(".info.zst"  . ("zst" "-d" "-f" "-q" "--long=31"))
         (".info.xz"   . "unxz")
         (".info"      . nil)
         ("-info.Z"    . "uncompress")
@@ -25,7 +25,7 @@
         ("-info.bz2"  . ("bzip2" "-dc"))
 +       ("-info.br"   . ("brotli" "-dcf"))
 +	("-info.lz4"  . ("lz4" "-d" "-q"))
-+	("-info.zst"  . ("zst" "-d" "-f" "-q" "--memory=4294967295"))
++	("-info.zst"  . ("zst" "-d" "-f" "-q" "--long=31"))
         ("-info.z"    . "gunzip")
         ("-info.xz"   . "unxz")
         ("-info"      . nil)
@@ -35,7 +35,7 @@
         ("/index.bz2" . ("bzip2" "-dc"))
 +       ("/index.br"  . ("brotli" "-dcf"))
 +	("/index.lz4" . ("lz4" "-d" "-q"))
-+	("/index.zst" . ("zst" "-d" "-f" "-q" "--memory=4294967295"))
++	("/index.zst" . ("zst" "-d" "-f" "-q" "--long=31"))
         ("/index.xz"  . "unxz")
         ("/index"     . nil)
         (".Z"         . "uncompress")
@@ -45,7 +45,7 @@
         (".bz2"       . ("bzip2" "-dc"))
 +       (".br"        . ("bro" "-dcf"))
 +	(".lz4"       . ("lz4" "-d" "-q"))
-+	(".zst"       . ("zst" "-d" "-f" "-q" "--memory=4294967295"))
++	(".zst"       . ("zst" "-d" "-f" "-q" "--long=31"))
         (".xz"        . "unxz")
         (""           . nil)))
    "List of file name suffixes and associated decoding commands.
@@ -64,24 +64,24 @@
 +     "brotli uncompressing" "brotli" ("-c" "-d")
 +     nil t ""]
 +    ["\\.lz4\\'"
-+     "zstd compressing" "lz4" ("-c" "-q" "-9")
-+     "zstd uncompressing" "lz4" ("-c" "-q" "-d" "--memory=4294967295")
++     "lz4 compressing" "lz4" ("-c" "-q" "-9")
++     "lz4 uncompressing" "lz4" ("-c" "-q" "-d")
 +     t t "\4\42\115\30"]
 +    ["\\.tl4\\'"
-+     "zstd compressing" "lz4" ("-c" "-q" "-9")
-+     "zstd uncompressing" "lz4" ("-c" "-q" "-d" "--memory=4294967295")
++     "lz4 compressing" "lz4" ("-c" "-q" "-9")
++     "lz4 uncompressing" "lz4" ("-c" "-q" "-d")
 +     t t "\004\042\115\030"]
 +    ["\\.tl?z4\\'"
-+     "zstd compressing" "lz4" ("-c" "-q" "-9")
-+     "zstd uncompressing" "lz4" ("-c" "-q" "-d" "--memory=4294967295")
++     "lz4 compressing" "lz4" ("-c" "-q" "-9")
++     "lz4 uncompressing" "lz4" ("-c" "-q" "-d")
 +     t t "\004\042\115\030"]
 +    ["\\.zst\\'"
 +     "zstd compressing" "zstd" ("-c" "-q" "-f" "-T0" "--ultra" "-22")
-+     "zstd uncompressing" "zstd" ("-c" "-q" "-f" "-d" "--memory=4294967295")
++     "zstd uncompressing" "zstd" ("-c" "-q" "-f" "-d" "--long=31")
 +     t t "\050\265\057\375"]
 +    ["\\.tzst?\\'"
 +     "zstd compressing" "zstd" ("-c" "-q" "-f" "-T0" "--ultra" "-22")
-+     "zstd uncompressing" "zstd" ("-c" "-q" "-f" "-d" "--memory=4294967295")
++     "zstd uncompressing" "zstd" ("-c" "-q" "-f" "-d" "--long=31")
 +     t t "\050\265\057\375"]
      ;; dzip is gzip with random access.  Its compression program can't
      ;; read/write stdin/out, so .dz files can only be viewed without
