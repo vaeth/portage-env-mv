@@ -2,7 +2,7 @@
 #
 # This file is outdated and currently not maintained:
 # mv experienced too many runtime issues with graphite that he decided
-# that for running a stable system this is not worth al the trouble
+# that for running a stable system this is not worth all the trouble
 
 app-editors/vim +fgraphite* +floop-*
 app-emulation/vice +fgraphite* +floop-*
@@ -14,7 +14,6 @@ dev-lang/python +fgraphite* +floop-*
 dev-lang/rust +fgraphite* +floop-*
 dev-lang/tcl +fgraphite* +floop-*
 dev-libs/icu +fgraphite* +floop*
-dev-python/PyQt4 +fgraphite* +floop-*
 dev-qt/qtcore +fgraphite* +floop-*
 dev-qt/qtscript +fgraphite* +floop-*
 games-emulation/dosbox +fgraphite* +floop-*
