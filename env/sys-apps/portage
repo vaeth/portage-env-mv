@@ -1,6 +1,6 @@
 . /etc/portage/env/scripts/mv_patch \
 	brotli-lz4-zstd \
-	no-refresh-keys \
 	force-shallow \
 	update-index \
 	reset-hard
+#	no-refresh-keys # probably unneeded with >=app-portage/gemato-14.0, see https://bugs.gentoo.org/662636
