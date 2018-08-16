@@ -109,6 +109,7 @@ net-ftp/ncftp +fno-common
 net-libs/libetpan +Wl,--no-undefined # Flags are stored in libetpan-config; breaks compilation of mail-client/claws-mail
 net-libs/libtirpc +fno-common
 net-libs/nghttp2 +Wl,--no-undefined
+net-misc/dhcp +fno-common
 net-misc/iputils +fno-common
 net-misc/nx +fno-common
 net-misc/openssh +fno-common
