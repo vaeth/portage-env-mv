@@ -218,10 +218,12 @@ net-ftp/lftp +flto* # PO
 net-im/psi +flto* # PO
 net-im/qtox +flto* # violation of one definition rule
 net-libs/glib-networking +flto* # |
+net-libs/libmbim +flto* # |
 net-libs/libsrtp +flto* # PO
 net-libs/libssh2 +flto* # |
 net-mail/uw-mailutils -ffat-lto-objects # PO
 net-misc/curl +flto* # |
+net-misc/modemmanager +flto* # |
 net-misc/netkit-telnetd !+flto* # ICE
 net-misc/nx +flto* # PO
 net-misc/nxserver-freenx +flto* # PO

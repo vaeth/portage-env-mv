@@ -111,6 +111,8 @@ net-libs/libtirpc +fno-common
 net-libs/nghttp2 +Wl,--no-undefined
 net-misc/dhcp +fno-common
 net-misc/iputils +fno-common
+net-misc/modemmanager +Wl,--no-undefined
+net-misc/networkmanager +fno-common +Wl,--no-undefined
 net-misc/nx +fno-common
 net-misc/openssh +fno-common
 net-misc/streamtuner +Wl,--no-undefined
