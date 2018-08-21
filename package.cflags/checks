@@ -75,6 +75,7 @@ media-libs/avidemux-plugins +Wl,--no-undefined
 media-libs/freeglut +fno-common
 media-libs/gegl +fno-common
 media-libs/kvazaar +Wl,--no-undefined
+media-libs/libcanberra +Wl,--no-undefined
 media-libs/libmtp +fno-common
 media-libs/libquicktime +Wl,--no-undefined
 media-libs/libreplaygain +Wl,--no-undefined
@@ -166,3 +167,4 @@ x11-misc/xaos +fno-common
 x11-misc/xfractint +fno-common
 x11-terms/xterm +fno-common
 x11-wm/fvwm +fno-common
+x11-wm/mutter +fno-common

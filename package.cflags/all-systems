@@ -200,3 +200,4 @@ x11-libs/pixman -mstackrealign +ftracer +fmerge-all-constants # +O* -O2 +ftree-v
 x11-libs/wxGTK NOLDADD=1 +fvisibility-inlines-hidden
 x11-misc/redshift +ffast-math # with -ffast-math fails to recognize options correctly with gcc-7
 x11-misc/xscreensaver +D*DEBUG +D*ASSERT
+x11-wm/mutter +finline-functions

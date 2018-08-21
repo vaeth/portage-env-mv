@@ -95,6 +95,7 @@ games-arcade/burgerspace !+fPIE !+pie
 games-arcade/xtux +fPIE +pie
 games-emulation/sdlmame +fPIE +pie
 games-rpg/aklabeth +fPIE +pie
+gnome-base/dconf +fPIE +pie
 gnome-base/libglade !+fPIE !+pie
 kde-frameworks/* +fPIE +pie
 mail-client/claws-mail !+fPIE !+pie

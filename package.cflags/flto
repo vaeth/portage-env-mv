@@ -144,6 +144,7 @@ games-fps/doomsday +flto* # PO
 games-puzzle/enigma +flto* # PO
 games-puzzle/lmarbles !+flto* # ICE
 gnome-base/gconf +flto* # |
+gnome-base/gnome-desktop +flto* # |
 gnome-base/libglade +flto* # |
 gnome-base/librsvg +flto* # |
 kde-apps/k3b +flto* # PO
@@ -299,6 +300,7 @@ x11-libs/xcb-util-cursor +flto* # |
 x11-misc/sddm +flto* # does not switch to graphics mode in some settings
 x11-misc/slim \~+flto* # PIC
 x11-wm/fvwm !+flto* # ICE
+x11-wm/mutter +flto* # |
 xfce-base/exo +flto* # |
 xfce-base/garcon +flto* # PO
 xfce-base/libxfce4ui +flto* # |
