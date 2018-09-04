@@ -1,0 +1,26 @@
+# packages requiring NOLDADD=1 or even MESONDEDUP=1
+
+app-admin/fam NOLDADD=1
+app-portage/eix MESONDEDUP=1
+app-text/a2ps NOLDADD=1
+dev-lisp/clisp NOLDADD=1
+dev-vcs/subversion NOLDADD=1
+media-gfx/gimp NOLDADD=1
+media-gfx/pstoedit NOLDADD=1
+media-libs/a52dec NOLDADD=1
+media-libs/id3lib NOLDADD=1
+media-libs/ladspa-sdk NOLDADD=1
+media-libs/libid3tag NOLDADD=1
+media-libs/libmad NOLDADD=1
+media-libs/libmpeg2 NOLDADD=1
+media-libs/xine-lib NOLDADD=1
+media-video/cinelerra NOLDADD=1
+media-video/mplayer NOLDADD=1
+net-ftp/ncftp NOLDADD=1
+net-libs/wvstreams NOLDADD=1
+sys-block/parted NOLDADD=1
+sys-devel/gcc NOLDADD=1
+sys-fs/sysfsutils NOLDADD=1
+www-client/chromium NOLDADD=1
+www-plugins/nspluginwrapper NOLDADD=1
+x11-libs/wxGTK NOLDADD=1

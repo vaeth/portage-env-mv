@@ -30,6 +30,8 @@
 # lowmem
 #     This file should be only used when you run a system with <200 MB;
 #     otherwise remove it...
+# no-add
+#     Packages requiring NOLDADD=1 or even MESONDEDUP=1
 # no-ninja
 #     Packages breaking with CMAKE_MAKEFILE_GENERATOR="ninja"
 # patches
@@ -49,7 +51,7 @@
 # In case of compilation/build errors, some of the following usually help
 # (The sorting is in decreasing order of probability of causing trouble;
 # for "undefined reference" errors, +Wl,--as-needed is the top candidate,
-# followed NOLDADD=1.
+# followed NOLDADD=1 (or MESONDEDUP=1 for packages using meson).
 # To make sure, the problem actually stems from flags, you can try first SAFE
 # [hack on the command line: FLAG_ADD=SAFE emerge ...] to eliminate everything).
 #
@@ -86,7 +88,8 @@
 # +mretpoline # clang only
 # +fcf-protection* # gcc-8
 # +Wl,-z,retpolineplt # currently clang only
-# NOLDADD=1 (or even NOLDOPT=1; however, NOLDOPT=1 might be a security risk)
+# NOLDADD=1 (or even MESONDEDUP=1)
+# NOLDOPT=1 (might be a security risk)
 # +fdiagnostics-color=always
 # MAKEOPTS-='--no-print-directory'
 # +D*FILE*
@@ -137,7 +140,8 @@
 #
 # +ftree-vectorize* +fvect* [or add -mstackrealign]
 # +flto* (see above; there is an extra file)
-# NOLDADD=1 (or even NOLDOPT=1) [however, NOLDOPT=1 might be a security risk]
+# NOLDADD=1 (or even MESONDEDUP=1)
+# NOLDOPT=1 (might be a security risk)
 # CONFIG_SITE=
 # +D*FILE*
 # +D*DEBUG +D*ASSERT

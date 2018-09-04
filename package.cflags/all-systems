@@ -1,6 +1,5 @@
 # General elimination of critical *FLAGS
 
-app-admin/fam NOLDADD=1
 app-admin/logrotate +combine
 app-admin/metalog +fdirectives-only
 app-arch/cpio +fdirectives-only
@@ -21,7 +20,7 @@ app-misc/tmux CONFIG_SITE=
 app-office/libreoffice +finline-functions +frename-registers +*math* +fdirectives-only # for crashes check also freetype, zlib
 app-portage/deltup +Wl,--as-needed LD_AS_NEEDED=
 app-shells/dash +fdirectives-only
-app-text/a2ps NOLDADD=1 +Wl,--as-needed # (gcc-7[pie] + gold)
+app-text/a2ps +Wl,--as-needed # (gcc-7[pie] + gold)
 app-text/aspell +D*DEBUG +D*ASSERT
 app-text/dvipng +D*DEBUG +D*ASSERT
 app-text/fbreader +Wl,--as-needed LD_AS_NEEDED=
@@ -59,7 +58,7 @@ dev-libs/openssl +combine +ftree-vectorize*
 dev-libs/protobuf +*math*
 dev-libs/wayland +D*DEBUG +D*ASSERT
 dev-libs/weston +D*DEBUG +D*ASSERT
-dev-lisp/clisp CONFIG_SITE= NOLDADD=1 +D*DEBUG +D*ASSERT +frename-registers +*math* +fdirectives-only
+dev-lisp/clisp CONFIG_SITE= +D*DEBUG +D*ASSERT +frename-registers +*math* +fdirectives-only
 dev-python/numpy +*math*
 dev-qt/* +fdirectives-only
 dev-qt/qtwebkit +*math*
@@ -74,7 +73,6 @@ dev-util/ccache CONFIG_SITE=
 dev-util/diffball +D*FILE*
 dev-util/strace +fdirectives-only
 dev-vcs/rcs +fdirectives-only
-dev-vcs/subversion NOLDADD=1
 games-arcade/supertux +D*DEBUG +D*ASSERT
 games-emulation/advancemame +ftree-vectorize*
 games-emulation/sdlmame +ftree-vectorize*
@@ -85,26 +83,20 @@ gnome-base/librsvg +ftree-vectorize* # reported in http://gentoo-wiki.com/CFLAGS
 kde-frameworks/* +*math*
 mail-client/thunderbird +D*FILE* +*math* +fmerge-all-constants +finline-functions +fdirectives-only
 media-gfx/fontforge +fdirectives-only
-media-gfx/gimp NOLDADD=1 +D*DEBUG +D*ASSERT
+media-gfx/gimp +D*DEBUG +D*ASSERT
 media-gfx/ipe +D_GLIBCXX_ASSERTIONS
 media-gfx/pqiv +finline-functions +D*FORTIFY* -U_FORTIFY_SOURCE
-media-gfx/pstoedit NOLDADD=1 +Wl,--as-needed LD_AS_NEEDED=
+media-gfx/pstoedit +Wl,--as-needed LD_AS_NEEDED=
 media-gfx/splashutils +fstack-protector* +combine
-media-libs/a52dec NOLDADD=1
 media-libs/alsa-lib NOC*OPT=1 +O* -O1 # avoid: Inappropriate ioctl for device
 media-libs/alsa-oss NOC*OPT=1 +O* -O1 +D*FILE* # avoid: Inappropriate ioctl for device
 media-libs/freetype -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid some firefox/openoffice crashes
 media-libs/gst-plugins-base NOLAFILEREMOVE=1
-media-libs/id3lib NOLDADD=1
 media-libs/jbigkit +finline-functions
 media-libs/jpeg -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid some firefox/openoffice crashes
 media-libs/kvazaar +mno-sse4
-media-libs/ladspa-sdk NOLDADD=1
 media-libs/lcms -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid some firefox/openoffice crashes
 #media-libs/libdvdread +Wl,--as-needed LD_AS_NEEDED= # use this if vobcopy or dvdbackup do not compile
-media-libs/libid3tag NOLDADD=1
-media-libs/libmad NOLDADD=1
-media-libs/libmpeg2 NOLDADD=1
 media-libs/libsidplay NOLAFILEREMOVE=1
 media-libs/libv4l +D*FILE*
 media-libs/mesa +Wl,-z,now +Wl,--build-id=none +fdirectives-only +*math*
@@ -112,30 +104,28 @@ media-libs/mlt +combine
 media-libs/opus +*math*
 media-libs/plotutils +*math*
 media-libs/raptor +*math*
-media-libs/xine-lib NOLDADD=1
 media-plugins/live +Wl,--relax
 media-sound/audacity CONFIG_SITE=
 media-sound/mpg123 +D*FILE*
 media-tv/v4l-utils +D*FILE*
 media-video/avidemux +ftracer # MAKEOPTS-='-j*'
 media-video/cclive +D*DEBUG +D*ASSERT
-media-video/cinelerra NOLDADD=1 +D*DEBUG +D*ASSERT # MAKEOPTS-='-j*'
+media-video/cinelerra +D*DEBUG +D*ASSERT # MAKEOPTS-='-j*'
 media-video/ffmpeg +combine +ftracer
 media-video/kaffeine !/-O?/-O2 !+finline-functions
 media-video/libav +combine +ftracer
-media-video/mplayer +finline-functions NOLDADD=1 # -finline-functions causes encoding errors w/ gcc-8
+media-video/mplayer +finline-functions # -finline-functions causes encoding errors w/ gcc-8
 media-video/mpv +fmerge-all-constants +D*DEBUG +D*ASSERT
 media-video/transcode +Wl,--as-needed LD_AS_NEEDED=
 media-video/transcode \~/-O?/-O2 \~+fweb # fixes segfault of: tcmodinfo -i tc_video
 media-video/xanim +O* -O2
 net-dns/libidn +fdirectives-only
 net-ftp/lftp +fdirectives-only
-net-ftp/ncftp NOLDADD=1
 net-im/qtox +fdirectives-only
 net-libs/gnutls +fdirectives-only
 net-libs/libgsasl +fdirectives-only
 net-libs/nodejs +*math* # with math optimization casting function miscompiles and www-client/chromium fails to build
-net-libs/wvstreams +D*DEBUG +D*ASSERT NOLDADD=1
+net-libs/wvstreams +D*DEBUG +D*ASSERT
 net-misc/streamtuner CONFIG_SITE=
 net-misc/wget +fdirectives-only
 net-print/foo2zjs +combine
@@ -163,10 +153,10 @@ sys-apps/sandbox +D*DEBUG +D*ASSERT
 sys-apps/sed +D*DEBUG +fdirectives-only
 sys-apps/systemd +D*DEBUG +D*ASSERT
 sys-apps/texinfo +fstack-protector +fdirectives-only
-sys-block/parted NOLDADD=1 +D*FILE* +fdirectives-only
+sys-block/parted +D*FILE* +fdirectives-only
 sys-boot/grub SAFE # No experiments here! Breakage is likely, because grub needs special code, and you must reinstall grub from a rescue CD in case of failures. Moreover, grub provides no suid-binary and no library, so no security issues arise.
 sys-devel/bison +fdirectives-only
-sys-devel/gcc CONFIG_SITE= NOLDADD=1 +combine +D*DEBUG +D*ASSERT +D*FILE* +D*FORTIFY* # +fstack-protector* only needed for nspluginwrapper (on 64bit)
+sys-devel/gcc CONFIG_SITE= +combine +D*DEBUG +D*ASSERT +D*FILE* +D*FORTIFY* # +fstack-protector* only needed for nspluginwrapper (on 64bit)
 =sys-devel/gcc-3* \~SAFE \~/-march*/-march=k8
 sys-devel/clang +fmerge-all-constants # -fmerge-all-constants has always problems with llvm
 sys-devel/gdb CONFIG_SITE= +*math* +fdirectives-only
@@ -179,7 +169,6 @@ sys-fs/aufs*-util +D*FILE*
 sys-fs/e2fsprogs +D*FILE*
 sys-fs/mtools +D*FILE*
 sys-fs/squashfuse +Wl,--as-needed
-sys-fs/sysfsutils NOLDADD=1
 sys-libs/e2fsprogs-libs +D*FILE*
 sys-libs/compiler-rt USE_NONGNU=1 +fmerge-all-constants
 sys-libs/compiler-rt-sanitizers USE_NONGNU=1 +fmerge-all-constants
@@ -188,16 +177,15 @@ sys-libs/gwenhywfar +D*FORTIFY* -U_FORTIFY_SOURCE
 sys-libs/libstdc++-v3 +D*DEBUG +D*ASSERT
 sys-libs/zlib -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid some firefox/openoffice crashes
 sys-process/criu +Wl,--relax
-www-client/chromium NOLDADD=1 +D*FILE* +*math* +fmerge-all-constants +finline-functions +fdirectives-only +fgcse-sm +fgcse-las +fgcse-after-reload +fdiagnostics-color*
+www-client/chromium +D*FILE* +*math* +fmerge-all-constants +finline-functions +fdirectives-only +fgcse-sm +fgcse-las +fgcse-after-reload +fdiagnostics-color*
 www-client/firefox +D*FILE* +*math* +fmerge-all-constants +finline-functions +fdirectives-only
 #www-client/firefox !LDFLAGS+=-Wl,--reduce-memory-overheads # requires less memory but breaks some configuration tests:
-www-plugins/nspluginwrapper NOLDADD=1
 x11-base/xorg-server +Wl,-z,now +fdirectives-only
 x11-drivers/xf86-* +Wl,-z,now +fdirectives-only
 x11-libs/libXxf86vm CONFIG_SITE= # nvidia-settings needs the static version
 x11-libs/pango -mstackrealign +ftracer +fmerge-all-constants # +O* -O2 +ftree-vectorize* avoids some firefox crashes
 x11-libs/pixman -mstackrealign +ftracer +fmerge-all-constants # +O* -O2 +ftree-vectorize* avoids some firefox crashes
-x11-libs/wxGTK NOLDADD=1 +fvisibility-inlines-hidden
+x11-libs/wxGTK +fvisibility-inlines-hidden
 x11-misc/redshift +ffast-math # with -ffast-math fails to recognize options correctly with gcc-7
 x11-misc/xscreensaver +D*DEBUG +D*ASSERT
 x11-wm/mutter +finline-functions
