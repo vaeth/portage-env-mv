@@ -11,7 +11,7 @@ app-cdr/dvdisaster +fdirectives-only # +fdirectives-only fixes broken ./configur
 app-crypt/gpgme +D*DEBUG +D*ASSERT
 app-crypt/gnupg +D*DEBUG +D*ASSERT
 app-doc/doxygen NOC*OPT=1 +O* -O2 -fomit-frame-pointer -s # see http://forums.gentoo.org/viewtopic-t-495600.html
-app-emulation/dosemu +finline-functions
+app-emulation/dosemu +finline-functions +fdirectives-only
 app-emulation/vice +ffast-math # Segfault with -ffast-math
 app-emulation/wine* +fstack-protector* -fno-omit-frame-pointer +ftree-loop-distribute-patterns +fweb +finline-functions +frename-registers
 app-mobilephone/heimdall SAFE # No experiments here!
