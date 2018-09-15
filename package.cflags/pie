@@ -175,6 +175,7 @@ sys-devel/flex !+fPIE !+pie
 sys-devel/gdb +fPIE +pie
 sys-devel/gettext !+fPIE !+pie
 sys-devel/libtool !+fPIE !+pie
+sys-fs/android-file-transfer-linux +fPIE +pie
 sys-fs/cryptsetup !+fPIE !+pie
 sys-fs/e2fsprogs +fPIE +pie
 sys-fs/encfs +fPIE +pie
