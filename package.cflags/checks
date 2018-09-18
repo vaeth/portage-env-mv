@@ -139,7 +139,7 @@ sys-devel/llvm +fno-common +Wl,--no-undefined
 sys-devel/make +fno-common
 sys-fs/dd-rescue +Wl,--no-undefined
 sys-fs/e2fsprogs +fno-common
-sys-fs/f2fs-tools +fno-common
+sys-fs/f2fs-tools +fno-common +Wl,--no-undefined
 sys-fs/squashfs-tools +fno-common
 sys-fs/squashfuse +Wl,--no-undefined
 sys-fs/udftools +fno-common
