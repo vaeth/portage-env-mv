@@ -148,7 +148,6 @@ sys-apps/findutils +fdirectives-only
 sys-apps/gawk +D*DEBUG
 sys-apps/grep +fdirectives-only
 sys-apps/openrc +combine
-sys-apps/paludis +fno-enforce-eh-specs +*math* +fvisibility-inlines-hidden
 sys-apps/sandbox +D*DEBUG +D*ASSERT
 sys-apps/sed +D*DEBUG +fdirectives-only
 sys-apps/systemd +D*DEBUG +D*ASSERT
