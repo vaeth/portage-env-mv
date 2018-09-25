@@ -1,12 +1,21 @@
---- 1/bin/ebuild-helpers/ecompressdir
-+++ 1/bin/ebuild-helpers/ecompressdir
-@@ -164,6 +164,9 @@
- 	".gz"   "gunzip -f"
- 	".bz2"  "bunzip2 -f"
- 	".xz"   "unxz -f"
-+	".br"   "brotli -cdf"
-+	".lz4"  "lz4 -d -q"
-+	".zst"  "zstd -d -f -q --long=31"
- 	".lzma" "unxz -f"
- )
+--- 1/bin/ecompress-file
++++ 1/bin/ecompress-file
+@@ -33,6 +33,18 @@
+ 				unxz -f "${x}" || __helpers_die "unxz failed"
+ 				x=${x%.*}
+ 				had_precompressed=1;;
++			*.br)
++				brotli -dfj "${x}" || __helpers_die "brotli -dj failed"
++				x=${x%.*}
++				had_precompressed=1;;
++			*.lz4)
++				unlz4 -f -q --rm "${x}" || __helpers_die "unlz4 failed"
++				x=${x%.*}
++				had_precompressed=1;;
++			*.zst)
++				unzstd -f -q --long=31 --rm "${x}" || __helpers_die "unzstd failed"
++				x=${x%.*}
++				had_precompressed=1;;
+ 		esac
  
+ 		filtered_args+=( "$x" )
