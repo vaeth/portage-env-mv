@@ -216,6 +216,8 @@ my_menu() {
 		"$mixers"/~qasmixer~qasmixer '~qasconfig~qasconfig' || return
 	cp_menu 's/exec [^ ]*/exec adsl-gui/' \
 		"$network"*Dial-up/~kppp~kPPP '~adsl-gui~ADSL' || return
+	cp_menu 's/exec [^ ]*/exec wlan-restart/' \
+		"$network"*Dial-up/~kppp~kPPP '~wlan-restart~wlan-restart' || return
 	cp_menu 's/exec [^ ]*/cd ~mwww; exec sudox -T -- mwww exec download-gui/' \
 		"$network"*File_Transfer/~gwget2~Download_Manager '~download-gui~Download.mwww' || return
 	cp_menu 's/elinks/links/' \
