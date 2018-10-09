@@ -1,21 +1,32 @@
+--- 1/bin/ecompress
++++ 1/bin/ecompress
+@@ -57,9 +57,9 @@
+ 				# note: to save time, we need to do this only if there's
+ 				# at least one compressed file
+ 				case ${path} in
+-					*.Z|*.gz|*.bz2|*.lzma|*.xz)
++					*.Z|*.gz|*.bz2|*.lzma|*.xz|*.br|*.lz4|*.zst)
+ 						vpath=${path%.*}
+-						for comp in '' .Z .gz .bz2 .lzma .xz; do
++						for comp in '' .Z .gz .bz2 .lzma .xz .br .lz4 .zst; do
+ 							if [[ ${vpath}${comp} != ${path} && \
+ 									-e ${vpath}${comp} ]]; then
+ 								collisions[${path}]=1
 --- 1/bin/ecompress-file
 +++ 1/bin/ecompress-file
-@@ -33,6 +33,18 @@
+@@ -29,6 +29,15 @@
+ 			*.lzma|*.xz)
  				unxz -f "${x}" || __helpers_die "unxz failed"
- 				x=${x%.*}
- 				had_precompressed=1;;
+ 				x=${x%.*};;
 +			*.br)
 +				brotli -dfj "${x}" || __helpers_die "brotli -dj failed"
-+				x=${x%.*}
-+				had_precompressed=1;;
++				x=${x%.*};;
 +			*.lz4)
 +				unlz4 -f -q --rm "${x}" || __helpers_die "unlz4 failed"
-+				x=${x%.*}
-+				had_precompressed=1;;
++				x=${x%.*};;
 +			*.zst)
 +				unzstd -f -q --long=31 --rm "${x}" || __helpers_die "unzstd failed"
-+				x=${x%.*}
-+				had_precompressed=1;;
++				x=${x%.*};;
  		esac
  
  		filtered_args+=( "$x" )
