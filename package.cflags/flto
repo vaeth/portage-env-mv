@@ -283,7 +283,6 @@ www-client/chromium +flto-partition* +flto*
 www-client/dillo +flto* # PO
 www-client/firefox +flto-partition* +flto*
 www-client/lynx !+flto* # ICE
-www-plugins/gnash +flto* # PO
 www-plugins/mozplugger +flto* # PO
 x11-base/xorg-server +flto*
 x11-drivers/xf86-video-intel +flto*
