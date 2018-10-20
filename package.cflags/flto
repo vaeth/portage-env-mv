@@ -307,3 +307,4 @@ xfce-base/libxfce4util +flto* # |
 xfce-base/libxfcegui4 +flto* # PO
 xfce-base/thunar +flto* # |
 xfce-base/xfconf +flto* # |
+xfce-base/xfce4-panel +flto* # |
