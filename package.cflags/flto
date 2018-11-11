@@ -100,6 +100,7 @@ dev-libs/libksba !+flto* # ICE
 dev-libs/libltdl +flto* # Needed for e.g. media-sound/lilypond, net-libs/gnutls
 dev-libs/libpcre !+flto* # ICE
 dev-libs/libsigsegv \~+flto* # PIC
+dev-libs/libmspack +flto* # |
 dev-libs/libxml2 !+flto* # ICE
 dev-libs/lzo -ffat-lto-objects # SL
 dev-libs/nss -ffat-lto-objects # SL
