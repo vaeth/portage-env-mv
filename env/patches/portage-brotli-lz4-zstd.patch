@@ -14,10 +14,10 @@
  								collisions[${path}]=1
 --- 1/bin/ecompress-file
 +++ 1/bin/ecompress-file
-@@ -29,6 +29,15 @@
- 			*.lzma|*.xz)
- 				unxz -f "${x}" || __helpers_die "unxz failed"
- 				x=${x%.*};;
+@@ -32,6 +32,15 @@
+ 			*.lz)
+ 				lzip -df "${x}" || __helpers_die "lzip -d failed"
+ 				x=${x%.lz};;
 +			*.br)
 +				brotli -dfj "${x}" || __helpers_die "brotli -dj failed"
 +				x=${x%.*};;
