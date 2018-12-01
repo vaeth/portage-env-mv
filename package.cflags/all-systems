@@ -87,7 +87,6 @@ media-gfx/gimp +D*DEBUG +D*ASSERT
 media-gfx/ipe +D_GLIBCXX_ASSERTIONS
 media-gfx/pqiv +finline-functions +D*FORTIFY* -U_FORTIFY_SOURCE
 media-gfx/pstoedit +Wl,--as-needed LD_AS_NEEDED=
-media-gfx/splashutils +fstack-protector* +combine
 media-libs/alsa-lib NOC*OPT=1 +O* -O1 # avoid: Inappropriate ioctl for device
 media-libs/alsa-oss NOC*OPT=1 +O* -O1 +D*FILE* # avoid: Inappropriate ioctl for device
 media-libs/freetype -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid some firefox/openoffice crashes
