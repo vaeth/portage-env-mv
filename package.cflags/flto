@@ -184,7 +184,6 @@ media-libs/netpbm !+flto* # ICE
 media-libs/phonon +flto* # PO
 media-libs/plotutils !+flto* # ICE
 media-libs/portaudio +flto* # |
-media-libs/schroedinger +flto* # PO
 media-libs/speex !+flto* # ICE
 media-libs/x264 -ffat-lto-objects
 media-sound/apulse \~+flto* # PIC

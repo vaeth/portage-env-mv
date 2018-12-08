@@ -141,7 +141,6 @@ net-fs/autofs +fPIE +pie
 net-misc/connman !+fPIE !+pie
 net-misc/curl !+fPIE !+pie
 net-misc/nx +fPIE +pie
-net-misc/tlsdate !+fPIE !+pie
 net-nds/openldap !+fPIE !+pie
 net-print/cups +fPIE +pie
 net-print/cups-filters !+fPIE !+pie
