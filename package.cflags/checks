@@ -98,7 +98,6 @@ media-tv/w_scan +fno-common
 media-video/avidemux +Wl,--no-undefined
 media-video/avinfo +fno-common
 media-video/ffmpeg +fno-common # -fno-common causes runtime segfaults w/ gcc-8
-media-video/gnome-mplayer +fno-common
 media-video/mpv +fno-common
 media-video/nvidia-settings +fno-common
 media-video/transcode +fno-common +Wl,--no-undefined

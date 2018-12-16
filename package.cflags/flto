@@ -205,7 +205,6 @@ media-video/avidemux +flto*
 media-video/dirac +flto* # PO
 media-video/ffmpeg +flto*
 media-video/ffmpegthumbnailer +flto* # PO
-media-video/gnome-mplayer -ffat-lto-objects # PO
 media-video/kaffeine +flto* # PO
 media-video/libav +flto* # PO
 media-video/mplayer !+flto* # ICE
