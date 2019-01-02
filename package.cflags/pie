@@ -44,6 +44,7 @@ app-text/libepubgen +fPIE +pie # won't hurt although !+fPIE !+pie might be suffi
 app-text/libetonyek +fPIE +pie
 app-text/libmspub +fPIE +pie
 app-text/libmwaw +fPIE +pie
+app-text/libnumbertext +fPIE +pie
 app-text/libodfgen +fPIE +pie
 app-text/libqxp +fPIE +pie # won't hurt although !+fPIE !+pie might be sufficient
 app-text/libstaroffice +fPIE +pie
