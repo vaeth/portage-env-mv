@@ -175,7 +175,7 @@ sys-libs/gwenhywfar +D*FORTIFY* -U_FORTIFY_SOURCE
 sys-libs/libstdc++-v3 +D*DEBUG +D*ASSERT
 sys-libs/zlib -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid some firefox/openoffice crashes
 sys-process/criu +Wl,--relax
-www-client/chromium +D*FILE* +*math* +fmerge-all-constants +finline-functions +fdirectives-only +fgcse-sm +fgcse-las +fgcse-after-reload +fdiagnostics-color*
+www-client/chromium +D*FILE* +*math* +fmerge-all-constants +finline-functions +fdirectives-only +fgcse-sm +fgcse-las +fgcse-after-reload +fdiagnostics-color* "export EXTRA_GN='jumbo_file_merge_limit=20'"
 www-client/firefox +D*FILE* +*math* +fmerge-all-constants +finline-functions +fdirectives-only
 #www-client/firefox !LDFLAGS+=-Wl,--reduce-memory-overheads # requires less memory but breaks some configuration tests:
 #>=www-client/firefox-62.0.2 USE_NONGNU=1 +Wl,--relax +mretpoline +frewrite-includes
