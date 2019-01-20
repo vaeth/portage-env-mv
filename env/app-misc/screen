@@ -5,19 +5,16 @@ SCREEN_SOCKET=${EPREFIX%/}/run/screen
 pre_src_prepare() {
 	mv_start
 	EXTRA_ECONF=${EXTRA_ECONF:-}${EXTRA_ECONF:+ }--with-socket-dir=${SCREEN_SOCKET}
-	sed -i \
-		-e "s'/usr/local/screens'${SCREEN_SOCKET}'g" \
-		-e "s'/local/screens/S-'${SCREEN_SOCKET}/S-'g" \
+	mv_sed \
+		"s'/usr/local/screens'${SCREEN_SOCKET}'g" \
 		doc/screen.1
 	mv_end
 }
 
 post_src_install() {
 	mv_start
-	dodir /usr/lib/tmpfiles.d
-	sed -e "s'\([^ ]*[	 ]\)[	 ]*[^ ]*'\1${SCREEN_SOCKET}'" \
-		-- "${ED}"/etc/tmpfiles.d/screen.conf \
-		>"${ED}"/usr/lib/tmpfiles.d/screen.conf || die
-	rm -rf -- "${ED}"/etc/tmpfiles.d || die
+	mv_sed \
+		"s'\([^ ]*[	 ]\)[	 ]*[^ ]*'\1${SCREEN_SOCKET}'" \
+		"${ED}"/usr/lib/tmpfiles.d/screen.conf
 	mv_end
 }
