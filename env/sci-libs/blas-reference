@@ -1,3 +1,4 @@
-. /etc/portage/env/scripts/mv_rmstatic
+
+[ "$PV" != 20070226 ] || . /etc/portage/env/scripts/mv_rmstatic
 . /etc/portage/env/scripts/mv_patch \
 	-e '/\.a$/d' "$T"/eselect.blas.reference
