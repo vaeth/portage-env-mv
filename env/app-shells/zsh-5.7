@@ -1,0 +1,6 @@
+
+post_src_prepare() {
+	einfo "mv's hack: ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*"
+	sed -i -e "4ireturn 1" -- "${S}/Functions/VCS_Info/Backends/VCS_INFO_detect_p4" || die
+	einfo "mv's hack ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN* applied"
+}
