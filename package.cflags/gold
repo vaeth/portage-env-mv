@@ -2,4 +2,3 @@
 
 media-video/avidemux LDFLAGS+=-lXext
 =sci-mathematics/scilab-5.5.2-r1 -fuse-ld=bfd
-sys-devel/binutils 'EXTRA_ECONF="--enable-gold=default"' # switch to gold linker by default

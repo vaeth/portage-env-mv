@@ -85,6 +85,7 @@ media-libs/plotutils +Wl,--no-undefined
 media-libs/sg +fno-common
 media-libs/xine-lib +fno-common
 media-plugins/live +Wl,--no-undefined
+media-sound/alsa-utils +fno-common
 media-sound/audacity +fno-common
 media-sound/musepack-tools +fno-common
 media-sound/pnmixer +fno-common
