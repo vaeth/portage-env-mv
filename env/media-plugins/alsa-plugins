@@ -1,8 +1,0 @@
-
-post_src_install () {
-	einfo "mv's hack: ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*"
-	mv -vi -- "$ED/usr/share/alsa/alsa.conf.d/51-pulseaudio-probe.conf" \
-		"$ED/usr/share/alsa/alsa.conf.d/51-pulseaudio-probe.conf.example" || \
-		die "failed to move /usr/share/alsa/alsa.conf.d/51-pulseaudio-probe.conf"
-	einfo "mv's hack ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN* applied"
-}
