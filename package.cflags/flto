@@ -59,6 +59,7 @@ app-text/sablotron +flto* # PO
 app-text/texlive-core +flto*
 app-text/ttf2pk2 !+flto* # ICE
 app-text/yodl +flto* # PO
+app-text/xpdf +flto*
 app-text/zathura* -ffat-lto-objects # PO
 dev-cpp/atkmm +flto* # PO
 dev-cpp/cairomm +flto* # PO
