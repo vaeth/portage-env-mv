@@ -1,0 +1,23 @@
+#!/bin/bash
+
+post_src_install() {
+	local a b c d
+	if ! use x86
+	then	return
+	fi
+	einfo "mv's hack: ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*"
+	d=${ED}/usr/$(get_libdir)/${P}/${P}
+	c=false
+	cd "$d"
+	for a in * */* */*/*
+	do	b=${ED}/usr/$(get_libdir)/${P}/$a
+		test -r "${b}" && continue
+		! test -r "$a" && continue
+		mv -- "$a" "$b" || die "mv's hack ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN* failed"
+		c=:
+	done
+	${c} || die "mv's hack ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN* is superfluous"
+	cd "${S}"
+	rm -rf -- "${d}"
+	einfo "mv's hack ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN* applied"
+}
