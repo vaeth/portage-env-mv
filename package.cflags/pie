@@ -8,7 +8,6 @@ app-arch/arj +fPIE +pie
 app-arch/lrzip +fPIE +pie
 app-arch/p7zip +fPIE +pie
 app-arch/snappy +fPIE +pie
-app-arch/star +fPIE +pie
 app-arch/xz-utils !+fPIE !+pie
 app-arch/unrar +fPIE +pie
 app-arch/zpaq +fPIE +pie
