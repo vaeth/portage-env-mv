@@ -82,6 +82,7 @@ media-libs/libquicktime +Wl,--no-undefined
 media-libs/libreplaygain +Wl,--no-undefined
 media-libs/libv4l +fno-common +Wl,--no-undefined
 media-libs/mesa +fno-common
+media-libs/openal +fno-common
 media-libs/plotutils +Wl,--no-undefined
 media-libs/sg +fno-common
 media-libs/xine-lib +fno-common
