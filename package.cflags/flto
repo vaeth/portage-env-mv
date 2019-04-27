@@ -222,7 +222,6 @@ net-libs/glib-networking +flto* # |
 net-libs/libmbim +flto* # |
 net-libs/libsrtp +flto* # PO
 net-libs/libssh2 +flto* # |
-net-mail/uw-mailutils -ffat-lto-objects # PO
 net-misc/curl +flto* # |
 net-misc/modemmanager +flto* # |
 net-misc/netkit-telnetd !+flto* # ICE
@@ -283,7 +282,6 @@ www-client/chromium +flto-partition* +flto*
 www-client/dillo +flto* # PO
 www-client/firefox +flto-partition* +flto*
 www-client/lynx !+flto* # ICE
-www-plugins/mozplugger +flto* # PO
 x11-base/xorg-server +flto*
 x11-drivers/xf86-video-intel +flto*
 x11-drivers/nvidia-drivers +flto*
