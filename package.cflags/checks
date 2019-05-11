@@ -8,6 +8,7 @@
 # There are a few packages in which -fno-common causes runtime issues:
 # If somebody has an idea why, please write me...
 
+app-accessibility/at-spi2-atk +fno-common
 app-admin/logrotate +fno-common
 app-arch/cpio +fno-common
 app-arch/sharutils +fno-common

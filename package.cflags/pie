@@ -3,6 +3,8 @@
 *-libs/* +fPIE +pie
 *-plugins/* +fPIE +pie
 
+app-accessibility/at-spi2-atk +fPIE +pie
+app-accessibility/at-spi2-core +fPIE +pie
 app-admin/sudo !+fPIE !+pie
 app-arch/arj +fPIE +pie
 app-arch/lrzip +fPIE +pie
