@@ -148,6 +148,7 @@ net-print/cups +fPIE +pie
 net-print/cups-filters !+fPIE !+pie
 net-vpn/ipsec-tools !+fPIE !+pie
 net-vpn/openvpn +fPIE +pie
+net-wireless/crda +fPIE +pie
 perl-core/* +fPIE +pie
 sci-mathematics/axiom +fPIE +pie
 sci-mathematics/calc +fPIE +pie
