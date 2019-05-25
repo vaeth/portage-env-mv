@@ -131,6 +131,7 @@ net-print/foo2zjs +combine
 net-vpn/tor +D*DEBUG +D*ASSERT
 sci-libs/* +*math*
 sci-libs/cln +ftracer +fdirectives-only
+sci-libs/hdf5 +D*FILE_OFFSET* +D_LARGEFILE* +fdirectives-only
 sci-mathematics/* +*math*
 sci-mathematics/axiom CONFIG_SITE= +D*FILE* +D*FORTIFY* # MAKEOPTS-='-j*'
 sci-mathematics/ginac +fvisibility-inlines-hidden
