@@ -33,8 +33,8 @@ app-text/texlive* +D*DEBUG +D*ASSERT
 app-text/wdiff +fdirectives-only
 app-text/xdvik +D*DEBUG +D*ASSERT
 app-text/yodl +XXXX # Something is broken here - must check
-dev-db/sqlite +*math*
 dev-db/sqlcipher +*math*
+dev-db/sqlite +*math*
 dev-java/icedtea* +D*FORTIFY* -U_FORTIFY_SOURCE
 dev-lang/lua CONFIG_SITE=
 dev-lang/ruby +ftree-vectorize*

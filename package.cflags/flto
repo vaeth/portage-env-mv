@@ -66,6 +66,7 @@ dev-cpp/cairomm +flto* # PO
 dev-cpp/gtkmm +flto* # PO
 dev-cpp/libxmlpp +flto* # PO
 dev-cpp/pangomm +flto* # PO
+dev-db/mariadb-connector-c +flto*
 dev-db/sqlcipher !+flto* # ICE
 dev-db/sqlite !+flto* # ICE
 dev-db/unixODBC !+flto* # ICE
