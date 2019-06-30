@@ -22,7 +22,6 @@ media-gfx/gimp "EXTRA_EMAKE+='SHELL=/bin/bash'"
 media-gfx/potrace "export CC=gcc" # otherwise clang is used for compilation if available
 #media-libs/freetype -DFT_CONFIG_OPTION_OLD_INTERNALS # needed for nxclient unless ebuild is patched
 media-libs/jpeg "EXTRA_ECONF+='--disable-static'"
-=media-libs/kvazaar-1.1.0* CFLAGS+=-Wno-error
 media-libs/libquicktime "EXTRA_ECONF+='--disable-static'"
 media-libs/libmikmod "EXTRA_EMAKE+='SHELL=/bin/bash'"
 =media-video/nvidia-settings-173.14.37 -ldl

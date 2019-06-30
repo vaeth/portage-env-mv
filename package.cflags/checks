@@ -63,7 +63,7 @@ games-board/xboard +fno-common
 games-emulation/advancemame +fno-common
 games-engines/frotz +fno-common
 games-fps/doomsday +fno-common
-games-fps/prboom +fno-common
+games-fps/prboom-plus +fno-common
 games-rpg/freedroid +fno-common
 games-rpg/freedroidrpg +fno-common
 mail-client/alpine +fno-common
