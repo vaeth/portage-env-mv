@@ -32,6 +32,7 @@ app-arch/tar +flto* # ICE with gcc-7
 app-arch/zopfli +flto*
 app-backup/dar +flto* # PO
 app-crypt/gpgme !+flto* # ICE
+app-crypt/p11-kit +flto* # |
 app-crypt/qca +flto* # PO
 app-doc/doxygen +flto* # PO
 app-editors/jed +flto* # PO
