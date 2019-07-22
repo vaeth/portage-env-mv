@@ -158,6 +158,7 @@ sci-mathematics/octave +fPIE +pie
 sci-mathematics/pari +fPIE +pie
 sci-mathematics/reduce +fPIE +pie
 sci-mathematics/scilab +fPIE +pie
+sci-mathematics/yacas +fPIE +pie
 sci-visualization/gnuplot +fPIE +pie
 sys-apps/busybox +fPIE +pie
 sys-apps/coreutils +fPIE +pie
