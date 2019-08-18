@@ -2,6 +2,5 @@
 	brotli-lz4-zstd \
 	force-shallow \
 	update-index \
-	reset-hard \
-	non-ipv6
+	reset-hard
 #	no-refresh-keys # probably unneeded with >=app-portage/gemato-14.0, see https://bugs.gentoo.org/662636
