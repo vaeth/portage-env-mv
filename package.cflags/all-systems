@@ -54,7 +54,7 @@ dev-libs/mpfr +*math*
 dev-libs/newt +combine
 dev-libs/nss -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid some firefox/openoffice crashes
 dev-libs/nspr -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid some firefox/openoffice crashes
-dev-libs/openssl +combine +ftree-vectorize*
+dev-libs/openssl +combine +ftree-vectorize* +*O* +*math* +*model* +*merging* # O, math, model, merging get messed up by sed script
 dev-libs/protobuf +*math*
 dev-libs/wayland +D*DEBUG +D*ASSERT
 dev-libs/weston +D*DEBUG +D*ASSERT
