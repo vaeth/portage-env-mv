@@ -19,6 +19,7 @@ app-emulation/dosemu +Wl,--no-undefined
 app-emulation/vice +fno-common
 app-emulation/wine* +fno-common
 app-misc/lirc +fno-common
+app-misc/mc +fno-common
 app-misc/rlwrap +fno-common
 app-misc/vcp +fno-common
 app-shells/schily-tools +fno-common
