@@ -75,6 +75,7 @@ mail-client/thunderbird +fno-common
 mail-filter/maildrop +Wl,--no-undefined
 media-gfx/fontforge +Wl,--no-undefined
 media-gfx/geeqie +fno-common
+media-gfx/graphviz +Wl,--no-undefined
 media-gfx/pqiv +Wl,--no-undefined
 media-gfx/transfig +fno-common
 media-libs/avidemux-plugins +Wl,--no-undefined
