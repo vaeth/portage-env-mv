@@ -126,6 +126,7 @@ net-misc/nx +fno-common
 net-misc/openssh +fno-common
 net-misc/streamtuner +Wl,--no-undefined
 net-print/cups-filters +fno-common
+net-vpn/networkmanager-openconnect +Wl,--no-undefined
 net-vpn/tor +fno-common
 perl-core/* +Wl,--no-undefined
 sci-libs/hdf5 +Wl,--no-undefined
