@@ -53,7 +53,6 @@ dev-python/pygobject +Wl,--no-undefined
 dev-python/pygtk +Wl,--no-undefined
 dev-python/python-poppler +fno-common
 dev-tcltk/tkimg +fno-common
-dev-tex/luatex +fno-common
 dev-util/android-tools +fno-common
 dev-util/icmake +fno-common
 games-arcade/emilia-pinball +Wl,--no-undefined
@@ -148,6 +147,7 @@ sys-devel/make +fno-common
 sys-fs/dd-rescue +Wl,--no-undefined
 sys-fs/e2fsprogs +fno-common
 sys-fs/f2fs-tools +fno-common +Wl,--no-undefined
+sys-fs/fuse-overlayfs +fno-common
 sys-fs/squashfs-tools +fno-common
 sys-fs/squashfuse +Wl,--no-undefined
 sys-fs/udftools +fno-common

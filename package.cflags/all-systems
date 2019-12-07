@@ -65,7 +65,6 @@ dev-qt/qtwebkit +*math*
 dev-scheme/guile +fdirectives-only +ffast-math !+D*FILE_OFFSET* !+D_LARGEFILE* # -ffast-math triggers floating exception https://bugs.gentoo.org/show_bug.cgi?id=598986
 dev-tex/catdvi +D*DEBUG +D*ASSERT
 dev-tex/detex +D*DEBUG +D*ASSERT
-dev-tex/luatex +D*DEBUG +D*ASSERT
 dev-tex/metapost +D*DEBUG +D*ASSERT
 dev-texlive/texlive-metapost +D*DEBUG +D*ASSERT
 dev-util/boost-build +combine
