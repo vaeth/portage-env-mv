@@ -227,8 +227,10 @@ my_menu() {
 		"$seamonkey" '20~palemoon~Palemoon' || return
 	cp_menu 's/seamonkey/chromium/' \
 		"$seamonkey" '15~chromium~Chromium' || return
-	cp_menu 's/seamonkey/chrome/' \
-		"$seamonkey" '15~chrome~google-chrome' || return
+	cp_menu 's/seamonkey/google-chrome/' \
+		"$seamonkey" '15~google-chrome~Google Chrome' || return
+	cp_menu 's/seamonkey/google-chrome-stable/' \
+		"$seamonkey" '15~google-chrome-stable~Chrome' || return
 	cp_mwww -r "${apps}Network/"*Telephony/* || return
 	cp_mwww "${apps}System/"*File_Managers/* \
 		"${apps}System/"*Terminals/* \
@@ -239,6 +241,7 @@ my_menu() {
 	icons=${fvwm}icons/Default/
 	rm -rfv -- "$icons"*/apps/chromium.png || return
 	link_items chromium.png "$icons"*/apps/google-chrome.png || return
+	link_items google-chrome-stable.png "$icons"*/apps/google-chrome.png || return
 	link_items palemoon.png "$icons"*/apps/iceweasel.png || return
 	link_items adsl-gui.png "$icons"*/apps/kppp.png || return
 	link_items links.png "$icons"*/apps/elinks.png || return
