@@ -160,7 +160,7 @@ sys-devel/clang +fmerge-all-constants # -fmerge-all-constants has always problem
 sys-devel/gdb CONFIG_SITE= +*math* +fdirectives-only
 sys-devel/gettext +fdirectives-only
 sys-devel/libtool CONFIG_SITE=
-sys-devel/llvm CONFIG_SITE= +*math* +D*FILE* +fmerge-all-constants # -fmerge-all-constants causes clang to segfault on trivial c programs
+sys-devel/llvm CONFIG_SITE= +*math* +D*FILE* +fdirectives-only +fmerge-all-constants # -fmerge-all-constants causes clang to segfault on trivial c programs
 sys-devel/m4 +*math* +fdirectives-only
 sys-devel/patch +fdirectives-only +D*DEBUG +D*ASSERT
 sys-fs/aufs*-util +D*FILE*

@@ -178,7 +178,6 @@ media-libs/libpostproc +flto* # PO
 media-libs/libsdl2 -ffat-lto-objects # SL
 media-libs/libsfml +flto* # runtime problems, e.g. etr: undefined symbol: __cpu_model
 media-libs/libwebp !+flto* # ICE
-media-libs/mediastreamer +flto* # PO
 media-libs/mesa +flto* # ICE for x86, runtime errors for amd64
 media-libs/musicbrainz +flto* # PO
 media-libs/netpbm !+flto* # ICE
