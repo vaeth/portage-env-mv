@@ -184,7 +184,7 @@ x11-drivers/xf86-* +Wl,-z,now +fdirectives-only
 x11-libs/libXxf86vm CONFIG_SITE= # nvidia-settings needs the static version
 x11-libs/gtk+ +fdirectives-only
 x11-libs/pango -mstackrealign +ftracer +fmerge-all-constants # +O* -O2 +ftree-vectorize* avoids some firefox crashes
-x11-libs/pixman -mstackrealign +ftracer +fmerge-all-constants # +O* -O2 +ftree-vectorize* avoids some firefox crashes
+x11-libs/pixman -mstackrealign +ftracer +fmerge-all-constants +fdirectives-only # +O* -O2 +ftree-vectorize* avoids some firefox crashes
 x11-libs/wxGTK +fvisibility-inlines-hidden
 x11-misc/redshift +ffast-math # with -ffast-math fails to recognize options correctly with gcc-7
 x11-misc/xscreensaver +D*DEBUG +D*ASSERT
