@@ -137,7 +137,7 @@ sci-mathematics/ginac +fvisibility-inlines-hidden
 sci-mathematics/octave +D*DEBUG +D*ASSERT +fdirectives-only +fvisibility-inlines-hidden
 sci-visualization/gnuplot +*math*
 sys-apps/busybox +Wl,--relax
-sys-apps/coreutils +fdirectives-only
+sys-apps/coreutils +fdirectives-only +ffast-math
 sys-apps/dbus +ftree-vectorize* # reported in http://gentoo-wiki.com/CFLAGS_matrix
 sys-apps/diffutils +fdirectives-only
 sys-apps/fakeroot +D*FILE*
