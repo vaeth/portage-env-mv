@@ -9,7 +9,6 @@
 # If somebody has an idea why, please write me...
 
 app-accessibility/at-spi2-atk +fno-common
-app-admin/logrotate +fno-common
 app-arch/cpio +fno-common
 app-arch/sharutils +fno-common
 app-cdr/dvdisaster +fno-common
@@ -28,7 +27,6 @@ app-shells/zsh +Wl,--no-undefined
 app-text/a2ps +Wl,--no-undefined
 app-text/fbreader +Wl,--no-undefined
 app-text/ghostscript-gpl +Wl,--no-undefined
-app-text/pinfo +fno-common
 app-text/stardict +Wl,--no-undefined
 app-text/texlive-core +fno-common
 app-text/ttf2pk2 +fno-common
@@ -73,7 +71,6 @@ mail-client/mailx +fno-common
 mail-client/thunderbird +fno-common
 mail-filter/maildrop +Wl,--no-undefined
 media-gfx/fontforge +Wl,--no-undefined
-media-gfx/geeqie +fno-common
 media-gfx/graphviz +Wl,--no-undefined
 media-gfx/pqiv +Wl,--no-undefined
 media-gfx/transfig +fno-common
@@ -115,7 +112,6 @@ net-firewall/nftables +fno-common
 net-fs/autofs +Wl,--no-undefined
 net-ftp/ncftp +fno-common
 net-libs/libetpan +Wl,--no-undefined # Flags are stored in libetpan-config; breaks compilation of mail-client/claws-mail
-net-libs/libtirpc +fno-common
 net-libs/nghttp2 +Wl,--no-undefined
 net-misc/dhcp +fno-common
 net-misc/iputils +fno-common
@@ -149,7 +145,6 @@ sys-fs/dd-rescue +Wl,--no-undefined
 sys-fs/e2fsprogs +fno-common
 sys-fs/f2fs-tools +fno-common +Wl,--no-undefined
 sys-fs/fuse-overlayfs +fno-common
-sys-fs/squashfs-tools +fno-common
 sys-fs/squashfuse +Wl,--no-undefined
 sys-fs/udftools +fno-common
 sys-fs/unionfs-fuse +fno-common
@@ -161,16 +156,14 @@ sys-power/nut +Wl,--no-undefined
 sys-power/suspend +fno-common
 sys-process/htop +fno-common
 www-client/chromium +fno-common +Wl,--no-undefined
-www-client/dillo +fno-common
 www-client/firefox +fno-common
 x11-base/xorg-server +fno-common +Wl,--no-undefined
 x11-drivers/nvidia-drivers +fno-common +Wl,--no-undefined
 x11-drivers/xf86-* +fno-common +Wl,--no-undefined
 x11-libs/cairo +Wl,--no-undefined
 x11-libs/libdrm +fno-common
-x11-libs/libva-intel-driver +fno-common # gcc-8
+x11-libs/libva-intel-driver +fno-common # https://bugs.gentoo.org/707934
 x11-libs/libvdpau +Wl,--no-undefined
-x11-misc/gtkdialog +fno-common
 x11-misc/slim +Wl,--no-undefined
 x11-misc/xaos +fno-common
 x11-misc/xfractint +fno-common
