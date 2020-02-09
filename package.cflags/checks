@@ -149,7 +149,6 @@ sys-fs/squashfuse +Wl,--no-undefined
 sys-fs/udftools +fno-common
 sys-fs/unionfs-fuse +fno-common
 sys-libs/glibc +Wl,--no-undefined
-sys-libs/gpm +fno-common
 sys-libs/slang +Wl,--no-undefined
 sys-power/iasl +fno-common
 sys-power/nut +Wl,--no-undefined
