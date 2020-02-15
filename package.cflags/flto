@@ -106,6 +106,7 @@ dev-libs/libsigsegv \~+flto* # PIC
 dev-libs/libmspack +flto* # |
 dev-libs/libxml2 !+flto* # ICE
 dev-libs/lzo -ffat-lto-objects # SL
+net-libs/mbedtls +flto*
 dev-libs/nss -ffat-lto-objects # SL
 dev-libs/ppl +flto* # PO
 dev-libs/redland +flto*
