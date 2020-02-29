@@ -49,7 +49,6 @@ dev-python/numpy +Wl,--no-undefined
 dev-python/pygame +Wl,--no-undefined
 dev-python/pygobject +Wl,--no-undefined
 dev-python/pygtk +Wl,--no-undefined
-dev-python/python-poppler +fno-common
 dev-tcltk/tkimg +fno-common
 dev-util/android-tools +fno-common
 dev-util/icmake +fno-common
