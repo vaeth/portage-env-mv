@@ -76,6 +76,7 @@ media-gfx/transfig +fno-common
 media-libs/avidemux-plugins +Wl,--no-undefined
 media-libs/freeglut +fno-common
 media-libs/gegl +fno-common
+media-libs/giflib +Wl,--no-undefined
 media-libs/kvazaar +Wl,--no-undefined
 media-libs/libcanberra +Wl,--no-undefined
 media-libs/libmtp +fno-common
