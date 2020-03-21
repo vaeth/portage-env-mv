@@ -11,6 +11,7 @@
 app-accessibility/at-spi2-atk +fno-common
 app-arch/cpio +fno-common
 app-arch/sharutils +fno-common
+app-arch/zstd +Wl,--no-undefined
 app-cdr/dvdisaster +fno-common
 app-crypt/gnupg +fno-common
 app-crypt/trousers +fno-common
@@ -127,6 +128,7 @@ perl-core/* +Wl,--no-undefined
 sci-libs/hdf5 +Wl,--no-undefined
 sci-mathematics/axiom +fno-common
 sci-mathematics/calc +Wl,--no-undefined
+sci-mathematics/octave +Wl,--no-undefined
 sci-mathematics/reduce +Wl,--no-undefined
 sci-mathematics/scilab +fno-common +Wl,--no-undefined
 sys-apps/dtc +fno-common
