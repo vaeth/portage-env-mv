@@ -1,5 +1,6 @@
 # Fix issues with the gold linker
 
+media-plugins/live -fuse-ld=bfd
 media-video/avidemux LDFLAGS+=-lXext
 net-libs/nodejs -fuse-ld=bfd
 =sci-mathematics/scilab-5.5.2-r1 -fuse-ld=bfd
