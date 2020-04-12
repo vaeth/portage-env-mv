@@ -39,6 +39,7 @@ app-editors/jed +flto* # PO
 app-editors/kile +flto* # PO
 app-emulation/bochs +flto* # PO
 app-emulation/dosemu !+flto* # ICE
+app-emulation/faudio +flto*
 app-emulation/vice !+flto* # ICE
 app-emulation/wine* +flto*
 app-misc/lirc -ffat-lto-objects # PO
