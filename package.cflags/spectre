@@ -6,6 +6,7 @@
 # +mretpoline # clang only
 # +fcf-protection* # gcc-8
 
+app-emulation/wine* +fno-plt # compilation fails with unexpected reloc 43 against global symbol strlen without base register in object file when generating a position-independent output file
 dev-lang/rust !+fno-plt # compilation segfaults on x86
 dev-qt/qtwidgets +mfunction-return=thunk # multiple definition of '__x86_return_thunk' for gcc-8
 #media-libs/mesa +fno-plt

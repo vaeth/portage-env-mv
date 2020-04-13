@@ -13,7 +13,7 @@ app-crypt/gnupg +D*DEBUG +D*ASSERT
 app-doc/doxygen NOC*OPT=1 +O* -O2 -fomit-frame-pointer -s # see http://forums.gentoo.org/viewtopic-t-495600.html
 app-emulation/dosemu +finline-functions +fdirectives-only
 app-emulation/vice +ffast-math # Segfault with -ffast-math
-app-emulation/wine* +fstack-protector* -fno-omit-frame-pointer +ftree-loop-distribute-patterns +fweb +finline-functions +frename-registers
+app-emulation/wine* +fstack-protector* +ftree-loop-distribute-patterns +fweb +finline-functions +frename-registers +freorder-functions +ffast-math # -ffast-math gives duplicate symbols. -freorder-functions undefined reference to 'memset'
 app-mobilephone/heimdall SAFE # No experiments here!
 app-misc/srm +D*FILE*
 app-misc/tmux CONFIG_SITE=
