@@ -274,7 +274,7 @@ sys-fs/udev +flto* # PO
 sys-fs/udisks +flto* # PO
 sys-libs/binutils-libs -ffat-lto-objects # SL
 sys-libs/efivar +flto*
-sys-libs/glibc -ffat-lto-objects # SL
+sys-libs/glibc +flto* # -ffat-lto-objects # SL
 sys-libs/libcxxabi +flto*
 sys-libs/ncurses +flto*
 sys-power/iasl +flto* # PO

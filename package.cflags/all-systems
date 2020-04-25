@@ -170,7 +170,7 @@ sys-fs/squashfuse +Wl,--as-needed
 sys-libs/e2fsprogs-libs +D*FILE*
 sys-libs/compiler-rt USE_NONGNU=1 +fmerge-all-constants
 sys-libs/compiler-rt-sanitizers USE_NONGNU=1 +fmerge-all-constants +frewrite-includes
-sys-libs/glibc +Wl,--relax +D*FILE* +fstack-protector
+sys-libs/glibc +Wl,--relax +D*FILE* +fstack-protector +ffast-math +fdirectives-only
 sys-libs/gwenhywfar +D*FORTIFY* -U_FORTIFY_SOURCE
 sys-libs/libstdc++-v3 +D*DEBUG +D*ASSERT
 sys-libs/zlib -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid some firefox/openoffice crashes

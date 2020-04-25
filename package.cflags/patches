@@ -21,6 +21,7 @@ media-gfx/potrace "export CC=gcc" # otherwise clang is used for compilation if a
 media-libs/jpeg "EXTRA_ECONF+='--disable-static'"
 media-libs/libquicktime "EXTRA_ECONF+='--disable-static'"
 media-libs/libmikmod "EXTRA_EMAKE+='SHELL=/bin/bash'"
+media-libs/libsdl "export CONFIG_SHELL=/bin/bash" # https://bugs.gentoo.org/714094
 =media-video/nvidia-settings-173.14.37 -ldl
 net-libs/c-client -lcrypt
 net-misc/nxserver-freenx "EXTRA_EMAKE+='SHELL=/bin/bash'"
