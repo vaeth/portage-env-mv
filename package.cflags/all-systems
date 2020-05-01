@@ -111,7 +111,6 @@ media-video/cclive +D*DEBUG +D*ASSERT
 media-video/cinelerra +D*DEBUG +D*ASSERT # MAKEOPTS-='-j*'
 media-video/ffmpeg +combine +ftracer
 media-video/kaffeine !/-O?/-O2 !+finline-functions
-media-video/libav +combine +ftracer
 media-video/mplayer +finline-functions # -finline-functions causes encoding errors w/ gcc-8
 media-video/mpv +fmerge-all-constants +D*DEBUG +D*ASSERT
 media-video/transcode +Wl,--as-needed LD_AS_NEEDED=

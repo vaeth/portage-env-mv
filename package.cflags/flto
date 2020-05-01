@@ -176,7 +176,6 @@ media-libs/libdvdnav +flto* # |
 media-libs/libdvdread +flto* # |
 media-libs/liblastfm +flto* # PO
 media-libs/libmodplug +flto* # PO
-media-libs/libpostproc +flto* # PO
 media-libs/libsdl2 -ffat-lto-objects # SL
 media-libs/libsfml +flto* # runtime problems, e.g. etr: undefined symbol: __cpu_model
 media-libs/libwebp !+flto* # ICE
@@ -209,7 +208,6 @@ media-video/dirac +flto* # PO
 media-video/ffmpeg +flto*
 media-video/ffmpegthumbnailer +flto* # PO
 media-video/kaffeine +flto* # PO
-media-video/libav +flto* # PO
 media-video/mplayer !+flto* # ICE
 media-video/nvidia-settings +flto* # PO
 media-video/vdr +flto* # PO
