@@ -139,6 +139,7 @@ sys-apps/texinfo +Wl,--no-undefined
 sys-apps/the_silver_searcher +fno-common # gcc-8
 sys-block/parted:0 +Wl,--no-undefined
 sys-boot/syslinux +fno-common
+sys-devel/gcc +Wl,--no-undefined
 sys-devel/gdb +fno-common
 sys-devel/gettext +Wl,--no-undefined
 sys-devel/llvm +fno-common +Wl,--no-undefined

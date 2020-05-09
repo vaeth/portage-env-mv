@@ -130,6 +130,7 @@ media-video/ffmpeg +fPIE +pie
 media-video/handbrake +fPIE +pie
 media-video/mjpegtools +fPIE +pie
 media-video/mpv +fPIE +pie
+media-video/qmplay2 +fPIE +pie
 media-video/rtmpdump +fPIE +pie
 media-video/transcode !+fPIE !+pie
 media-video/vcdimager !+fPIE !+pie
