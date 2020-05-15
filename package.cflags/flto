@@ -74,7 +74,7 @@ dev-db/sqlite !+flto* # ICE
 dev-db/unixODBC !+flto* # ICE
 dev-games/physfs \~+flto* # PIC
 dev-java/icedtea +flto*
-dev-java/icedtea-web \~+flto* # PIC
+dev-java/openjdk +flto*
 dev-lang/execline +flto* # PO
 dev-lang/mujs -ffat-lto-objects # SL
 dev-lang/orc +flto* # PO

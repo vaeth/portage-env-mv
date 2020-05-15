@@ -10,6 +10,7 @@ app-office/libreoffice +fgraphite* +floop-*
 app-shells/bash +fgraphite* +floop*
 app-text/texlive-core +fgraphite* +floop*
 dev-java/icedtea* +fgraphite* +floop-*
+dev-java/openjdk +fgraphite* +floop-*
 dev-lang/python +fgraphite* +floop-*
 dev-lang/rust +fgraphite* +floop-*
 dev-lang/tcl +fgraphite* +floop-*

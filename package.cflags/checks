@@ -1,4 +1,4 @@
-# +fno-common
+# +fno-common [-fcommon]
 # +Wl,--no-undefined
 #
 # The options -fno-common -Wl,--no-undefined are essentially testing options:
@@ -34,7 +34,8 @@ app-text/ttf2pk2 +fno-common
 app-text/unrtf +fno-common
 app-text/xpdf +Wl,--no-undefined
 dev-db/mariadb-connector-c +Wl,--no-undefined
-dev-java/icedtea* +fno-common +Wl,--no-undefined
+dev-java/icedtea +Wl,--no-undefined
+dev-java/openjdk +Wl,--no-undefined
 dev-lang/perl +Wl,--no-undefined
 dev-lang/python:2.7 +Wl,--no-undefined
 dev-lang/rust +Wl,--no-undefined

@@ -10,7 +10,8 @@
 #app-misc/lirc "LIRC_OPTS='--with-driver=pctv'"
 app-text/pinfo "EXTRA_EMAKE+=WFLAGS=-Wno-error" # undo -Werror which breaks compilation
 app-text/u2ps "EXTRA_EMAKE+='SHELL=/bin/bash'"
-dev-java/icedtea* "EXTRA_ECONF+='--with-pax=paxctl-ng'"
+dev-java/icedtea "EXTRA_ECONF+='--with-pax=paxctl-ng'" "EXTRA_EMAKE+='SHELL=/bin/bash'"
+dev-java/openjdk "ulimit -c unlimited"
 dev-lang/rust "export SHELL=/bin/sh"
 dev-libs/libsodium !"export enable_pie=no"
 dev-perl/Clone "export mymake='DEFINE=-D_LARGEFILE64_SOURCE'" # -D_LARGEFILE64_SOURCE is filtered by the ebuild but *MUST* be used.

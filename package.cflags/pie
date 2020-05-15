@@ -73,6 +73,7 @@ dev-db/sqlite !+fPIE !+pie
 dev-db/unixODBC !+fPIE !+pie
 dev-games/flatzebra +fPIE +pie
 dev-java/icedtea +fPIE +pie
+dev-java/openjdk +fPIE +pie
 dev-lang/lua +fPIE +pie
 dev-lang/orc !+fPIE !+pie
 dev-lang/python +fPIE +pie
