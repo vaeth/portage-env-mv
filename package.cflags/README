@@ -15,8 +15,8 @@
 #     This is the main file for resetting C*FLAGS which might be set in
 #     /etc/portage/make.conf/* and which are too aggressive for some packages
 # checks
-#     Packages breaking with -fno-common or -Wl,--no-undefined
-#     This breakage might indicate a hidden bug
+#     Packages breaking with -fno-common (without -fcommon in >=gcc-10) or
+#     -Wl,--no-undefined. These breakages might indicate a hidden bug
 # flto
 #     The same for LTO related flags like e.g.
 #     -flto -fwhole-program -fuse-linker-plugin -emit-llvm -flto-partition=none

@@ -1,4 +1,4 @@
-# +fno-common [-fcommon]
+# +fno-common -fcommon
 # +Wl,--no-undefined
 #
 # The options -fno-common -Wl,--no-undefined are essentially testing options:
@@ -7,31 +7,25 @@
 # For plugins it may be normal that -Wl,--no-undefined fails.
 # There are a few packages in which -fno-common causes runtime issues:
 # If somebody has an idea why, please write me...
+# Note that +fno-common -fcommon has to be specified together for >=gcc-10
+#
+# The following comments refers only to +no-common -fcommon:
+# PO (possibly obsolete) means that I did not check and possibly never will.
+# RC (recently checked) means that I checked after May 23 2020.
+# NC (needs checking) means that I intend to check with the next recompilation.
 
-app-accessibility/at-spi2-atk +fno-common
-app-arch/cpio +fno-common
-app-arch/sharutils +fno-common
 app-arch/zstd +Wl,--no-undefined
-app-cdr/dvdisaster +fno-common
-app-crypt/gnupg +fno-common
-app-crypt/trousers +fno-common
-app-editors/vim +fno-common
+app-cdr/dvdisaster +fno-common -fcommon # RC
 app-emulation/dosemu +Wl,--no-undefined
-app-emulation/vice +fno-common
-app-emulation/wine* +fno-common
-app-misc/lirc +fno-common
-app-misc/mc +fno-common
-app-misc/rlwrap +fno-common
-app-misc/vcp +fno-common
-app-shells/schily-tools +fno-common
+app-emulation/vice +fno-common -fcommon
+app-emulation/wine* +fno-common -fcommon # NC
+app-misc/vcp +fno-common -fcommon # RC
 app-shells/zsh +Wl,--no-undefined
 app-text/a2ps +Wl,--no-undefined
 app-text/fbreader +Wl,--no-undefined
 app-text/ghostscript-gpl +Wl,--no-undefined
 app-text/stardict +Wl,--no-undefined
-app-text/texlive-core +fno-common
-app-text/ttf2pk2 +fno-common
-app-text/unrtf +fno-common
+app-text/texlive-core +fno-common -fcommon
 app-text/xpdf +Wl,--no-undefined
 dev-db/mariadb-connector-c +Wl,--no-undefined
 dev-java/icedtea +Wl,--no-undefined
@@ -40,7 +34,6 @@ dev-lang/perl +Wl,--no-undefined
 dev-lang/python:2.7 +Wl,--no-undefined
 dev-lang/rust +Wl,--no-undefined
 dev-libs/appstream-glib +Wl,--no-undefined
-dev-libs/check +fno-common
 dev-libs/gobject-introspection +Wl,--no-undefined
 dev-libs/libevent +Wl,--no-undefined
 dev-libs/weston +Wl,--no-undefined
@@ -51,125 +44,87 @@ dev-python/numpy +Wl,--no-undefined
 dev-python/pygame +Wl,--no-undefined
 dev-python/pygobject +Wl,--no-undefined
 dev-python/pygtk +Wl,--no-undefined
-dev-tcltk/tkimg +fno-common
-dev-util/android-tools +fno-common
-dev-util/icmake +fno-common
+dev-tcltk/tkimg +fno-common -fcommon # PO
+dev-util/android-tools +fno-common -fcommon # RC
 games-arcade/emilia-pinball +Wl,--no-undefined
-games-arcade/primateplunge +fno-common
-games-arcade/rocksndiamonds +fno-common
-games-arcade/xboing +fno-common
-games-arcade/xrick +fno-common
-games-board/xboard +fno-common
-games-emulation/advancemame +fno-common
-games-engines/frotz +fno-common
-games-fps/doomsday +fno-common
-games-fps/prboom-plus +fno-common
-games-rpg/freedroid +fno-common
-games-rpg/freedroidrpg +fno-common
-mail-client/alpine +fno-common
+games-arcade/primateplunge +fno-common -fcommon # RC
+games-arcade/rocksndiamonds +fno-common -fcommon # RC
+games-arcade/xrick +fno-common -fcommon # RC
+games-emulation/advancemame +fno-common -fcommon # RC
+games-engines/frotz +fno-common -fcommon # RC
+games-fps/doomsday +fno-common -fcommon # PO
+games-fps/prboom-plus +fno-common -fcommon # RC
+games-rpg/freedroid +fno-common -fcommon # RC
+games-rpg/freedroidrpg +fno-common -fcommon # RC
 mail-client/claws-mail +Wl,--no-undefined
-mail-client/mailx +fno-common
-mail-client/thunderbird +fno-common
+mail-client/mailx +fno-common -fcommon # RC
+mail-client/thunderbird +fno-common -fcommon # PO
 mail-filter/maildrop +Wl,--no-undefined
 media-gfx/fontforge +Wl,--no-undefined
 media-gfx/graphviz +Wl,--no-undefined
 media-gfx/pqiv +Wl,--no-undefined
-media-gfx/transfig +fno-common
 media-libs/avidemux-plugins +Wl,--no-undefined
-media-libs/freeglut +fno-common
-media-libs/gegl +fno-common
 media-libs/giflib +Wl,--no-undefined
 media-libs/kvazaar +Wl,--no-undefined
 media-libs/libcanberra +Wl,--no-undefined
-media-libs/libmtp +fno-common
 media-libs/libquicktime +Wl,--no-undefined
 media-libs/libreplaygain +Wl,--no-undefined
-media-libs/libv4l +fno-common +Wl,--no-undefined
-media-libs/mesa +fno-common
-media-libs/openal +fno-common
+media-libs/libv4l +Wl,--no-undefined
+media-libs/mesa +fno-common -fcommon # NC
 media-libs/plotutils +Wl,--no-undefined
-media-libs/sg +fno-common
-media-libs/xine-lib +fno-common
+media-libs/sg +fno-common -fcommon # PO
 media-plugins/live +Wl,--no-undefined
-media-sound/alsa-utils +fno-common
-media-sound/audacity +fno-common
-media-sound/musepack-tools +fno-common
-media-sound/pnmixer +fno-common
-media-sound/timidity++ +fno-common
-media-sound/toolame +fno-common
+media-sound/audacity +fno-common -fcommon # PO
+media-sound/musepack-tools +fno-common -fcommon # RC
+media-sound/toolame +fno-common -fcommon # RC
 media-tv/linuxtv-dvb-apps +Wl,--no-undefined
-media-tv/nvtv +fno-common
-media-tv/tvheadend +fno-common
-media-tv/v4l-utils +fno-common +Wl,--no-undefined
-media-tv/w_scan +fno-common
+media-tv/nvtv +fno-common -fcommon # RC
+media-tv/tvheadend +fno-common -fcommon # PO
+media-tv/v4l-utils +Wl,--no-undefined
+media-tv/w_scan +fno-common -fcommon # RC
 media-video/avidemux +Wl,--no-undefined
-media-video/avinfo +fno-common
-media-video/ffmpeg +fno-common # -fno-common causes runtime segfaults w/ gcc-8
-media-video/mpv +fno-common
-media-video/nvidia-settings +fno-common
-media-video/transcode +fno-common +Wl,--no-undefined
-media-video/vlc +fno-common
+media-video/ffmpeg +fno-common -fcommon # -fno-common causes runtime segfaults w/ gcc-8
+media-video/nvidia-settings +fno-common -fcommon # PO
+media-video/transcode +Wl,--no-undefined
+media-video/vlc +fno-common -fcommon # PO
 net-dialup/ppp +Wl,--no-undefined
-net-firewall/nftables +fno-common
 net-fs/autofs +Wl,--no-undefined
-net-ftp/ncftp +fno-common
 net-libs/libetpan +Wl,--no-undefined # Flags are stored in libetpan-config; breaks compilation of mail-client/claws-mail
 net-libs/nghttp2 +Wl,--no-undefined
-net-misc/dhcp +fno-common
-net-misc/iputils +fno-common
 net-misc/modemmanager +Wl,--no-undefined
-net-misc/networkmanager +fno-common +Wl,--no-undefined
-net-misc/nx +fno-common
-net-misc/openssh +fno-common
+net-misc/networkmanager +Wl,--no-undefined
+net-misc/nx +fno-common -fcommon # PO
 net-misc/streamtuner +Wl,--no-undefined
-net-print/cups-filters +fno-common
 net-vpn/networkmanager-openconnect +Wl,--no-undefined
-net-vpn/tor +fno-common
 perl-core/* +Wl,--no-undefined
 sci-libs/hdf5 +Wl,--no-undefined
-sci-mathematics/axiom +fno-common
+sci-mathematics/axiom +fno-common -fcommon # PO
 sci-mathematics/calc +Wl,--no-undefined
 sci-mathematics/octave +Wl,--no-undefined
 sci-mathematics/reduce +Wl,--no-undefined
-sci-mathematics/scilab +fno-common +Wl,--no-undefined
-sys-apps/dtc +fno-common
-sys-apps/iproute2 +fno-common
-sys-apps/kbd +fno-common
-sys-apps/openrc +fno-common
+sci-mathematics/scilab +fno-common -fcommon +Wl,--no-undefined # PO
+sys-apps/dtc +fno-common -fcommon # PO
 sys-apps/texinfo +Wl,--no-undefined
-sys-apps/the_silver_searcher +fno-common # gcc-8
+sys-apps/the_silver_searcher +fno-common -fcommon # RC
 sys-block/parted:0 +Wl,--no-undefined
-sys-boot/syslinux +fno-common
 sys-devel/gcc +Wl,--no-undefined
-sys-devel/gdb +fno-common
 sys-devel/gettext +Wl,--no-undefined
-sys-devel/llvm +fno-common +Wl,--no-undefined
-sys-devel/make +fno-common
+sys-devel/llvm +fno-common -fcommon +Wl,--no-undefined # NC
 sys-fs/dd-rescue +Wl,--no-undefined
-sys-fs/e2fsprogs +fno-common
-sys-fs/f2fs-tools +fno-common +Wl,--no-undefined
-sys-fs/fuse-overlayfs +fno-common
+sys-fs/f2fs-tools +Wl,--no-undefined
 sys-fs/squashfuse +Wl,--no-undefined
-sys-fs/udftools +fno-common
-sys-fs/unionfs-fuse +fno-common
 sys-libs/glibc +Wl,--no-undefined
 sys-libs/slang +Wl,--no-undefined
-sys-power/iasl +fno-common
+sys-power/iasl +fno-common -fcommon # PO
 sys-power/nut +Wl,--no-undefined
-sys-power/suspend +fno-common
-sys-process/htop +fno-common
-www-client/chromium +fno-common +Wl,--no-undefined
-www-client/firefox +fno-common
-x11-base/xorg-server +fno-common +Wl,--no-undefined
-x11-drivers/nvidia-drivers +fno-common +Wl,--no-undefined
-x11-drivers/xf86-* +fno-common +Wl,--no-undefined
+sys-power/suspend +fno-common -fcommon # PO
+www-client/chromium +fno-common -fcommon +Wl,--no-undefined # NC
+x11-base/xorg-server +fno-common -fcommon +Wl,--no-undefined # NC
+x11-drivers/nvidia-drivers +fno-common -fcommon +Wl,--no-undefined # PO
+x11-drivers/xf86-* +Wl,--no-undefined
 x11-libs/cairo +Wl,--no-undefined
-x11-libs/libdrm +fno-common
-x11-libs/libva-intel-driver +fno-common # https://bugs.gentoo.org/707934
+<=x11-libs/libva-intel-driver-2.4.0_pre1 +fno-common -fcommon # https://bugs.gentoo.org/707934
 x11-libs/libvdpau +Wl,--no-undefined
 x11-misc/slim +Wl,--no-undefined
-x11-misc/xaos +fno-common
-x11-misc/xfractint +fno-common
-x11-terms/xterm +fno-common
-x11-wm/fvwm +fno-common
-x11-wm/mutter +fno-common
+x11-misc/xfractint +fno-common -fcommon # RC
+x11-wm/mutter +fno-common -fcommon # PO

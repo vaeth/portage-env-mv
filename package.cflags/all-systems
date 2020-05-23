@@ -155,7 +155,6 @@ sys-block/parted +D*FILE* +fdirectives-only
 sys-boot/grub SAFE # No experiments here! Breakage is likely, because grub needs special code, and you must reinstall grub from a rescue CD in case of failures. Moreover, grub provides no suid-binary and no library, so no security issues arise.
 sys-devel/bison +fdirectives-only
 sys-devel/gcc CONFIG_SITE= +combine +D*DEBUG +D*ASSERT +D*FILE* +D*FORTIFY* # +fstack-protector* only needed for nspluginwrapper (on 64bit)
-=sys-devel/gcc-3* \~SAFE \~/-march*/-march=k8
 sys-devel/clang +fmerge-all-constants # -fmerge-all-constants has always problems with llvm
 sys-devel/gdb CONFIG_SITE= +*math* +fdirectives-only
 sys-devel/gettext +fdirectives-only

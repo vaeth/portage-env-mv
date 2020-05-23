@@ -25,6 +25,7 @@ app-emulation/dosemu +fPIE +pie
 app-emulation/vice +fPIE +pie
 app-emulation/wine* +fPIE +pie
 app-forensics/chkrootkit +fPIE +pie
+app-misc/lirc +fPIE +pie
 app-misc/mc !+fPIE !+pie
 app-office/libreoffice +fPIE +pie
 app-portage/deltup +fPIE +pie
