@@ -146,6 +146,7 @@ sys-apps/fakechroot +D*FILE*
 sys-apps/findutils +fdirectives-only
 sys-apps/gawk +D*DEBUG
 sys-apps/grep +fdirectives-only
+sys-apps/groff +ffast-math
 sys-apps/openrc +combine
 sys-apps/sandbox +D*DEBUG +D*ASSERT
 sys-apps/sed +D*DEBUG +fdirectives-only
