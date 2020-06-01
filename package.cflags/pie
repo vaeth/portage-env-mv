@@ -103,6 +103,7 @@ games-rpg/aklabeth +fPIE +pie
 gnome-base/dconf +fPIE +pie
 gnome-base/gsettings-desktop-schemas +fPIE +pie
 gnome-base/libglade !+fPIE !+pie
+gui-wm/wayfire +fPIE +pie
 kde-frameworks/* +fPIE +pie
 mail-client/claws-mail !+fPIE !+pie
 mail-client/thunderbird +fPIE +pie
