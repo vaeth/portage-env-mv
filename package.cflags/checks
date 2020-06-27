@@ -99,6 +99,7 @@ net-misc/streamtuner +Wl,--no-undefined
 net-vpn/networkmanager-openconnect +Wl,--no-undefined
 perl-core/* +Wl,--no-undefined
 sci-libs/hdf5 +Wl,--no-undefined
+sci-libs/suitesparseconfig +Wl,--no-undefined
 sci-mathematics/axiom +fno-common -fcommon # PO
 sci-mathematics/calc +Wl,--no-undefined
 sci-mathematics/octave +Wl,--no-undefined
