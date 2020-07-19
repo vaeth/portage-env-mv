@@ -31,21 +31,29 @@ dev-db/mariadb-connector-c +Wl,--no-undefined
 dev-java/icedtea +Wl,--no-undefined
 dev-java/openjdk +Wl,--no-undefined
 dev-lang/perl +Wl,--no-undefined
-dev-lang/python:2.7 +Wl,--no-undefined
+dev-lang/python +Wl,--no-undefined
 dev-lang/rust +Wl,--no-undefined
 dev-libs/appstream-glib +Wl,--no-undefined
 dev-libs/gobject-introspection +Wl,--no-undefined
 dev-libs/libevent +Wl,--no-undefined
+dev-libs/libxml2 +Wl,--no-undefined
 dev-libs/weston +Wl,--no-undefined
 dev-perl/* +Wl,--no-undefined
 dev-python/cffi +Wl,--no-undefined
+dev-python/cryptography +Wl,--no-undefined
+dev-python/cython +Wl,--no-undefined
 dev-python/dbus-python +Wl,--no-undefined
+dev-python/lxml +Wl,--no-undefined
+dev-python/m2crypto +Wl,--no-undefined
 dev-python/numpy +Wl,--no-undefined
+dev-python/pycairo +Wl,--no-undefined
 dev-python/pygame +Wl,--no-undefined
 dev-python/pygobject +Wl,--no-undefined
 dev-python/pygtk +Wl,--no-undefined
+dev-python/pyyaml +Wl,--no-undefined
 dev-tcltk/tkimg +fno-common -fcommon # PO
 dev-util/android-tools +fno-common -fcommon # RC
+dev-util/systemtap +Wl,--no-undefined
 games-arcade/emilia-pinball +Wl,--no-undefined
 games-arcade/primateplunge +fno-common -fcommon # RC
 games-arcade/rocksndiamonds +fno-common -fcommon # RC
@@ -106,6 +114,7 @@ sci-mathematics/octave +Wl,--no-undefined
 sci-mathematics/reduce +Wl,--no-undefined
 sci-mathematics/scilab +fno-common -fcommon +Wl,--no-undefined # PO
 sys-apps/dtc +fno-common -fcommon # PO
+sys-apps/portage +Wl,--no-undefined
 sys-apps/texinfo +Wl,--no-undefined
 sys-apps/the_silver_searcher +fno-common -fcommon # RC
 sys-block/parted:0 +Wl,--no-undefined
