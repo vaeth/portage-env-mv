@@ -13,6 +13,7 @@ app-text/u2ps "EXTRA_EMAKE+='SHELL=/bin/bash'"
 dev-java/icedtea "EXTRA_ECONF+='--with-pax=paxctl-ng'" "EXTRA_EMAKE+='SHELL=/bin/bash'"
 dev-java/openjdk "ulimit -c unlimited"
 dev-lang/rust "export SHELL=/bin/sh"
+dev-libs/libpcre2 -mshstk
 dev-libs/libsodium !"export enable_pie=no"
 dev-perl/Clone "export mymake='DEFINE=-D_LARGEFILE64_SOURCE'" # -D_LARGEFILE64_SOURCE is filtered by the ebuild but *MUST* be used.
 mail-client/thunderbird "export SHELL=/bin/sh"
