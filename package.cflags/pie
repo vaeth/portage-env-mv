@@ -90,7 +90,6 @@ dev-python/* +fPIE +pie
 dev-qt/qt* +fPIE +pie
 dev-tcltk/expect +fPIE +pie
 dev-tex/bibtexu !+fPIE !+pie
-dev-tex/metapost !+fPIE !+pie
 dev-texlive/texlive-metapost !+fPIE !+pie
 dev-util/bdelta +fPIE +pie
 dev-util/cppunit +fPIE +pie

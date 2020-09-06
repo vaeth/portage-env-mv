@@ -121,7 +121,6 @@ dev-python/pygtk +flto* # |
 dev-qt/* +flto* # Various runtime and link issues without these
 dev-tcltk/expect +flto* # PO
 dev-tex/bibtexu !+flto* # ICE
-dev-tex/metapost +flto* # PO
 dev-util/android-tools !+flto* # ICE
 dev-util/dialog -ffat-lto-objects # SL
 dev-util/dirdiff +flto* # PIC

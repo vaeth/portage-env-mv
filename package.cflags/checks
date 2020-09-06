@@ -17,6 +17,7 @@
 app-arch/zstd +Wl,--no-undefined
 app-cdr/dvdisaster +fno-common -fcommon # RC
 app-emulation/dosemu +Wl,--no-undefined
+app-emulation/open-vm-tools +Wl,--no-undefined
 app-emulation/vice +fno-common -fcommon
 app-emulation/wine* +fno-common -fcommon # NC
 app-misc/vcp +fno-common -fcommon # RC
@@ -125,6 +126,7 @@ sys-fs/dd-rescue +Wl,--no-undefined
 sys-fs/f2fs-tools +Wl,--no-undefined
 sys-fs/squashfuse +Wl,--no-undefined
 sys-libs/glibc +Wl,--no-undefined
+sys-libs/libcap +Wl,--no-undefined # -Wl,--no-undefined breaks with USE=pam
 sys-libs/slang +Wl,--no-undefined
 sys-power/iasl +fno-common -fcommon # PO
 sys-power/nut +Wl,--no-undefined
