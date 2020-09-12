@@ -23,6 +23,7 @@
 # PO means: Possibly obsolete line: Package was not emerged since quite a while
 
 app-accessibility/espeak !-ffat-lto-objects \~+flto* # PIC
+app-arch/brotli \~+flto* # PIC
 app-arch/bzip2 +flto* # runtime segfault (PIC relocation) on amd64 and x86
 app-arch/lha !+flto* # ICE
 app-arch/lz4 +flto* # PIC on amd64 and x86
