@@ -118,7 +118,6 @@ dev-libs/weston +flto*
 dev-lisp/clisp +flto*
 dev-python/dbus-python +flto* # |
 dev-python/pygobject +flto* # |
-dev-python/pygtk +flto* # |
 dev-qt/* +flto* # Various runtime and link issues without these
 dev-tcltk/expect +flto* # PO
 dev-tex/bibtexu !+flto* # ICE
