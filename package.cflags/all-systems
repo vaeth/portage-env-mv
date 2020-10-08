@@ -176,7 +176,7 @@ sys-libs/libstdc++-v3 +D*DEBUG +D*ASSERT
 sys-libs/zlib -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid some firefox/openoffice crashes
 sys-process/criu +Wl,--relax
 www-client/chromium +D*FILE* +*math* +fmerge-all-constants +finline-functions +fdirectives-only +fgcse-sm +fgcse-las +fgcse-after-reload +fdiagnostics-color* "export EXTRA_GN='jumbo_file_merge_limit=20'"
-www-client/firefox +D*FILE* +*math* +fmerge-all-constants +finline-functions +fdirectives-only
+www-client/firefox +D*FILE* +*math* +fmerge-all-constants +finline-functions +fdirectives-only +fomit-frame-pointer +g0
 x11-base/xorg-server +Wl,-z,now +fdirectives-only
 x11-drivers/xf86-* +Wl,-z,now +fdirectives-only
 x11-libs/libXxf86vm CONFIG_SITE= # nvidia-settings needs the static version
