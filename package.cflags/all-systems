@@ -65,7 +65,6 @@ dev-qt/* +fdirectives-only
 dev-qt/qtwebkit +*math*
 dev-scheme/guile +fdirectives-only +ffast-math !+D*FILE_OFFSET* !+D_LARGEFILE* # -ffast-math triggers floating exception https://bugs.gentoo.org/show_bug.cgi?id=598986
 dev-tex/catdvi +D*DEBUG +D*ASSERT
-dev-tex/detex +D*DEBUG +D*ASSERT
 dev-texlive/texlive-metapost +D*DEBUG +D*ASSERT
 dev-util/boost-build +combine
 dev-util/ccache CONFIG_SITE=
@@ -79,6 +78,8 @@ games-emulation/xmame +ftree-vectorize*
 games-emulation/xmess +ftree-vectorize*
 games-rpg/freedroidrpg CONFIG_SITE=
 gnome-base/librsvg +ftree-vectorize* # reported in http://gentoo-wiki.com/CFLAGS_matrix
+gui-wm/wayfire +fdirectives-only
+gui-wm/sway +fdirectives-only
 kde-frameworks/* +*math*
 mail-client/thunderbird +D*FILE* +*math* +fmerge-all-constants +finline-functions +fdirectives-only
 media-gfx/fontforge +fdirectives-only
