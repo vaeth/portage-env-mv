@@ -122,6 +122,7 @@ dev-qt/* +flto* # Various runtime and link issues without these
 dev-tcltk/expect +flto* # PO
 dev-tex/bibtexu !+flto* # ICE
 dev-util/android-tools !+flto* # ICE
+dev-util/ccache +flto*
 dev-util/dialog -ffat-lto-objects # SL
 dev-util/dirdiff +flto* # PIC
 dev-util/icmake +flto* # PO
@@ -235,7 +236,6 @@ net-vpn/ipsec-tools -ffat-lto-objects # SL
 net-wireless/wireless-tools +flto* # PIC (with gcc-7 also on x86)
 sci-libs/gdal !+flto* # ICE
 sci-libs/qrupdate +flto* # PO
-sci-mathematics/axiom +flto* # PO
 sci-mathematics/calc +flto*
 sci-mathematics/genius +flto* # PO
 sci-mathematics/glpk +flto* # PO

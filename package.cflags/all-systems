@@ -132,7 +132,6 @@ sci-libs/* +*math*
 sci-libs/cln +ftracer +fdirectives-only
 sci-libs/hdf5 +D*FILE_OFFSET* +D_LARGEFILE* +fdirectives-only
 sci-mathematics/* +*math*
-sci-mathematics/axiom CONFIG_SITE= +D*FILE* +D*FORTIFY* # MAKEOPTS-='-j*'
 sci-mathematics/ginac +fvisibility-inlines-hidden
 sci-mathematics/octave +D*DEBUG +D*ASSERT +fdirectives-only +fvisibility-inlines-hidden
 sci-visualization/gnuplot +*math*

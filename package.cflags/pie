@@ -155,7 +155,6 @@ net-vpn/ipsec-tools !+fPIE !+pie
 net-vpn/openvpn +fPIE +pie
 net-wireless/crda +fPIE +pie
 perl-core/* +fPIE +pie
-sci-mathematics/axiom +fPIE +pie
 sci-mathematics/calc +fPIE +pie
 sci-mathematics/ginac +fPIE +pie
 sci-mathematics/octave +fPIE +pie
