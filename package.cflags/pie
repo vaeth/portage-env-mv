@@ -10,9 +10,10 @@ app-arch/arj +fPIE +pie
 app-arch/lrzip +fPIE +pie
 app-arch/p7zip +fPIE +pie
 app-arch/snappy +fPIE +pie
-app-arch/xz-utils !+fPIE !+pie
 app-arch/unrar +fPIE +pie
+app-arch/xz-utils !+fPIE !+pie
 app-arch/zpaq +fPIE +pie
+app-arch/zstd +fPIE +pie
 app-crypt/argon2 +fPIE +pie
 app-crypt/gpgme +fPIE +pie
 app-crypt/pinentry +fPIE +pie
