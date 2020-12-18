@@ -109,7 +109,6 @@ media-sound/mpg123 +D*FILE*
 media-tv/v4l-utils +D*FILE*
 media-video/avidemux +ftracer # MAKEOPTS-='-j*'
 media-video/cclive +D*DEBUG +D*ASSERT
-media-video/cinelerra +D*DEBUG +D*ASSERT # MAKEOPTS-='-j*'
 media-video/ffmpeg +combine +ftracer
 media-video/kaffeine !/-O?/-O2 !+finline-functions
 media-video/mplayer +finline-functions # -finline-functions causes encoding errors w/ gcc-8

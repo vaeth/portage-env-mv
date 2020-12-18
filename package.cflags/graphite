@@ -25,6 +25,7 @@ media-libs/libcaca +fgraphite* +floop-*
 media-sound/audacity +fgraphite* +floop-*
 media-sound/timidity++ +fgraphite* +floop-*
 sci-mathematics/octave +fgraphite* +floop-*
+sys-devel/lld +fgraphite* +floop-*
 sys-devel/llvm +fgraphite* +floop-*
 sys-fs/encfs +fgraphite* +floop-*
 www-client/firefox +fgraphite* +floop-*

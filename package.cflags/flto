@@ -55,6 +55,7 @@ app-text/apvlv +flto* # PO
 app-text/dvipsk !+flto* # ICE
 app-text/ebook-tools +flto* # PIC on amd64 and x86
 app-text/enchant +flto* # |
+app-text/ghostscript-gpl +flto*
 app-text/mupdf \~+flto* # PIC variant
 app-text/podofo +flto* # PIC on amd64 and x86
 app-text/rarian +flto* # PO

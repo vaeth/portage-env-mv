@@ -14,7 +14,6 @@ media-libs/libid3tag NOLDADD=1
 media-libs/libmad NOLDADD=1
 media-libs/libmpeg2 NOLDADD=1
 media-libs/xine-lib NOLDADD=1
-media-video/cinelerra NOLDADD=1
 media-video/mplayer NOLDADD=1
 net-ftp/ncftp NOLDADD=1
 net-libs/wvstreams NOLDADD=1
