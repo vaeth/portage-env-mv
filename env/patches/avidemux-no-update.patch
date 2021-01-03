@@ -1,0 +1,13 @@
+--- 1/avidemux/qt4/ADM_update/src/ADM_update.cpp
++++ 1/avidemux/qt4/ADM_update/src/ADM_update.cpp
+@@ -96,8 +96,9 @@
+  */
+ void ADM_checkForUpdate(ADM_updateComplete *up)
+ {
+-    
++    /*
+     ADMCheckUpdate *update=new ADMCheckUpdate(up);
+     QTimer::singleShot(0, update, SLOT(execute()));
++    */
+ }
+ //EOF
