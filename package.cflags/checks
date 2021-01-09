@@ -134,7 +134,6 @@ x11-base/xorg-server +fno-common -fcommon +Wl,--no-undefined # NC
 x11-drivers/nvidia-drivers +fno-common -fcommon +Wl,--no-undefined # PO
 x11-drivers/xf86-* +Wl,--no-undefined
 x11-libs/cairo +Wl,--no-undefined
-<=x11-libs/libva-intel-driver-2.4.0_pre1 +fno-common -fcommon # https://bugs.gentoo.org/707934
 x11-libs/libvdpau +Wl,--no-undefined
 x11-misc/slim +Wl,--no-undefined
 x11-misc/xfractint +fno-common -fcommon # RC
