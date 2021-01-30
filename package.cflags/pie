@@ -15,6 +15,7 @@ app-arch/xz-utils !+fPIE !+pie
 app-arch/zpaq +fPIE +pie
 app-arch/zstd +fPIE +pie
 app-crypt/argon2 +fPIE +pie
+app-crypt/gcr +fPIE +pie
 app-crypt/gpgme +fPIE +pie
 app-crypt/pinentry +fPIE +pie
 app-crypt/rhash +fPIE +pie
