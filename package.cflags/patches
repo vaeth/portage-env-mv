@@ -20,7 +20,6 @@ mail-client/thunderbird "export SHELL=/bin/sh"
 media-gfx/gimp "EXTRA_EMAKE+='SHELL=/bin/bash'"
 media-gfx/potrace "export CC=gcc" # otherwise clang is used for compilation if available
 #media-libs/freetype -DFT_CONFIG_OPTION_OLD_INTERNALS # needed for nxclient unless ebuild is patched
-media-libs/jpeg "EXTRA_ECONF+='--disable-static'"
 media-libs/libquicktime "EXTRA_ECONF+='--disable-static'"
 media-libs/libmikmod "EXTRA_EMAKE+='SHELL=/bin/bash'"
 media-libs/libsdl "export CONFIG_SHELL=/bin/bash" # https://bugs.gentoo.org/714094

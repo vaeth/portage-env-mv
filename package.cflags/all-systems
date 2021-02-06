@@ -93,7 +93,6 @@ media-libs/alsa-oss NOC*OPT=1 +O* -O1 +D*FILE* # avoid: Inappropriate ioctl for 
 media-libs/freetype -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid some firefox/openoffice crashes
 media-libs/gst-plugins-base NOLAFILEREMOVE=1
 media-libs/jbigkit +finline-functions
-media-libs/jpeg -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid some firefox/openoffice crashes
 media-libs/kvazaar +mno-sse4
 media-libs/lcms -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid some firefox/openoffice crashes
 #media-libs/libdvdread +Wl,--as-needed LD_AS_NEEDED= # use this if vobcopy or dvdbackup do not compile
