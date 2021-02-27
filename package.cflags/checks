@@ -73,6 +73,7 @@ media-gfx/fontforge +Wl,--no-undefined
 media-gfx/graphviz +Wl,--no-undefined
 media-gfx/pqiv +Wl,--no-undefined
 media-libs/avidemux-plugins +Wl,--no-undefined
+media-libs/freeglut +Wl,--no-undefined
 media-libs/giflib +Wl,--no-undefined
 media-libs/kvazaar +Wl,--no-undefined
 media-libs/libcanberra +Wl,--no-undefined
