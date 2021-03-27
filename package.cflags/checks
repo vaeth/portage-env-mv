@@ -64,6 +64,7 @@ games-fps/doomsday +fno-common -fcommon # PO
 games-fps/prboom-plus +fno-common -fcommon # RC
 games-rpg/freedroid +fno-common -fcommon # RC
 games-rpg/freedroidrpg +fno-common -fcommon # RC
+gui-libs/wayfire-plugins-extra +Wl,--no-undefined
 gui-wm/wayfire +Wl,--no-undefined
 mail-client/claws-mail +Wl,--no-undefined
 mail-client/mailx +fno-common -fcommon # RC
