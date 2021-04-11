@@ -1,0 +1,8 @@
+#!/bin/bash
+# ^^^^^^^^^^
+# This is only to make correct editor highlighting.
+
+case ${SLOT} in
+*2.7*)
+	. /etc/portage/env/scripts/mv_rmstatic;;
+esac

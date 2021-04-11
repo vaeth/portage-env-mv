@@ -100,6 +100,7 @@ dev-libs/gobject-introspection +flto* # |
 dev-libs/jansson +flto* # |
 dev-libs/libaio +flto* # PO
 dev-libs/libatomic_ops -ffat-lto-objects # SL
+dev-libs/libbsd +flto*
 dev-libs/libgcrypt +flto* # PIC
 dev-libs/libisoburn !+flto* # ICE
 dev-libs/libksba !+flto* # ICE
