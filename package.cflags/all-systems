@@ -45,7 +45,6 @@ dev-lang/python +ffast-math # Byte compilation of some .pyc files needs forever 
 dev-libs/boost MAKEOPTS-='-j*'
 dev-libs/elfutils +D*FILE*
 dev-libs/gmp +*math* +fgraphite* +floop-* +D*FILE* +D*DEBUG +D*ASSERT +frename-registers +freorder-functions +fdevirtualize-speculatively # Just to be on the safe side
-dev-libs/klibc SAFE
 dev-libs/kpathsea +D*DEBUG +D*ASSERT
 dev-libs/libevent +D*DEBUG +D*ASSERT
 dev-libs/libtasn1 +fdirectives-only
