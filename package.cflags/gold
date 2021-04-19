@@ -1,5 +1,6 @@
 # Fix issues with the gold or lld linker
 
+app-arch/lrzip -fuse-ld=bfd
 media-plugins/live -fuse-ld=bfd
 media-video/avidemux LDFLAGS+=-lXext
 net-libs/nodejs -fuse-ld=bfd

@@ -205,6 +205,7 @@ www-client/firefox +fPIE +pie
 x11-base/xorg-server !+fPIE !+pie
 x11-drivers/* !+fPIE !+pie
 x11-misc/xfractint +fPIE +pie
+x11-terms/kitty +fPIE +pie
 x11-wm/fvwm +fPIE +pie
 x11-wm/xpra +fPIE +pie
 xfce-base/exo !+fPIE !+pie
