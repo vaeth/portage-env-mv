@@ -1,5 +1,9 @@
-. /etc/portage/env/scripts/mv_patch \
+. /etc/portage/env/scripts/mv_patch -
+post_src_prepare() {
+	mv_start && mv_patch \
 	-e "1s'#!/usr/bin/env perl'#!$EROOT/usr/bin/perl'" \
-	../texlive-20200406-source/texk/texlive/linked_scripts/chklref/chklref.pl \
+	"${B}"/texk/texlive/linked_scripts/chklref/chklref.pl \
 	-e "1s'#!/usr/bin/env perl'#!$EROOT/usr/bin/perl'" \
-	../texlive-20200406-source/texmf-dist/scripts/chklref/chklref.pl
+	"${B}"/texmf-dist/scripts/chklref/chklref.pl
+	mv_end
+}
