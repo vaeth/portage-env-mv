@@ -183,6 +183,7 @@ sys-boot/syslinux +fPIE +pie
 sys-devel/autogen !+fPIE !+pie
 sys-devel/clang +fPIE +pie
 sys-devel/flex !+fPIE !+pie
+sys-devel/gcc +fPIE +pie
 sys-devel/gdb +fPIE +pie
 sys-devel/gettext !+fPIE !+pie
 sys-devel/libtool !+fPIE !+pie
@@ -196,6 +197,7 @@ sys-fs/fuse +fPIE +pie
 sys-fs/fuse-common +fPIE +pie
 sys-fs/lvm2 +fPIE +pie
 sys-fs/udftools !+fPIE !+pie
+sys-power/cpupower +fPIE +pie
 sys-power/nut +fPIE +pie
 sys-process/htop !+fPIE !+pie
 sys-process/procps !+fPIE !+pie

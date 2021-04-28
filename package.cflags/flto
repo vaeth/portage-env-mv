@@ -261,7 +261,7 @@ sys-boot/syslinux +flto*
 sys-devel/bison +flto* # ICE with gcc-7
 sys-devel/clang +flto-partition* # -flto needs >3GB here
 sys-devel/flex -ffat-lto-objects # SL
-sys-devel/gcc -ffat-lto-objects # SL
+sys-devel/gcc +flto*
 sys-devel/gdb +flto* # duplicate symbol with gcc-7
 sys-devel/gettext +flto* # with gcc-7 + gold: undefined reference
 sys-devel/llvm +flto* # PIC
