@@ -84,7 +84,7 @@ kde-frameworks/* +*math*
 mail-client/thunderbird +D*FILE* +*math* +fmerge-all-constants +finline-functions +fdirectives-only
 media-gfx/fontforge +fdirectives-only
 media-gfx/gimp +D*DEBUG +D*ASSERT
-media-gfx/ipe +D_GLIBCXX_ASSERTIONS
+media-gfx/ipe +D_GLIBCXX_ASSERTIONS +DNDEBUG
 media-gfx/pqiv +finline-functions +D*FORTIFY* -U_FORTIFY_SOURCE
 media-gfx/pstoedit +Wl,--as-needed LD_AS_NEEDED=
 media-libs/alsa-lib NOC*OPT=1 +O* -O1 # avoid: Inappropriate ioctl for device
@@ -137,7 +137,7 @@ sys-apps/busybox +Wl,--relax
 sys-apps/coreutils +fdirectives-only +ffast-math
 sys-apps/dbus +ftree-vectorize* # reported in http://gentoo-wiki.com/CFLAGS_matrix
 sys-apps/diffutils +fdirectives-only
-sys-apps/fakeroot +D*FILE*
+sys-apps/fakeroot +D*FILE* +fno-semantic-interposition
 sys-apps/fakeroot-ng +D*FILE*
 sys-apps/fakechroot +D*FILE*
 sys-apps/findutils +fdirectives-only
@@ -153,7 +153,7 @@ sys-apps/util-linux +*math* +fmerge-all-constants +ftracer # without this, scrip
 sys-block/parted +D*FILE* +fdirectives-only
 sys-boot/grub SAFE # No experiments here! Breakage is likely, because grub needs special code, and you must reinstall grub from a rescue CD in case of failures. Moreover, grub provides no suid-binary and no library, so no security issues arise.
 sys-devel/bison +fdirectives-only
-sys-devel/gcc CONFIG_SITE= +combine +D*DEBUG +D*ASSERT +D*FILE* +D*FORTIFY* # +fstack-protector* only needed for nspluginwrapper (on 64bit)
+sys-devel/gcc CONFIG_SITE= +fvisibility-inlines-hidden +combine +D*DEBUG +D*ASSERT +D*FILE* +D*FORTIFY* +D_GLIBCXX_ASSERTIONS # +fstack-protector* only needed for nspluginwrapper (on 64bit)
 sys-devel/clang +fmerge-all-constants # -fmerge-all-constants has always problems with llvm
 sys-devel/gdb CONFIG_SITE= +*math* +fdirectives-only
 sys-devel/gettext +fdirectives-only

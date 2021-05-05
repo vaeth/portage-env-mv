@@ -1,4 +1,5 @@
-. /etc/portage/env/scripts/mv_patch
+. /etc/portage/env/scripts/mv_patch \
+	-e 's/WinGC < 0/WinGC == 0/' panel.cpp # gcc-11
 
 post_src_install () {
 	local pic i dest stat

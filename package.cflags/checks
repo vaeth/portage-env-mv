@@ -16,6 +16,7 @@
 
 app-arch/zstd +Wl,--no-undefined
 app-cdr/dvdisaster +fno-common -fcommon # RC
+app-crypt/gpgme +Wl,--no-undefined
 app-emulation/dosemu +Wl,--no-undefined
 app-emulation/open-vm-tools +Wl,--no-undefined
 app-emulation/vice +fno-common -fcommon
@@ -72,6 +73,7 @@ mail-client/thunderbird +fno-common -fcommon # PO
 mail-filter/maildrop +Wl,--no-undefined
 media-gfx/fontforge +Wl,--no-undefined
 media-gfx/graphviz +Wl,--no-undefined
+media-gfx/ipe +Wl,--no-undefined
 media-gfx/pqiv +Wl,--no-undefined
 media-libs/avidemux-plugins +Wl,--no-undefined
 media-libs/freeglut +Wl,--no-undefined
