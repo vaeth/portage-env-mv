@@ -101,6 +101,7 @@ games-action/gltron +fPIE +pie
 games-arcade/burgerspace !+fPIE !+pie
 games-arcade/xtux +fPIE +pie
 games-emulation/sdlmame +fPIE +pie
+games-engines/box2d +fPIE +pie
 games-rpg/aklabeth +fPIE +pie
 gnome-base/dconf +fPIE +pie
 gnome-base/gsettings-desktop-schemas +fPIE +pie
