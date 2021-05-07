@@ -167,6 +167,7 @@ media-libs/aften +flto* # ICE and strange errors on amd64
 media-libs/alsa-lib +flto*
 media-libs/avidemux-core +flto* # Needed for media-video/avidemux
 media-libs/avidemux-plugins +flto*
+media-libs/dav1d +flto*
 media-libs/flac +flto*
 media-libs/glu +flto* # |
 media-libs/gstreamer +flto* # |
