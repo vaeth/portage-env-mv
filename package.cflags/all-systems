@@ -60,6 +60,7 @@ dev-libs/protobuf +*math*
 dev-libs/wayland +D*DEBUG +D*ASSERT
 dev-libs/weston +D*DEBUG +D*ASSERT
 dev-lisp/clisp CONFIG_SITE= +D*DEBUG +D*ASSERT +frename-registers +*math* +fdirectives-only
+dev-perl/Clone NOLDOPT=1 NOCOPT=1 CFLAGS=
 dev-python/numpy +*math*
 dev-qt/* +fdirectives-only
 dev-qt/qtwebkit +*math*
