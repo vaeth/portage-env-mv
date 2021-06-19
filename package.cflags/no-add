@@ -21,5 +21,4 @@ sys-block/parted NOLDADD=1
 sys-devel/gcc NOLDADD=1
 sys-fs/sysfsutils NOLDADD=1
 www-client/chromium NOLDADD=1
-www-plugins/nspluginwrapper NOLDADD=1
 x11-libs/wxGTK NOLDADD=1
