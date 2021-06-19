@@ -225,6 +225,7 @@ net-libs/glib-networking +flto* # |
 net-libs/libmbim +flto* # |
 net-libs/libsrtp +flto* # PO
 net-libs/libssh2 +flto* # |
+net-libs/nodejs +flto* # causes runtime errors w/ gcc-11 and x86
 net-misc/curl +flto* # |
 net-misc/modemmanager +flto* # |
 net-misc/netkit-telnetd !+flto* # ICE
