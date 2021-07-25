@@ -180,6 +180,7 @@ sys-apps/portage +fPIE +pie
 sys-apps/systemd +fPIE +pie
 sys-apps/usbutils !+fPIE !+pie
 sys-apps/util-linux !+fPIE !+pie
+sys-auth/elogind +fPIE +pie
 sys-auth/seatd +fPIE +pie
 sys-boot/syslinux +fPIE +pie
 sys-devel/autogen !+fPIE !+pie
