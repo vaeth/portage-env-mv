@@ -96,6 +96,7 @@ dev-tex/bibtexu !+fPIE !+pie
 dev-texlive/texlive-metapost !+fPIE !+pie
 dev-util/bdelta +fPIE +pie
 dev-util/cppunit +fPIE +pie
+dev-util/pkgcheck +fPIE +pie
 dev-util/systemtap +fPIE +pie
 games-action/gltron +fPIE +pie
 games-arcade/burgerspace !+fPIE !+pie

@@ -52,6 +52,8 @@ dev-python/pycairo +Wl,--no-undefined
 dev-python/pygame +Wl,--no-undefined
 dev-python/pygobject +Wl,--no-undefined
 dev-python/pyyaml +Wl,--no-undefined
+dev-python/snakeoil +Wl,--no-undefined
+dev-python/tree-sitter +Wl,--no-undefined
 dev-tcltk/tkimg +fno-common -fcommon # PO
 dev-util/android-tools +fno-common -fcommon # RC
 dev-util/systemtap +Wl,--no-undefined
