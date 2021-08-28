@@ -19,7 +19,6 @@ app-mobilephone/heimdall SAFE # No experiments here!
 app-misc/srm +D*FILE*
 app-misc/tmux CONFIG_SITE=
 app-office/libreoffice +finline-functions +frename-registers +*math* +fdirectives-only # for crashes check also freetype, zlib
-app-portage/deltup +Wl,--as-needed LD_AS_NEEDED=
 app-shells/dash +fdirectives-only
 app-text/a2ps +Wl,--as-needed # (gcc-7[pie] + gold)
 app-text/aspell +D*DEBUG +D*ASSERT
