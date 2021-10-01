@@ -236,7 +236,6 @@ net-p2p/qbittorrent +flto*
 net-p2p/ktorrent +flto* # PO
 net-print/cups-filters !+flto* # ICE
 net-voip/yate +flto* # PO
-net-vpn/ipsec-tools -ffat-lto-objects # SL
 net-wireless/wireless-tools +flto* # PIC (with gcc-7 also on x86)
 sci-libs/gdal !+flto* # ICE
 sci-libs/qrupdate +flto* # PO
