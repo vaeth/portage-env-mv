@@ -1,6 +1,6 @@
 --- 1/bin/ecompress
 +++ 1/bin/ecompress
-@@ -57,9 +57,9 @@
+@@ -71,9 +71,9 @@
  				# note: to save time, we need to do this only if there's
  				# at least one compressed file
  				case ${path} in
