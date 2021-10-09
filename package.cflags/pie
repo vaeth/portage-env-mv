@@ -152,6 +152,7 @@ net-fs/autofs +fPIE +pie
 #net-im/utox +fPIE +pie
 net-misc/connman !+fPIE !+pie
 net-misc/curl !+fPIE !+pie
+net-misc/networkmanager +fPIE +pie
 net-misc/nx +fPIE +pie
 net-nds/openldap !+fPIE !+pie
 net-print/cups +fPIE +pie

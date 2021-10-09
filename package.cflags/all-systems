@@ -62,7 +62,6 @@ dev-lisp/clisp CONFIG_SITE= +D*DEBUG +D*ASSERT +frename-registers +*math* +fdire
 dev-perl/Clone NOLDOPT=1 NOCOPT=1 CFLAGS=
 dev-python/numpy +*math*
 dev-qt/* +fdirectives-only
-dev-qt/qtwebkit +*math*
 dev-scheme/guile +fdirectives-only +ffast-math !+D*FILE_OFFSET* !+D_LARGEFILE* # -ffast-math triggers floating exception https://bugs.gentoo.org/show_bug.cgi?id=598986
 dev-tex/catdvi +D*DEBUG +D*ASSERT
 dev-texlive/texlive-metapost +D*DEBUG +D*ASSERT
