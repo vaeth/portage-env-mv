@@ -58,6 +58,7 @@ app-text/enchant +flto* # |
 app-text/ghostscript-gpl +flto*
 app-text/mupdf \~+flto* # PIC variant
 app-text/podofo +flto* # PIC on amd64 and x86
+app-text/qpdfview +flto* # runtime segfaults with some versions of qt
 app-text/rarian +flto* # PO
 app-text/sablotron +flto* # PO
 app-text/texlive-core +flto*
