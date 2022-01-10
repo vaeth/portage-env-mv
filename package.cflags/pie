@@ -142,6 +142,7 @@ media-video/rtmpdump +fPIE +pie
 media-video/transcode !+fPIE !+pie
 media-video/vcdimager !+fPIE !+pie
 media-video/vlc +fPIE +pie
+media-video/wireplumber +fPIE +pie
 net-analyzer/wireshark !+fPIE !+pie
 net-dialup/ppp +fPIE +pie
 net-dns/libidn !+fPIE !+pie
