@@ -20,7 +20,7 @@ app-crypt/gpgme +Wl,--no-undefined
 app-emulation/dosemu +Wl,--no-undefined
 app-emulation/open-vm-tools +Wl,--no-undefined
 app-emulation/vice +fno-common -fcommon
-app-emulation/wine* +fno-common -fcommon # NC
+#app-emulation/wine* +fno-common -fcommon # NC
 app-misc/vcp +fno-common -fcommon # RC
 app-shells/zsh +Wl,--no-undefined
 app-text/a2ps +Wl,--no-undefined
@@ -84,7 +84,7 @@ media-libs/libcanberra +Wl,--no-undefined
 media-libs/libquicktime +Wl,--no-undefined
 media-libs/libreplaygain +Wl,--no-undefined
 media-libs/libv4l +Wl,--no-undefined
-media-libs/mesa +fno-common -fcommon # NC
+#media-libs/mesa +fno-common -fcommon # NC
 media-libs/plotutils +Wl,--no-undefined
 media-libs/sg +fno-common -fcommon # PO
 media-plugins/live +Wl,--no-undefined
@@ -134,8 +134,8 @@ sys-libs/slang +Wl,--no-undefined
 sys-power/iasl +fno-common -fcommon # PO
 sys-power/nut +Wl,--no-undefined
 sys-power/suspend +fno-common -fcommon # PO
-www-client/chromium +fno-common -fcommon +Wl,--no-undefined # NC
-x11-base/xorg-server +fno-common -fcommon +Wl,--no-undefined # NC
+www-client/chromium +fno-common -fcommon +Wl,--no-undefined # PO
+x11-base/xorg-server +Wl,--no-undefined
 x11-drivers/nvidia-drivers +fno-common -fcommon +Wl,--no-undefined # PO
 x11-drivers/xf86-* +Wl,--no-undefined
 x11-libs/cairo +Wl,--no-undefined

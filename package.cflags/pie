@@ -208,7 +208,7 @@ sys-process/procps !+fPIE !+pie
 sys-process/tiptop !+fPIE !+pie
 www-client/chromium +fPIE +pie
 www-client/firefox +fPIE +pie
-x11-base/xorg-server !+fPIE !+pie
+x11-base/xorg-server +fPIE +pie
 x11-drivers/* !+fPIE !+pie
 x11-misc/xfractint +fPIE +pie
 x11-terms/kitty +fPIE +pie
