@@ -49,6 +49,7 @@ dev-python/dbus-python +Wl,--no-undefined
 dev-python/lxml +Wl,--no-undefined
 dev-python/m2crypto +Wl,--no-undefined
 dev-python/numpy +Wl,--no-undefined
+dev-python/pillow +Wl,--no-undefined
 dev-python/pycairo +Wl,--no-undefined
 dev-python/pygame +Wl,--no-undefined
 dev-python/pygobject +Wl,--no-undefined
