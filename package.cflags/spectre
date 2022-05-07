@@ -12,7 +12,6 @@ dev-qt/qtwidgets +mfunction-return=thunk # multiple definition of '__x86_return_
 #media-libs/mesa +fno-plt
 sys-boot/syslinux +fcf-protection*
 sys-devel/clang +fno-plt # causes presumably runtime segfaults
-<sys-devel/gcc-7.3 +fno-plt +mindirect-branch* +mfunction-return* # Older gcc's do not have spectre mitigation flags yet
 sys-devel/lld +fno-plt # causes runtime segfaults
 sys-devel/llvm +fno-plt # causes presumably runtime segfaults
 sys-libs/compiler-rt +fno-plt # causes presumably runtime segfaults
