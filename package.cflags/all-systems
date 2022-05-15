@@ -2,6 +2,7 @@
 
 app-admin/logrotate +combine
 app-admin/metalog +fdirectives-only
+app-arch/bzip3 USE_NONGNU=1
 app-arch/cpio +fdirectives-only
 app-arch/gzip +fdirectives-only
 app-arch/sharutils +fdirectives-only
