@@ -1,0 +1,25 @@
+Add a new option tc_immediate_interactive to /etc/rc.conf which immediately
+enters interactive mode.
+Patch by Martin Vaeth <martin at mvath.de> from May 26, 2022
+--- 1/src/rc/rc.c
++++ 1/src/rc/rc.c
+@@ -198,11 +198,19 @@
+ want_interactive(void)
+ {
+ 	char c;
++	static bool gotimmediate;
++	static bool immediate;
+ 	static bool gotinteractive;
+ 	static bool interactive;
+ 
+ 	if (rc_yesno(getenv("EINFO_QUIET")))
+ 		return false;
++	if (!gotimmediate) {
++		gotimmediate = true;
++		immediate = rc_conf_yesno("rc_immediate_interactive");
++	}
++	if (immediate)
++		return true;
+ 	if (!gotinteractive) {
+ 		gotinteractive = true;
+ 		interactive = rc_conf_yesno("rc_interactive");

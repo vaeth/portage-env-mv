@@ -39,7 +39,7 @@ mv_epatch() {
 	eval $(alias patch 2>/dev/null | sed 's:^alias ::')
 	unset P4CONFIG P4PORT P4USER # keep perforce at bay #56402
 	test -r "$1" || mv_die "cannot find mv's patch $1"
-	einfo "mv patch application: $1"
+	ebegin "mv patch application: $1"
 	mv_epatch_file=$1
 	mv_epatch_cmd=
 	case ${1##*.} in
