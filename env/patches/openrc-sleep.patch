@@ -1,0 +1,44 @@
+Add a new option rc_sleep_seconds to sleep before execution of each command.
+Patch by Martin Vaeth <martin at mvath.de> from May 28, 2022
+--- 1/etc/rc.conf
++++ 1/etc/rc.conf
+@@ -15,6 +15,11 @@
+ # set to YES.
+ #rc_interactive="YES"
+ 
++# The value of rc_sleep_seconds (or of the environment variable SLEEP_SECONDS
++# if the former is not set) specify the number of seconds to sleep before the
++# execution of each command
++#rc_sleep_seconds=5
++
+ # If we need to drop to a shell, you can specify it here.
+ # If not specified we use $SHELL, otherwise the one specified in /etc/passwd,
+ # otherwise /bin/sh
+--- 1/src/rc/rc.c
++++ 1/src/rc/rc.c
+@@ -198,9 +198,25 @@
+ want_interactive(void)
+ {
+ 	char c;
++	const  char *sleep_string;
++	static int sleep_seconds = -1;
+ 	static bool gotinteractive;
+ 	static bool interactive;
+ 
++	if (sleep_seconds < 0) {
++		sleep_string = rc_conf_value("rc_sleep_seconds");
++		if (sleep_string == NULL) {
++			sleep_string = getenv("SLEEP_SECONDS");
++		}
++		if (sleep_string == NULL) {
++			sleep_seconds = 0;
++		} else {
++			sleep_seconds = atoi(sleep_string);
++		}
++	}
++	if (sleep_seconds > 0) {
++		sleep(sleep_seconds);
++	}
+ 	if (rc_yesno(getenv("EINFO_QUIET")))
+ 		return false;
+ 	if (!gotinteractive) {
