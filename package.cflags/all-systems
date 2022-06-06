@@ -29,6 +29,7 @@ app-text/gv +fdirectives-only
 app-text/lcdf-typetools +D*DEBUG +D*ASSERT
 app-text/pdftk +O* -O2 +finline-functions +D*DEBUG +D*ASSERT +D*FILE* +D*FORTIFY*
 app-text/poppler +frepo +ftree-vectorize* # ftree-vectorize reported in http://gentoo-wiki.com/CFLAGS_matrix
+app-text/recode +fdirectives-only
 app-text/texlive* +D*DEBUG +D*ASSERT
 app-text/wdiff +fdirectives-only
 app-text/xdvik +D*DEBUG +D*ASSERT

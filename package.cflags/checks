@@ -112,6 +112,7 @@ net-misc/networkmanager +Wl,--no-undefined
 net-misc/nx +fno-common -fcommon # PO
 net-misc/streamtuner +Wl,--no-undefined
 net-vpn/networkmanager-openconnect +Wl,--no-undefined
+net-vpn/networkmanager-openvpn +Wl,--no-undefined
 perl-core/* +Wl,--no-undefined
 sci-libs/hdf5 +Wl,--no-undefined
 sci-libs/suitesparseconfig +Wl,--no-undefined
@@ -144,4 +145,5 @@ x11-libs/cairo +Wl,--no-undefined
 x11-libs/libvdpau +Wl,--no-undefined
 x11-misc/slim +Wl,--no-undefined
 x11-misc/xfractint +fno-common -fcommon # RC
+x11-terms/kitty +Wl,--no-undefined
 x11-wm/mutter +fno-common -fcommon # PO

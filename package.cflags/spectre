@@ -5,6 +5,7 @@
 # +Wl,-z,retpolineplt # currently clang only
 # +mretpoline # clang only
 # +fcf-protection* # gcc-8
+# +mharden-sls* # gcc-11
 
 app-emulation/wine* +fno-plt # compilation fails with unexpected reloc 43 against global symbol strlen without base register in object file when generating a position-independent output file
 dev-lang/rust !+fno-plt # compilation segfaults on x86
