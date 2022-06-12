@@ -201,6 +201,7 @@ media-sound/lilypond !+flto* # ICE
 media-sound/mpg123 +flto* # |
 media-sound/musepack-tools +flto* # PIC; on x86 failure if default pie is enabled
 media-sound/pulseaudio +flto* # PO
+media-sound/pulseaudio-daemon +flto* # PO
 media-sound/qmmp +flto* # PO
 media-sound/sox +flto* # |
 media-sound/timidity++ !+flto* # ICE

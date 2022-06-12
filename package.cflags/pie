@@ -126,6 +126,7 @@ media-sound/lilypond +fPIE +pie
 media-sound/mpg123 !+fPIE !+pie
 media-sound/ogmtools +fPIE +pie
 media-sound/pulseaudio +fPIE +pie
+media-sound/pulseaudio-daemon +fPIE +pie
 media-sound/vorbis-tools !+fPIE !+pie
 media-sound/wavpack !+fPIE !+pie
 media-tv/linuxtv-dvb-apps !+fPIE !+pie # gcc-7
