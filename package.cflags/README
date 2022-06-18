@@ -101,6 +101,7 @@
 #  Typical error: "recompile with -fPIC" on amd64
 # +fdirectives-only
 #  Typical error: __COUNTER__ expanded
+#  Typical error: /bin/sh: 1: Syntax error: "(" unexpected
 # +freorder-functions
 # +fdevirtualize-speculatively
 # +ftree-partial-pre
