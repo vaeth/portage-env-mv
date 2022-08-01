@@ -169,6 +169,7 @@ sys-fs/e2fsprogs +D*FILE*
 sys-fs/mtools +D*FILE*
 sys-fs/squashfuse +Wl,--as-needed
 sys-libs/compiler-rt USE_NONGNU=1 +fmerge-all-constants
+
 sys-libs/compiler-rt-sanitizers USE_NONGNU=1 +fmerge-all-constants +frewrite-includes
 sys-libs/glibc +Wl,--relax +D*FILE* +fstack-protector +ffast-math +fdirectives-only +fno-semantic-interposition
 sys-libs/gwenhywfar +D*FORTIFY* -U_FORTIFY_SOURCE

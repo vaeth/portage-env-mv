@@ -268,6 +268,7 @@ sys-devel/flex -ffat-lto-objects # SL
 sys-devel/gcc +flto*
 sys-devel/gdb +flto* # duplicate symbol with gcc-7
 sys-devel/gettext +flto* # with gcc-7 + gold: undefined reference
+sys-devel/lld +flto* # emerge =sys-libs/compiler-rt-14.0.6 fails without this: https://bugs.gentoo.org/862798
 sys-devel/llvm +flto* # PIC
 sys-fs/dd-rescue +flto*
 sys-fs/eudev +flto* # PO
@@ -277,6 +278,7 @@ sys-fs/mtools !+flto* # ICE
 sys-fs/udev +flto* # PO
 sys-fs/udisks +flto* # PO
 sys-libs/binutils-libs -ffat-lto-objects # SL
+sys-libs/compiler-rt +flto*
 sys-libs/efivar +flto*
 sys-libs/glibc +flto* -ffat-lto-objects # SL
 sys-libs/libcxxabi +flto*
