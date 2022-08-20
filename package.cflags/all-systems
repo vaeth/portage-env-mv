@@ -11,6 +11,7 @@ app-cdr/dvdisaster +fdirectives-only # +fdirectives-only fixes broken ./configur
 app-crypt/gpgme +D*DEBUG +D*ASSERT
 app-crypt/gnupg +D*DEBUG +D*ASSERT
 app-doc/doxygen NOC*OPT=1 +O* -O2 -fomit-frame-pointer -s # see http://forums.gentoo.org/viewtopic-t-495600.html
+app-editors/emacs +fdirectives-only +*math*
 app-emulation/dosemu +finline-functions +fdirectives-only
 app-emulation/qemu +D*DEBUG +D*ASSERT
 app-emulation/vice +ffast-math # Segfault with -ffast-math

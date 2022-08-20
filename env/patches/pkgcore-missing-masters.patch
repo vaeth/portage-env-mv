@@ -1,0 +1,11 @@
+--- 1/src/pkgcore/ebuild/repository.py
++++ 1/src/pkgcore/ebuild/repository.py
+@@ -626,7 +626,7 @@
+ 
+     if missing:
+         missing = ', '.join(map(repr, sorted(missing)))
+-        raise errors.InitializationError(
++        print(
+             f'repo {repo_id!r} at path {repo_path!r} has missing masters: {missing}')
+ 
+     if eclass_cache is None:
