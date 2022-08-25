@@ -270,6 +270,7 @@ sys-devel/gdb +flto* # duplicate symbol with gcc-7
 sys-devel/gettext +flto* # with gcc-7 + gold: undefined reference
 sys-devel/lld +flto* # emerge =sys-libs/compiler-rt-14.0.6 fails without this: https://bugs.gentoo.org/862798
 sys-devel/llvm +flto* # PIC
+sys-fs/android-file-transfer-linux +flto*
 sys-fs/dd-rescue +flto*
 sys-fs/eudev +flto* # PO
 sys-fs/fuse-common +flto* # https://bugs.gentoo.org/show_bug.cgi?id=650874
