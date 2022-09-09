@@ -119,6 +119,7 @@ media-video/transcode +Wl,--as-needed LD_AS_NEEDED=
 media-video/transcode \~/-O?/-O2 \~+fweb # fixes segfault of: tcmodinfo -i tc_video
 media-video/xanim +O* -O2
 net-dns/libidn +fdirectives-only
+net-dns/libidn2 +fdirectives-only
 net-ftp/lftp +fdirectives-only
 net-im/qtox +fdirectives-only
 net-libs/gnutls +fdirectives-only

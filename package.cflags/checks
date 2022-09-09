@@ -131,6 +131,7 @@ sys-devel/llvm +fno-common -fcommon +Wl,--no-undefined # NC
 sys-fs/dd-rescue +Wl,--no-undefined
 sys-fs/f2fs-tools +Wl,--no-undefined
 sys-fs/squashfuse +Wl,--no-undefined
+sys-libs/efivar +Wl,--no-undefined
 sys-libs/glibc +Wl,--no-undefined
 sys-libs/libcap +Wl,--no-undefined # -Wl,--no-undefined breaks with USE=pam
 sys-libs/slang +Wl,--no-undefined
