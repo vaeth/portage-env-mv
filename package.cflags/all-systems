@@ -32,7 +32,7 @@ app-text/lcdf-typetools +D*DEBUG +D*ASSERT
 app-text/pdftk +O* -O2 +finline-functions +D*DEBUG +D*ASSERT +D*FILE* +D*FORTIFY*
 app-text/poppler +frepo +ftree-vectorize* # ftree-vectorize reported in http://gentoo-wiki.com/CFLAGS_matrix
 app-text/recode +fdirectives-only
-app-text/texlive* +D*DEBUG +D*ASSERT
+app-text/texlive-core +D*DEBUG +D*ASSERT +ffast-math # lua fails with -ffast-math
 app-text/wdiff +fdirectives-only
 app-text/xdvik +D*DEBUG +D*ASSERT
 app-text/yodl +XXXX # Something is broken here - must check
@@ -40,7 +40,7 @@ dev-db/sqlcipher +*math*
 dev-db/sqlite +*math*
 dev-java/icedtea +D*FORTIFY* -U_FORTIFY_SOURCE
 dev-java/openjdk +D*FORTIFY* SAFE # openjdk sets security relevant flags - we do not interfere
-dev-lang/lua CONFIG_SITE=
+dev-lang/lua CONFIG_SITE= +ffast-math
 dev-lang/ruby +ftree-vectorize*
 dev-lang/rust +fmerge-all-constants # with -fmerge-all-constants rust does not return from compiling its stdlib
 dev-lang/python +ffast-math # Byte compilation of some .pyc files needs forever with -ffast-math
