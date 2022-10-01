@@ -1,17 +1,3 @@
---- 1/bin/ecompress
-+++ 1/bin/ecompress
-@@ -71,9 +71,9 @@
- 				# note: to save time, we need to do this only if there's
- 				# at least one compressed file
- 				case ${path} in
--					*.Z|*.gz|*.bz2|*.lzma|*.xz)
-+					*.Z|*.gz|*.bz2|*.lzma|*.xz|*.br|*.lz4|*.zst)
- 						vpath=${path%.*}
--						for comp in '' .Z .gz .bz2 .lzma .xz; do
-+						for comp in '' .Z .gz .bz2 .lzma .xz .br .lz4 .zst; do
- 							if [[ ${vpath}${comp} != ${path} && \
- 									-e ${vpath}${comp} ]]; then
- 								collisions[${path}]=1
 --- 1/bin/ecompress-file
 +++ 1/bin/ecompress-file
 @@ -32,6 +32,15 @@

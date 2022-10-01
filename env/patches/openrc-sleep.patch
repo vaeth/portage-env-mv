@@ -14,9 +14,9 @@ Patch by Martin Vaeth <martin at mvath.de> from May 28, 2022
  # If we need to drop to a shell, you can specify it here.
  # If not specified we use $SHELL, otherwise the one specified in /etc/passwd,
  # otherwise /bin/sh
---- 1/src/rc/rc.c
-+++ 1/src/rc/rc.c
-@@ -198,9 +198,25 @@
+--- 1/src/openrc/rc.c
++++ 1/src/openrc/rc.c
+@@ -196,9 +196,25 @@
  want_interactive(void)
  {
  	char c;
