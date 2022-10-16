@@ -51,6 +51,7 @@ dev-python/m2crypto +Wl,--no-undefined
 dev-python/numpy +Wl,--no-undefined
 dev-python/pillow +Wl,--no-undefined
 dev-python/pycairo +Wl,--no-undefined
+dev-python/pydantic +Wl,--no-undefined
 dev-python/pygame +Wl,--no-undefined
 dev-python/pygobject +Wl,--no-undefined
 dev-python/pyyaml +Wl,--no-undefined
