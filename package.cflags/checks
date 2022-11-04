@@ -131,6 +131,7 @@ sys-devel/gettext +Wl,--no-undefined
 sys-devel/llvm +fno-common -fcommon +Wl,--no-undefined # NC
 sys-fs/dd-rescue +Wl,--no-undefined
 sys-fs/f2fs-tools +Wl,--no-undefined
+sys-fs/lvm2 +Wl,--no-undefined
 sys-fs/squashfuse +Wl,--no-undefined
 sys-libs/efivar +Wl,--no-undefined
 sys-libs/glibc +Wl,--no-undefined
