@@ -64,7 +64,7 @@ mv_epatch() {
 	[ -z "$(sed -n -e '/^[-+][-+][-+] \//{s!^[-+][-+][-+] /dev/null!!;p}' \
 		-- "$mv_epatch_file")" ] || mv_epatch_count=1
 	# Reject patches with relative paths
-	egrep -q '^[-+]{3} [^	]*[.][.]/' -- "$mv_epatch_file" >/dev/null 2>&1 \
+	grep -Eq '^[-+]{3} [^	]*[.][.]/' -- "$mv_epatch_file" >/dev/null 2>&1 \
 		&& mv_die 'patch uses relative paths ../'
 	mv_epatch_error=
 	while [ $mv_epatch_count -lt 5 ]
