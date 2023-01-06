@@ -141,7 +141,6 @@ sys-apps/coreutils +fdirectives-only +ffast-math
 sys-apps/dbus +ftree-vectorize* # reported in http://gentoo-wiki.com/CFLAGS_matrix
 sys-apps/diffutils +fdirectives-only
 sys-apps/fakeroot +D*FILE* +fno-semantic-interposition
-sys-apps/fakeroot-ng +D*FILE*
 sys-apps/fakechroot +D*FILE*
 sys-apps/findutils +fdirectives-only
 sys-apps/gawk +D*DEBUG
