@@ -149,7 +149,7 @@ sys-apps/groff +ffast-math
 sys-apps/openrc +combine
 sys-apps/sandbox +D*DEBUG +D*ASSERT
 sys-apps/sed +D*DEBUG +fdirectives-only
-sys-apps/systemd +D*DEBUG +D*ASSERT
+sys-apps/systemd +D*DEBUG +D*ASSERT +ffast-math
 sys-apps/texinfo +fstack-protector +fdirectives-only
 sys-apps/util-linux +*math* +fmerge-all-constants +ftracer # without this, script sometimes gets in an endless busy loop
 sys-auth/elogind +D*DEBUG +D*ASSERT
