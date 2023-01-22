@@ -29,6 +29,7 @@ app-text/fbreader +Wl,--as-needed LD_AS_NEEDED=
 app-text/ghostscript-gpl +D*FILE*
 app-text/gv +fdirectives-only
 app-text/lcdf-typetools +D*DEBUG +D*ASSERT
+app-text/libpaper +fdirectives-only
 app-text/pdftk +O* -O2 +finline-functions +D*DEBUG +D*ASSERT +D*FILE* +D*FORTIFY*
 app-text/poppler +frepo +ftree-vectorize* # ftree-vectorize reported in http://gentoo-wiki.com/CFLAGS_matrix
 app-text/recode +fdirectives-only
@@ -168,6 +169,7 @@ sys-fs/aufs*-util +D*FILE*
 sys-fs/e2fsprogs +D*FILE*
 sys-fs/mtools +D*FILE*
 sys-fs/squashfuse +Wl,--as-needed
+sys-libs/binutils-libs +Wl,-z,combreloc +Wl,--as-needed +Wl,--build-id=none
 sys-libs/compiler-rt USE_NONGNU=1 +fmerge-all-constants
 sys-libs/compiler-rt-sanitizers USE_NONGNU=1 +fmerge-all-constants +frewrite-includes
 sys-libs/glibc +Wl,--relax +D*FILE* +fstack-protector +ffast-math +fdirectives-only +fno-semantic-interposition

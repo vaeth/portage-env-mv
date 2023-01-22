@@ -278,10 +278,10 @@ sys-fs/fuse +flto* # https://bugs.gentoo.org/show_bug.cgi?id=650874
 sys-fs/mtools !+flto* # ICE
 sys-fs/udev +flto* # PO
 sys-fs/udisks +flto* # PO
-sys-libs/binutils-libs -ffat-lto-objects # SL
+sys-libs/binutils-libs +flto*
 sys-libs/compiler-rt +flto*
 sys-libs/efivar +flto*
-sys-libs/glibc +flto* -ffat-lto-objects # SL
+sys-libs/glibc +flto*
 sys-libs/libcxxabi +flto*
 sys-libs/ncurses +flto*
 sys-power/iasl +flto* # PO
