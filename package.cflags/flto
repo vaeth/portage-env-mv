@@ -151,7 +151,6 @@ games-engines/scummvm-tools +flto* # PO
 games-fps/doomsday +flto* # PO
 games-puzzle/enigma +flto* # PO
 games-puzzle/lmarbles !+flto* # ICE
-gnome-base/gconf +flto* # |
 gnome-base/gnome-desktop +flto* # |
 gnome-base/libglade +flto* # |
 gnome-base/librsvg +flto* # |
