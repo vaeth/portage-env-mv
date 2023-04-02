@@ -25,6 +25,7 @@ app-shells/dash +fdirectives-only
 app-text/a2ps +Wl,--as-needed # (gcc-7[pie] + gold)
 app-text/aspell +D*DEBUG +D*ASSERT
 app-text/dvipng +D*DEBUG +D*ASSERT
+app-text/enchant +fdirectives-only
 app-text/fbreader +Wl,--as-needed LD_AS_NEEDED=
 app-text/ghostscript-gpl +D*FILE*
 app-text/gv +fdirectives-only
