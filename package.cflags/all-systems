@@ -166,6 +166,7 @@ sys-devel/gettext +fdirectives-only
 sys-devel/libtool CONFIG_SITE=
 sys-devel/llvm CONFIG_SITE= +*math* +D*FILE* +fdirectives-only +fmerge-all-constants # -fmerge-all-constants causes clang to segfault on trivial c programs
 sys-devel/m4 +*math* +fdirectives-only
+sys-devel/make +fdirectives-only
 sys-devel/patch +fdirectives-only +D*DEBUG +D*ASSERT
 sys-fs/aufs*-util +D*FILE*
 sys-fs/e2fsprogs +D*FILE*
