@@ -244,6 +244,7 @@ sci-libs/qrupdate +flto* # PO
 sci-mathematics/calc +flto*
 sci-mathematics/genius +flto* # PO
 sci-mathematics/glpk +flto* # PO
+sci-mathematics/lpsolve +flto* # linking produces sporadically no lib
 sci-mathematics/octave +flto* # __base_dtor not found
 sci-mathematics/scilab !+flto* # ICE
 sci-mathematics/yacas !+flto* # ICE
