@@ -205,6 +205,7 @@ sys-fs/lvm2 +fPIE +pie
 sys-fs/udftools !+fPIE !+pie
 sys-power/cpupower +fPIE +pie
 sys-power/nut +fPIE +pie
+sys-power/upower +fPIE +pie
 sys-process/htop !+fPIE !+pie
 sys-process/procps !+fPIE !+pie
 sys-process/tiptop !+fPIE !+pie
