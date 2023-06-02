@@ -1,3 +1,0 @@
-MV_OVERRIDE=post_src_install
-. /etc/portage/env/scripts/mv_patch \
-	-e 's/g video/g seat/' "$ED/etc/init.d/seatd"
