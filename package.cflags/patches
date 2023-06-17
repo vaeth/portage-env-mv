@@ -19,7 +19,6 @@ mail-client/thunderbird "export SHELL=/bin/sh"
 media-gfx/gimp "EXTRA_EMAKE+='SHELL=/bin/bash'"
 media-gfx/potrace "export CC=gcc" # otherwise clang is used for compilation if available
 #media-libs/freetype -DFT_CONFIG_OPTION_OLD_INTERNALS # needed for nxclient unless ebuild is patched
-media-libs/libquicktime "EXTRA_ECONF+='--disable-static'"
 media-libs/libmikmod "EXTRA_EMAKE+='SHELL=/bin/bash'"
 media-libs/libsdl "export CONFIG_SHELL=/bin/bash" # https://bugs.gentoo.org/714094
 =media-video/nvidia-settings-173.14.37 -ldl
@@ -27,7 +26,6 @@ net-libs/c-client -lcrypt
 net-misc/nxserver-freenx "EXTRA_EMAKE+='SHELL=/bin/bash'"
 net-misc/wget "EXTRA_ECONF+='--disable-xattr'" # disable storing of useless information in xattr
 sci-mathematics/fricas EXTRA_ECONF+='--with-gmp= --disable-gmp' # --without-gmp from the ebuild does not work https://bugs.gentoo.org/show_bug.cgi?id=650788
-# sys-devel/gcc "export GCC_MAKE_TARGET='profiledbootstrap'" # "MAKEOPTS-='-j*'" # profiledboostrap is meanwhile controlled by USE=pgo
 sys-fs/udev "EXTRA_ECONF+='--disable-static'"
 www-client/firefox "export SHELL=/bin/sh"
 x11-libs/gtk+ "EXTRA_EMAKE+='SHELL=/bin/bash'"

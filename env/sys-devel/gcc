@@ -1,0 +1,9 @@
+
+pre_src_unpack() {
+	case ${BOOTSTRAP-n} in
+	[nNfF]*|[oO][fF]*|0|-)
+		ewarn "Disabling bootstrap for sys-devel/gcc. To override: export BOOTSTRAP=yes"
+		EXTRA_ECONF=${EXTRA_ECONF-}${EXTRA_ECONF:+\ }--disable-bootstrap
+		;;
+	esac
+}
