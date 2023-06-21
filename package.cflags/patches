@@ -6,8 +6,6 @@
 # This file does not include modifications of CFLAGS/variables which
 # override our general global settings; those go into all-systems.
 
-#>=app-editors/emacs-29 "EXTRA_ECONF+='--without-ns --without-x'"
->=app-editors/emacs-29 "EXTRA_ECONF+='--with-pgtk'"
 #app-misc/lirc "LIRC_OPTS='--with-driver=pctv'"
 app-text/pinfo "EXTRA_EMAKE+=WFLAGS=-Wno-error" # undo -Werror which breaks compilation
 app-text/u2ps "EXTRA_EMAKE+='SHELL=/bin/bash'"
