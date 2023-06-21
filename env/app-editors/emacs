@@ -1,2 +1,13 @@
+socket=emacs-server-socket-dir.patch
+compress=emacs:30-brotli-lz4-zstd.patch
+if [ "${PV%%.*}" -le 28 ]; then
+	if [ "${PV%%.*}" -ge 27 ]
+	then	compress=emacs:27-brotli-lz4-zstd.patch
+	else	socket=emacs-26.3-server-socket-dir.patch
+		compress=emacs:25-brotli-lz4-zstd.patch
+	fi
+fi
 
-. /etc/portage/env/scripts/mv_patch emacs-server-socket-dir brotli-lz4-zstd
+. /etc/portage/env/scripts/mv_patch \
+	$socket \
+	$compress
