@@ -1,4 +1,6 @@
 
+. /etc/portage/env/scripts/mv_patch screen-hangs
+
 post_src_install () {
 	einfo "mv's hack: ${PORTAGE_CONFIGROOT%/}/etc/portage/env/$CATEGORY/$PN*"
 	! test -f "${ED}"/bin/su || chmod 4711 -- "${ED}"/bin/su || die

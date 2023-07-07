@@ -42,21 +42,7 @@ dev-libs/libxml2 +Wl,--no-undefined
 dev-libs/libxslt +Wl,--no-undefined
 dev-libs/weston +Wl,--no-undefined
 dev-perl/* +Wl,--no-undefined
-dev-python/cffi +Wl,--no-undefined
-dev-python/cryptography +Wl,--no-undefined
-dev-python/cython +Wl,--no-undefined
-dev-python/dbus-python +Wl,--no-undefined
-dev-python/lxml +Wl,--no-undefined
-dev-python/m2crypto +Wl,--no-undefined
-dev-python/numpy +Wl,--no-undefined
-dev-python/pillow +Wl,--no-undefined
-dev-python/pycairo +Wl,--no-undefined
-dev-python/pydantic +Wl,--no-undefined
-dev-python/pygame +Wl,--no-undefined
-dev-python/pygobject +Wl,--no-undefined
-dev-python/pyyaml +Wl,--no-undefined
-dev-python/snakeoil +Wl,--no-undefined
-dev-python/tree-sitter +Wl,--no-undefined
+dev-python/* +Wl,--no-undefined
 dev-tcltk/tkimg +fno-common -fcommon # PO
 dev-util/android-tools +fno-common -fcommon # RC
 dev-util/systemtap +Wl,--no-undefined

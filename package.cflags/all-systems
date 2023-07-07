@@ -160,7 +160,7 @@ sys-block/parted +D*FILE* +fdirectives-only
 sys-boot/grub SAFE # No experiments here! Breakage is likely, because grub needs special code, and you must reinstall grub from a rescue CD in case of failures. Moreover, grub provides no suid-binary and no library, so no security issues arise.
 sys-devel/bison +fdirectives-only
 sys-devel/gcc CONFIG_SITE= +fvisibility-inlines-hidden +combine +D*DEBUG +D*ASSERT +D*FILE* +D*FORTIFY* +D_GLIBCXX_ASSERTIONS
-sys-devel/clang +fmerge-all-constants # -fmerge-all-constants has always problems with llvm
+sys-devel/clang +fmerge-all-constants +Wl,--relax # -fmerge-all-constants has always problems with llvm; -Wl,--relax exhausts memory
 sys-devel/gdb CONFIG_SITE= +*math* +fdirectives-only
 sys-devel/gettext +fdirectives-only
 sys-devel/libtool CONFIG_SITE=
