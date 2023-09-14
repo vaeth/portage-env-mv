@@ -18,6 +18,7 @@ app-crypt/argon2 +fPIE +pie
 app-crypt/gcr +fPIE +pie
 app-crypt/gpgme +fPIE +pie
 app-crypt/libsecret +fPIE +pie
+app-crypt/p11-kit +fPIE +pie
 app-crypt/pinentry +fPIE +pie
 app-crypt/rhash +fPIE +pie
 app-cdr/cdrtools +fPIE +pie
