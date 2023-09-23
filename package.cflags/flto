@@ -271,11 +271,9 @@ sys-devel/lld +flto* # emerge =sys-libs/compiler-rt-14.0.6 fails without this: h
 sys-devel/llvm +flto* # PIC
 sys-fs/android-file-transfer-linux +flto*
 sys-fs/dd-rescue +flto*
-sys-fs/eudev +flto* # PO
 sys-fs/fuse-common +flto* # https://bugs.gentoo.org/show_bug.cgi?id=650874
 sys-fs/fuse +flto* # https://bugs.gentoo.org/show_bug.cgi?id=650874
 sys-fs/mtools !+flto* # ICE
-sys-fs/udev +flto* # PO
 sys-fs/udisks +flto* # PO
 sys-libs/binutils-libs +flto*
 sys-libs/compiler-rt +flto*
