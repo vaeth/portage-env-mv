@@ -37,6 +37,7 @@ app-shells/bash +fPIE +pie
 app-shells/ksh +fPIE +pie
 app-shells/schily-tools +fPIE +pie
 app-text/aspell +fPIE +pie
+app-text/crengine-ng +fPIE +pie
 app-text/djview !+fPIE !+pie
 app-text/djvu +fPIE +pie
 app-text/dvipsk !+fPIE !+pie
