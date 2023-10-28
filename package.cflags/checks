@@ -68,6 +68,7 @@ media-gfx/pqiv +Wl,--no-undefined
 media-libs/avidemux-plugins +Wl,--no-undefined
 media-libs/freeglut +Wl,--no-undefined
 media-libs/giflib +Wl,--no-undefined
+media-libs/imlib2 +Wl,--no-undefined
 media-libs/kvazaar +Wl,--no-undefined
 media-libs/libcanberra +Wl,--no-undefined
 media-libs/libquicktime +Wl,--no-undefined
