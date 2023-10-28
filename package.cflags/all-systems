@@ -87,6 +87,7 @@ kde-frameworks/* +*math*
 mail-client/thunderbird +D*FILE* +*math* +fmerge-all-constants +finline-functions +fdirectives-only
 media-gfx/fontforge +fdirectives-only
 media-gfx/gimp +D*DEBUG +D*ASSERT
+media-libs/harfbuzz +fdirectives-only
 media-gfx/ipe +D_GLIBCXX_ASSERTIONS +DNDEBUG
 media-gfx/pqiv +finline-functions +D*FORTIFY* -U_FORTIFY_SOURCE
 media-gfx/pstoedit +Wl,--as-needed LD_AS_NEEDED=
