@@ -138,3 +138,4 @@ x11-misc/slim +Wl,--no-undefined
 x11-misc/xfractint +fno-common -fcommon # RC
 x11-terms/kitty +Wl,--no-undefined
 x11-wm/mutter +fno-common -fcommon # PO
+xfce-base/xfce4-settings +Wl,--no-undefined
