@@ -77,6 +77,7 @@ dev-cpp/* +fPIE +pie
 dev-db/sqlite !+fPIE !+pie
 dev-db/unixODBC !+fPIE !+pie
 dev-games/flatzebra +fPIE +pie
+dev-games/physfs +fPIE +pie
 dev-java/icedtea +fPIE +pie
 dev-java/openjdk +fPIE +pie
 dev-lang/lua +fPIE +pie
@@ -218,6 +219,7 @@ www-client/chromium +fPIE +pie
 www-client/firefox +fPIE +pie
 x11-base/xorg-server +fPIE +pie
 x11-drivers/* !+fPIE !+pie
+x11-misc/slim +fPIE +pie
 x11-misc/xfractint +fPIE +pie
 x11-terms/kitty +fPIE +pie
 x11-wm/fvwm +fPIE +pie
