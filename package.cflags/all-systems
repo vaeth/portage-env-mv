@@ -118,8 +118,6 @@ media-video/kaffeine !/-O?/-O2 !+finline-functions
 media-video/mplayer +finline-functions # -finline-functions causes encoding errors w/ gcc-8
 media-video/mpv +fmerge-all-constants +D*DEBUG +D*ASSERT
 media-video/pipewire +fno-semantic-interposition
-media-video/transcode +Wl,--as-needed LD_AS_NEEDED=
-media-video/transcode \~/-O?/-O2 \~+fweb # fixes segfault of: tcmodinfo -i tc_video
 media-video/xanim +O* -O2
 net-dns/libidn +fdirectives-only
 net-dns/libidn2 +fdirectives-only
@@ -149,7 +147,7 @@ sys-apps/fakechroot +D*FILE*
 sys-apps/findutils +fdirectives-only
 sys-apps/gawk +D*DEBUG
 sys-apps/grep +fdirectives-only
-sys-apps/groff +ffast-math
+sys-apps/groff +ffast-math +fdirectives-only
 sys-apps/openrc +combine
 sys-apps/sandbox +D*DEBUG +D*ASSERT
 sys-apps/sed +D*DEBUG +fdirectives-only

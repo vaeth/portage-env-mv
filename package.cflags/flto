@@ -207,7 +207,6 @@ media-sound/wavpack +flto* # |
 media-sound/xmms2 +flto* # PO
 media-tv/linuxtv-dvb-apps \~+flto* # PIC
 media-video/avidemux +flto*
-media-video/dvdrip +flto*
 media-video/dirac +flto* # PO
 media-video/ffmpeg +flto*
 media-video/ffmpegthumbnailer +flto* # PO

@@ -147,7 +147,6 @@ media-video/mpv +fPIE +pie
 media-video/pipewire +fPIE +pie
 media-video/qmplay2 +fPIE +pie
 media-video/rtmpdump +fPIE +pie
-media-video/transcode !+fPIE !+pie
 media-video/vcdimager !+fPIE !+pie
 media-video/vlc +fPIE +pie
 media-video/wireplumber +fPIE +pie

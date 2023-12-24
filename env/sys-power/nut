@@ -1,5 +1,0 @@
-#!/bin/sh for highlighting in editor
-MV_OVERRIDE=pre_src_prepare
-. /etc/portage/env/scripts/mv_patch \
-	-e s\''\(systemdsystemshutdowndir="\)${libdir}'\''\1'"${EPREFIX}/lib'" \
-		configure.ac
