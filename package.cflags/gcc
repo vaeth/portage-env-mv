@@ -5,4 +5,3 @@
 #   -std=gnu++98
 # Or switch to clang_
 #   'export CXX=clang++ CC=clang'
-sys-power/nut CXXFLAGS+=-std=gnu++14
