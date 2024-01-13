@@ -34,7 +34,6 @@ app-backup/dar +flto* # PO
 app-crypt/gpgme !+flto* # ICE
 app-crypt/p11-kit +flto* # |
 app-crypt/qca +flto* # PO
-app-doc/doxygen +flto* # PO
 app-editors/jed +flto* # PO
 app-editors/kile +flto* # PO
 app-emulation/bochs +flto* # PO
@@ -52,6 +51,7 @@ app-shells/zsh +flto* # PIC on amd64 and x86; runtime errors
 app-text/a2ps +flto*
 app-text/apvlv +flto* # PO
 app-text/djview +flto* # runtime segfaults with some versions of qt
+app-text/doxygen +flto* # PO
 app-text/dvipsk !+flto* # ICE
 app-text/ebook-tools +flto* # PIC on amd64 and x86
 app-text/enchant +flto* # |
@@ -75,6 +75,7 @@ dev-db/mariadb-connector-c +flto*
 dev-db/sqlcipher !+flto* # ICE
 dev-db/sqlite !+flto* # ICE
 dev-db/unixODBC !+flto* # ICE
+dev-debug/gdb +flto* # duplicate symbol with gcc-7
 dev-games/physfs \~+flto* # PIC
 dev-java/icedtea +flto*
 dev-java/openjdk +flto*
@@ -264,7 +265,6 @@ sys-devel/bison +flto* # ICE with gcc-7
 sys-devel/clang +flto-partition* # -flto needs >3GB here
 sys-devel/flex -ffat-lto-objects # SL
 sys-devel/gcc +flto*
-sys-devel/gdb +flto* # duplicate symbol with gcc-7
 sys-devel/gettext +flto* # with gcc-7 + gold: undefined reference
 sys-devel/lld +flto* # emerge =sys-libs/compiler-rt-14.0.6 fails without this: https://bugs.gentoo.org/862798
 sys-devel/llvm +flto* # PIC

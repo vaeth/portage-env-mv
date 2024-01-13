@@ -10,7 +10,6 @@ app-cdr/cdw +Wl,--as-needed LD_AS_NEEDED=
 app-cdr/dvdisaster +fdirectives-only # +fdirectives-only fixes broken ./configure
 app-crypt/gpgme +D*DEBUG +D*ASSERT
 app-crypt/gnupg +D*DEBUG +D*ASSERT
-app-doc/doxygen NOC*OPT=1 +O* -O2 -fomit-frame-pointer -s # see http://forums.gentoo.org/viewtopic-t-495600.html
 app-editors/emacs +fdirectives-only +*math*
 app-emulation/dosemu +finline-functions +fdirectives-only
 app-emulation/qemu +D*DEBUG +D*ASSERT
@@ -24,6 +23,7 @@ app-portage/portage-utils +fdirectives-only
 app-shells/dash +fdirectives-only
 app-text/a2ps +Wl,--as-needed +fdirectives-only
 app-text/aspell +D*DEBUG +D*ASSERT
+app-text/doxygen NOC*OPT=1 +O* -O2 -fomit-frame-pointer -s # see http://forums.gentoo.org/viewtopic-t-495600.html
 app-text/dvipng +D*DEBUG +D*ASSERT
 app-text/enchant +fdirectives-only
 app-text/fbreader +Wl,--as-needed LD_AS_NEEDED=
@@ -40,6 +40,7 @@ app-text/xdvik +D*DEBUG +D*ASSERT
 app-text/yodl +XXXX # Something is broken here - must check
 dev-db/sqlcipher +*math*
 dev-db/sqlite +*math*
+dev-debug/gdb CONFIG_SITE= +*math* +fdirectives-only
 dev-java/icedtea +D*FORTIFY* -U_FORTIFY_SOURCE
 dev-java/openjdk +D*FORTIFY* SAFE # openjdk sets security relevant flags - we do not interfere
 dev-lang/lua CONFIG_SITE= +ffast-math
@@ -160,7 +161,6 @@ sys-boot/grub SAFE # No experiments here! Breakage is likely, because grub needs
 sys-devel/bison +fdirectives-only
 sys-devel/gcc CONFIG_SITE= +fvisibility-inlines-hidden +combine +D*DEBUG +D*ASSERT +D*FILE* +D*FORTIFY* +D_GLIBCXX_ASSERTIONS
 sys-devel/clang +fmerge-all-constants +Wl,--relax # -fmerge-all-constants has always problems with llvm; -Wl,--relax exhausts memory
-sys-devel/gdb CONFIG_SITE= +*math* +fdirectives-only
 sys-devel/gettext +fdirectives-only
 sys-devel/libtool CONFIG_SITE=
 sys-devel/llvm CONFIG_SITE= +*math* +D*FILE* +fdirectives-only +fmerge-all-constants # -fmerge-all-constants causes clang to segfault on trivial c programs
