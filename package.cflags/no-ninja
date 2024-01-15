@@ -1,7 +1,7 @@
 # packages not compiling with CMAKE_MAKEFILE_GENERATOR=ninja
 # https://bugs.gentoo.org/show_bug.cgi?id=557992
 
-dev-util/cmake "unset CMAKE_MAKEFILE_GENERATOR"
+dev-build/cmake "unset CMAKE_MAKEFILE_GENERATOR"
 games-arcade/supertux "unset CMAKE_MAKEFILE_GENERATOR"
 kde-apps/kate "unset CMAKE_MAKEFILE_GENERATOR"
 kde-apps/gwenview "unset CMAKE_MAKEFILE_GENERATOR"

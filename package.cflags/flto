@@ -76,6 +76,7 @@ dev-db/sqlcipher !+flto* # ICE
 dev-db/sqlite !+flto* # ICE
 dev-db/unixODBC !+flto* # ICE
 dev-debug/gdb +flto* # duplicate symbol with gcc-7
+dev-debug/valgrind -ffat-lto-objects # PO
 dev-games/physfs \~+flto* # PIC
 dev-java/icedtea +flto*
 dev-java/openjdk +flto*
@@ -132,7 +133,6 @@ dev-util/dirdiff +flto* # PIC
 dev-util/icmake +flto* # PO
 dev-util/pkgconf +flto* # |
 dev-util/schroot +flto* # PO
-dev-util/valgrind -ffat-lto-objects # PO
 dev-vcs/cvs -ffat-lto-objects # PO
 dev-vcs/git !+flto* # ICE
 dev-vcs/rcs +flto* # ICE with gcc-7
