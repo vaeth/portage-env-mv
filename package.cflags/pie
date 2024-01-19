@@ -73,10 +73,12 @@ app-text/texlive-core +fPIE +pie
 app-text/ttf2pk2 !+fPIE !+pie
 app-text/xdvik !+fPIE !+pie
 app-text/zathura-* +fPIE +pie
+dev-build/libtool !+fPIE !+pie
 dev-cpp/* +fPIE +pie
 dev-db/sqlite !+fPIE !+pie
 dev-db/unixODBC !+fPIE !+pie
 dev-debug/gdb +fPIE +pie
+dev-debug/systemtap +fPIE +pie
 dev-games/flatzebra +fPIE +pie
 dev-games/physfs +fPIE +pie
 dev-java/icedtea +fPIE +pie
@@ -104,7 +106,6 @@ dev-util/glslang +fPIE +pie
 dev-util/spirv-llvm-translator +fPIE +pie
 dev-util/spirv-tools +fPIE +pie
 dev-util/pkgcheck +fPIE +pie
-dev-util/systemtap +fPIE +pie
 games-action/gltron +fPIE +pie
 games-arcade/burgerspace !+fPIE !+pie
 games-arcade/xtux +fPIE +pie
@@ -197,7 +198,6 @@ sys-devel/clang +fPIE +pie
 sys-devel/flex !+fPIE !+pie
 sys-devel/gcc +fPIE +pie
 sys-devel/gettext !+fPIE !+pie
-sys-devel/libtool !+fPIE !+pie
 sys-devel/lld +fPIE +pie
 sys-fs/android-file-transfer-linux +fPIE +pie
 sys-fs/cryptsetup !+fPIE !+pie

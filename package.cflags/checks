@@ -30,6 +30,7 @@ app-text/stardict +Wl,--no-undefined
 app-text/texlive-core +fno-common -fcommon
 app-text/xpdf +Wl,--no-undefined
 dev-db/mariadb-connector-c +Wl,--no-undefined
+dev-debug/systemtap +Wl,--no-undefined
 dev-java/icedtea +Wl,--no-undefined
 dev-java/openjdk +Wl,--no-undefined
 dev-lang/perl +Wl,--no-undefined
@@ -45,7 +46,6 @@ dev-perl/* +Wl,--no-undefined
 dev-python/* +Wl,--no-undefined
 dev-tcltk/tkimg +fno-common -fcommon # PO
 dev-util/android-tools +fno-common -fcommon # RC
-dev-util/systemtap +Wl,--no-undefined
 games-arcade/emilia-pinball +Wl,--no-undefined
 games-arcade/primateplunge +fno-common -fcommon # RC
 games-arcade/rocksndiamonds +fno-common -fcommon # RC

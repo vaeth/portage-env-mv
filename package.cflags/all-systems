@@ -40,8 +40,10 @@ app-text/xdvik +D*DEBUG +D*ASSERT
 app-text/yodl +XXXX # Something is broken here - must check
 dev-db/sqlcipher +*math*
 dev-db/sqlite +*math*
+dev-build/libtool CONFIG_SITE=
 dev-build/make +fdirectives-only
 dev-debug/gdb CONFIG_SITE= +*math* +fdirectives-only
+dev-debug/strace +fdirectives-only
 dev-java/icedtea +D*FORTIFY* -U_FORTIFY_SOURCE
 dev-java/openjdk +D*FORTIFY* SAFE # openjdk sets security relevant flags - we do not interfere
 dev-lang/lua CONFIG_SITE= +ffast-math
@@ -74,7 +76,6 @@ dev-tex/catdvi +D*DEBUG +D*ASSERT
 dev-texlive/texlive-metapost +D*DEBUG +D*ASSERT
 dev-util/ccache CONFIG_SITE=
 dev-util/diffball +D*FILE*
-dev-util/strace +fdirectives-only
 dev-vcs/rcs +fdirectives-only
 games-arcade/supertux +D*DEBUG +D*ASSERT
 games-emulation/advancemame +ftree-vectorize*
@@ -163,7 +164,6 @@ sys-devel/bison +fdirectives-only
 sys-devel/gcc CONFIG_SITE= +fvisibility-inlines-hidden +combine +D*DEBUG +D*ASSERT +D*FILE* +D*FORTIFY* +D_GLIBCXX_ASSERTIONS
 sys-devel/clang +fmerge-all-constants +Wl,--relax # -fmerge-all-constants has always problems with llvm; -Wl,--relax exhausts memory
 sys-devel/gettext +fdirectives-only
-sys-devel/libtool CONFIG_SITE=
 sys-devel/llvm CONFIG_SITE= +*math* +D*FILE* +fdirectives-only +fmerge-all-constants # -fmerge-all-constants causes clang to segfault on trivial c programs
 sys-devel/m4 +*math* +fdirectives-only
 sys-devel/patch +fdirectives-only +D*DEBUG +D*ASSERT
