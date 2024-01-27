@@ -66,6 +66,7 @@ app-text/ttf2pk2 !+flto* # ICE
 app-text/yodl +flto* # PO
 app-text/xpdf +flto*
 app-text/zathura* -ffat-lto-objects # PO
+dev-build/icmake +flto* # PO
 dev-cpp/atkmm +flto* # PO
 dev-cpp/cairomm +flto* # PO
 dev-cpp/gtkmm +flto* # PO
@@ -130,7 +131,6 @@ dev-util/android-tools !+flto* # ICE
 dev-util/ccache +flto*
 dev-util/dialog -ffat-lto-objects # SL
 dev-util/dirdiff +flto* # PIC
-dev-util/icmake +flto* # PO
 dev-util/pkgconf +flto* # |
 dev-util/schroot +flto* # PO
 dev-vcs/cvs -ffat-lto-objects # PO
