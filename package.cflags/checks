@@ -98,6 +98,7 @@ net-misc/modemmanager +Wl,--no-undefined
 net-misc/networkmanager +Wl,--no-undefined
 net-misc/nx +fno-common -fcommon # PO
 net-misc/streamtuner +Wl,--no-undefined
+net-print/libppd +Wl,--no-undefined
 net-vpn/networkmanager-openconnect +Wl,--no-undefined
 net-vpn/networkmanager-openvpn +Wl,--no-undefined
 net-wireless/bluez +Wl,--no-undefined

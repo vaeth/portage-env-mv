@@ -167,6 +167,8 @@ net-misc/nx +fPIE +pie
 net-nds/openldap !+fPIE !+pie
 net-print/cups +fPIE +pie
 net-print/cups-filters !+fPIE !+pie
+net-print/libcupsfilters +fPIE +pie
+net-print/libppd +fPIE +pie
 net-vpn/openvpn +fPIE +pie
 net-wireless/crda +fPIE +pie
 perl-core/* +fPIE +pie
