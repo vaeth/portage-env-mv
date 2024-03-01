@@ -170,7 +170,6 @@ net-print/cups-filters !+fPIE !+pie
 net-print/libcupsfilters +fPIE +pie
 net-print/libppd +fPIE +pie
 net-vpn/openvpn +fPIE +pie
-net-wireless/crda +fPIE +pie
 perl-core/* +fPIE +pie
 sci-mathematics/calc +fPIE +pie
 sci-mathematics/ginac +fPIE +pie
