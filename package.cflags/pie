@@ -81,7 +81,6 @@ dev-debug/gdb +fPIE +pie
 dev-debug/systemtap +fPIE +pie
 dev-games/flatzebra +fPIE +pie
 dev-games/physfs +fPIE +pie
-dev-java/icedtea +fPIE +pie
 dev-java/openjdk +fPIE +pie
 dev-lang/lua +fPIE +pie
 dev-lang/mujs +fPIE +pie

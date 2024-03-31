@@ -44,7 +44,6 @@ dev-build/libtool CONFIG_SITE=
 dev-build/make +fdirectives-only
 dev-debug/gdb CONFIG_SITE= +*math* +fdirectives-only
 dev-debug/strace +fdirectives-only
-dev-java/icedtea +D*FORTIFY* -U_FORTIFY_SOURCE
 dev-java/openjdk +D*FORTIFY* SAFE # openjdk sets security relevant flags - we do not interfere
 dev-lang/lua CONFIG_SITE= +ffast-math
 dev-lang/ruby +ftree-vectorize*

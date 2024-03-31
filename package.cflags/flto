@@ -79,7 +79,6 @@ dev-db/unixODBC !+flto* # ICE
 dev-debug/gdb +flto* # duplicate symbol with gcc-7
 dev-debug/valgrind -ffat-lto-objects # PO
 dev-games/physfs \~+flto* # PIC
-dev-java/icedtea +flto*
 dev-java/openjdk +flto*
 dev-lang/execline +flto* # PO
 dev-lang/mujs -ffat-lto-objects # SL

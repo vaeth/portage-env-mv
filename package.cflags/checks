@@ -31,7 +31,6 @@ app-text/texlive-core +fno-common -fcommon
 app-text/xpdf +Wl,--no-undefined
 dev-db/mariadb-connector-c +Wl,--no-undefined
 dev-debug/systemtap +Wl,--no-undefined
-dev-java/icedtea +Wl,--no-undefined
 dev-java/openjdk +Wl,--no-undefined
 dev-lang/perl +Wl,--no-undefined
 dev-lang/python +Wl,--no-undefined

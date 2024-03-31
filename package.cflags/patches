@@ -9,7 +9,6 @@
 #app-misc/lirc "LIRC_OPTS='--with-driver=pctv'"
 app-text/pinfo "EXTRA_EMAKE+=WFLAGS=-Wno-error" # undo -Werror which breaks compilation
 app-text/u2ps "EXTRA_EMAKE+='SHELL=/bin/bash'"
-dev-java/icedtea "EXTRA_ECONF+='--with-pax=paxctl-ng'" "EXTRA_EMAKE+='SHELL=/bin/bash'"
 dev-java/openjdk "ulimit -c unlimited"
 dev-lang/rust "export SHELL=/bin/sh"
 dev-libs/libpcre2 -mshstk
