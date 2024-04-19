@@ -40,6 +40,7 @@ dev-libs/gobject-introspection +Wl,--no-undefined
 dev-libs/libevent +Wl,--no-undefined
 dev-libs/libxml2 +Wl,--no-undefined
 dev-libs/libxslt +Wl,--no-undefined
+dev-libs/tree-sitter-bash +Wl,--no-undefined
 dev-libs/weston +Wl,--no-undefined
 dev-perl/* +Wl,--no-undefined
 dev-python/* +Wl,--no-undefined
