@@ -1,0 +1,25 @@
+--- 1/texmf-dist/scripts/texlive/mktexlsr.pl
++++ 2/texmf-dist/scripts/texlive/mktexlsr.pl
+@@ -206,13 +206,16 @@
+       # add an entry of 1 if it is not a directory, otherwise
+       # create an empty hash as argument
+       File::Find::find( { follow_skip => 2, follow_fast => $opt_follow, wanted => sub {
+-        $node = (pop @s)->[1] while (@s && $File::Find::dir ne $s[-1][0]);
+         # ignore VCS
+-        return if ($_ eq ".git");
+-        return if ($_ eq ".svn");
+-        return if ($_ eq ".hg");
+-        return if ($_ eq ".bzr");
+-        return if ($_ eq "CVS");
++        if ($_ eq ".git"
++         || $_ eq ".svn"
++         || $_ eq ".hg"
++         || $_ eq ".bzr"
++         || $_ eq "CVS") {
++          $File::Find::prune = 1 if (-d);
++          return;
++        }
++        $node = (pop @s)->[1] while (@s && $File::Find::dir ne $s[-1][0]);
+         return $node->{$_} = 1 if (! -d);
+         push (@s, [ $File::Find::name, $node ]);
+         $node = $node->{$_} = {};
