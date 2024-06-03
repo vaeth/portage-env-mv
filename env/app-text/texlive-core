@@ -1,9 +1,1 @@
-. /etc/portage/env/scripts/mv_patch -
-
-post_src_prepare() {
-	mv_start && mv_patch \
-	mktexlsr \
-	-e "1s'#!/usr/bin/env perl'#!$EROOT/usr/bin/perl'" \
-	"${S}"/texk/texlive/linked_scripts/chklref/chklref.pl
-	mv_end
-}
+. /etc/portage/env/scripts/mv_patch mktexlsr
