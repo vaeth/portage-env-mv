@@ -8,6 +8,7 @@ app-accessibility/at-spi2-core +fPIE +pie
 app-admin/sudo !+fPIE !+pie
 app-arch/arj +fPIE +pie
 app-arch/lrzip +fPIE +pie
+app-arch/lz4 +fPIE +pie
 app-arch/p7zip +fPIE +pie
 app-arch/snappy +fPIE +pie
 app-arch/unrar +fPIE +pie
