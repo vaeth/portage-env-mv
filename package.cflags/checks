@@ -84,7 +84,6 @@ media-sound/toolame +fno-common -fcommon # RC
 media-tv/linuxtv-dvb-apps +Wl,--no-undefined
 media-tv/nvtv +fno-common -fcommon # RC
 media-tv/tvheadend +fno-common -fcommon # PO
-media-tv/v4l-utils +Wl,--no-undefined
 media-tv/w_scan +fno-common -fcommon # RC
 media-video/avidemux +Wl,--no-undefined
 media-video/ffmpeg +fno-common -fcommon # -fno-common causes runtime segfaults w/ gcc-8

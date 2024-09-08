@@ -69,7 +69,7 @@ dev-libs/weston +D*DEBUG +D*ASSERT
 dev-lisp/clisp CONFIG_SITE= +D*DEBUG +D*ASSERT +frename-registers +*math* +fdirectives-only
 dev-perl/Clone NOLDOPT=1 NOCOPT=1 CFLAGS=
 dev-python/numpy +*math*
-dev-qt/* +fdirectives-only
+dev-qt/* +fdirectives-only +ffast-math # -ffast-math breaks at least compilation of dev-qt/qtbase on x86
 dev-scheme/guile +fdirectives-only +ffast-math !+D*FILE_OFFSET* !+D_LARGEFILE* # -ffast-math triggers floating exception https://bugs.gentoo.org/show_bug.cgi?id=598986
 dev-tex/catdvi +D*DEBUG +D*ASSERT
 dev-texlive/texlive-metapost +D*DEBUG +D*ASSERT
@@ -112,7 +112,6 @@ media-libs/raptor +*math*
 media-plugins/live +Wl,--relax
 media-sound/audacity CONFIG_SITE=
 media-sound/mpg123 +D*FILE*
-media-tv/v4l-utils +D*FILE*
 media-video/avidemux +ftracer # MAKEOPTS-='-j*'
 media-video/cclive +D*DEBUG +D*ASSERT
 media-video/ffmpeg +combine +ftracer

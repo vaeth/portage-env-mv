@@ -140,7 +140,6 @@ media-sound/vorbis-tools !+fPIE !+pie
 media-sound/wavpack !+fPIE !+pie
 media-tv/linuxtv-dvb-apps !+fPIE !+pie # gcc-7
 media-tv/nvtv +fPIE +pie
-media-tv/v4l-utils +fPIE +pie
 media-video/cclive !+fPIE !+pie
 media-video/ffmpeg +fPIE +pie
 media-video/handbrake +fPIE +pie
