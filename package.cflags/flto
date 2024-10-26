@@ -67,6 +67,7 @@ app-text/yodl +flto* # PO
 app-text/xpdf +flto*
 app-text/zathura* -ffat-lto-objects # PO
 dev-build/icmake +flto* # PO
+dev-cpp/abseil-cpp +flto* # otherwise users of the library do not link properly
 dev-cpp/atkmm +flto* # PO
 dev-cpp/cairomm +flto* # PO
 dev-cpp/gtkmm +flto* # PO
