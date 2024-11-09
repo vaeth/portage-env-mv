@@ -16,6 +16,7 @@ app-emulation/qemu +D*DEBUG +D*ASSERT
 app-emulation/vice +ffast-math # Segfault with -ffast-math
 app-emulation/wine* +D*FILE_OFFSET* +D_LARGEFILE* +fstack-protector* +ftree-loop-distribute-patterns +fweb +finline-functions +frename-registers +freorder-functions +ffast-math # -ffast-math gives duplicate symbols. -freorder-functions undefined reference to 'memset'
 app-mobilephone/heimdall SAFE # No experiments here!
+app-misc/mmv +fdirectives-only
 app-misc/srm +D*FILE*
 app-misc/tmux CONFIG_SITE=
 app-office/libreoffice +finline-functions +frename-registers +*math* +fdirectives-only # for crashes check also freetype, zlib
