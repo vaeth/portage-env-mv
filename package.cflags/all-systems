@@ -84,6 +84,7 @@ games-emulation/xmame +ftree-vectorize*
 games-emulation/xmess +ftree-vectorize*
 games-rpg/freedroidrpg CONFIG_SITE=
 gnome-base/librsvg +ftree-vectorize* # reported in http://gentoo-wiki.com/CFLAGS_matrix
+>gnome-base/librsvg-2.56.1 !RUSTFLAGS= # On some i386, the setting lets required sse compilation fail
 gui-wm/wayfire +fdirectives-only
 gui-wm/sway +fdirectives-only
 kde-frameworks/* +*math*
