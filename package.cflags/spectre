@@ -20,5 +20,6 @@ sys-libs/compiler-rt-sanitizers +fno-plt # causes presumably runtime segfaults
 sys-libs/glibc +fcf-protection*
 www-client/chromium +fno-plt # compilation segfaults
 www-client/firefox !+mindirect-branch* +mfunction-return* # compilation segfaults on x86 with "# Will either crash or return exit code 1 if elfhack is broken"
+www-client/firefox +mretpoline +Wl,-z,retpolineplt # configure uses gcc
 x11-base/xorg-server +fno-plt # symbols might not be found if compiled with -fno-plt
 x11-drivers/xf86-* +fno-plt # X might not start if drivers are compiled with -fno-plt
