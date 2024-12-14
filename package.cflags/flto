@@ -155,6 +155,11 @@ gnome-base/gnome-desktop +flto* # |
 gnome-base/libglade +flto* # |
 gnome-base/librsvg +flto* # |
 kde-apps/k3b +flto* # PO
+llvm-core/clang +flto-partition* # -flto needs >3GB here
+llvm-core/lld +flto* # emerge =llvm-runtimes/compiler-rt-14.0.6 fails without this: https://bugs.gentoo.org/862798
+llvm-core/llvm +flto* # PIC
+llvm-runtimes/compiler-rt +flto*
+llvm-runtimes/libcxxabi +flto*
 mail-client/claws-mail !+flto* # ICE
 mail-client/thunderbird +flto-partition* +flto*
 media-gfx/fontforge !+flto* # ICE
@@ -262,12 +267,9 @@ sys-auth/polkit +flto* # PO
 sys-auth/polkit-qt +flto* # PO
 sys-boot/syslinux +flto*
 sys-devel/bison +flto* # ICE with gcc-7
-sys-devel/clang +flto-partition* # -flto needs >3GB here
 sys-devel/flex -ffat-lto-objects # SL
 sys-devel/gcc +flto*
 sys-devel/gettext +flto* # with gcc-7 + gold: undefined reference
-sys-devel/lld +flto* # emerge =sys-libs/compiler-rt-14.0.6 fails without this: https://bugs.gentoo.org/862798
-sys-devel/llvm +flto* # PIC
 sys-fs/android-file-transfer-linux +flto*
 sys-fs/dd-rescue +flto*
 sys-fs/fuse-common +flto* # https://bugs.gentoo.org/show_bug.cgi?id=650874
@@ -275,10 +277,8 @@ sys-fs/fuse +flto* # https://bugs.gentoo.org/show_bug.cgi?id=650874
 sys-fs/mtools !+flto* # ICE
 sys-fs/udisks +flto* # PO
 sys-libs/binutils-libs +flto*
-sys-libs/compiler-rt +flto*
 sys-libs/efivar +flto*
 sys-libs/glibc +flto*
-sys-libs/libcxxabi +flto*
 sys-libs/ncurses +flto*
 sys-power/iasl +flto* # PO
 sys-power/upower +flto* # PO

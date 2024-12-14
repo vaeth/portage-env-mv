@@ -88,6 +88,10 @@ gnome-base/librsvg +ftree-vectorize* # reported in http://gentoo-wiki.com/CFLAGS
 gui-wm/wayfire +fdirectives-only
 gui-wm/sway +fdirectives-only
 kde-frameworks/* +*math*
+llvm-core/clang +fmerge-all-constants +Wl,--relax # -fmerge-all-constants has always problems with llvm; -Wl,--relax exhausts memory
+llvm-core/llvm CONFIG_SITE= +*math* +D*FILE* +fdirectives-only +fmerge-all-constants # -fmerge-all-constants causes clang to segfault on trivial c programs
+llvm-runtimes/compiler-rt USE_NONGNU=1 +fmerge-all-constants
+llvm-runtimes/compiler-rt-sanitizers USE_NONGNU=1 +fmerge-all-constants +frewrite-includes
 mail-client/thunderbird +D*FILE* +*math* +fmerge-all-constants +finline-functions +fdirectives-only
 media-gfx/fontforge +fdirectives-only
 media-gfx/gimp +D*DEBUG +D*ASSERT
@@ -162,9 +166,7 @@ sys-block/parted +D*FILE* +fdirectives-only
 sys-boot/grub SAFE # No experiments here! Breakage is likely, because grub needs special code, and you must reinstall grub from a rescue CD in case of failures. Moreover, grub provides no suid-binary and no library, so no security issues arise.
 sys-devel/bison +fdirectives-only
 sys-devel/gcc CONFIG_SITE= +fvisibility-inlines-hidden +combine +D*DEBUG +D*ASSERT +D*FILE* +D*FORTIFY* +D_GLIBCXX_ASSERTIONS
-sys-devel/clang +fmerge-all-constants +Wl,--relax # -fmerge-all-constants has always problems with llvm; -Wl,--relax exhausts memory
 sys-devel/gettext +fdirectives-only
-sys-devel/llvm CONFIG_SITE= +*math* +D*FILE* +fdirectives-only +fmerge-all-constants # -fmerge-all-constants causes clang to segfault on trivial c programs
 sys-devel/m4 +*math* +fdirectives-only
 sys-devel/patch +fdirectives-only +D*DEBUG +D*ASSERT
 sys-fs/aufs*-util +D*FILE*
@@ -172,8 +174,6 @@ sys-fs/e2fsprogs +D*FILE*
 sys-fs/mtools +D*FILE*
 sys-fs/squashfuse +Wl,--as-needed
 sys-libs/binutils-libs +Wl,-z,combreloc +Wl,--as-needed +Wl,--build-id=none
-sys-libs/compiler-rt USE_NONGNU=1 +fmerge-all-constants
-sys-libs/compiler-rt-sanitizers USE_NONGNU=1 +fmerge-all-constants +frewrite-includes
 sys-libs/glibc +Wl,--relax +D*FILE* +fstack-protector +ffast-math +fdirectives-only +fno-semantic-interposition
 sys-libs/gwenhywfar +D*FORTIFY* -U_FORTIFY_SOURCE
 sys-libs/libstdc++-v3 +D*DEBUG +D*ASSERT

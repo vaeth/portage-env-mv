@@ -57,6 +57,7 @@ games-fps/prboom-plus +fno-common -fcommon # RC
 games-rpg/freedroid +fno-common -fcommon # RC
 gui-libs/wayfire-plugins-extra +Wl,--no-undefined
 gui-wm/wayfire +Wl,--no-undefined
+llvm-core/llvm +fno-common -fcommon +Wl,--no-undefined # NC
 mail-client/claws-mail +Wl,--no-undefined
 mail-client/mailx +fno-common -fcommon # RC
 mail-client/thunderbird +fno-common -fcommon # PO
@@ -115,7 +116,6 @@ sys-apps/the_silver_searcher +fno-common -fcommon # RC
 sys-block/parted:0 +Wl,--no-undefined
 sys-devel/gcc +Wl,--no-undefined
 sys-devel/gettext +Wl,--no-undefined
-sys-devel/llvm +fno-common -fcommon +Wl,--no-undefined # NC
 sys-fs/dd-rescue +Wl,--no-undefined
 sys-fs/f2fs-tools +Wl,--no-undefined
 sys-fs/lvm2 +Wl,--no-undefined

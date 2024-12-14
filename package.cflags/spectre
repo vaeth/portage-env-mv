@@ -10,13 +10,13 @@
 app-emulation/wine* +fno-plt # compilation fails with unexpected reloc 43 against global symbol strlen without base register in object file when generating a position-independent output file
 dev-lang/rust !+fno-plt # compilation segfaults on x86
 dev-qt/qtwidgets +mfunction-return=thunk # multiple definition of '__x86_return_thunk' for gcc-8
+llvm-core/clang +fno-plt # causes presumably runtime segfaults
+llvm-core/lld +fno-plt # causes runtime segfaults
+llvm-core/llvm +fno-plt # causes presumably runtime segfaults
+llvm-runtimes/compiler-rt +fno-plt # causes presumably runtime segfaults
+llvm-runtimes/compiler-rt-sanitizers +fno-plt # causes presumably runtime segfaults
 #media-libs/mesa +fno-plt
 sys-boot/syslinux +fcf-protection*
-sys-devel/clang +fno-plt # causes presumably runtime segfaults
-sys-devel/lld +fno-plt # causes runtime segfaults
-sys-devel/llvm +fno-plt # causes presumably runtime segfaults
-sys-libs/compiler-rt +fno-plt # causes presumably runtime segfaults
-sys-libs/compiler-rt-sanitizers +fno-plt # causes presumably runtime segfaults
 sys-libs/glibc +fcf-protection*
 www-client/chromium +fno-plt # compilation segfaults
 www-client/firefox !+mindirect-branch* +mfunction-return* # compilation segfaults on x86 with "# Will either crash or return exit code 1 if elfhack is broken"

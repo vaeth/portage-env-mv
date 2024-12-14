@@ -117,6 +117,8 @@ gnome-base/gsettings-desktop-schemas +fPIE +pie
 gnome-base/libglade !+fPIE !+pie
 gui-wm/wayfire +fPIE +pie
 kde-frameworks/* +fPIE +pie
+llvm-core/clang +fPIE +pie
+llvm-core/lld +fPIE +pie
 mail-client/claws-mail +fPIE +pie
 mail-client/thunderbird +fPIE +pie
 media-gfx/exiv2 +fPIE +pie
@@ -195,11 +197,9 @@ sys-auth/elogind +fPIE +pie
 sys-auth/seatd +fPIE +pie
 sys-boot/syslinux +fPIE +pie
 sys-devel/autogen !+fPIE !+pie
-sys-devel/clang +fPIE +pie
 sys-devel/flex !+fPIE !+pie
 sys-devel/gcc +fPIE +pie
 sys-devel/gettext !+fPIE !+pie
-sys-devel/lld +fPIE +pie
 sys-fs/android-file-transfer-linux +fPIE +pie
 sys-fs/cryptsetup !+fPIE !+pie
 sys-fs/e2fsprogs +fPIE +pie
