@@ -13,8 +13,8 @@ app-crypt/gnupg +D*DEBUG +D*ASSERT
 app-editors/emacs +fdirectives-only +*math*
 app-emulation/dosemu +finline-functions +fdirectives-only
 app-emulation/qemu +D*DEBUG +D*ASSERT
-app-emulation/vice +ffast-math # Segfault with -ffast-math
-app-emulation/wine* +D*FILE_OFFSET* +D_LARGEFILE* +fstack-protector* +ftree-loop-distribute-patterns +fweb +finline-functions +frename-registers +freorder-functions +ffast-math # -ffast-math gives duplicate symbols. -freorder-functions undefined reference to 'memset'
+app-emulation/vice +*math* # Segfault with -ffast-math
+app-emulation/wine* +D*FILE_OFFSET* +D_LARGEFILE* +fstack-protector* +ftree-loop-distribute-patterns +fweb +finline-functions +frename-registers +freorder-functions +*math* # -ffast-math gives duplicate symbols. -freorder-functions undefined reference to 'memset'
 app-mobilephone/heimdall SAFE # No experiments here!
 app-misc/mmv +fdirectives-only
 app-misc/srm +D*FILE*
@@ -35,7 +35,7 @@ app-text/libpaper +fdirectives-only
 app-text/pdftk +O* -O2 +finline-functions +D*DEBUG +D*ASSERT +D*FILE* +D*FORTIFY*
 app-text/poppler +frepo +ftree-vectorize* # ftree-vectorize reported in http://gentoo-wiki.com/CFLAGS_matrix
 app-text/recode +fdirectives-only
-app-text/texlive-core +D*DEBUG +D*ASSERT +ffast-math # lua fails with -ffast-math
+app-text/texlive-core +D*DEBUG +D*ASSERT +*math* # lua fails with -ffast-math
 app-text/wdiff +fdirectives-only
 app-text/xdvik +D*DEBUG +D*ASSERT
 app-text/yodl +XXXX # Something is broken here - must check
@@ -46,10 +46,10 @@ dev-build/make +fdirectives-only
 dev-debug/gdb CONFIG_SITE= +*math* +fdirectives-only
 dev-debug/strace +fdirectives-only
 dev-java/openjdk +D*FORTIFY* SAFE # openjdk sets security relevant flags - we do not interfere
-dev-lang/lua CONFIG_SITE= +ffast-math
+dev-lang/lua CONFIG_SITE= +*math*
 dev-lang/ruby +ftree-vectorize*
 dev-lang/rust +fmerge-all-constants # with -fmerge-all-constants rust does not return from compiling its stdlib
-dev-lang/python +ffast-math # Byte compilation of some .pyc files needs forever with -ffast-math
+dev-lang/python +*math* # Byte compilation of some .pyc files needs forever with -ffast-math
 dev-libs/boost MAKEOPTS-='-j*'
 dev-libs/elfutils +D*FILE*
 dev-libs/gmp +*math* +fgraphite* +floop-* +D*FILE* +D*DEBUG +D*ASSERT +frename-registers +freorder-functions +fdevirtualize-speculatively # Just to be on the safe side
@@ -70,14 +70,15 @@ dev-libs/weston +D*DEBUG +D*ASSERT
 dev-lisp/clisp CONFIG_SITE= +D*DEBUG +D*ASSERT +frename-registers +*math* +fdirectives-only
 dev-perl/Clone NOLDOPT=1 NOCOPT=1 CFLAGS=
 dev-python/numpy +*math*
-dev-qt/* +fdirectives-only +ffast-math # -ffast-math breaks at least compilation of dev-qt/qtbase on x86
-dev-scheme/guile +fdirectives-only +ffast-math !+D*FILE_OFFSET* !+D_LARGEFILE* # -ffast-math triggers floating exception https://bugs.gentoo.org/show_bug.cgi?id=598986
+dev-qt/* +fdirectives-only +*math* # -ffast-math breaks at least compilation of dev-qt/qtbase on x86
+dev-scheme/guile +fdirectives-only +*math* !+D*FILE_OFFSET* !+D_LARGEFILE* # -ffast-math triggers floating exception https://bugs.gentoo.org/show_bug.cgi?id=598986
 dev-tex/catdvi +D*DEBUG +D*ASSERT
 dev-texlive/texlive-metapost +D*DEBUG +D*ASSERT
 dev-util/ccache CONFIG_SITE=
 dev-util/diffball +D*FILE*
 dev-vcs/rcs +fdirectives-only
 games-arcade/supertux +D*DEBUG +D*ASSERT
+games-engines/scummvm +*math* # With -ffast-math compilation fails with colliding options
 games-emulation/advancemame +ftree-vectorize*
 games-emulation/sdlmame +ftree-vectorize*
 games-emulation/xmame +ftree-vectorize*
@@ -146,7 +147,7 @@ sci-mathematics/ginac +fvisibility-inlines-hidden
 sci-mathematics/octave +D*DEBUG +D*ASSERT +fdirectives-only +fvisibility-inlines-hidden
 sci-visualization/gnuplot +*math*
 sys-apps/busybox +Wl,--relax
-sys-apps/coreutils +fdirectives-only +ffast-math
+sys-apps/coreutils +fdirectives-only +*math*
 sys-apps/dbus +ftree-vectorize* # reported in http://gentoo-wiki.com/CFLAGS_matrix
 sys-apps/diffutils +fdirectives-only
 sys-apps/fakeroot +D*FILE* +fno-semantic-interposition
@@ -154,11 +155,11 @@ sys-apps/fakechroot +D*FILE*
 sys-apps/findutils +fdirectives-only
 sys-apps/gawk +D*DEBUG
 sys-apps/grep +fdirectives-only
-sys-apps/groff +ffast-math +fdirectives-only
+sys-apps/groff +*math* +fdirectives-only
 sys-apps/openrc +combine
 sys-apps/sandbox +D*DEBUG +D*ASSERT
 sys-apps/sed +D*DEBUG +fdirectives-only
-sys-apps/systemd +D*DEBUG +D*ASSERT +ffast-math
+sys-apps/systemd +D*DEBUG +D*ASSERT +*math*
 sys-apps/texinfo +fstack-protector +fdirectives-only
 sys-apps/util-linux +D*DEBUG +D*ASSERT +*math* +fmerge-all-constants +ftracer # without this, script sometimes gets in an endless busy loop
 sys-auth/elogind +D*DEBUG +D*ASSERT
@@ -174,7 +175,7 @@ sys-fs/e2fsprogs +D*FILE*
 sys-fs/mtools +D*FILE*
 sys-fs/squashfuse +Wl,--as-needed
 sys-libs/binutils-libs +Wl,-z,combreloc +Wl,--as-needed +Wl,--build-id=none
-sys-libs/glibc +Wl,--relax +D*FILE* +fstack-protector +ffast-math +fdirectives-only +fno-semantic-interposition
+sys-libs/glibc +Wl,--relax +D*FILE* +fstack-protector +*math* +fdirectives-only +fno-semantic-interposition
 sys-libs/gwenhywfar +D*FORTIFY* -U_FORTIFY_SOURCE
 sys-libs/libstdc++-v3 +D*DEBUG +D*ASSERT
 sys-libs/zlib -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid some firefox/openoffice crashes
@@ -188,6 +189,6 @@ x11-libs/gtk+ +fdirectives-only +fmerge-all-constants # With -fmerge-all-constan
 x11-libs/pango -mstackrealign +ftracer +fmerge-all-constants # +O* -O2 +ftree-vectorize* avoids some firefox crashes
 x11-libs/pixman -mstackrealign +ftracer +fmerge-all-constants +fdirectives-only # +O* -O2 +ftree-vectorize* avoids some firefox crashes
 x11-libs/wxGTK +fvisibility-inlines-hidden
-x11-misc/redshift +ffast-math # with -ffast-math fails to recognize options correctly with gcc-7
+x11-misc/redshift +*math* # with -ffast-math fails to recognize options correctly with gcc-7
 x11-misc/xscreensaver +D*DEBUG +D*ASSERT
 x11-wm/mutter +finline-functions
