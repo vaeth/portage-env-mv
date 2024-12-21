@@ -72,6 +72,7 @@ media-libs/giflib +Wl,--no-undefined
 media-libs/imlib2 +Wl,--no-undefined
 media-libs/kvazaar +Wl,--no-undefined
 media-libs/libcanberra +Wl,--no-undefined
+media-libs/libcanberra-gtk3 +Wl,--no-undefined
 media-libs/libquicktime +Wl,--no-undefined
 media-libs/libreplaygain +Wl,--no-undefined
 media-libs/libv4l +Wl,--no-undefined
