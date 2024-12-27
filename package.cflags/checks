@@ -36,6 +36,7 @@ dev-lang/perl +Wl,--no-undefined
 dev-lang/python +Wl,--no-undefined
 dev-lang/rust +Wl,--no-undefined
 dev-libs/appstream-glib +Wl,--no-undefined
+dev-libs/glib +Wl,--no-undefined
 dev-libs/gobject-introspection +Wl,--no-undefined
 dev-libs/libevent +Wl,--no-undefined
 dev-libs/libxml2 +Wl,--no-undefined
