@@ -24,7 +24,6 @@ app-emulation/vice +fno-common -fcommon
 app-misc/vcp +fno-common -fcommon # RC
 app-shells/zsh +Wl,--no-undefined
 app-text/a2ps +Wl,--no-undefined
-app-text/fbreader +Wl,--no-undefined
 app-text/ghostscript-gpl +Wl,--no-undefined
 app-text/stardict +Wl,--no-undefined
 app-text/texlive-core +fno-common -fcommon

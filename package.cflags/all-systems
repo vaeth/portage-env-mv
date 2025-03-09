@@ -27,7 +27,6 @@ app-text/aspell +D*DEBUG +D*ASSERT
 app-text/doxygen NOC*OPT=1 +O* -O2 -fomit-frame-pointer -s # see http://forums.gentoo.org/viewtopic-t-495600.html
 app-text/dvipng +D*DEBUG +D*ASSERT
 app-text/enchant +fdirectives-only
-app-text/fbreader +Wl,--as-needed LD_AS_NEEDED=
 app-text/ghostscript-gpl +D*FILE*
 app-text/gv +fdirectives-only
 app-text/lcdf-typetools +D*DEBUG +D*ASSERT
@@ -76,6 +75,7 @@ dev-tex/catdvi +D*DEBUG +D*ASSERT
 dev-texlive/texlive-metapost +D*DEBUG +D*ASSERT
 dev-util/ccache CONFIG_SITE=
 dev-util/diffball +D*FILE*
+dev-vcs/git +fdirectives-only
 dev-vcs/rcs +fdirectives-only
 games-arcade/supertux +D*DEBUG +D*ASSERT
 games-engines/scummvm +*math* # With -ffast-math compilation fails with colliding options
