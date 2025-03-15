@@ -89,6 +89,7 @@ media-tv/tvheadend +fno-common -fcommon # PO
 media-tv/w_scan +fno-common -fcommon # RC
 media-video/avidemux +Wl,--no-undefined
 media-video/ffmpeg +fno-common -fcommon # -fno-common causes runtime segfaults w/ gcc-8
+media-video/ffmpeg-c* +fno-common -fcommon # -fno-common causes runtime segfaults w/ gcc-8
 media-video/nvidia-settings +fno-common -fcommon # PO
 media-video/vlc +fno-common -fcommon # PO
 net-dialup/ppp +Wl,--no-undefined

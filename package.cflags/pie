@@ -143,6 +143,7 @@ media-tv/linuxtv-dvb-apps !+fPIE !+pie # gcc-7
 media-tv/nvtv +fPIE +pie
 media-video/cclive !+fPIE !+pie
 media-video/ffmpeg +fPIE +pie
+media-video/ffmpeg-c* +fPIE +pie
 media-video/handbrake +fPIE +pie
 media-video/mjpegtools +fPIE +pie
 media-video/mpv +fPIE +pie
