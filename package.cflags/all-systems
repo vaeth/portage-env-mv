@@ -125,7 +125,7 @@ media-video/ffmpeg +combine +ftracer
 media-video/ffmpeg-c* +combine +ftracer
 media-video/kaffeine !/-O?/-O2 !+finline-functions
 media-video/mplayer +finline-functions # -finline-functions causes encoding errors w/ gcc-8
-media-video/mpv +fmerge-all-constants +D*DEBUG +D*ASSERT
+media-video/mpv +fdirectives-only +fmerge-all-constants +D*DEBUG +D*ASSERT
 media-video/pipewire +fno-semantic-interposition
 media-video/xanim +O* -O2
 net-dns/libidn +fdirectives-only
