@@ -75,7 +75,7 @@ app-text/xdvik !+fPIE !+pie
 app-text/zathura-* +fPIE +pie
 dev-build/libtool !+fPIE !+pie
 dev-cpp/* +fPIE +pie
-dev-db/sqlite !+fPIE !+pie
+dev-db/sqlite +fPIE +pie
 dev-db/unixODBC !+fPIE !+pie
 dev-debug/gdb +fPIE +pie
 dev-debug/systemtap +fPIE +pie
