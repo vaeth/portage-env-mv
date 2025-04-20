@@ -1,5 +1,6 @@
 socket=emacs-server-socket-dir.patch
-compress=emacs:30-brotli-lz4-zstd.patch
+#compress=emacs:30-brotli-zstd-lz4.patch
+compress=emacs:30.1-brotli-zstd-lz4.patch
 if [ "${PV%%.*}" -le 28 ]; then
 	if [ "${PV%%.*}" -ge 27 ]
 	then	compress=emacs:27-brotli-lz4-zstd.patch
