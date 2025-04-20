@@ -33,6 +33,7 @@ app-arch/zopfli +flto*
 app-backup/dar +flto* # PO
 app-crypt/gpgme !+flto* # ICE
 app-crypt/p11-kit +flto* # |
+app-crypt/pinentry +flto* # segfault with qt6
 app-crypt/qca +flto* # PO
 app-editors/jed +flto* # PO
 app-editors/kile +flto* # PO
