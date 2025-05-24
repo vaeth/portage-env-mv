@@ -192,6 +192,7 @@ sys-apps/kmod !+fPIE !+pie
 sys-apps/openrc +fPIE +pie
 sys-apps/pciutils +fPIE +pie
 sys-apps/portage +fPIE +pie
+sys-apps/sandbox +fPIE +pie
 sys-apps/systemd +fPIE +pie
 sys-apps/usbutils !+fPIE !+pie
 sys-apps/util-linux !+fPIE !+pie
