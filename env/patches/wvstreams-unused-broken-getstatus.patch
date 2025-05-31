@@ -1,0 +1,11 @@
+--- 1/wvstreams-4.6.1/include/wvscatterhash.h
++++ 1/wvstreams-4.6.1/include/wvscatterhash.h
+@@ -183,8 +183,6 @@
+         Iter(WvScatterHash &_table) : IterBase(_table) { }
+         Iter(const Iter &other) : IterBase(other) { }
+ 
+-        unsigned char *getstatus() { return &this->xstatus[index-1]; }
+-
+         T *ptr() const
+             { return (T *)(get()); }
+ 
