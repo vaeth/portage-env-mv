@@ -176,6 +176,7 @@ net-print/libppd +fPIE +pie
 net-vpn/openvpn +fPIE +pie
 perl-core/* +fPIE +pie
 sci-mathematics/calc +fPIE +pie
+sci-mathematics/fricas +fPIE +pie
 sci-mathematics/ginac +fPIE +pie
 sci-mathematics/octave +fPIE +pie
 sci-mathematics/pari +fPIE +pie
