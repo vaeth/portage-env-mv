@@ -225,7 +225,6 @@ x11-drivers/* !+fPIE !+pie
 x11-misc/slim +fPIE +pie
 x11-misc/xfractint +fPIE +pie
 x11-terms/kitty +fPIE +pie
-x11-wm/fvwm +fPIE +pie
 x11-wm/xpra +fPIE +pie
 xfce-base/exo !+fPIE !+pie
 xfce-base/thunar !+fPIE !+pie
