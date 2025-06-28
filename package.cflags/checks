@@ -53,7 +53,6 @@ games-arcade/xrick +fno-common -fcommon # RC
 games-emulation/advancemame +fno-common -fcommon # RC
 games-engines/frotz +fno-common -fcommon # RC
 games-fps/doomsday +fno-common -fcommon # PO
-games-fps/prboom-plus +fno-common -fcommon # RC
 games-rpg/freedroid +fno-common -fcommon # RC
 gui-libs/wayfire-plugins-extra +Wl,--no-undefined
 gui-wm/wayfire +Wl,--no-undefined
