@@ -168,7 +168,6 @@ media-gfx/graphicsmagick +flto* # |
 media-gfx/graphviz !+flto* # ICE-type of a different kind
 media-gfx/imagemagick +flto* # |
 media-gfx/ipe +flto*
-media-gfx/transfig !+flto* # ICE
 media-gfx/xfig !+flto* # ICE
 media-libs/aften +flto* # ICE and strange errors on amd64
 media-libs/alsa-lib +flto*
@@ -253,6 +252,7 @@ sci-mathematics/lpsolve +flto* # linking produces sporadically no lib
 sci-mathematics/octave +flto* # __base_dtor not found
 sci-mathematics/scilab !+flto* # ICE
 sci-mathematics/yacas !+flto* # ICE
+sci-visualization/gnuplot +flto*
 sys-apps/busybox !+flto* # ICE
 sys-apps/coreutils +flto* # ICE with gcc-7
 sys-apps/dchroot +flto* # gcc-8
