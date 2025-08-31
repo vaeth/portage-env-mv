@@ -189,7 +189,7 @@ sys-apps/coreutils +fPIE +pie
 sys-apps/dbus +fPIE +pie
 sys-apps/elfix !+fPIE !+pie
 sys-apps/file !+fPIE !+pie
-sys-apps/kmod !+fPIE !+pie
+sys-apps/kmod +fPIE +pie
 sys-apps/openrc +fPIE +pie
 sys-apps/pciutils +fPIE +pie
 sys-apps/portage +fPIE +pie
