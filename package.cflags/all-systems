@@ -74,6 +74,7 @@ dev-qt/* +fdirectives-only +*math* # -ffast-math breaks at least compilation of 
 dev-scheme/guile +fdirectives-only +*math* !+D*FILE_OFFSET* !+D_LARGEFILE* # -ffast-math triggers floating exception https://bugs.gentoo.org/show_bug.cgi?id=598986
 dev-tex/catdvi +D*DEBUG +D*ASSERT
 dev-texlive/texlive-metapost +D*DEBUG +D*ASSERT
+dev-util/cargo-c SAFE
 dev-util/ccache CONFIG_SITE=
 dev-util/gperf +fdirectives-only
 dev-util/diffball +D*FILE*

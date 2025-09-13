@@ -100,6 +100,7 @@ dev-tcltk/expect +fPIE +pie
 dev-tex/bibtexu !+fPIE !+pie
 dev-texlive/texlive-metapost !+fPIE !+pie
 dev-util/bdelta +fPIE +pie
+dev-util/cargo-c +fPIE +pie
 dev-util/cbindgen +fPIE +pie
 dev-util/cppunit +fPIE +pie
 dev-util/glslang +fPIE +pie
