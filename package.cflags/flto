@@ -51,7 +51,6 @@ app-shells/ksh +flto* # PO
 app-shells/zsh +flto* # PIC on amd64 and x86; runtime errors
 app-text/a2ps +flto*
 app-text/apvlv +flto* # PO
-app-text/djview +flto* # runtime segfaults with some versions of qt
 app-text/doxygen +flto* # PO
 app-text/dvipsk !+flto* # ICE
 app-text/ebook-tools +flto* # PIC on amd64 and x86
@@ -205,7 +204,6 @@ media-sound/gsm \~+flto* # PIC
 media-sound/lilypond !+flto* # ICE
 media-sound/mpg123 +flto* # |
 media-sound/musepack-tools +flto* # PIC; on x86 failure if default pie is enabled
-media-sound/pulseaudio +flto* # PO
 media-sound/pulseaudio-daemon +flto* # PO
 media-sound/qmmp +flto* # PO
 media-sound/sox +flto* # |
@@ -293,7 +291,6 @@ x11-drivers/xf86-video-intel +flto*
 x11-drivers/nvidia-drivers +flto*
 x11-libs/fltk +flto* # PO
 x11-libs/gdk-pixbuf +flto* # |
-x11-libs/gtkglext +flto* # PO
 x11-libs/libnotify +flto* # |
 x11-libs/libwnck +flto* # PO
 x11-libs/pango +flto* # |
