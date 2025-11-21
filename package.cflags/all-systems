@@ -114,6 +114,7 @@ media-libs/jbigkit +finline-functions
 media-libs/kvazaar +mno-sse4
 media-libs/lcms -mstackrealign +ftracer # +O* -O2 +ftree-vectorize* might avoid some firefox/openoffice crashes
 #media-libs/libdvdread +Wl,--as-needed LD_AS_NEEDED= # use this if vobcopy or dvdbackup do not compile
+media-libs/libjxl +ffast-math
 media-libs/libsidplay NOLAFILEREMOVE=1
 media-libs/libv4l +D*FILE*
 media-libs/mesa +Wl,-z,now +Wl,--build-id=none +fdirectives-only +*math*
@@ -162,6 +163,7 @@ sys-apps/findutils +fdirectives-only
 sys-apps/gawk +D*DEBUG
 sys-apps/grep +fdirectives-only
 sys-apps/groff +*math* +fdirectives-only
+sys-apps/kbd +D*FILE*
 sys-apps/openrc +combine
 sys-apps/sandbox +D*DEBUG +D*ASSERT
 sys-apps/sed +D*DEBUG +fdirectives-only
