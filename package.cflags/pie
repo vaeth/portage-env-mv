@@ -134,7 +134,7 @@ mail-client/claws-mail +fPIE +pie
 mail-client/thunderbird +fPIE +pie
 media-gfx/exiv2 +fPIE +pie
 media-gfx/fontforge +fPIE +pie
-media-gfx/gimp !+fPIE !+pie
+media-gfx/gimp +fPIE +pie
 media-gfx/graphicsmagick +fPIE +pie
 media-gfx/graphite2 +fPIE +pie
 media-gfx/graphviz +fPIE +pie

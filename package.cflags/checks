@@ -105,6 +105,7 @@ net-vpn/networkmanager-openconnect +Wl,--no-undefined
 net-vpn/networkmanager-openvpn +Wl,--no-undefined
 net-wireless/bluez +Wl,--no-undefined
 perl-core/* +Wl,--no-undefined
+sci-libs/flexiblas +Wl,--no-undefined
 sci-libs/hdf5 +Wl,--no-undefined
 sci-libs/suitesparseconfig +Wl,--no-undefined
 sci-mathematics/calc +Wl,--no-undefined
