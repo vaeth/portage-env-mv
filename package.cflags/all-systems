@@ -55,6 +55,7 @@ dev-libs/ffcall +fdirectives-only
 dev-libs/gmp +*math* +fgraphite* +floop-* +D*FILE* +D*DEBUG +D*ASSERT +frename-registers +freorder-functions +fdevirtualize-speculatively # Just to be on the safe side
 dev-libs/kpathsea +D*DEBUG +D*ASSERT
 dev-libs/libevent +D*DEBUG +D*ASSERT
+dev-libs/libgcrypt +fno-unwind-tables +fno-asynchronous-unwind-tables
 dev-libs/libtasn1 +fdirectives-only
 dev-libs/libunistring +fdirectives-only
 dev-libs/lzo CONFIG_SITE= # sys-power/suspend needs static libs

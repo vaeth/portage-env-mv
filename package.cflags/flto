@@ -149,7 +149,6 @@ games-emulation/xmess !+flto* # ICE
 games-engines/freesci +flto* # ICE on x86; undefined reference with gcc-7
 games-engines/scummvm +flto*
 games-engines/scummvm-tools +flto* # PO
-games-fps/doomsday +flto* # PO
 games-puzzle/enigma +flto* # PO
 games-puzzle/lmarbles !+flto* # ICE
 gnome-base/gnome-desktop +flto* # |
