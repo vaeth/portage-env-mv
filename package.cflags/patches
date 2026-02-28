@@ -19,7 +19,6 @@ dev-libs/libsodium !"export enable_pie=no"
 =dev-libs/uulib-0.5.20* -std=gnu17
 dev-perl/Clone "export mymake='DEFINE=-D_LARGEFILE64_SOURCE'" # -D_LARGEFILE64_SOURCE is filtered by the ebuild but *MUST* be used.
 =games-arcade/xgalaga-2.1.1.0* -std=gnu17
-=games-emulation/advancemame-3.9* -std=gnu17
 =games-rpg/freedroid-1.2.3* -std=gnu17
 mail-client/thunderbird "export SHELL=/bin/sh"
 media-gfx/gimp "EXTRA_EMAKE+='SHELL=/bin/bash'"
