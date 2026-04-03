@@ -190,7 +190,6 @@ media-libs/libwebp !+flto* # ICE
 media-libs/mesa +flto* # ICE for x86, runtime errors for amd64
 media-libs/musicbrainz +flto* # PO
 media-libs/netpbm !+flto* # ICE
-media-libs/phonon +flto* # PO
 media-libs/plotutils !+flto* # ICE
 media-libs/portaudio +flto* # |
 media-libs/speex !+flto* # ICE
