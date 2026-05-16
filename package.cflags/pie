@@ -145,6 +145,7 @@ media-gfx/pqiv +fPIE +pie
 media-gfx/sane-backends !+fPIE !+pie
 media-sound/gsm !+fPIE !+pie # gcc-7
 media-sound/lame !+fPIE !+pie
+media-sound/liblc3 +fPIE +pie
 media-sound/lilypond +fPIE +pie
 media-sound/mpg123 !+fPIE !+pie
 media-sound/musepack-tools +fPIE +pie
@@ -240,4 +241,5 @@ x11-misc/xfractint +fPIE +pie
 x11-terms/kitty +fPIE +pie
 x11-wm/xpra +fPIE +pie
 xfce-base/exo !+fPIE !+pie
+xfce-base/libxfce4windowing +fPIE +pie
 xfce-base/thunar !+fPIE !+pie
