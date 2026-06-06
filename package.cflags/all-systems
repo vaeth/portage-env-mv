@@ -79,6 +79,7 @@ dev-util/cargo-c SAFE
 dev-util/ccache CONFIG_SITE=
 dev-util/gperf +fdirectives-only
 dev-util/diffball +D*FILE*
+dev-util/patchutils +fdirectives-only
 dev-vcs/git +fdirectives-only
 dev-vcs/rcs +fdirectives-only
 games-arcade/supertux +D*DEBUG +D*ASSERT

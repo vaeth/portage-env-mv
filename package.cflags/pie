@@ -67,7 +67,6 @@ app-text/poppler +fPIE +pie
 app-text/ps2pkm !+fPIE !+pie
 app-text/qpdf +fPIE +pie
 app-text/qpdfview +fPIE +pie
-app-text/qtspell +fPIE +pie
 app-text/rarian +fPIE +pie
 app-text/recode !+fPIE !+pie
 app-text/sablotron +fPIE +pie
