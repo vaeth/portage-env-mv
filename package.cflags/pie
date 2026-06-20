@@ -109,6 +109,7 @@ dev-util/cargo-c +fPIE +pie
 dev-util/cbindgen +fPIE +pie
 dev-util/cppunit +fPIE +pie
 dev-util/glslang +fPIE +pie
+dev-util/maturin +fPIE +pie
 dev-util/spirv-llvm-translator +fPIE +pie
 dev-util/spirv-tools +fPIE +pie
 dev-util/pkgcheck +fPIE +pie
