@@ -15,7 +15,6 @@ dev-lang/python +fgraphite* +floop-*
 dev-lang/rust +fgraphite* +floop-*
 dev-lang/tcl +fgraphite* +floop-*
 dev-libs/icu +fgraphite* +floop*
-dev-qt/qtcore +fgraphite* +floop-*
 games-emulation/dosbox +fgraphite* +floop-*
 games-rpg/freedroidrpg +fgraphite* +floop-*
 llvm-core/lld +fgraphite* +floop-*

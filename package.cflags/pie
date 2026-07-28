@@ -6,11 +6,11 @@
 app-accessibility/at-spi2-atk +fPIE +pie
 app-accessibility/at-spi2-core +fPIE +pie
 app-admin/sudo !+fPIE !+pie
+app-arch/7zip +fPIE +pie
 app-arch/arj +fPIE +pie
 app-arch/brotli +fPIE +pie
 app-arch/lrzip +fPIE +pie
 app-arch/lz4 +fPIE +pie
-app-arch/p7zip +fPIE +pie
 app-arch/snappy +fPIE +pie
 app-arch/unrar +fPIE +pie
 app-arch/xz-utils !+fPIE !+pie
@@ -143,6 +143,7 @@ media-gfx/ipe +fPIE +pie
 media-gfx/pstoedit !+fPIE !+pie
 media-gfx/pqiv +fPIE +pie
 media-gfx/sane-backends !+fPIE !+pie
+media-sound/fluidsynth +fPIE +pie
 media-sound/gsm !+fPIE !+pie # gcc-7
 media-sound/lame !+fPIE !+pie
 media-sound/liblc3 +fPIE +pie

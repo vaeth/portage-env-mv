@@ -9,7 +9,6 @@
 
 app-emulation/wine* +fno-plt # compilation fails with unexpected reloc 43 against global symbol strlen without base register in object file when generating a position-independent output file
 dev-lang/rust !+fno-plt # compilation segfaults on x86
-dev-qt/qtwidgets +mfunction-return=thunk # multiple definition of '__x86_return_thunk' for gcc-8
 llvm-core/clang +fno-plt # causes presumably runtime segfaults
 llvm-core/lld +fno-plt # causes runtime segfaults
 llvm-core/llvm +fno-plt # causes presumably runtime segfaults
