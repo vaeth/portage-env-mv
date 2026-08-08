@@ -110,9 +110,10 @@ dev-util/cbindgen +fPIE +pie
 dev-util/cppunit +fPIE +pie
 dev-util/glslang +fPIE +pie
 dev-util/maturin +fPIE +pie
+dev-util/pkgcheck +fPIE +pie
 dev-util/spirv-llvm-translator +fPIE +pie
 dev-util/spirv-tools +fPIE +pie
-dev-util/pkgcheck +fPIE +pie
+dev-util/xdelta +fPIE +pie
 games-action/gltron +fPIE +pie
 games-arcade/burgerspace !+fPIE !+pie
 games-arcade/supertux +fPIE +pie
