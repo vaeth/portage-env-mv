@@ -1,17 +1,17 @@
 --- 1/lisp/info.el
 +++ 1/lisp/info.el
-@@ -479,7 +479,10 @@
+@@ -487,7 +487,10 @@
    (if (eq system-type 'ms-dos)
        '( (".gz"       . "gunzip")
  	 (".z"        . "gunzip")
 +	 (".br"       . ("brotli" "-dcf"))
  	 (".bz2"      . ("bzip2" "-dc"))
 +	 (".lz4"      . ("lz4" "-d" "-q"))
-+	 (".zst"      . ("zst" "-d" "-f" "-q" "--long=31"))
++	 (".zst"      . ("zstd" "-d" "-f" "-q" "--long=31"))
  	 (".inz"      . "gunzip")
  	 (".igz"      . "gunzip")
  	 (".info.Z"   . "gunzip")
-@@ -497,36 +500,44 @@
+@@ -505,36 +508,44 @@
         (".info.Y"    . "unyabba")
         (".info.gz"   . "gunzip")
         (".info.z"    . "gunzip")
@@ -32,7 +32,7 @@
 +       ("-info.br"   . ("brotli" "-dcf"))
         ("-info.xz"   . "unxz")
 -       ("-info.zst"  . ("zstd" "-dc"))
-+       ("-info.zst"  . ("zst" "-d" "-f" "-q" "--long=31"))
++       ("-info.zst"  . ("zstd" "-d" "-f" "-q" "--long=31"))
         ("-info.lz"   . ("lzip" "-dc"))
         ("-info"      . nil)
         ("/index.Z"   . "uncompress")
@@ -62,7 +62,7 @@
    "List of file name suffixes and associated decoding commands.
 --- 1/lisp/jka-cmpr-hook.el
 +++ 1/lisp/jka-cmpr-hook.el
-@@ -247,6 +247,26 @@
+@@ -245,6 +245,26 @@
       "XZ compressing"     "xz"           ("-c" "-q")
       "XZ uncompressing"   "xz"           ("-c" "-q" "-d")
       t nil "\3757zXZ\0"]
@@ -89,7 +89,7 @@
      ;; dzip is gzip with random access.  Its compression program can't
      ;; read/write stdin/out, so .dz files can only be viewed without
      ;; saving, having their contents decompressed with gzip.
-@@ -258,7 +278,7 @@
+@@ -256,7 +276,7 @@
       "zstd compressing"   "zstd"         ("-c" "-q")
       "zstd uncompressing" "zstd"         ("-c" "-q" "-d")
       t t "\050\265\057\375"]
@@ -97,14 +97,14 @@
 +    ["\\.tzst?\\'"
       "zstd compressing"   "zstd"         ("-c" "-q")
       "zstd uncompressing" "zstd"         ("-c" "-q" "-d")
-      t nil "\050\265\057\375"]))
-@@ -332,6 +352,9 @@
-   (purecopy '(("\\.tgz\\'" . tar-mode)
-               ("\\.tbz2?\\'" . tar-mode)
-               ("\\.txz\\'" . tar-mode)
-+              ("\\.tbro?\\'" . tar-mode)
-+              ("\\.tl4\\'" . tar-mode)
-+              ("\\.tl?z4\\'" . tar-mode)
-               ("\\.tzst\\'" . tar-mode)))
+      t nil "\050\265\057\375"])
+@@ -330,6 +350,9 @@
+   '(("\\.tgz\\'" . tar-mode)
+     ("\\.tbz2?\\'" . tar-mode)
+     ("\\.txz\\'" . tar-mode)
++    ("\\.tbro?\\'" . tar-mode)
++    ("\\.tl4\\'" . tar-mode)
++    ("\\.tl?z4\\'" . tar-mode)
+     ("\\.tzst\\'" . tar-mode))
    "List of pairs added to `auto-mode-alist' when installing jka-compr.
  Uninstalling jka-compr removes all pairs from `auto-mode-alist' that
