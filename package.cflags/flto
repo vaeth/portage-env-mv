@@ -282,7 +282,6 @@ sys-libs/ncurses +flto*
 sys-power/iasl +flto* # PO
 sys-power/upower +flto* # PO
 sys-process/numactl +flto* # PO
-www-client/chromium +flto-partition* +flto*
 www-client/firefox +flto-partition* +flto*
 www-client/lynx !+flto* # ICE
 x11-base/xorg-server +flto*

@@ -111,6 +111,7 @@ dev-util/cppunit +fPIE +pie
 dev-util/glslang +fPIE +pie
 dev-util/maturin +fPIE +pie
 dev-util/pkgcheck +fPIE +pie
+dev-util/shader-slang +fPIE +pie
 dev-util/spirv-llvm-translator +fPIE +pie
 dev-util/spirv-tools +fPIE +pie
 dev-util/xdelta +fPIE +pie
@@ -235,7 +236,6 @@ sys-power/upower +fPIE +pie
 sys-process/htop !+fPIE !+pie
 sys-process/procps !+fPIE !+pie
 sys-process/tiptop !+fPIE !+pie
-www-client/chromium +fPIE +pie
 www-client/firefox +fPIE +pie
 x11-base/xorg-server +fPIE +pie
 x11-drivers/* !+fPIE !+pie

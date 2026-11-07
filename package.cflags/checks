@@ -129,7 +129,6 @@ sys-libs/slang +Wl,--no-undefined
 sys-power/iasl +fno-common -fcommon # PO
 sys-power/nut +Wl,--no-undefined
 sys-power/suspend +fno-common -fcommon # PO
-www-client/chromium +fno-common -fcommon +Wl,--no-undefined # PO
 x11-base/xorg-server +Wl,--no-undefined
 x11-drivers/nvidia-drivers +fno-common -fcommon +Wl,--no-undefined # PO
 x11-drivers/xf86-* +Wl,--no-undefined
