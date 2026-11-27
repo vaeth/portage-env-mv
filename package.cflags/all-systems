@@ -104,6 +104,7 @@ llvm-core/llvm CONFIG_SITE= +*math* +D*FILE* +fdirectives-only +fmerge-all-const
 llvm-core/llvm !+pipe !+fcommon !+Wl,--sort-common !+Wl,-O9 !+ftree-partial-pre !+fvect-cost-model !+fgcse-* !+fweb !+finline-functions !+fpredictive-commoning !+ftree-* !+fira-loop-pressure !+fivopts !+freorder-functions !+fdevirtualize-speculatively !+fno-semantic-interposition !+fno-semantic-interposition
 llvm-runtimes/compiler-rt USE_NONGNU=1 +fmerge-all-constants
 llvm-runtimes/compiler-rt-sanitizers USE_NONGNU=1 +fmerge-all-constants +frewrite-includes
+llvm-runtimes/openmp +frewrite-includes
 mail-client/thunderbird +D*FILE* +*math* +fmerge-all-constants +finline-functions +fdirectives-only
 media-gfx/fontforge +fdirectives-only
 media-gfx/gimp +D*DEBUG +D*ASSERT

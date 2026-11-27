@@ -1,0 +1,219 @@
+--- 1/crypto/wvcrl.cc
++++ 1/crypto/wvcrl.cc
+@@ -56,7 +56,7 @@
+ 
+     // most of this copied from wvx509.cc, sigh
+     ASN1_OCTET_STRING *ikeyid = NULL;
+-    X509_EXTENSION *ext;
++    const X509_EXTENSION *ext;
+     int i = X509_get_ext_by_NID(ca.cert, NID_subject_key_identifier, -1);
+     if ((i >= 0) && (ext = X509_get_ext(ca.cert, i)))
+         ikeyid = static_cast<ASN1_OCTET_STRING *>(X509V3_EXT_d2i(ext));
+@@ -69,7 +69,6 @@
+         akeyid->keyid = ikeyid;
+         ext = X509V3_EXT_i2d(NID_authority_key_identifier, 0, akeyid);
+         X509_CRL_add_ext(crl, ext, -1);
+-        X509_EXTENSION_free(ext); 
+         AUTHORITY_KEYID_free(akeyid);
+     }
+ 
+@@ -169,7 +168,8 @@
+                              &i, NULL));
+     if (aki)
+     {
+-        char *tmp = hex_to_string(aki->keyid->data, aki->keyid->length); 
++        char *tmp = hex_to_string(ASN1_STRING_get0_data(aki->keyid),
++	                                  ASN1_STRING_length(aki->keyid));
+         WvString str(tmp);
+         
+         OPENSSL_free(tmp);
+--- 1/crypto/wvx509.cc
++++ 1/crypto/wvx509.cc
+@@ -171,7 +171,7 @@
+ 
+ 
+ // returns some approximation of the server's fqdn, or an empty string.
+-static WvString set_name_entry(X509_NAME *name, WvStringParm dn)
++static WvString set_name_entry(const X509_NAME *name, WvStringParm dn)
+ {
+     WvString fqdn(""), force_fqdn("");
+     X509_NAME_ENTRY *ne = NULL;
+@@ -268,7 +268,7 @@
+     WvLog debug("X509::certreq", WvLog::Debug5);
+ 
+     EVP_PKEY *pk = NULL;
+-    X509_NAME *name = NULL;
++    const X509_NAME *name = NULL;
+     X509_REQ *certreq = NULL;
+ 
+     // double check RSA key
+@@ -606,7 +606,7 @@
+ {
+     CHECK_CERT_EXISTS_SET("issuer");
+ 
+-    X509_NAME *name = X509_get_issuer_name(cert);
++    const X509_NAME *name = X509_get_issuer_name(cert);
+     set_name_entry(name, issuer);
+     X509_set_issuer_name(cert, name);
+ }
+@@ -616,7 +616,7 @@
+ {
+     CHECK_CERT_EXISTS_SET("issuer");
+ 
+-    X509_NAME *casubj = X509_get_subject_name(cacert.cert);
++    const X509_NAME *casubj = X509_get_subject_name(cacert.cert);
+     X509_set_issuer_name(cert, casubj);
+ }
+ 
+@@ -636,13 +636,13 @@
+ {    
+     CHECK_CERT_EXISTS_SET("subject");
+ 
+-    X509_NAME *name = X509_get_subject_name(cert);
++    const X509_NAME *name = X509_get_subject_name(cert);
+     set_name_entry(name, subject);
+     X509_set_subject_name(cert, name);
+ }
+ 
+ 
+-void WvX509::set_subject(X509_NAME *name)
++void WvX509::set_subject(const X509_NAME *name)
+ {
+     CHECK_CERT_EXISTS_SET("subject");
+ 
+@@ -799,7 +799,7 @@
+         ca = constraints->ca;
+         if (constraints->pathlen)
+         {
+-            if ((constraints->pathlen->type == V_ASN1_NEG_INTEGER) || !ca)
++            if ((ASN1_STRING_type(constraints->pathlen) == V_ASN1_NEG_INTEGER) || !ca)
+             {
+                 debug("Path length type not valid when getting basic "
+                       "constraints.\n");
+@@ -1153,16 +1153,16 @@
+     int index = X509_get_ext_by_NID(cert, nid, -1);
+     if (index >= 0)
+     {
+-        X509_EXTENSION *ext = X509_get_ext(cert, index);
++        const X509_EXTENSION *ext = X509_get_ext(cert, index);
+         
+         if (ext)
+         {
+             X509V3_EXT_METHOD *method = (X509V3_EXT_METHOD *)X509V3_EXT_get(ext);
+-            ASN1_OCTET_STRING *ext_data_str = X509_EXTENSION_get_data(ext);
++            const ASN1_OCTET_STRING *ext_data_str = X509_EXTENSION_get_data(ext);
+             if (!method)
+             {
+                 WvDynBuf buf;
+-                buf.put(ext_data_str->data, ext_data_str->length);
++                buf.put(ASN1_STRING_get0_data(ext_data_str), ASN1_STRING_length(ext_data_str));
+                 retval = buf.getstr();
+             }
+             else
+@@ -1173,21 +1173,21 @@
+                 // even though it's const (at least as of version 0.9.8e). 
+                 // gah.
+ #if OPENSSL_VERSION_NUMBER >= 0x0090800fL
+-                const unsigned char * ext_value_data = ext_data_str->data;
++                const unsigned char *ext_value_data = ASN1_STRING_get0_data(ext_data_str);
+ #else
+                 unsigned char *ext_value_data = ext->value->data;
+ #endif
+                 if (method->it)
+                 {
+                     ext_data = ASN1_item_d2i(NULL, &ext_value_data,
+-                                             ext_data_str->length, 
++                                             ASN1_STRING_length(ext_data_str), 
+                                              ASN1_ITEM_ptr(method->it));
+                     TRACE("Applied generic conversion!\n");
+                 }
+                 else
+                 {
+                     ext_data = method->d2i(NULL, &ext_value_data,
+-                                           ext_data_str->length);
++                                           ASN1_STRING_length(ext_data_str));
+                     TRACE("Applied method specific conversion!\n");
+                 }
+                 
+@@ -1347,7 +1347,7 @@
+     memset(&d,'\0',sizeof(d));    
+     memset(&newtime,'\0',sizeof newtime);
+     
+-    if (t->type == V_ASN1_GENERALIZEDTIME) 
++    if (ASN1_STRING_type(t) == V_ASN1_GENERALIZEDTIME) 
+     {
+          // For time values >= 2050, OpenSSL uses
+          // ASN1_GENERALIZEDTIME - which we'll worry about
+@@ -1355,7 +1355,7 @@
+ 	return 0;
+     }
+ 
+-    p = (char *)t->data;
++    p = (char *)ASN1_STRING_get0_data(t);
+     sscanf(p,"%2s%2s%2s%2s%2s%2sZ", d, &d[3], &d[6], &d[9], &d[12], &d[15]);
+     
+     int year = strtol(d, (char **)NULL, 10);
+@@ -1448,11 +1448,12 @@
+     CHECK_CERT_EXISTS_SET("ski");
+ 
+     ASN1_OCTET_STRING *oct = ASN1_OCTET_STRING_new();
+-    ASN1_BIT_STRING *pk = X509_get0_pubkey_bitstr(cert);
++    const ASN1_BIT_STRING *pk = X509_get0_pubkey_bitstr(cert);
+     unsigned char pkey_dig[EVP_MAX_MD_SIZE];
+     unsigned int diglen;
+ 
+-    EVP_Digest(pk->data, pk->length, pkey_dig, &diglen, EVP_sha1(), NULL);
++    EVP_Digest(ASN1_STRING_get0_data(pk), ASN1_STRING_length(pk), 
++           pkey_dig, &diglen, EVP_sha1(), NULL);
+ 
+     ASN1_OCTET_STRING_set(oct, pkey_dig, diglen);
+     X509_EXTENSION *ext = X509V3_EXT_i2d(NID_subject_key_identifier, 0, 
+@@ -1470,7 +1471,7 @@
+     // can't set a meaningful AKI for subordinate certification without the 
+     // parent having an SKI
+     ASN1_OCTET_STRING *ikeyid = NULL;
+-    X509_EXTENSION *ext;
++    const X509_EXTENSION *ext;
+     int i = X509_get_ext_by_NID(cacert.cert, NID_subject_key_identifier, -1);
+     if ((i >= 0) && (ext = X509_get_ext(cacert.cert, i)))
+         ikeyid = static_cast<ASN1_OCTET_STRING *>(X509V3_EXT_d2i(ext));
+@@ -1484,7 +1485,6 @@
+     akeyid->keyid = ikeyid;
+     ext = X509V3_EXT_i2d(NID_authority_key_identifier, 0, akeyid);
+     X509_add_ext(cert, ext, -1);
+-    X509_EXTENSION_free(ext); 
+     AUTHORITY_KEYID_free(akeyid);
+ }
+ 
+--- 1/crypto/wvx509mgr.cc
++++ 1/crypto/wvx509mgr.cc
+@@ -281,7 +281,7 @@
+     BIO *membuf = BIO_new(BIO_s_mem());
+     BIO_write(membuf, pkcs10req, pkcs10req.len());
+ 
+-    X509_REQ *certreq = PEM_read_bio_X509_REQ(membuf, NULL, NULL, NULL);
++    const X509_REQ *certreq = PEM_read_bio_X509_REQ(membuf, NULL, NULL, NULL);
+     BIO_free_all(membuf);
+ 
+     if (certreq)
+@@ -330,7 +330,6 @@
+ 
+ 	signcert(newcert);
+ 	
+-	X509_REQ_free(certreq);
+ 	return WvString(newcert.encode(WvX509::CertPEM));
+     }
+     else
+--- 1/include/wvx509.h
++++ 1/include/wvx509.h
+@@ -160,8 +160,8 @@
+      * get and set the Subject field of the certificate
+      */
+     WvString get_subject() const;
+-    void set_subject(WvStringParm name);
+-    void set_subject(X509_NAME *name);
++    void set_subject(const WvStringParm name);
++    void set_subject(const X509_NAME *name);
+ 
+     /**
+      * get and set the serialNumber field of the certificate

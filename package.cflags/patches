@@ -31,6 +31,7 @@ media-libs/libsdl "export CONFIG_SHELL=/bin/bash" # https://bugs.gentoo.org/7140
 =media-libs/plotutils-2.6* -std=gnu17
 =media-video/nvidia-settings-173.14.37 -ldl
 net-libs/c-client -lcrypt
+# =net-libs/wvstreams-4.6.1_p14-r3 -fpermissive # required for >=dev-libs/openssl-4
 =net-nntp/slrn-1.0.3* -std=gnu17
 net-misc/nxserver-freenx "EXTRA_EMAKE+='SHELL=/bin/bash'"
 =net-misc/streamtuner-0.99.99* -std=gnu17
